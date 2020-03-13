@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manager.ws.gfi.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.gfi.com" xmlns:intf="http://manager.ws.gfi.com" xmlns:tns1="http://retrieveCustomer.customerdomain.beans.ws.gfi.com" xmlns:tns2="http://beans.ws.gfi.com" xmlns:tns3="http://commons.beans.ws.gfi.com" xmlns:tns4="http://searchCustomer.customerdomain.beans.ws.gfi.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchCustomer.customerdomain.beans.ws.gfi.com"/>
+   <complexType abstract="true" name="BasicBeanIn">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchCustomer.customerdomain.beans.ws.gfi.com"/>
+   <complexType name="CustomerIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CS_ID" nillable="true" type="xsd:long"/>
+       <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://retrieveCustomer.customerdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://searchCustomer.customerdomain.beans.ws.gfi.com"/>
+   <complexType name="RetrieveCustomerIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="RetrieveCustomerOut">
+    <sequence>
+     <element name="ADR_BIRTHDT" nillable="true" type="xsd:dateTime"/>
+     <element name="ADR_CITY" nillable="true" type="xsd:string"/>
+     <element name="ADR_COMPNO" nillable="true" type="xsd:string"/>
+     <element name="ADR_CUSTTYPE" nillable="true" type="xsd:string"/>
+     <element name="ADR_DRIVELICENCE" nillable="true" type="xsd:string"/>
+     <element name="ADR_EMAIL" nillable="true" type="xsd:string"/>
+     <element name="ADR_EMPLOYEE" nillable="true" type="xsd:boolean"/>
+     <element name="ADR_EMPLOYER" nillable="true" type="xsd:string"/>
+     <element name="ADR_FAX" nillable="true" type="xsd:string"/>
+     <element name="ADR_FAX_AREA" nillable="true" type="xsd:string"/>
+     <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_FORWARD" nillable="true" type="xsd:boolean"/>
+     <element name="ADR_IDNO" nillable="true" type="xsd:string"/>
+     <element name="ADR_JBDES" nillable="true" type="xsd:string"/>
+     <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_MNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_NATIONALITY" nillable="true" type="xsd:long"/>
+     <element name="ADR_NOTE1" nillable="true" type="xsd:string"/>
+     <element name="ADR_NOTE2" nillable="true" type="xsd:string"/>
+     <element name="ADR_NOTE3" nillable="true" type="xsd:string"/>
+     <element name="ADR_PHN1" nillable="true" type="xsd:string"/>
+     <element name="ADR_PHN1_AREA" nillable="true" type="xsd:string"/>
+     <element name="ADR_PHN2" nillable="true" type="xsd:string"/>
+     <element name="ADR_PHN2_AREA" nillable="true" type="xsd:string"/>
+     <element name="ADR_SEX" nillable="true" type="xsd:string"/>
+     <element name="ADR_SMSNO" nillable="true" type="xsd:string"/>
+     <element name="ADR_SOCIALSENO" nillable="true" type="xsd:string"/>
+     <element name="ADR_STATE" nillable="true" type="xsd:string"/>
+     <element name="ADR_STREET" nillable="true" type="xsd:string"/>
+     <element name="ADR_STREETNO" nillable="true" type="xsd:string"/>
+     <element name="ADR_TAXNO" nillable="true" type="xsd:string"/>
+     <element name="ADR_URGENT" nillable="true" type="xsd:boolean"/>
+     <element name="ADR_YEARS" nillable="true" type="xsd:int"/>
+     <element name="ADR_ZIP" nillable="true" type="xsd:string"/>
+     <element name="CHECK01" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK02" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK03" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK04" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK05" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK06" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK07" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK08" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK09" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK10" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK11" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK12" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK13" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK14" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK15" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK16" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK17" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK18" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK19" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK20" nillable="true" type="xsd:boolean"/>
+     <element name="COMBO01" nillable="true" type="xsd:string"/>
+     <element name="COMBO02" nillable="true" type="xsd:string"/>
+     <element name="COMBO03" nillable="true" type="xsd:string"/>
+     <element name="COMBO04" nillable="true" type="xsd:string"/>
+     <element name="COMBO05" nillable="true" type="xsd:string"/>
+     <element name="COMBO06" nillable="true" type="xsd:string"/>
+     <element name="COMBO07" nillable="true" type="xsd:string"/>
+     <element name="COMBO08" nillable="true" type="xsd:string"/>
+     <element name="COMBO09" nillable="true" type="xsd:string"/>
+     <element name="COMBO10" nillable="true" type="xsd:string"/>
+     <element name="COMBO11" nillable="true" type="xsd:string"/>
+     <element name="COMBO12" nillable="true" type="xsd:string"/>
+     <element name="COMBO13" nillable="true" type="xsd:string"/>
+     <element name="COMBO14" nillable="true" type="xsd:string"/>
+     <element name="COMBO15" nillable="true" type="xsd:string"/>
+     <element name="COMBO16" nillable="true" type="xsd:string"/>
+     <element name="COMBO17" nillable="true" type="xsd:string"/>
+     <element name="COMBO18" nillable="true" type="xsd:string"/>
+     <element name="COMBO19" nillable="true" type="xsd:string"/>
+     <element name="COMBO20" nillable="true" type="xsd:string"/>
+     <element name="COUNTRY_ID" nillable="true" type="xsd:long"/>
+     <element name="CSP_ACCNO" nillable="true" type="xsd:string"/>
+     <element name="CSP_BANKNAME" nillable="true" type="xsd:string"/>
+     <element name="CSP_PMNT_ID" nillable="true" type="xsd:long"/>
+     <element name="CS_" nillable="true" type="xsd:string"/>
+     <element name="CS_ACTIVATION_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="CS_BILLCYCLE" nillable="true" type="xsd:string"/>
+     <element name="CS_CLIMIT" nillable="true" type="xsd:float"/>
+     <element name="CS_CODE" nillable="true" type="xsd:string"/>
+     <element name="CS_CSCURBALANCE" nillable="true" type="xsd:float"/>
+     <element name="CS_ID" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_HIGH" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CS_LAST_BC_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="CS_PAYMNT_RESP_CODE" nillable="true" type="xsd:string"/>
+     <element name="CS_REMARK1" nillable="true" type="xsd:string"/>
+     <element name="CS_REMARK2" nillable="true" type="xsd:string"/>
+     <element name="CS_STATUS" nillable="true" type="xsd:string"/>
+     <element name="CS_UNBILLED_AMOUNT" nillable="true" type="xsd:float"/>
+     <element name="IDTYPE_CODE" nillable="true" type="xsd:long"/>
+     <element name="LNG_CODE" nillable="true" type="xsd:long"/>
+     <element name="MAS_CODE" nillable="true" type="xsd:long"/>
+     <element name="PAYMENT_RESP" nillable="true" type="xsd:boolean"/>
+     <element name="PAYMENT_RESP_ID" nillable="true" type="xsd:long"/>
+     <element name="PRG_CODE" nillable="true" type="xsd:string"/>
+     <element name="TEXT01" nillable="true" type="xsd:string"/>
+     <element name="TEXT02" nillable="true" type="xsd:string"/>
+     <element name="TEXT03" nillable="true" type="xsd:string"/>
+     <element name="TEXT04" nillable="true" type="xsd:string"/>
+     <element name="TEXT05" nillable="true" type="xsd:string"/>
+     <element name="TEXT06" nillable="true" type="xsd:string"/>
+     <element name="TEXT07" nillable="true" type="xsd:string"/>
+     <element name="TEXT08" nillable="true" type="xsd:string"/>
+     <element name="TEXT09" nillable="true" type="xsd:string"/>
+     <element name="TEXT10" nillable="true" type="xsd:string"/>
+     <element name="TEXT11" nillable="true" type="xsd:string"/>
+     <element name="TEXT12" nillable="true" type="xsd:string"/>
+     <element name="TEXT13" nillable="true" type="xsd:string"/>
+     <element name="TEXT14" nillable="true" type="xsd:string"/>
+     <element name="TEXT15" nillable="true" type="xsd:string"/>
+     <element name="TEXT16" nillable="true" type="xsd:string"/>
+     <element name="TEXT17" nillable="true" type="xsd:string"/>
+     <element name="TEXT18" nillable="true" type="xsd:string"/>
+     <element name="TEXT19" nillable="true" type="xsd:string"/>
+     <element name="TEXT20" nillable="true" type="xsd:string"/>
+     <element name="TEXT21" nillable="true" type="xsd:string"/>
+     <element name="TEXT22" nillable="true" type="xsd:string"/>
+     <element name="TEXT23" nillable="true" type="xsd:string"/>
+     <element name="TEXT24" nillable="true" type="xsd:string"/>
+     <element name="TEXT25" nillable="true" type="xsd:string"/>
+     <element name="TEXT26" nillable="true" type="xsd:string"/>
+     <element name="TEXT27" nillable="true" type="xsd:string"/>
+     <element name="TEXT28" nillable="true" type="xsd:string"/>
+     <element name="TEXT29" nillable="true" type="xsd:string"/>
+     <element name="TEXT30" nillable="true" type="xsd:string"/>
+     <element name="TMCODE" nillable="true" type="xsd:long"/>
+     <element name="TTL_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchCustomer.customerdomain.beans.ws.gfi.com"/>
+   <element name="retrieveCustomerIn" type="tns1:RetrieveCustomerIn"/>
+   <element name="retrieveCustomerReturn" type="tns1:RetrieveCustomerOut"/>
+   <element name="searchCustomerIn" type="tns4:SearchCustomerIn"/>
+   <complexType name="ArrayOf_tns4_Customer">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:Customer"/>
+    </sequence>
+   </complexType>
+   <element name="searchCustomerReturn" type="tns4:SearchCustomerOut"/>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://searchCustomer.customerdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"/>
+   <complexType name="SearchCustomerIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="LA_FLAG" nillable="true" type="xsd:boolean"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Customer">
+    <sequence>
+     <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+     <element name="CS_CODE" nillable="true" type="xsd:string"/>
+     <element name="CS_ID" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_HIGH" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CS_LEVEL_CODE" nillable="true" type="xsd:string"/>
+     <element name="PAYMENT_RESP" nillable="true" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+   <complexType name="SearchCustomerOut">
+    <sequence>
+     <element name="customersList" nillable="true" type="impl:ArrayOf_tns4_Customer"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="searchCustomerResponse">
+
+      <wsdl:part element="impl:searchCustomerReturn" name="searchCustomerReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchCustomerRequest">
+
+      <wsdl:part element="impl:searchCustomerIn" name="searchCustomerIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveCustomerRequest">
+
+      <wsdl:part element="impl:retrieveCustomerIn" name="retrieveCustomerIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveCustomerResponse">
+
+      <wsdl:part element="impl:retrieveCustomerReturn" name="retrieveCustomerReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CustomerDomainManager">
+
+      <wsdl:operation name="retrieveCustomer" parameterOrder="retrieveCustomerIn">
+
+         <wsdl:input message="impl:retrieveCustomerRequest" name="retrieveCustomerRequest"/>
+
+         <wsdl:output message="impl:retrieveCustomerResponse" name="retrieveCustomerResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCustomer" parameterOrder="searchCustomerIn">
+
+         <wsdl:input message="impl:searchCustomerRequest" name="searchCustomerRequest"/>
+
+         <wsdl:output message="impl:searchCustomerResponse" name="searchCustomerResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CustomerDomainManagerSoapBinding" type="impl:CustomerDomainManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="retrieveCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CustomerDomainManagerService">
+
+      <wsdl:port binding="impl:CustomerDomainManagerSoapBinding" name="CustomerDomainManager">
+
+         <wsdlsoap:address location="http://localhost:8080/bscsWS/services/CustomerDomainManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

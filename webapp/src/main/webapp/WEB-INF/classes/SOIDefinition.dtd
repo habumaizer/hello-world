@@ -1,0 +1,33 @@
+<!-- This DTD describes the way complete SOI versions may be defined.
+     
+     Command versions can be included in the SOI definition 
+     using the COMMAND element. Multiple versions of the same command
+     can not be included in the same SOI definition.    
+-->
+
+<!-- Root element of a SOI definition.
+	- soiName, represents the name of the defined SOI, e.g. "OM".
+	- soiVersion, represents the version of the defined SOI, e.g. "1.2".
+-->
+<!ELEMENT SOI ( COMMAND+ )>
+<!ATTLIST SOI
+	soiName CDATA #REQUIRED
+	soiVersion CDATA #REQUIRED
+>
+
+<!-- A command version used in a particular SOIVersion.
+	 - name, represents the name of the command applicable to a SOIV
+	 - version, indicates the version information of the command. No two 
+	   versions of the same command can be present in the same SOIV. A particular
+	   version of a command can be present in more than one SOIV. 
+	 - deprecated, flag indicating if the command (not regarding the version at all)
+	   is deprecated in this particular SOIV. That is the normal Java deprecation 
+	   semantix.
+-->
+<!ELEMENT COMMAND EMPTY>
+<!ATTLIST COMMAND 
+	cmdName CDATA #REQUIRED
+	cmdVersion CDATA #REQUIRED
+	deprecated (yes|no) "no"
+>
+

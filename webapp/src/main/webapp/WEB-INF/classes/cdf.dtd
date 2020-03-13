@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+It is possible to insert documentation for the whole command,
+for the in arguments as a whole, for the out arguments as a whole,
+for each error, for each argument (in as well as out).
+For the moment, all doc elements are optional.
+All elements contain their documentation as a child.
+This means that the doc element as child of the command element
+holds the documentation for the command as a whole. The in element
+holds a doc element that contains the documentation for all in arguments
+as a whole and so on.
+A doc element can contain paragraphs and lists. Paragraphs are tagged
+with the p element, lists are tagged with the ul element.
+Paragraphs may hold text (#PCDATA), bold (b element) text, italic (i element)
+text and monospace (code element) text.
+A list (ul element) holds n listitems (li elements). Listitems hold the same kind
+of data as paragraphs (p elements).
+Text cannot be placed immediately in the doc element.
+The cas element holds that same kind of data as the doc element.
+
+-->
+<!-- Define an entity for the basic documentation formats 
+html tags are used for transparency -->
+<!ENTITY % DOC-FORMATS1 "
+(#PCDATA | b | i | code | ul )*">
+<!ENTITY % DOC-FORMATS2 "
+(#PCDATA | b | i | code)*">
+<!-- Define basic documentation formatting elements
+this is pretty much html here -->
+<!-- encloses a parahgraph -->
+<!ELEMENT p %DOC-FORMATS1;>
+<!-- enlcoses bold text -->
+<!ELEMENT b (#PCDATA)>
+<!-- encloses italic text -->
+<!ELEMENT i (#PCDATA)>
+<!-- encloses text - will be formatted in a monospace-font-->
+<!ELEMENT code (#PCDATA)>
+<!-- unodered (bulleted list)-->
+<!ELEMENT ul (li*)>
+<!ELEMENT li %DOC-FORMATS2;>
+<!--	
+
+Different command versions are controlled by ClearCase. 
+-->
+  
+<!--	
+The command element is used for the definition of a Service Layer Command.
+It defines an attribute representing the name of the command and the
+definitions of the structure for the input arguments and the result. 
+Moreover the possible errors are documented in a separate error list.
+     	
+Attributes: 
+	name - the name of the command
+-->
+
+<!ELEMENT command (doc, cas?, in?, out?, err?)>
+<!ATTLIST command 
+	name 	CDATA #REQUIRED
+	version CDATA #REQUIRED
+	transactionType (regular|finalizing|nested|invariant) "regular"
+> 
+<!-- holds the text that will be used for the documentation -->
+<!ELEMENT doc (p)*>
+
+<!-- holds information from cas migration -->
+<!ELEMENT cas (p)*>
+
+<!-- Defines the structure of the input arguments to the command -->
+<!ELEMENT in (doc?,(arg|list|group)+)>
+
+<!-- Defines the stucture of output (result) of the command.  -->
+<!ELEMENT out (doc?,(arg|list|group)+)>
+
+<!-- Definition of the errors that might result from executing the command. -->
+<!ELEMENT err (error)+>
+
+
+
+
+<!--	
+Reference to another command or argument.
+Contents of the element gives further explanation  Use this element whenever a parameter is associated with reference data and state the corresponding reference data read-command.
+	
+Attributes:
+	item - '/' separated path to command or argument 
+ 	e.g. "COMMAND.READ/in/cs_id" or simply "COMMAND.READ"
+-->
+<!ELEMENT see (#PCDATA)>
+<!ATTLIST see
+	item CDATA #REQUIRED
+>
+
+
+
+
+<!-- 
+Definition of a nested parameter list. 
+ 	
+This list is both used for the definition of in parameters to and the output of a command.
+
+Note: there is no "mandatory" attribute here - it means a list is always optional
+	
+Attributes:
+	name - the name of the argument
+ 	minlength - the minimum length of the list
+ 	maxlength - the maximum length of the list. An asterisk "*" is used to denote that 
+ 	            the list may have arbitrary length
+-->
+<!ELEMENT list (doc,(arg|list|group)*, see*)>
+<!ATTLIST list 
+	name 		CDATA #REQUIRED
+	minlength 	CDATA "0"
+	maxlength 	CDATA "*"
+>
+
+<!--
+Defines a group of arguments.
+"doc" and "see" tags could be before or after "arg" tag
+
+Groups could be defined for two purposes:
+1.
+For a public/private key mapping (possible in Java only).
+When mapper is used ("useMapper" is "yes") than "class" attribute should be specified.
+
+2.
+To provide documentation for the group of arguments. In this case
+"useMapper" and "class" attributes are not checked by Java framework
+
+
+Meaning of "mandatory" attribute:
+-"yes" means at least one argument should be specified
+-"no" means all arguments in the group are optionall
+-"conditional" means arguments in group are mandatory only under some condition; this should be described in the "doc" tag
+
+It is not allowed to use "mandatory" attribute in "arg" tags which are in the group:
+the Java parser detects this situation and throws an exception
+-->
+<!ELEMENT group (doc?, see*, arg+, doc?, see* )>
+<!ATTLIST group
+	
+	mandatory   (yes|no|conditional) "no"
+	useMapper   (yes|no) "no"
+	class 		CDATA #IMPLIED
+>
+
+
+
+<!--	
+Description of a single argument. if argument contains a sublist,  
+The structure of this sublist can  be described as a nested arg element. 
+	
+Attributes: 
+	name 		-  the name of the argument
+ 	type 		- the declared Service Layer type of the argument.
+ 	length		- the maximum length of an argument of type STRING
+ 	
+ 	mandatory 	- flag indicating if parameter is required. 
+ 				  this argument is not allowed when argument is in group.
+ 				  this argument shouldn't have any default value - because it's not allowed in group
+
+ 	class 		- The class in the Targys object model containing the property holding the value.
+ 				  Use the name of the implementation class here. "n/a" if not applicable.
+ 				  
+ 	property  	- The property holding the value of the argument. This name is derived from the
+ 					corresponding accessor function getProperty. "n/a" if not applicable.
+
+ 	table   	- the BSCS table housing the value. "n/a" if not applicable.
+ 	
+ 	column 		- the column in the BSCS table that stores the value. "n/a" if not applicable.
+ 	
+ Following attributes are usually used in arguments inside of "group" tag:
+ 	privateKey  - Whether the specified parameter is a private key
+ 	publicKey   - Whether the specified parameter is a public key
+-->
+<!ELEMENT arg (doc, see*)>
+<!ATTLIST arg
+	name 		CDATA #REQUIRED
+	type 		(CHAR|STRING|INTEGER|LONG|DATE|DATETIME|MONEY|BOOLEAN|FLOAT|BINARY|SVLANY) "STRING"
+	length 		CDATA #IMPLIED 
+	
+	class 		CDATA #IMPLIED
+	property 	CDATA #IMPLIED
+	
+	table 		CDATA #IMPLIED
+	column 		CDATA #IMPLIED
+	
+	mandatory   (yes|no) #IMPLIED
+		
+    privateKey  (yes|no) "no"
+    publicKey   (yes|no) "no"
+>
+
+<!--	
+This element describes an error code that might be delivered as a result of the execution of the  Service Layer command. 
+     
+Attributes:
+	code -  the return code of the error info being described. Must correspond to an errorcode
+ 			as defined in the ErrorDictionary
+-->
+<!ELEMENT error (doc?, param*)>
+<!ATTLIST error
+	code CDATA #REQUIRED 
+>
+
+<!--	
+This element describes a parameter of the associated error. It contains a verbose description of the information that is associated with the parameter (e.g. contract id). 
+	
+Attributes:
+	name - the name of the parameter. Must correspond to an errror argument defined for the 
+ 		   associated error element
+-->
+
+<!ELEMENT param EMPTY>
+<!ATTLIST param
+	name CDATA #REQUIRED
+>  

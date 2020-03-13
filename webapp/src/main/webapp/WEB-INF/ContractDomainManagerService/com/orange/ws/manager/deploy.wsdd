@@ -1,0 +1,1057 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ContractDomainManagerService WSDL service -->
+
+  <service name="ContractDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="ContractDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://createGSMContract.contractdomain.beans.ws.orange.com,http://getdevicedetail.contractdomain.beans.ws.orange.com,http://contractStatusChange.contractdomain.beans.ws.orange.com,http://common.ccl.alcatel.com,http://retrieveContractServices.contractdomain.beans.ws.orange.com,http://modifyrateplan.contractdomain.beans.ws.orange.com,http://getContractInfo.contractdomain.beans.ws.orange.com,http://replaceContractSingleResource.contractdomain.beans.ws.orange.com,http://isfirstclass.contractdomain.beans.ws.orange.com,http://retrievecontract.contractdomain.beans.ws.orange.com,http://commons.beans.ws.orange.com,http://changeproduct.contractdomain.beans.ws.orange.com,http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com,http://modifycontract.contractdomain.beans.ws.orange.com,http://provisionServiceCug.contractdomain.beans.ws.orange.com,http://searchContractBulk.contractdomain.beans.ws.orange.com,http://writeContractInfo.contractdomain.beans.ws.orange.com,http://setitemize.contractdomain.beans.ws.orange.com,http://provisionServices.contractdomain.beans.ws.orange.com,http://setFirstClass.contractdomain.beans.ws.orange.com,http://beans.ws.orange.com,http://readbalances.contractdomain.beans.ws.orange.com,http://createPortInGSMContract.contractdomain.beans.ws.orange.com,http://createContract.contractdomain.beans.ws.orange.com,http://cancelContract.contractdomain.beans.ws.orange.com,http://getSwitchInfo.contractdomain.beans.ws.orange.com,http://writeBalanceAdjustmentRequest.contractdomain.beans.ws.orange.com,http://getINProfile.contractdomain.beans.ws.orange.com,http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com,http://getContractHistory.contractdomain.beans.ws.orange.com,http://manager.ws.orange.com,http://searchContracts.contractdomain.beans.ws.orange.com,http://createCustomerLA.customerdomain.beans.ws.orange.com,http://provisionService.contractdomain.beans.ws.orange.com,http://changeserviceparameter.contractdomain.beans.ws.orange.com,http://overrideServiceFee.contractdomain.beans.ws.orange.com,http://contractdomain.beans.ws.orange.com,http://readserviceparameter.contractdomain.beans.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="ContractDomainManager"/>
+      <parameter name="className" value="com.orange.ws.manager.ContractDomainManager"/>
+      <parameter name="wsdlPortType" value="ContractDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="createGSMContract" qname="createGSMContract" returnQName="retNS:createGSMContractReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CreateGSMContractOut" xmlns:rtns="http://createGSMContract.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:createGSMContractIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CreateGSMContractIn" xmlns:tns="http://createGSMContract.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="modifyContract" qname="modifyContract" soapAction="" >
+        <parameter qname="pns:modifyContractIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyContractIn" xmlns:tns="http://modifycontract.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="retrieveContract" qname="retrieveContract" returnQName="retNS:retrieveContractReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RetrieveContractOut" xmlns:rtns="http://retrievecontract.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:retrieveContract" xmlns:pns="http://manager.ws.orange.com" type="tns:RetrieveContractIn" xmlns:tns="http://retrievecontract.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getDeviceDetail" qname="getDeviceDetail" returnQName="retNS:getDeviceDetailReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:DeviceDetailOut" xmlns:rtns="http://getdevicedetail.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getDeviceDetailIn" xmlns:pns="http://manager.ws.orange.com" type="tns:DeviceDetailIn" xmlns:tns="http://getdevicedetail.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="changeProduct" qname="changeProduct" returnQName="retNS:changeProductReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ChangeProductOut" xmlns:rtns="http://changeproduct.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:changeProductIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ChangeProductIn" xmlns:tns="http://changeproduct.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="modifyRatePlan" qname="modifyRatePlan" returnQName="retNS:modifyRatePlanReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ModifyRatePlanOut" xmlns:rtns="http://modifyrateplan.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:modifyRatePlanIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyRatePlanIn" xmlns:tns="http://modifyrateplan.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="setItemize" qname="setItemize" soapAction="" >
+        <parameter qname="pns:setItemize" xmlns:pns="http://manager.ws.orange.com" type="tns:SetItemizeIn" xmlns:tns="http://setitemize.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="createContract" qname="createContract" returnQName="retNS:createContractReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CreateContractOut" xmlns:rtns="http://createContract.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:createContractIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CreateContractIn" xmlns:tns="http://createContract.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="cancelContract" qname="cancelContract" soapAction="" >
+        <parameter qname="pns:cancelContractIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CancelContractIn" xmlns:tns="http://cancelContract.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getSwitchInfo" qname="getSwitchInfo" returnQName="retNS:getSwitchInfoReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetSwitchInfoOut" xmlns:rtns="http://getSwitchInfo.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getSwitchInfoIn" xmlns:pns="http://manager.ws.orange.com" type="tns:GetSwitchInfoIn" xmlns:tns="http://getSwitchInfo.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getContractInfo" qname="getContractInfo" returnQName="retNS:getContractInfoReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetContractInfoOut" xmlns:rtns="http://getContractInfo.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getContractInfoIn" xmlns:pns="http://manager.ws.orange.com" type="tns:GetContractInfoIn" xmlns:tns="http://getContractInfo.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="provisionService" qname="provisionService" returnQName="retNS:provisionServiceReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ProvisionServiceOut" xmlns:rtns="http://provisionService.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:provisionServicesIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ProvisionServiceIn" xmlns:tns="http://provisionService.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="searchContracts" qname="searchContracts" returnQName="retNS:searchContractsReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:SearchContractsOut" xmlns:rtns="http://searchContracts.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:searchContractsIn" xmlns:pns="http://manager.ws.orange.com" type="tns:SearchContractsIn" xmlns:tns="http://searchContracts.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getINProfile" qname="getINProfile" returnQName="retNS:getINProfileReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetINProfileOut" xmlns:rtns="http://getINProfile.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getINProfileIn" xmlns:pns="http://manager.ws.orange.com" type="tns:GetINProfileIn" xmlns:tns="http://getINProfile.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="setFirstClass" qname="setFirstClass" soapAction="" >
+        <parameter qname="pns:setFirstClassIn" xmlns:pns="http://manager.ws.orange.com" type="tns:SetFirstClassIn" xmlns:tns="http://setFirstClass.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="isFirstClass" qname="isFirstClass" returnQName="retNS:isFirstClassReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:IsFirstClassOut" xmlns:rtns="http://isfirstclass.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:isFirstClassIn" xmlns:pns="http://manager.ws.orange.com" type="tns:IsFirstClassIn" xmlns:tns="http://isfirstclass.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="readBalances" qname="readBalances" returnQName="retNS:readBalancesReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ReadBalancesOut" xmlns:rtns="http://readbalances.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:readBalancesIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ReadBalancesIn" xmlns:tns="http://readbalances.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="provisionServicesMultiAction" qname="provisionServicesMultiAction" returnQName="retNS:provisionServicesMultiActionReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ProvisionServicesOut" xmlns:rtns="http://provisionServices.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:provisionServicesIn1" xmlns:pns="http://manager.ws.orange.com" type="tns:>provisionServicesIn1" xmlns:tns="http://manager.ws.orange.com" itemQName="itns:item" xmlns:itns="http://manager.ws.orange.com"/>
+      </operation>
+      <operation name="modifyRatePlanWithServiceToActivate" qname="modifyRatePlanWithServiceToActivate" returnQName="retNS:modifyRatePlanWithServiceToActivateReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ModifyRatePlanOut" xmlns:rtns="http://modifyrateplan.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:modifyRatePlanWithServiceToActivateIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyRatePlanWithServiceToActivateIn" xmlns:tns="http://modifyrateplan.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="createCustomerAndContractLA" qname="createCustomerAndContractLA" returnQName="retNS:createCustomerAndContractLAReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CreateCustomerAndContractLAOut" xmlns:rtns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:createCustomerAndContractLAIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CreateCustomerAndContractLAIn" xmlns:tns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="createPortInGSMContract" qname="createPortInGSMContract" returnQName="retNS:createPortInGSMContractReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CreatePortInGSMContractOut" xmlns:rtns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:createPortInGSMContractIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CreatePortInGSMContractIn" xmlns:tns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="contractStatusChange" qname="contractStatusChange" returnQName="retNS:contractStatusChangeReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ContractStatusChangeOut" xmlns:rtns="http://contractStatusChange.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:contractStatusChangeIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ContractStatusChangeIn" xmlns:tns="http://contractStatusChange.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getContractHistory" qname="getContractHistory" returnQName="retNS:getContractHistoryReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetContractHistoryOut" xmlns:rtns="http://getContractHistory.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getContractHistoryIn" xmlns:pns="http://manager.ws.orange.com" type="tns:GetContractHistoryIn" xmlns:tns="http://getContractHistory.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="readServiceParameter" qname="readServiceParameter" returnQName="retNS:readServiceParameterReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ReadServiceParameterOut" xmlns:rtns="http://readserviceparameter.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:readServiceParameterIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ReadServiceParameterIn" xmlns:tns="http://readserviceparameter.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="changeServiceParameter" qname="changeServiceParameter" returnQName="retNS:changeServiceParameterReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ChangeServiceParameterOut" xmlns:rtns="http://changeserviceparameter.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:changeServiceParameterIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ChangeServiceParameterIn" xmlns:tns="http://changeserviceparameter.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="writeContractInfo" qname="writeContractInfo" soapAction="" >
+        <parameter qname="pns:writeContractInfoIn" xmlns:pns="http://manager.ws.orange.com" type="tns:WriteContractInfoIn" xmlns:tns="http://writeContractInfo.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="searchContractBulk" qname="searchContractBulk" returnQName="retNS:searchContractBulkReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:SearchContractBulkOut" xmlns:rtns="http://searchContractBulk.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:searchContractBulkIn" xmlns:pns="http://manager.ws.orange.com" type="tns:SearchContractBulkIn" xmlns:tns="http://searchContractBulk.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="replaceContractSingleResource" qname="replaceContractSingleResource" returnQName="retNS:replaceContractSingleResourceReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ReplaceContractSingleResourceOut" xmlns:rtns="http://replaceContractSingleResource.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:replaceContractSingleResourceIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ReplaceContractSingleResourceIn" xmlns:tns="http://replaceContractSingleResource.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="retrieveContractServices" qname="retrieveContractServices" returnQName="retNS:retrieveContractServicesReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RetrieveContractServicesOut" xmlns:rtns="http://retrieveContractServices.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:retrieveContractServicesIn" xmlns:pns="http://manager.ws.orange.com" type="tns:RetrieveContractServicesIn" xmlns:tns="http://retrieveContractServices.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="overrideServiceFee" qname="overrideServiceFee" soapAction="" >
+        <parameter qname="pns:overrideServiceFeeIn" xmlns:pns="http://manager.ws.orange.com" type="tns:OverrideServiceFeeIn" xmlns:tns="http://overrideServiceFee.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="provisionServices" qname="provisionServices" returnQName="retNS:provisionServicesReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ProvisionServicesOut" xmlns:rtns="http://provisionServices.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:provisionServicesIn2" xmlns:pns="http://manager.ws.orange.com" type="tns:ProvisionServicesIn" xmlns:tns="http://provisionServices.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="readBalanceAdjustmentRequest" qname="readBalanceAdjustmentRequest" returnQName="retNS:readBalanceAdjustmentRequestReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ReadBalanceAdjustmentRequestOut" xmlns:rtns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:readBalanceAdjustmentRequestIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ReadBalanceAdjustmentRequestIn" xmlns:tns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="writeBalanceAdjustmentRequest" qname="writeBalanceAdjustmentRequest" returnQName="retNS:writeBalanceAdjustmentRequestReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:WriteBalanceAdjustmentRequestOut" xmlns:rtns="http://writeBalanceAdjustmentRequest.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:writeBalanceAdjustmentRequestIn" xmlns:pns="http://manager.ws.orange.com" type="tns:WriteBalanceAdjustmentRequestIn" xmlns:tns="http://writeBalanceAdjustmentRequest.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="createGSMContract getContractInfo readServiceParameter modifyRatePlanWithServiceToActivate readBalances readBalanceAdjustmentRequest getDeviceDetail overrideServiceFee getINProfile contractStatusChange changeServiceParameter modifyRatePlan writeContractInfo createCustomerAndContractLA provisionService provisionServices replaceContractSingleResource createContract provisionServicesMultiAction retrieveContractServices searchContracts writeBalanceAdjustmentRequest setFirstClass changeProduct retrieveContract getSwitchInfo cancelContract isFirstClass modifyContract createPortInGSMContract searchContractBulk getContractHistory setItemize"/>
+
+      <typeMapping
+        xmlns:ns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:SrvParameter"
+        type="java:com.orange.ws.beans.contractdomain.createPortInGSMContract.SrvParameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServiceCug.contractdomain.beans.ws.orange.com"
+        qname="ns:ServiceParameterCug"
+        type="java:com.orange.ws.beans.contractdomain.provisionServiceCug.ServiceParameterCug"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServices.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.provisionServices.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.orange.com"
+        qname="ns:GetContractHistoryOut"
+        type="java:com.orange.ws.beans.contractdomain.getContractHistory.GetContractHistoryOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://isfirstclass.contractdomain.beans.ws.orange.com"
+        qname="ns:IsFirstClassIn"
+        type="java:com.orange.ws.beans.contractdomain.isfirstclass.IsFirstClassIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://overrideServiceFee.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.overrideServiceFee.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns34_Service"
+        type="java:com.orange.ws.beans.contractdomain.retrieveContractServices.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://retrieveContractServices.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getSwitchInfo.contractdomain.beans.ws.orange.com"
+        qname="ns:GetSwitchInfoIn"
+        type="java:com.orange.ws.beans.contractdomain.getSwitchInfo.GetSwitchInfoIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionService.contractdomain.beans.ws.orange.com"
+        qname="ns:ProvisionServiceIn"
+        type="java:com.orange.ws.beans.contractdomain.provisionService.ProvisionServiceIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.orange.com"
+        qname="ns:ParameterService"
+        type="java:com.orange.ws.beans.contractdomain.readserviceparameter.ParameterService"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:ContractIdType"
+        type="java:com.orange.ws.beans.commons.ContractIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns28_ContractDevice"
+        type="java:com.orange.ws.beans.contractdomain.getContractHistory.ContractDevice[]"
+        innerType="cmp-ns:ContractDevice" xmlns:cmp-ns="http://getContractHistory.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns16_Contract"
+        type="java:com.orange.ws.beans.contractdomain.searchContracts.Contract[]"
+        innerType="cmp-ns:Contract" xmlns:cmp-ns="http://searchContracts.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.commons.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_Service"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalances.contractdomain.beans.ws.orange.com"
+        qname="ns:ReadBalancesOut"
+        type="java:com.orange.ws.beans.contractdomain.readbalances.ReadBalancesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://setitemize.contractdomain.beans.ws.orange.com"
+        qname="ns:SetItemizeIn"
+        type="java:com.orange.ws.beans.contractdomain.setitemize.SetItemizeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getINProfile.contractdomain.beans.ws.orange.com"
+        qname="ns:GetINProfileOut"
+        type="java:com.orange.ws.beans.contractdomain.getINProfile.GetINProfileOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_Value"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.Value[]"
+        innerType="cmp-ns:Value" xmlns:cmp-ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CreatePortInGSMContractIn"
+        type="java:com.orange.ws.beans.contractdomain.createPortInGSMContract.CreatePortInGSMContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns29_ParameterService"
+        type="java:com.orange.ws.beans.contractdomain.readserviceparameter.ParameterService[]"
+        innerType="cmp-ns:ParameterService" xmlns:cmp-ns="http://readserviceparameter.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateContractIn"
+        type="java:com.orange.ws.beans.contractdomain.createContract.CreateContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerLA.customerdomain.beans.ws.orange.com"
+        qname="ns:CreateCustomerLAOut"
+        type="java:com.orange.ws.beans.customerdomain.createCustomerLA.CreateCustomerLAOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractInfo.contractdomain.beans.ws.orange.com"
+        qname="ns:GetContractInfoIn"
+        type="java:com.orange.ws.beans.contractdomain.getContractInfo.GetContractInfoIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeserviceparameter.contractdomain.beans.ws.orange.com"
+        qname="ns:ChangeServiceParameterOut"
+        type="java:com.orange.ws.beans.contractdomain.changeserviceparameter.ChangeServiceParameterOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeproduct.contractdomain.beans.ws.orange.com"
+        qname="ns:ChangeProductIn"
+        type="java:com.orange.ws.beans.contractdomain.changeproduct.ChangeProductIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateCustomerAndContractLAIn"
+        type="java:com.orange.ws.beans.contractdomain.createCustomerAndContractLA.CreateCustomerAndContractLAIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContracts.contractdomain.beans.ws.orange.com"
+        qname="ns:SearchContractsIn"
+        type="java:com.orange.ws.beans.contractdomain.searchContracts.SearchContractsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        qname="ns:ServiceToAdd"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.ServiceToAdd"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com"
+        qname="ns:AddOccIn"
+        type="java:com.orange.ws.beans.contractdomain.createCustomerAndContractLA.AddOccIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveContractServices.contractdomain.beans.ws.orange.com"
+        qname="ns:RetrieveContractServicesIn"
+        type="java:com.orange.ws.beans.contractdomain.retrieveContractServices.RetrieveContractServicesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.createPortInGSMContract.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateCustomerAndContractLAOut"
+        type="java:com.orange.ws.beans.contractdomain.createCustomerAndContractLA.CreateCustomerAndContractLAOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.orange.com"
+        qname="ns:Value"
+        type="java:com.orange.ws.beans.contractdomain.readserviceparameter.Value"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerLA.customerdomain.beans.ws.orange.com"
+        qname="ns:CreateCustomerLAIn"
+        type="java:com.orange.ws.beans.customerdomain.createCustomerLA.CreateCustomerLAIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalances.contractdomain.beans.ws.orange.com"
+        qname="ns:ReadBalancesIn"
+        type="java:com.orange.ws.beans.contractdomain.readbalances.ReadBalancesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns20_Balance"
+        type="java:com.orange.ws.beans.contractdomain.readbalances.Balance[]"
+        innerType="cmp-ns:Balance" xmlns:cmp-ns="http://readbalances.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_xsd_string"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionService.contractdomain.beans.ws.orange.com"
+        qname="ns:ProvisionServiceOut"
+        type="java:com.orange.ws.beans.contractdomain.provisionService.ProvisionServiceOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns35_Service"
+        type="java:com.orange.ws.beans.contractdomain.overrideServiceFee.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://overrideServiceFee.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateContractLAOut"
+        type="java:com.orange.ws.beans.contractdomain.createCustomerAndContractLA.CreateContractLAOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns8_Parameter"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.Parameter[]"
+        innerType="cmp-ns:Parameter" xmlns:cmp-ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://setFirstClass.contractdomain.beans.ws.orange.com"
+        qname="ns:SetFirstClassIn"
+        type="java:com.orange.ws.beans.contractdomain.setFirstClass.SetFirstClassIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://replaceContractSingleResource.contractdomain.beans.ws.orange.com"
+        qname="ns:ReplaceContractSingleResourceOut"
+        type="java:com.orange.ws.beans.contractdomain.replaceContractSingleResource.ReplaceContractSingleResourceOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeproduct.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.changeproduct.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_xsd_long"
+        type="java:long[]"
+        innerType="cmp-ns:long" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:ServiceParameter"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.ServiceParameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getdevicedetail.contractdomain.beans.ws.orange.com"
+        qname="ns:DeviceDetailOut"
+        type="java:com.orange.ws.beans.contractdomain.getdevicedetail.DeviceDetailOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContractBulk.contractdomain.beans.ws.orange.com"
+        qname="ns:ContractIn"
+        type="java:com.orange.ws.beans.contractdomain.searchContractBulk.ContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns15_Value"
+        type="java:com.orange.ws.beans.contractdomain.Value[]"
+        innerType="cmp-ns:Value" xmlns:cmp-ns="http://contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.orange.com"
+        qname="ns:ContractDevice"
+        type="java:com.orange.ws.beans.contractdomain.getContractHistory.ContractDevice"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        qname="ns:Parameter"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.Parameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns26_Service"
+        type="java:com.orange.ws.beans.contractdomain.createPortInGSMContract.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:>provisionServicesIn1"
+        type="java:com.orange.ws.beans.contractdomain.provisionServices.ProvisionServicesIn[]"
+        innerType="cmp-ns:ProvisionServicesIn" xmlns:cmp-ns="http://provisionServices.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns8_ServiceToAdd"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.ServiceToAdd[]"
+        innerType="cmp-ns:ServiceToAdd" xmlns:cmp-ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.orange.com"
+        qname="ns:ReadServiceParameterOut"
+        type="java:com.orange.ws.beans.contractdomain.readserviceparameter.ReadServiceParameterOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:Value"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.Value"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com"
+        qname="ns:Request"
+        type="java:com.orange.ws.beans.contractdomain.readbalanceadjustmentrequest.Request"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_ServiceParameter"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.ServiceParameter[]"
+        innerType="cmp-ns:ServiceParameter" xmlns:cmp-ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getdevicedetail.contractdomain.beans.ws.orange.com"
+        qname="ns:DeviceDetailIn"
+        type="java:com.orange.ws.beans.contractdomain.getdevicedetail.DeviceDetailIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns36_Request"
+        type="java:com.orange.ws.beans.contractdomain.readbalanceadjustmentrequest.Request[]"
+        innerType="cmp-ns:Request" xmlns:cmp-ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns8_Service"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractInfo.contractdomain.beans.ws.orange.com"
+        qname="ns:GetContractInfoOut"
+        type="java:com.orange.ws.beans.contractdomain.getContractInfo.GetContractInfoOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://writeBalanceAdjustmentRequest.contractdomain.beans.ws.orange.com"
+        qname="ns:WriteBalanceAdjustmentRequestOut"
+        type="java:com.orange.ws.beans.contractdomain.writeBalanceAdjustmentRequest.WriteBalanceAdjustmentRequestOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateGSMContractOut"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.CreateGSMContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        qname="ns:ModifyRatePlanWithServiceToActivateIn"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.ModifyRatePlanWithServiceToActivateIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://replaceContractSingleResource.contractdomain.beans.ws.orange.com"
+        qname="ns:ReplaceContractSingleResourceIn"
+        type="java:com.orange.ws.beans.contractdomain.replaceContractSingleResource.ReplaceContractSingleResourceIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContractBulk.contractdomain.beans.ws.orange.com"
+        qname="ns:SearchContractBulkOut"
+        type="java:com.orange.ws.beans.contractdomain.searchContractBulk.SearchContractBulkOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievecontract.contractdomain.beans.ws.orange.com"
+        qname="ns:RetrieveContractIn"
+        type="java:com.orange.ws.beans.contractdomain.retrievecontract.RetrieveContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievecontract.contractdomain.beans.ws.orange.com"
+        qname="ns:RetrieveContractOut"
+        type="java:com.orange.ws.beans.contractdomain.retrievecontract.RetrieveContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifycontract.contractdomain.beans.ws.orange.com"
+        qname="ns:ModifyContractIn"
+        type="java:com.orange.ws.beans.contractdomain.modifycontract.ModifyContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContracts.contractdomain.beans.ws.orange.com"
+        qname="ns:Contract"
+        type="java:com.orange.ws.beans.contractdomain.searchContracts.Contract"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CreatePortInGSMContractOut"
+        type="java:com.orange.ws.beans.contractdomain.createPortInGSMContract.CreatePortInGSMContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com"
+        qname="ns:ReadBalanceAdjustmentRequestOut"
+        type="java:com.orange.ws.beans.contractdomain.readbalanceadjustmentrequest.ReadBalanceAdjustmentRequestOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://overrideServiceFee.contractdomain.beans.ws.orange.com"
+        qname="ns:OverrideServiceFeeIn"
+        type="java:com.orange.ws.beans.contractdomain.overrideServiceFee.OverrideServiceFeeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        qname="ns:ModifyRatePlanIn"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.ModifyRatePlanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateContractOut"
+        type="java:com.orange.ws.beans.contractdomain.createContract.CreateContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServices.contractdomain.beans.ws.orange.com"
+        qname="ns:ProvisionServicesIn"
+        type="java:com.orange.ws.beans.contractdomain.provisionServices.ProvisionServicesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://writeBalanceAdjustmentRequest.contractdomain.beans.ws.orange.com"
+        qname="ns:WriteBalanceAdjustmentRequestIn"
+        type="java:com.orange.ws.beans.contractdomain.writeBalanceAdjustmentRequest.WriteBalanceAdjustmentRequestIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns28_Contract"
+        type="java:com.orange.ws.beans.contractdomain.getContractHistory.Contract[]"
+        innerType="cmp-ns:Contract" xmlns:cmp-ns="http://getContractHistory.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContractBulk.contractdomain.beans.ws.orange.com"
+        qname="ns:SearchContractBulkIn"
+        type="java:com.orange.ws.beans.contractdomain.searchContractBulk.SearchContractBulkIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_Service"
+        type="java:com.orange.ws.beans.commons.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveContractServices.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.retrieveContractServices.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:CustomerIdType"
+        type="java:com.orange.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractStatusChange.contractdomain.beans.ws.orange.com"
+        qname="ns:ContractStatusChangeOut"
+        type="java:com.orange.ws.beans.contractdomain.contractStatusChange.ContractStatusChangeOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createGSMContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateGSMContractIn"
+        type="java:com.orange.ws.beans.contractdomain.createGSMContract.CreateGSMContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getSwitchInfo.contractdomain.beans.ws.orange.com"
+        qname="ns:GetSwitchInfoOut"
+        type="java:com.orange.ws.beans.contractdomain.getSwitchInfo.GetSwitchInfoOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns7_Service"
+        type="java:com.orange.ws.beans.contractdomain.changeproduct.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://changeproduct.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Parameter"
+        type="java:com.alcatel.ccl.common.Parameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns24_ServiceParameterCug"
+        type="java:com.orange.ws.beans.contractdomain.provisionServiceCug.ServiceParameterCug[]"
+        innerType="cmp-ns:ServiceParameterCug" xmlns:cmp-ns="http://provisionServiceCug.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomerAndContractLA.contractdomain.beans.ws.orange.com"
+        qname="ns:CreateContractLAIn"
+        type="java:com.orange.ws.beans.contractdomain.createCustomerAndContractLA.CreateContractLAIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns26_SrvParameter"
+        type="java:com.orange.ws.beans.contractdomain.createPortInGSMContract.SrvParameter[]"
+        innerType="cmp-ns:SrvParameter" xmlns:cmp-ns="http://createPortInGSMContract.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://writeContractInfo.contractdomain.beans.ws.orange.com"
+        qname="ns:WriteContractInfoIn"
+        type="java:com.orange.ws.beans.contractdomain.writeContractInfo.WriteContractInfoIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        qname="ns:ModifyRatePlanOut"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.ModifyRatePlanOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractdomain.beans.ws.orange.com"
+        qname="ns:Value"
+        type="java:com.orange.ws.beans.contractdomain.Value"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.orange.com"
+        qname="ns:ReadServiceParameterIn"
+        type="java:com.orange.ws.beans.contractdomain.readserviceparameter.ReadServiceParameterIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://isfirstclass.contractdomain.beans.ws.orange.com"
+        qname="ns:IsFirstClassOut"
+        type="java:com.orange.ws.beans.contractdomain.isfirstclass.IsFirstClassOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServiceCug.contractdomain.beans.ws.orange.com"
+        qname="ns:ProvisionServiceCugIn"
+        type="java:com.orange.ws.beans.contractdomain.provisionServiceCug.ProvisionServiceCugIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns21_Service"
+        type="java:com.orange.ws.beans.contractdomain.provisionServices.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://provisionServices.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.orange.com"
+        qname="ns:Contract"
+        type="java:com.orange.ws.beans.contractdomain.getContractHistory.Contract"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractdomain.beans.ws.orange.com"
+        qname="ns:ServiceParameter"
+        type="java:com.orange.ws.beans.contractdomain.ServiceParameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalances.contractdomain.beans.ws.orange.com"
+        qname="ns:Balance"
+        type="java:com.orange.ws.beans.contractdomain.readbalances.Balance"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns32_ContractOut"
+        type="java:com.orange.ws.beans.contractdomain.searchContractBulk.ContractOut[]"
+        innerType="cmp-ns:ContractOut" xmlns:cmp-ns="http://searchContractBulk.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelContract.contractdomain.beans.ws.orange.com"
+        qname="ns:CancelContractIn"
+        type="java:com.orange.ws.beans.contractdomain.cancelContract.CancelContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractStatusChange.contractdomain.beans.ws.orange.com"
+        qname="ns:ContractStatusChangeIn"
+        type="java:com.orange.ws.beans.contractdomain.contractStatusChange.ContractStatusChangeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyrateplan.contractdomain.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.contractdomain.modifyrateplan.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.orange.com"
+        qname="ns:GetContractHistoryIn"
+        type="java:com.orange.ws.beans.contractdomain.getContractHistory.GetContractHistoryIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeserviceparameter.contractdomain.beans.ws.orange.com"
+        qname="ns:ChangeServiceParameterIn"
+        type="java:com.orange.ws.beans.contractdomain.changeserviceparameter.ChangeServiceParameterIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeproduct.contractdomain.beans.ws.orange.com"
+        qname="ns:ChangeProductOut"
+        type="java:com.orange.ws.beans.contractdomain.changeproduct.ChangeProductOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContracts.contractdomain.beans.ws.orange.com"
+        qname="ns:SearchContractsOut"
+        type="java:com.orange.ws.beans.contractdomain.searchContracts.SearchContractsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.orange.com"
+        qname="ns:ReadBalanceAdjustmentRequestIn"
+        type="java:com.orange.ws.beans.contractdomain.readbalanceadjustmentrequest.ReadBalanceAdjustmentRequestIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns32_ContractIn"
+        type="java:com.orange.ws.beans.contractdomain.searchContractBulk.ContractIn[]"
+        innerType="cmp-ns:ContractIn" xmlns:cmp-ns="http://searchContractBulk.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns29_Value"
+        type="java:com.orange.ws.beans.contractdomain.readserviceparameter.Value[]"
+        innerType="cmp-ns:Value" xmlns:cmp-ns="http://readserviceparameter.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns15_ServiceParameter"
+        type="java:com.orange.ws.beans.contractdomain.ServiceParameter[]"
+        innerType="cmp-ns:ServiceParameter" xmlns:cmp-ns="http://contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getINProfile.contractdomain.beans.ws.orange.com"
+        qname="ns:GetINProfileIn"
+        type="java:com.orange.ws.beans.contractdomain.getINProfile.GetINProfileIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServices.contractdomain.beans.ws.orange.com"
+        qname="ns:ProvisionServicesOut"
+        type="java:com.orange.ws.beans.contractdomain.provisionServices.ProvisionServicesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveContractServices.contractdomain.beans.ws.orange.com"
+        qname="ns:RetrieveContractServicesOut"
+        type="java:com.orange.ws.beans.contractdomain.retrieveContractServices.RetrieveContractServicesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContractBulk.contractdomain.beans.ws.orange.com"
+        qname="ns:ContractOut"
+        type="java:com.orange.ws.beans.contractdomain.searchContractBulk.ContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

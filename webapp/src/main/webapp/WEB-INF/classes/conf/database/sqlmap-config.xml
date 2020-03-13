@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<!-- Assurez vous de toujours utiliser l'en-tête XML ci dessus! -->
+
+
+<!-- Global settings for iBatis sql map engine -->
+<sqlMapConfig>
+
+	<properties resource="./conf/database/datasource.properties" />
+	
+	
+	<settings
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+	/>
+	<!-- 
+	<resultObjectFactory type="sdsd"></resultObjectFactory>
+	
+	<typeAlias alias="order" type="testdomain.Order"/>
+	
+	<typeHandler javaType="boolean" callback="com.alcatel.commons.ibatis.type_handler.BooleanTypeHandlerCallback"/>
+	-->
+	
+	<!-- Configure un datasource utilisé par SQL Map, basé sur l'implémentation SimpleDataSource.
+	Notez l'utilisation des propriétés contenues dans le fichier de propriétés ci-dessus -->
+	<transactionManager type="JDBC" >
+		  <dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${username}"/>
+			<property name="JDBC.Password" value="${password}"/>
+		</dataSource> 
+		
+		<!-- <dataSource type="JNDI">
+               <property name="DataSource" value="java:comp/env/jdbc/ORACLE_MBN"/>
+            </dataSource> -->
+	</transactionManager>
+	
+   
+
+	<!-- Declaration and location of the SQL map files. -->
+
+	<sqlMap resource="./conf/database/KpsaDao.xml"/>
+	<sqlMap resource="./conf/database/ContractDao.xml"/>
+	<sqlMap resource="./conf/database/EtopUpDao.xml"/>
+	<sqlMap resource="./conf/database/ResourceDao.xml"/>
+	<sqlMap resource="./conf/database/PaymentDao.xml"/>
+	<sqlMap resource="./conf/database/GeneralDao.xml"/>
+	<sqlMap resource="./conf/database/CustomerDao.xml"/>
+	<sqlMap resource="./conf/database/CacsDao.xml"/>
+	<sqlMap resource="./conf/database/OcaDao.xml"/>
+	<sqlMap resource="./conf/database/BscsDao.xml"/>	
+</sqlMapConfig>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ComponentRegistry PUBLIC 'ComponentRegistry.dtd' "ComponentRegistry.dtd" >
+
+<!--
+This is a common registry file for following components:
+sop/cmn
+sop/sensor
+-->
+
+<ComponentRegistry>
+
+    <Node name="FUNC_SOP">
+
+        <KeyValue key="SOPNamingRoot" type="String" value="com/lhs/private/sop"
+        comment="Root context of SOP servers in CORBA Naming Service."/> 
+
+    </Node>
+    
+
+    <Node name="FUNC_FRMWK_SRV">
+
+		<!-- 
+		Required for initialization of SOP library in the SFW
+		-->
+        <Node name="StartupListeners" >
+			<KeyValue key="com.lhs.ccb.sop.lib.SOPInitializerSFW" type="String" value="" comment="null"/>
+        </Node>
+
+		<!-- 
+		For shutdown of SOP library
+		-->
+        <Node name="ShutdownListeners" >
+			<KeyValue key="com.lhs.ccb.sop.lib.SOPInitializerSFW" type="String" value="" comment="null"/>
+        </Node>
+				
+    
+    </Node>
+</ComponentRegistry>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bundle PUBLIC "bundle.dtd" "bundle.dtd">
+
+<bundle version="1.0">
+    <header author="Dmitri Geller"
+            creationdate="31-Jan-06.20:19:11"/>
+    <body>
+
+		<!--Java, SOP library -->                     
+		<setting key="id100" value="There is no value for key: {0}" state="new" />
+		<setting key="id101" value="There is no value for composite key: {0}.{1}" state="new" />
+
+		<!--Java, client-side CORBA classes -->                     
+		<setting key="id200" value="CORBA object not found in the Naming Service. Path: {0}" state="new" />
+		<setting key="id201" value="Can't narrow CORBA object to a ManagedApplicationI. Details: {0}" state="new" />
+		<setting key="id202" value="org.omg.CORBA.SystemException thrown. Details: {0}" state="new" />
+		<setting key="id203" value="Wrong query name: {0} " state="new" />
+		<setting key="id204" value="Can't read NvElementI. Unknown Typecode: {0}. SensorID:{1} AttributeID:{2} AttributeName:{3} " state="new" />
+		
+		<!--Java, SOP tool-->
+		<setting key="id300" value="Unknown action: {0} " state="new" />
+		<setting key="id301" value="Connection: {0} is not supported. Supported connections: CORBA, SNMP" state="new" />
+		<setting key="id302" value="Mandatory command-line argument missing: {0}" state="new" />
+		
+		<!-- C++ ManageableApplication -->
+		<setting key="id0400" value="Could not initialize SOP: {0}" state="new" />
+		<setting key="id0401" value="Could not properly finalize SOP: {0}" state="new" />
+		<setting key="id0402" value="SOP not initialized." state="new" />
+		<setting key="id0403" value="SOP not supported." state="new" />
+		<setting key="id0404" value="Could not send trap. Application Index {0}, Sensor ID {1}, Trap Code {2}: {3}" state="new" />		
+
+    </body>
+</bundle>
+

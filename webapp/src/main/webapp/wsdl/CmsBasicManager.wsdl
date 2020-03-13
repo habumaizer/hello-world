@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manager.ws.gfi.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.gfi.com" xmlns:intf="http://manager.ws.gfi.com" xmlns:tns1="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com" xmlns:tns2="http://beans.ws.gfi.com" xmlns:tns3="http://commons.beans.ws.gfi.com" xmlns:tns4="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com" xmlns:tns5="http://contracttakeover.cmsbasic.beans.ws.gfi.com" xmlns:tns6="http://taxexemptions.cmsbasic.beans.ws.gfi.com" xmlns:tns7="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com" xmlns:tns8="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType abstract="true" name="BasicBeanIn">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="ContractIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CO_ID" nillable="true" type="xsd:long"/>
+       <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="MSISDN" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CustomerIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CS_ID" nillable="true" type="xsd:long"/>
+       <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="MultValues">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+     <element name="valueDes" nillable="true" type="xsd:string"/>
+     <element name="valuePub" nillable="true" type="xsd:string"/>
+     <element name="valueSeqNos" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="TargetParamValues">
+    <sequence>
+     <element name="multValuesList" nillable="true" type="impl:ArrayOf_tns1_MultValues"/>
+     <element name="targetSiblingNo" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ParamValue">
+    <sequence>
+     <element name="complexLevel" nillable="true" type="xsd:long"/>
+     <element name="complexNo" nillable="true" type="xsd:long"/>
+     <element name="cosAction" nillable="true" type="xsd:string"/>
+     <element name="parentNo" nillable="true" type="xsd:long"/>
+     <element name="prmNo" nillable="true" type="xsd:long"/>
+     <element name="sibilingNo" nillable="true" type="xsd:long"/>
+     <element name="targetParamValuesList" nillable="true" type="impl:ArrayOf_tns1_TargetParamValues"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContractServicesCUGParametersWriteIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="bsgId" nillable="true" type="xsd:long"/>
+       <element name="contractIdComplex" nillable="true" type="tns3:ContractIdType"/>
+       <element name="cugId" nillable="true" type="xsd:long"/>
+       <element name="paramValueList" nillable="true" type="impl:ArrayOf_tns1_ParamValue"/>
+       <element name="profileId" nillable="true" type="xsd:long"/>
+       <element name="snCode" nillable="true" type="xsd:long"/>
+       <element name="snCodePub" nillable="true" type="xsd:string"/>
+       <element name="spCode" nillable="true" type="xsd:long"/>
+       <element name="spCodePub" nillable="true" type="xsd:string"/>
+       <element name="templId" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="ArrayOf_tns1_MultValues">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:MultValues"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TargetParamValues">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:TargetParamValues"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ParamValue">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ParamValue"/>
+    </sequence>
+   </complexType>
+   <element name="contractServicesCUGParametersWrite" type="tns1:ContractServicesCUGParametersWriteIn"/>
+   <element name="contractServicesCUGParametersReadIn" type="tns4:ContractServicesCUGParametersReadIn"/>
+   <complexType name="ArrayOf_tns4_NumParam">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:NumParam"/>
+    </sequence>
+   </complexType>
+   <element name="contractServicesCUGParametersReadReturn" type="tns4:ContractServicesCUGParametersReadOut"/>
+   <complexType name="ArrayOf_tns5_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:Service"/>
+    </sequence>
+   </complexType>
+   <element name="contractTakeOverIn" type="tns5:ContractTakeOverIn"/>
+   <element name="contractTakeOverReturn" type="tns5:ContractTakeOverOut"/>
+   <complexType name="ArrayOf_tns6_TaxExemptionIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns6:TaxExemptionIn"/>
+    </sequence>
+   </complexType>
+   <element name="customerTaxExemptionsWriteIn" type="tns6:CustomerTaxExemptionsWriteIn"/>
+   <complexType name="ArrayOf_tns6_TaxExemption">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns6:TaxExemption"/>
+    </sequence>
+   </complexType>
+   <element name="customerTaxExemptionsWriteReturn" type="tns6:TaxExemptionOut"/>
+   <complexType name="ArrayOf_tns3_ContractIdType">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:ContractIdType"/>
+    </sequence>
+   </complexType>
+   <element name="contractPromotionsWriteIn" type="tns7:ContractPromotionsWriteIn"/>
+   <element name="contractPromotionsWriteReturn" type="tns7:ContractPromotionsWriteOut"/>
+   <complexType name="ArrayOf_tns8_FreeUnitService">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns8:FreeUnitService"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns8_FupChange">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns8:FupChange"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns8_RatePlanChange">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns8:RatePlanChange"/>
+    </sequence>
+   </complexType>
+   <element name="bonusConversionExecutein" type="tns8:BonusPointConversionExecuteIn"/>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="ContractServicesCUGParametersReadIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="bsgId" nillable="true" type="xsd:long"/>
+       <element name="contractIdComplex" nillable="true" type="tns3:ContractIdType"/>
+       <element name="cugId" nillable="true" type="xsd:long"/>
+       <element name="profileId" nillable="true" type="xsd:long"/>
+       <element name="snCode" nillable="true" type="xsd:long"/>
+       <element name="snCodePub" nillable="true" type="xsd:string"/>
+       <element name="spCode" nillable="true" type="xsd:long"/>
+       <element name="spCodePub" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="NumParam">
+    <sequence>
+     <element name="bsgId" nillable="true" type="xsd:long"/>
+     <element name="complexNo" nillable="true" type="xsd:long"/>
+     <element name="complexsNo" nillable="true" type="xsd:long"/>
+     <element name="cugId" nillable="true" type="xsd:long"/>
+     <element name="dataType" nillable="true" type="xsd:string"/>
+     <element name="parentNo" nillable="true" type="xsd:long"/>
+     <element name="prmDes" nillable="true" type="xsd:string"/>
+     <element name="prmId" nillable="true" type="xsd:long"/>
+     <element name="prmIdPub" nillable="true" type="xsd:string"/>
+     <element name="prmNo" nillable="true" type="xsd:long"/>
+     <element name="requestId" nillable="true" type="xsd:long"/>
+     <element name="siblingNo" nillable="true" type="xsd:long"/>
+     <element name="type" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContractServicesCUGParametersReadOut">
+    <sequence>
+     <element name="contractIdComplex" nillable="true" type="tns3:ContractIdType"/>
+     <element name="numParamsList" nillable="true" type="impl:ArrayOf_tns4_NumParam"/>
+     <element name="profileId" nillable="true" type="xsd:long"/>
+     <element name="snCode" nillable="true" type="xsd:long"/>
+     <element name="snCodePub" nillable="true" type="xsd:string"/>
+     <element name="spCode" nillable="true" type="xsd:long"/>
+     <element name="spCodePub" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="Service">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="snCode" nillable="true" type="xsd:long"/>
+       <element name="snCodePub" nillable="true" type="xsd:string"/>
+       <element name="spCode" nillable="true" type="xsd:long"/>
+       <element name="spCodePub" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ContractTakeOverIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="chargeSubs" nillable="true" type="xsd:boolean"/>
+       <element name="contractIdComplex" nillable="true" type="tns3:ContractIdType"/>
+       <element name="extProductId" nillable="true" type="xsd:long"/>
+       <element name="extproductIdPub" nillable="true" type="xsd:string"/>
+       <element name="newCustomerIdComplex" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="newRpCodePub" nillable="true" type="xsd:string"/>
+       <element name="newRpcode" nillable="true" type="xsd:long"/>
+       <element name="reason" nillable="true" type="xsd:long"/>
+       <element name="serviceList" nillable="true" type="impl:ArrayOf_tns5_Service"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ContractTakeOverOut">
+    <sequence>
+     <element name="newCoId" nillable="true" type="xsd:long"/>
+     <element name="newCoIdPub" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="TaxExemptionIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="cstExpiration" nillable="true" type="xsd:dateTime"/>
+       <element name="cstJuridictionType" nillable="true" type="xsd:long"/>
+       <element name="cstRate" nillable="true" type="xsd:double"/>
+       <element name="cstReason" nillable="true" type="xsd:string"/>
+       <element name="cstSeqNo" nillable="true" type="xsd:long"/>
+       <element name="cstStatus" nillable="true" type="xsd:string"/>
+       <element name="cstTaxCode" nillable="true" type="xsd:long"/>
+       <element name="cstTaxExemptionType" nillable="true" type="xsd:string"/>
+       <element name="cstValidFrom" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CustomerTaxExemptionsWriteIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="taxExemptions" nillable="true" type="impl:ArrayOf_tns6_TaxExemptionIn"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="TaxExemption">
+    <sequence>
+     <element name="cstSeqNo" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="TaxExemptionOut">
+    <sequence>
+     <element name="taxExemption" nillable="true" type="impl:ArrayOf_tns6_TaxExemption"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="ContractPromotionsWriteIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="contractList" nillable="true" type="impl:ArrayOf_tns3_ContractIdType"/>
+       <element name="cpStatus" nillable="true" type="xsd:string"/>
+       <element name="cpValidDate" nillable="true" type="xsd:dateTime"/>
+       <element name="customerIdComplex" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="ppAssignSeq" nillable="true" type="xsd:long"/>
+       <element name="ppId" nillable="true" type="xsd:long"/>
+       <element name="ppIdPub" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ContractPromotionsWriteOut">
+    <sequence>
+     <element name="cpSeq" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://bonuspointconversionexecute.cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contracttakeover.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparametersread.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://contractservicescugparameterswrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://contractPromotionsWrite.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://taxexemptions.cmsbasic.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="FreeUnitService">
+    <sequence>
+     <element name="contractIdType" nillable="true" type="tns3:ContractIdType"/>
+     <element name="profileId" nillable="true" type="xsd:long"/>
+     <element name="snCode" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="FupChange">
+    <sequence>
+     <element name="freeUnitService" nillable="true" type="impl:ArrayOf_tns8_FreeUnitService"/>
+     <element name="newFupId" type="xsd:long"/>
+     <element name="oldFupId" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="RatePlanChange">
+    <sequence>
+     <element name="contractList" nillable="true" type="impl:ArrayOf_tns3_ContractIdType"/>
+     <element name="newRpCode" nillable="true" type="xsd:long"/>
+     <element name="oldRpCode" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="BonusPointConversionExecuteIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="applyAllRewards" nillable="true" type="xsd:boolean"/>
+       <element name="customerIdComplex" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="freeUnitServiceList" nillable="true" type="impl:ArrayOf_tns8_FreeUnitService"/>
+       <element name="fupChangeList" nillable="true" type="impl:ArrayOf_tns8_FupChange"/>
+       <element name="ppId" nillable="true" type="xsd:long"/>
+       <element name="ratePlanChangeList" nillable="true" type="impl:ArrayOf_tns8_RatePlanChange"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="bonusPointConversionExecuteResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="contractPromotionsWriteResponse">
+
+      <wsdl:part element="intf:contractPromotionsWriteReturn" name="contractPromotionsWriteReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractServicesCUGParametersWriteResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="contractPromotionsWriteRequest">
+
+      <wsdl:part element="intf:contractPromotionsWriteIn" name="contractPromotionsWriteIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="customerTaxExemptionsWriteResponse">
+
+      <wsdl:part element="intf:customerTaxExemptionsWriteReturn" name="customerTaxExemptionsWriteReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractServicesCUGParametersReadRequest">
+
+      <wsdl:part element="intf:contractServicesCUGParametersReadIn" name="contractServicesCUGParametersReadIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="customerTaxExemptionsWriteRequest">
+
+      <wsdl:part element="intf:customerTaxExemptionsWriteIn" name="customerTaxExemptionsWriteIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractServicesCUGParametersReadResponse">
+
+      <wsdl:part element="intf:contractServicesCUGParametersReadReturn" name="contractServicesCUGParametersReadReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="bonusPointConversionExecuteRequest">
+
+      <wsdl:part element="intf:bonusConversionExecutein" name="bonusConversionExecutein"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractServicesCUGParametersWriteRequest">
+
+      <wsdl:part element="intf:contractServicesCUGParametersWrite" name="contractServicesCUGParametersWrite"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractTakeOverResponse">
+
+      <wsdl:part element="intf:contractTakeOverReturn" name="contractTakeOverReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractTakeOverRequest">
+
+      <wsdl:part element="intf:contractTakeOverIn" name="contractTakeOverIn"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CmsBasicManager">
+
+      <wsdl:operation name="contractServicesCUGParametersWrite" parameterOrder="contractServicesCUGParametersWrite">
+
+         <wsdl:input message="intf:contractServicesCUGParametersWriteRequest" name="contractServicesCUGParametersWriteRequest"/>
+
+         <wsdl:output message="intf:contractServicesCUGParametersWriteResponse" name="contractServicesCUGParametersWriteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractServicesCUGParametersRead" parameterOrder="contractServicesCUGParametersReadIn">
+
+         <wsdl:input message="intf:contractServicesCUGParametersReadRequest" name="contractServicesCUGParametersReadRequest"/>
+
+         <wsdl:output message="intf:contractServicesCUGParametersReadResponse" name="contractServicesCUGParametersReadResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractTakeOver" parameterOrder="contractTakeOverIn">
+
+         <wsdl:input message="intf:contractTakeOverRequest" name="contractTakeOverRequest"/>
+
+         <wsdl:output message="intf:contractTakeOverResponse" name="contractTakeOverResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="customerTaxExemptionsWrite" parameterOrder="customerTaxExemptionsWriteIn">
+
+         <wsdl:input message="intf:customerTaxExemptionsWriteRequest" name="customerTaxExemptionsWriteRequest"/>
+
+         <wsdl:output message="intf:customerTaxExemptionsWriteResponse" name="customerTaxExemptionsWriteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractPromotionsWrite" parameterOrder="contractPromotionsWriteIn">
+
+         <wsdl:input message="intf:contractPromotionsWriteRequest" name="contractPromotionsWriteRequest"/>
+
+         <wsdl:output message="intf:contractPromotionsWriteResponse" name="contractPromotionsWriteResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bonusPointConversionExecute" parameterOrder="bonusConversionExecutein">
+
+         <wsdl:input message="intf:bonusPointConversionExecuteRequest" name="bonusPointConversionExecuteRequest"/>
+
+         <wsdl:output message="intf:bonusPointConversionExecuteResponse" name="bonusPointConversionExecuteResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CmsBasicManagerSoapBinding" type="intf:CmsBasicManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="contractServicesCUGParametersWrite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contractServicesCUGParametersWriteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contractServicesCUGParametersWriteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractServicesCUGParametersRead">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contractServicesCUGParametersReadRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contractServicesCUGParametersReadResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractTakeOver">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contractTakeOverRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contractTakeOverResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="customerTaxExemptionsWrite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="customerTaxExemptionsWriteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="customerTaxExemptionsWriteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractPromotionsWrite">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contractPromotionsWriteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contractPromotionsWriteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="bonusPointConversionExecute">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="bonusPointConversionExecuteRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="bonusPointConversionExecuteResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CmsBasicManagerService">
+
+      <wsdl:port binding="intf:CmsBasicManagerSoapBinding" name="CmsBasicManager">
+
+         <wsdlsoap:address location="http://localhost:8080/bscsWS/services/CmsBasicManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

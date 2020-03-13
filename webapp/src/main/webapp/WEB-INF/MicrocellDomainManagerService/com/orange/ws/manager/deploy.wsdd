@@ -1,0 +1,154 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from MicrocellDomainManagerService WSDL service -->
+
+  <service name="MicrocellDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="MicrocellDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://deletemicrocell.microcelldomain.beans.ws.orange.com,http://beans.ws.orange.com,http://modifymicrocell.microcelldomain.beans.ws.orange.com,http://addmicrocell.microcelldomain.beans.ws.orange.com,http://commons.beans.ws.orange.com,http://retrievemicrocell.microcelldomain.beans.ws.orange.com,http://manager.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="MicrocellDomainManager"/>
+      <parameter name="className" value="com.orange.ws.manager.MicrocellDomainManager"/>
+      <parameter name="wsdlPortType" value="MicrocellDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="retrieveMicrocell" qname="retrieveMicrocell" returnQName="retNS:retrieveMicrocellReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RetrieveMicrocellOut" xmlns:rtns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:retrieveMicrocellIn" xmlns:pns="http://manager.ws.orange.com" type="tns:RetrieveMicrocellIn" xmlns:tns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="modifyMicrocell" qname="modifyMicrocell" soapAction="" >
+        <parameter qname="pns:modifyMicrocellIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyMicrocellIn" xmlns:tns="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="addMicrocell" qname="addMicrocell" soapAction="" >
+        <parameter qname="pns:addMicrocellIn" xmlns:pns="http://manager.ws.orange.com" type="tns:AddMicrocellIn" xmlns:tns="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="deleteMicrocell" qname="deleteMicrocell" soapAction="" >
+        <parameter qname="pns:deleteMicrocellIn" xmlns:pns="http://manager.ws.orange.com" type="tns:DeleteMicrocellIn" xmlns:tns="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="deleteMicrocell addMicrocell modifyMicrocell retrieveMicrocell"/>
+
+      <typeMapping
+        xmlns:ns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:IMCIn"
+        type="java:com.orange.ws.beans.microcelldomain.retrievemicrocell.IMCIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns4_Destination"
+        type="java:com.orange.ws.beans.microcelldomain.modifymicrocell.Destination[]"
+        innerType="cmp-ns:Destination" xmlns:cmp-ns="http://modifymicrocell.microcelldomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_MicrocellMemberIn"
+        type="java:com.orange.ws.beans.microcelldomain.retrievemicrocell.MicrocellMemberIn[]"
+        innerType="cmp-ns:MicrocellMemberIn" xmlns:cmp-ns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:MicrocellMemberIn"
+        type="java:com.orange.ws.beans.microcelldomain.retrievemicrocell.MicrocellMemberIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:RetrieveMicrocellOut"
+        type="java:com.orange.ws.beans.microcelldomain.retrievemicrocell.RetrieveMicrocellOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:RetrieveMicrocellIn"
+        type="java:com.orange.ws.beans.microcelldomain.retrievemicrocell.RetrieveMicrocellIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifymicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:Destination"
+        type="java:com.orange.ws.beans.microcelldomain.modifymicrocell.Destination"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://deletemicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:DeleteMicrocellIn"
+        type="java:com.orange.ws.beans.microcelldomain.deletemicrocell.DeleteMicrocellIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:ContractIdType"
+        type="java:com.orange.ws.beans.commons.ContractIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifymicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:ModifyMicrocellIn"
+        type="java:com.orange.ws.beans.microcelldomain.modifymicrocell.ModifyMicrocellIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addmicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:MicroCellMember"
+        type="java:com.orange.ws.beans.microcelldomain.addmicrocell.MicroCellMember"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_IMCIn"
+        type="java:com.orange.ws.beans.microcelldomain.retrievemicrocell.IMCIn[]"
+        innerType="cmp-ns:IMCIn" xmlns:cmp-ns="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns5_MicroCellMember"
+        type="java:com.orange.ws.beans.microcelldomain.addmicrocell.MicroCellMember[]"
+        innerType="cmp-ns:MicroCellMember" xmlns:cmp-ns="http://addmicrocell.microcelldomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addmicrocell.microcelldomain.beans.ws.orange.com"
+        qname="ns:AddMicrocellIn"
+        type="java:com.orange.ws.beans.microcelldomain.addmicrocell.AddMicrocellIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

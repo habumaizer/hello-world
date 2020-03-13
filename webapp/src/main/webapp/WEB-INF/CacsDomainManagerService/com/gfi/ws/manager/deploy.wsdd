@@ -1,0 +1,147 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CacsDomainManagerService WSDL service -->
+
+  <service name="CacsDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="CacsDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://crmsaction.cacsdomain.beans.ws.gfi.com,http://beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="CacsDomainManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.CacsDomainManager"/>
+      <parameter name="wsdlPortType" value="CacsDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="crmsCorpoAction" qname="crmsCorpoAction" returnQName="retNS:crmsCorpoActionReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:CrmsCorpoActionOut" xmlns:rtns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:crmsCorpoActionIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:CrmsCorpoActionIn" xmlns:tns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="crmsAction" qname="crmsAction" returnQName="retNS:crmsActionReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:CrmsActionOut" xmlns:rtns="http://crmsaction.cacsdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:crmsActionIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:CrmsActionIn" xmlns:tns="http://crmsaction.cacsdomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="crmsCorpoAction crmsAction"/>
+
+      <typeMapping
+        xmlns:ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:CrmsCorpoActionOut"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.CrmsCorpoActionOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmsaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:ContractElementsIn"
+        type="java:com.gfi.ws.beans.cacsdomain.crmsaction.ContractElementsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmsaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:ContractElementsOut"
+        type="java:com.gfi.ws.beans.cacsdomain.crmsaction.ContractElementsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_CustomerElementsIn"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.CustomerElementsIn[]"
+        innerType="cmp-ns:CustomerElementsIn" xmlns:cmp-ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmsaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:CrmsActionIn"
+        type="java:com.gfi.ws.beans.cacsdomain.crmsaction.CrmsActionIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:CrmsCorpoActionIn"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.CrmsCorpoActionIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:Contract"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.Contract"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_ContractElementsIn"
+        type="java:com.gfi.ws.beans.cacsdomain.crmsaction.ContractElementsIn[]"
+        innerType="cmp-ns:ContractElementsIn" xmlns:cmp-ns="http://crmsaction.cacsdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_ContractElementsOut"
+        type="java:com.gfi.ws.beans.cacsdomain.crmsaction.ContractElementsOut[]"
+        innerType="cmp-ns:ContractElementsOut" xmlns:cmp-ns="http://crmsaction.cacsdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:CustomerElementsIn"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.CustomerElementsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_CustomerElementsOut"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.CustomerElementsOut[]"
+        innerType="cmp-ns:CustomerElementsOut" xmlns:cmp-ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmsaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:CrmsActionOut"
+        type="java:com.gfi.ws.beans.cacsdomain.crmsaction.CrmsActionOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_Contract"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.Contract[]"
+        innerType="cmp-ns:Contract" xmlns:cmp-ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://crmscorpoaction.cacsdomain.beans.ws.gfi.com"
+        qname="ns:CustomerElementsOut"
+        type="java:com.gfi.ws.beans.cacsdomain.crmscorpoaction.CustomerElementsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

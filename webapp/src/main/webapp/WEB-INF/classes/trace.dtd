@@ -1,0 +1,164 @@
+<!-- This DTD describes the structure of command trace files.
+ 	 Traces contain a number of SOI commands, that can be executed
+ 	 from a batch client using such a trace as input. 
+ 	 
+ 	 Traces can either be written by human beings or generated from
+ 	 a command tracing facility. The tracing facility writes the commands 
+ 	 received by the server component to a specified trace file.  
+-->
+
+<!-- Root element of a command trace. 
+	 The following attributes may be specified.
+	 
+ - dateTimeFormat, 
+   a format string that can be used to create a java.text.SimpleDateFormat
+   object. This format string is used when processing a DATETIME tag and when
+   datetime is specified in a form of formatted string (not as UTC milliseconds)
+   The default format string is "yyyy.MM.dd hh:mm:ss z" (defined in 
+   XMLExchangeFormatSettings.DEFAULT_DATETIME_FORMAT)
+   
+ - timestamp 
+   An optional timestamp which marks the tag creation time. 
+-->
+<!ELEMENT TRACE ((LOGIN|LOGOUT|SOCREATE|SODISPOSE|COMMAND|TX_COMMIT|TX_ROLLBACK|TX_VALIDATE)*)>
+<!ATTLIST TRACE
+	dateTimeFormat CDATA "yyyy.MM.dd hh:mm:ss z"
+	timestamp CDATA #IMPLIED
+>
+
+<!ENTITY % subset_svlobject PUBLIC 'svlobject.dtd' "svlobject.dtd">
+<!ENTITY % subset_errorinfo PUBLIC 'errorinfo.dtd' "errorinfo.dtd">
+%subset_svlobject;
+%subset_errorinfo;
+
+
+<!-- ########################### COMMAND ########################### -->
+<!-- 
+    Executes a command
+    See ServiceObjectI.executeI and ServiceObjectI.executeLocaleI in IDL
+    executes a command, input is in SVLOBJECT and output in RESULT or ERROR
+    Attribute 'so' links command to the ServiceObjectI, see 'name' attribute
+    in SOCREATE/SODISPOSE
+-->    
+<!ELEMENT COMMAND ((SVLOBJECT)?, (RESULT|(ERROR)+)?)>
+<!ATTLIST COMMAND 
+	name CDATA #REQUIRED
+	so CDATA #REQUIRED
+	timestamp CDATA #IMPLIED
+>
+
+<!ELEMENT RESULT (SVLOBJECT|SVLANY)>
+
+<!-- ########################### SOCREATE ######################### -->
+<!-- SOCREATE marks the creation of a ServiceObjectI.
+     This requires a symbolic name given to the ServiceObjectI that will also
+     be included in the COMMAND element to link a command execution to a 
+     ServiceObjectI. Attributes soi_name and soi_version are required.
+-->
+<!ELEMENT SOCREATE (ERROR)* >
+<!ATTLIST SOCREATE
+	soiName CDATA #REQUIRED
+	soiVersion CDATA #REQUIRED 
+	name CDATA #REQUIRED
+	timestamp CDATA #IMPLIED	
+	factory CDATA #IMPLIED
+>
+<!-- ########################### SODISPOSE ######################## -->
+<!-- SODISPOSE marks the release of a ServiceObjectI by calling the disposeI
+     method. The same symbolic name that was given the ServiceObjectI upon
+     creation must be included. Attributes soi_name and soi_version are required.
+-->
+<!ELEMENT SODISPOSE (ERROR)*>
+<!ATTLIST SODISPOSE
+	soiName CDATA #REQUIRED
+	soiVersion CDATA #REQUIRED 
+	name CDATA #REQUIRED
+	timestamp CDATA #IMPLIED
+	factory CDATA #IMPLIED	
+>
+
+<!-- Marks the moment when a user performs login.
+     See ServiceRootI.loginI method in IDL
+     After succesfull login the ServiceFactory with symbolic name ('factory'
+     attribute) is created. Symbolic factory name links LOGIN/LOGOUT tags
+     and SOCREATE/SODISPOSE tags.
+ -->
+<!ELEMENT LOGIN ((SVLOBJECT)?, (ERROR)*)>
+<!ATTLIST LOGIN
+	user CDATA #REQUIRED
+	factory CDATA #IMPLIED
+	timestamp CDATA #IMPLIED	
+>
+
+<!-- Marks the moment when a user performs logout.
+     See ServiceFactoryI.disposeI method in IDL
+     Symbolic factory name links LOGIN/LOGOUT tags
+     and SOCREATE/SODISPOSE tags.
+ -->
+<!ELEMENT LOGOUT (ERROR)*>
+<!ATTLIST LOGOUT
+	user CDATA #REQUIRED
+	factory CDATA #REQUIRED
+	timestamp CDATA #IMPLIED
+>
+
+<!-- ########################### TX_BEGIN ######################## -->
+<!-- TX_BEGIN marks the moment when the application enter/begin a transaction
+     An optional attribute debugInfo contains vendor-specific information about transaction
+-->
+<!--
+<!ELEMENT TX_BEGIN EMPTY>
+<!ATTLIST TX_BEGIN
+	so CDATA #REQUIRED
+	
+	id CDATA #IMPLIED
+	timestamp CDATA #IMPLIED
+	debugInfo CDATA #IMPLIED
+>
+-->
+
+<!-- ########################### TX_COMMIT ######################## -->
+<!-- TX_COMMIT marks the moment when the application commit a transaction 
+	 (or receive a commit notification).
+     An optional attribute debugInfo contains vendor-specific information about transaction
+     Optionally, an ERROR tag can be included to provide reason for rollback
+-->
+<!ELEMENT TX_COMMIT (ERROR)*>
+<!ATTLIST TX_COMMIT
+	so CDATA #REQUIRED
+	
+	id CDATA #IMPLIED
+	timestamp CDATA #IMPLIED
+	debugInfo CDATA #IMPLIED
+>
+
+<!-- ########################### TX_ROLLBACK ######################## -->
+<!-- TX_ROLLBACK marks the moment when the application rollback a transaction 
+	 (or receive a rollback notification).
+     An optional attribute debugInfo contains vendor-specific information about transaction
+     Optionally, an ERROR tag can be included to provide reason for rollback
+-->
+<!ELEMENT TX_ROLLBACK (ERROR)*>
+<!ATTLIST TX_ROLLBACK
+	so CDATA #REQUIRED
+	
+	id CDATA #IMPLIED
+	timestamp CDATA #IMPLIED
+	debugInfo CDATA #IMPLIED
+>
+
+<!-- ########################### TX_VALIDATE ######################## -->
+<!-- 
+     Performs component internal validation.  If an invocation of this
+     operation does not result in en exception probability is high that the
+     next commit operation will succeed.  But note that there's no
+     guarrantee for that.  Commit has precedence.
+     Optionally, an ERROR tag can be included to provide reason for rollback
+-->
+<!ELEMENT TX_VALIDATE (ERROR)*>
+<!ATTLIST TX_VALIDATE
+	so CDATA #REQUIRED
+	
+	id CDATA #IMPLIED
+	timestamp CDATA #IMPLIED
+>

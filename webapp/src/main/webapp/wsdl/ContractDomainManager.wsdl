@@ -1,0 +1,1779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manager.ws.gfi.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.gfi.com" xmlns:intf="http://manager.ws.gfi.com" xmlns:tns1="http://readserviceparameter.contractdomain.beans.ws.gfi.com" xmlns:tns10="http://provisionService.contractdomain.beans.ws.gfi.com" xmlns:tns11="http://contractdomain.beans.ws.gfi.com" xmlns:tns12="http://retrieveContractServices.contractdomain.beans.ws.gfi.com" xmlns:tns13="http://overrideServiceFee.contractdomain.beans.ws.gfi.com" xmlns:tns14="http://provisionServices.contractdomain.beans.ws.gfi.com" xmlns:tns15="http://getdevicedetail.contractdomain.beans.ws.gfi.com" xmlns:tns16="http://changeproduct.contractdomain.beans.ws.gfi.com" xmlns:tns17="http://retrievecontract.contractdomain.beans.ws.gfi.com" xmlns:tns18="http://readbalances.contractdomain.beans.ws.gfi.com" xmlns:tns19="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com" xmlns:tns2="http://beans.ws.gfi.com" xmlns:tns3="http://commons.beans.ws.gfi.com" xmlns:tns4="http://changeserviceparameter.contractdomain.beans.ws.gfi.com" xmlns:tns5="http://modifycontract.contractdomain.beans.ws.gfi.com" xmlns:tns6="http://getContractInfo.contractdomain.beans.ws.gfi.com" xmlns:tns7="http://contractStatusChange.contractdomain.beans.ws.gfi.com" xmlns:tns8="http://getContractHistory.contractdomain.beans.ws.gfi.com" xmlns:tns9="http://searchContracts.contractdomain.beans.ws.gfi.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType abstract="true" name="BasicBeanIn">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ContractIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CO_ID" nillable="true" type="xsd:long"/>
+       <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="MSISDN" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CustomerIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CS_ID" nillable="true" type="xsd:long"/>
+       <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Service">
+    <sequence>
+     <element name="CO_REQ_PENDING" nillable="true" type="xsd:long"/>
+     <element name="CO_SN_PENDING_STATUS" nillable="true" type="xsd:long"/>
+     <element name="CO_SN_STATUS" nillable="true" type="xsd:int"/>
+     <element name="SNCODE" nillable="true" type="xsd:long"/>
+     <element name="SPCODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ReadServiceParameterIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Value">
+    <sequence>
+     <element name="VALUE" nillable="true" type="xsd:string"/>
+     <element name="VALUE_DES" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ParameterService">
+    <sequence>
+     <element name="PARAMETER_ID" nillable="true" type="xsd:long"/>
+     <element name="PRM_NO" nillable="true" type="xsd:long"/>
+     <element name="listValue" nillable="true" type="impl:ArrayOf_tns1_Value"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReadServiceParameterOut">
+    <sequence>
+     <element name="listParameter" nillable="true" type="impl:ArrayOf_tns1_ParameterService"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <element name="readServiceParameterIn" type="tns1:ReadServiceParameterIn"/>
+   <complexType name="ArrayOf_tns1_Value">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Value"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_ParameterService">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ParameterService"/>
+    </sequence>
+   </complexType>
+   <element name="readServiceParameterReturn" type="tns1:ReadServiceParameterOut"/>
+   <element name="changeServiceParameterIn" type="tns4:ChangeServiceParameterIn"/>
+   <element name="changeServiceParameterReturn" type="tns4:ChangeServiceParameterOut"/>
+   <element name="modifyContractIn" type="tns5:ModifyContractIn"/>
+   <element name="getContractInfoIn" type="tns6:GetContractInfoIn"/>
+   <element name="getContractInfoReturn" type="tns6:GetContractInfoOut"/>
+   <element name="contractStatusChangeIn" type="tns7:ContractStatusChangeIn"/>
+   <element name="contractStatusChangeReturn" type="tns7:ContractStatusChangeOut"/>
+   <element name="getContractHistoryIn" type="tns8:GetContractHistoryIn"/>
+   <complexType name="ArrayOf_tns8_ContractDevice">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns8:ContractDevice"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns8_Contract">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns8:Contract"/>
+    </sequence>
+   </complexType>
+   <element name="getContractHistoryReturn" type="tns8:GetContractHistoryOut"/>
+   <element name="searchContractsIn" type="tns9:SearchContractsIn"/>
+   <complexType name="ArrayOf_tns9_Contract">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:Contract"/>
+    </sequence>
+   </complexType>
+   <element name="searchContractsReturn" type="tns9:SearchContractsOut"/>
+   <complexType name="ArrayOf_tns11_Value">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns11:Value"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns11_ServiceParameter">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns11:ServiceParameter"/>
+    </sequence>
+   </complexType>
+   <element name="provisionServicesIn" type="tns10:ProvisionServiceIn"/>
+   <element name="provisionServiceReturn" type="tns10:ProvisionServiceOut"/>
+   <element name="retrieveContractServicesIn" type="tns12:RetrieveContractServicesIn"/>
+   <complexType name="ArrayOf_tns12_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns12:Service"/>
+    </sequence>
+   </complexType>
+   <element name="retrieveContractServicesReturn" type="tns12:RetrieveContractServicesOut"/>
+   <complexType name="ArrayOf_tns13_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns13:Service"/>
+    </sequence>
+   </complexType>
+   <element name="overrideServiceFeeIn" type="tns13:OverrideServiceFeeIn"/>
+   <complexType name="ArrayOf_tns14_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns14:Service"/>
+    </sequence>
+   </complexType>
+   <element name="provisionServicesIn1" type="tns14:ProvisionServicesIn"/>
+   <element name="provisionServicesReturn" type="tns14:ProvisionServicesOut"/>
+   <complexType name="ArrayOf_tns14_ProvisionServicesIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns14:ProvisionServicesIn"/>
+    </sequence>
+   </complexType>
+   <element name="provisionServicesIn2">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns14:ProvisionServicesIn"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="provisionServicesMultiActionReturn" type="tns14:ProvisionServicesOut"/>
+   <element name="getDeviceDetailIn" type="tns15:DeviceDetailIn"/>
+   <element name="getDeviceDetailReturn" type="tns15:DeviceDetailOut"/>
+   <complexType name="ArrayOf_tns16_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns16:Service"/>
+    </sequence>
+   </complexType>
+   <element name="changeProductIn" type="tns16:ChangeProductIn"/>
+   <element name="changeProductReturn" type="tns16:ChangeProductOut"/>
+   <element name="retrieveContract" type="tns17:RetrieveContractIn"/>
+   <complexType name="ArrayOf_tns3_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:Service"/>
+    </sequence>
+   </complexType>
+   <element name="retrieveContractReturn" type="tns17:RetrieveContractOut"/>
+   <element name="readBalancesIn" type="tns18:ReadBalancesIn"/>
+   <complexType name="ArrayOf_tns18_Balance">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns18:Balance"/>
+    </sequence>
+   </complexType>
+   <element name="readBalancesReturn" type="tns18:ReadBalancesOut"/>
+   <element name="readBalanceAdjustmentRequestIn" type="tns19:ReadBalanceAdjustmentRequestIn"/>
+   <complexType name="ArrayOf_tns19_Request">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns19:Request"/>
+    </sequence>
+   </complexType>
+   <element name="readBalanceAdjustmentRequestReturn" type="tns19:ReadBalanceAdjustmentRequestOut"/>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ChangeServiceParameterIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+       <element name="VALID_FROM" nillable="true" type="xsd:dateTime"/>
+       <element name="srvParameter" nillable="true" type="impl:ArrayOf_tns1_ParameterService"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ChangeServiceParameterOut">
+    <sequence>
+     <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://modifycontract.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <complexType name="ModifyContractIn">
+    <sequence>
+     <element name="ACC_PACK_ID" nillable="true" type="xsd:long"/>
+     <element name="ALT_RPCODE" nillable="true" type="xsd:long"/>
+     <element name="ALT_RPCODE_PUB" nillable="true" type="xsd:string"/>
+     <element name="AN_PACKAGE_ID" nillable="true" type="xsd:long"/>
+     <element name="AN_PACKAGE_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="BM_ID" nillable="true" type="xsd:long"/>
+     <element name="BM_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CALL_DETAIL" nillable="true" type="xsd:string"/>
+     <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+     <element name="CO_ARCHIVE" nillable="true" type="xsd:boolean"/>
+     <element name="CO_DEV_RETENTION" nillable="true" type="xsd:int"/>
+     <element name="CO_DN_RETENTION" nillable="true" type="xsd:int"/>
+     <element name="CO_ITEMBILL_CATEGORIES" nillable="true" type="xsd:int"/>
+     <element name="CO_NONEXPL_SERV_PAYMENT_TYPE" nillable="true" type="xsd:string"/>
+     <element name="CO_OP_DIR" nillable="true" type="xsd:boolean"/>
+     <element name="CO_PORT_RETENTION" nillable="true" type="xsd:int"/>
+     <element name="CO_PSTN_DIR" nillable="true" type="xsd:boolean"/>
+     <element name="CO_SIGNED_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="CO_STATUS" nillable="true" type="xsd:int"/>
+     <element name="CO_TRIAL_END_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="CO_TRIAL_START_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="CURRENCY_ID" nillable="true" type="xsd:long"/>
+     <element name="CURRENCY_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="DESCRIPTION" nillable="true" type="xsd:string"/>
+     <element name="FOREIGN_BID_GROUP_ID" nillable="true" type="xsd:long"/>
+     <element name="HOME_BID_GROUP_ID" nillable="true" type="xsd:long"/>
+     <element name="PRERATED_TAP_RP" nillable="true" type="xsd:boolean"/>
+     <element name="REASON" nillable="true" type="xsd:long"/>
+     <element name="USERINSTALLATION_ADR" nillable="true" type="xsd:boolean"/>
+     <element name="VALID_FROM" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://getContractInfo.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="GetContractInfoIn">
+    <sequence>
+     <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetContractInfoOut">
+    <sequence>
+     <element name="CHECK01" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK02" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK03" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK04" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK05" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK06" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK07" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK08" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK09" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK10" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK11" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK12" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK13" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK14" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK15" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK16" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK17" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK18" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK19" nillable="true" type="xsd:boolean"/>
+     <element name="CHECK20" nillable="true" type="xsd:boolean"/>
+     <element name="COMBO01" nillable="true" type="xsd:string"/>
+     <element name="COMBO02" nillable="true" type="xsd:string"/>
+     <element name="COMBO03" nillable="true" type="xsd:string"/>
+     <element name="COMBO04" nillable="true" type="xsd:string"/>
+     <element name="COMBO05" nillable="true" type="xsd:string"/>
+     <element name="COMBO06" nillable="true" type="xsd:string"/>
+     <element name="COMBO07" nillable="true" type="xsd:string"/>
+     <element name="COMBO08" nillable="true" type="xsd:string"/>
+     <element name="COMBO09" nillable="true" type="xsd:string"/>
+     <element name="COMBO10" nillable="true" type="xsd:string"/>
+     <element name="COMBO11" nillable="true" type="xsd:string"/>
+     <element name="COMBO12" nillable="true" type="xsd:string"/>
+     <element name="COMBO13" nillable="true" type="xsd:string"/>
+     <element name="COMBO14" nillable="true" type="xsd:string"/>
+     <element name="COMBO15" nillable="true" type="xsd:string"/>
+     <element name="COMBO16" nillable="true" type="xsd:string"/>
+     <element name="COMBO17" nillable="true" type="xsd:string"/>
+     <element name="COMBO18" nillable="true" type="xsd:string"/>
+     <element name="COMBO19" nillable="true" type="xsd:string"/>
+     <element name="COMBO20" nillable="true" type="xsd:string"/>
+     <element name="TEXT01" nillable="true" type="xsd:string"/>
+     <element name="TEXT02" nillable="true" type="xsd:string"/>
+     <element name="TEXT03" nillable="true" type="xsd:string"/>
+     <element name="TEXT04" nillable="true" type="xsd:string"/>
+     <element name="TEXT05" nillable="true" type="xsd:string"/>
+     <element name="TEXT06" nillable="true" type="xsd:string"/>
+     <element name="TEXT07" nillable="true" type="xsd:string"/>
+     <element name="TEXT08" nillable="true" type="xsd:string"/>
+     <element name="TEXT09" nillable="true" type="xsd:string"/>
+     <element name="TEXT10" nillable="true" type="xsd:string"/>
+     <element name="TEXT11" nillable="true" type="xsd:string"/>
+     <element name="TEXT12" nillable="true" type="xsd:string"/>
+     <element name="TEXT13" nillable="true" type="xsd:string"/>
+     <element name="TEXT14" nillable="true" type="xsd:string"/>
+     <element name="TEXT15" nillable="true" type="xsd:string"/>
+     <element name="TEXT16" nillable="true" type="xsd:string"/>
+     <element name="TEXT17" nillable="true" type="xsd:string"/>
+     <element name="TEXT18" nillable="true" type="xsd:string"/>
+     <element name="TEXT19" nillable="true" type="xsd:string"/>
+     <element name="TEXT20" nillable="true" type="xsd:string"/>
+     <element name="TEXT21" nillable="true" type="xsd:string"/>
+     <element name="TEXT22" nillable="true" type="xsd:string"/>
+     <element name="TEXT23" nillable="true" type="xsd:string"/>
+     <element name="TEXT24" nillable="true" type="xsd:string"/>
+     <element name="TEXT25" nillable="true" type="xsd:string"/>
+     <element name="TEXT26" nillable="true" type="xsd:string"/>
+     <element name="TEXT27" nillable="true" type="xsd:string"/>
+     <element name="TEXT28" nillable="true" type="xsd:string"/>
+     <element name="TEXT29" nillable="true" type="xsd:string"/>
+     <element name="TEXT30" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ContractStatusChangeIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="CO_DN_RETENTION" nillable="true" type="xsd:int"/>
+       <element name="CO_PORT_RETENTION" nillable="true" type="xsd:int"/>
+       <element name="CO_STATUS" nillable="true" type="xsd:int"/>
+       <element name="REASON" nillable="true" type="xsd:long"/>
+       <element name="VALID_FROM" nillable="true" type="xsd:dateTime"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ContractStatusChangeOut">
+    <sequence>
+     <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://getContractHistory.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="GetContractHistoryIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ContractDevice">
+    <sequence>
+     <element name="DEVICE_ID" nillable="true" type="xsd:long"/>
+     <element name="DEVICE_PORT" nillable="true" type="xsd:string"/>
+     <element name="DEVICE_SEQNO" nillable="true" type="xsd:int"/>
+     <element name="DEVICE_SM_NUM" nillable="true" type="xsd:string"/>
+     <element name="DEVISE_VALID_FROM" nillable="true" type="xsd:dateTime"/>
+     <element name="HLCODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="Contract">
+    <sequence>
+     <element name="CONTRACT_PENDING" nillable="true" type="xsd:boolean"/>
+     <element name="CONTRACT_REASON" nillable="true" type="xsd:long"/>
+     <element name="CONTRACT_STATUS" nillable="true" type="xsd:string"/>
+     <element name="CONTRACT_VALID_FROM" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="GetContractHistoryOut">
+    <sequence>
+     <element name="contractDeviceHistory" nillable="true" type="impl:ArrayOf_tns8_ContractDevice"/>
+     <element name="contractHistory" nillable="true" type="impl:ArrayOf_tns8_Contract"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://searchContracts.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="SearchContractsIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="PORTNUM" nillable="true" type="xsd:string"/>
+       <element name="STMEDNO" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Contract">
+    <sequence>
+     <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+     <element name="CO_ACTIVATED" nillable="true" type="xsd:dateTime"/>
+     <element name="CO_ID" nillable="true" type="xsd:long"/>
+     <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CO_STATUS" nillable="true" type="xsd:int"/>
+     <element name="CS_CODE" nillable="true" type="xsd:string"/>
+     <element name="CS_ID" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CURRENT_DN" nillable="true" type="xsd:boolean"/>
+     <element name="MAIN_DIRNUM" nillable="true" type="xsd:string"/>
+     <element name="PORT_NUM" nillable="true" type="xsd:string"/>
+     <element name="RPCODE" nillable="true" type="xsd:long"/>
+     <element name="SM_NUM" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="SearchContractsOut">
+    <sequence>
+     <element name="contractsList" nillable="true" type="impl:ArrayOf_tns9_Contract"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="Value">
+    <sequence>
+     <element name="VALUE" nillable="true" type="xsd:string"/>
+     <element name="VALUE_DES" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServiceParameter">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="PARAMETER_ID" nillable="true" type="xsd:long"/>
+       <element name="PRM_NO" nillable="true" type="xsd:long"/>
+       <element name="VALUE" nillable="true" type="impl:ArrayOf_tns11_Value"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://provisionService.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ProvisionServiceIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="ACTIV_DATE" nillable="true" type="xsd:dateTime"/>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="DIRNUM" nillable="true" type="xsd:string"/>
+       <element name="DIRNUM_ON_BILL" nillable="true" type="xsd:boolean"/>
+       <element name="MAIN_DIRNUM" nillable="true" type="xsd:boolean"/>
+       <element name="NPCODE" nillable="true" type="xsd:long"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+       <element name="SPCODE" nillable="true" type="xsd:long"/>
+       <element name="TARGET_STATUS" nillable="true" type="xsd:int"/>
+       <element name="serviceParameterList" nillable="true" type="impl:ArrayOf_tns11_ServiceParameter"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProvisionServiceOut">
+    <sequence>
+     <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="RetrieveContractServicesIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Service">
+    <sequence>
+     <element name="ADVANCE_ACCESS_OVW" nillable="true" type="xsd:float"/>
+     <element name="ADVANCE_ACCESS_OVW_PRD" nillable="true" type="xsd:int"/>
+     <element name="ADVANCE_ACCESS_OVW_TYPE" nillable="true" type="xsd:string"/>
+     <element name="CALC_ACC" nillable="true" type="xsd:float"/>
+     <element name="CALC_ADVANCE_ACC" nillable="true" type="xsd:float"/>
+     <element name="CALC_SUB" nillable="true" type="xsd:float"/>
+     <element name="COS_ACCFEE_OVW" nillable="true" type="xsd:float"/>
+     <element name="COS_ACCFEE_OVW_PRD" nillable="true" type="xsd:int"/>
+     <element name="COS_ACCFEE_OVW_TYPE" nillable="true" type="xsd:string"/>
+     <element name="COS_DATE_BILLED" nillable="true" type="xsd:dateTime"/>
+     <element name="COS_PENDING_STATUS" nillable="true" type="xsd:int"/>
+     <element name="COS_STATUS" nillable="true" type="xsd:int"/>
+     <element name="COS_STATUS_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="COS_SUBFEE_OVW" nillable="true" type="xsd:float"/>
+     <element name="COS_SUBFEE_OVW_TYPE" nillable="true" type="xsd:string"/>
+     <element name="CO_REQ_PENDING" nillable="true" type="xsd:long"/>
+     <element name="DIRNUM" nillable="true" type="xsd:string"/>
+     <element name="MAIN_DIRNUM" nillable="true" type="xsd:boolean"/>
+     <element name="PARAMS_IND" nillable="true" type="xsd:boolean"/>
+     <element name="SNCODE" nillable="true" type="xsd:long"/>
+     <element name="SPCODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="RetrieveContractServicesOut">
+    <sequence>
+     <element name="CO_ID" nillable="true" type="xsd:long"/>
+     <element name="servicesList" nillable="true" type="impl:ArrayOf_tns12_Service"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="Service">
+    <sequence>
+     <element name="ADVANCE_ACCESS_OVW" nillable="true" type="xsd:float"/>
+     <element name="ADVANCE_ACCESS_OVW_PRD" nillable="true" type="xsd:int"/>
+     <element name="ADVANCE_ACCESS_OVW_TYPE" nillable="true" type="xsd:string"/>
+     <element name="COS_ACCFEE_OVW" nillable="true" type="xsd:float"/>
+     <element name="COS_ACCFEE_OVW_PRD" nillable="true" type="xsd:int"/>
+     <element name="COS_ACCFEE_OVW_TYPE" nillable="true" type="xsd:string"/>
+     <element name="COS_SUBFEE_OVW" nillable="true" type="xsd:float"/>
+     <element name="COS_SUBFEE_OVW_TYPE" nillable="true" type="xsd:string"/>
+     <element name="SNCODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="OverrideServiceFeeIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="listOfService" nillable="true" type="impl:ArrayOf_tns13_Service"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://provisionServices.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="Service">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="DIRNUM" nillable="true" type="xsd:string"/>
+       <element name="NPCODE" nillable="true" type="xsd:long"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+       <element name="SPCODE" nillable="true" type="xsd:long"/>
+       <element name="serviceParameterList" nillable="true" type="impl:ArrayOf_tns11_ServiceParameter"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProvisionServicesIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="ACTIV_DATE" nillable="true" type="xsd:dateTime"/>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="TARGET_STATUS" nillable="true" type="xsd:int"/>
+       <element name="servicesList" nillable="true" type="impl:ArrayOf_tns14_Service"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ProvisionServicesOut">
+    <sequence>
+     <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="DeviceDetailIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="SM_SERIALNUM" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="DeviceDetailOut">
+    <sequence>
+     <element name="CO_STMEDNO" nillable="true" type="xsd:string"/>
+     <element name="HLCODE" nillable="true" type="xsd:long"/>
+     <element name="HLR_DESC" nillable="true" type="xsd:string"/>
+     <element name="PIN" nillable="true" type="xsd:string"/>
+     <element name="PIN_2" nillable="true" type="xsd:string"/>
+     <element name="PORT_NUM" nillable="true" type="xsd:string"/>
+     <element name="PUK" nillable="true" type="xsd:string"/>
+     <element name="PUK_2" nillable="true" type="xsd:string"/>
+     <element name="SMC_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://changeproduct.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="Service">
+    <sequence>
+     <element name="SNCODE" nillable="true" type="xsd:long"/>
+     <element name="SPCODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ChangeProductIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="NEW_RPCODE" nillable="true" type="xsd:long"/>
+       <element name="NEW_SPCODE" nillable="true" type="xsd:long"/>
+       <element name="OLD_SPCODE" nillable="true" type="xsd:long"/>
+       <element name="VALID_FROM" nillable="true" type="xsd:dateTime"/>
+       <element name="serviceSrvPackage" nillable="true" type="impl:ArrayOf_tns16_Service"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="ChangeProductOut">
+    <sequence>
+     <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+     <element name="serviceAdded" nillable="true" type="impl:ArrayOf_tns16_Service"/>
+     <element name="serviceDeleted" nillable="true" type="impl:ArrayOf_tns16_Service"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://retrievecontract.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="RetrieveContractIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="contractIdType" nillable="true" type="tns3:ContractIdType"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="RetrieveContractOut">
+    <sequence>
+     <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+     <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+     <element name="CONTRACT_REQUEST" nillable="true" type="xsd:long"/>
+     <element name="CO_ACTIVATED" nillable="true" type="xsd:dateTime"/>
+     <element name="CO_ID" nillable="true" type="xsd:string"/>
+     <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CO_LAST_STATUS_CHANGE_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="CO_PENDING_STATUS" nillable="true" type="xsd:int"/>
+     <element name="CO_STATUS" nillable="true" type="xsd:int"/>
+     <element name="CO_STMEDNO" nillable="true" type="xsd:string"/>
+     <element name="CS_CODE" nillable="true" type="xsd:string"/>
+     <element name="CS_ID" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+     <element name="CURRENT_DN" nillable="true" type="xsd:boolean"/>
+     <element name="MAIN_DIRNUM" nillable="true" type="xsd:string"/>
+     <element name="PORT_NUM" nillable="true" type="xsd:string"/>
+     <element name="REASON" nillable="true" type="xsd:long"/>
+     <element name="RPCODE" nillable="true" type="xsd:long"/>
+     <element name="listOfService" nillable="true" type="impl:ArrayOf_tns3_Service"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://readbalances.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ReadBalancesIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Balance">
+    <sequence>
+     <element name="ACTUAL_VALUE" nillable="true" type="xsd:float"/>
+     <element name="BALANCE_SNAPSHOT_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="BP_ID" nillable="true" type="xsd:long"/>
+     <element name="COLOR" nillable="true" type="xsd:string"/>
+     <element name="CREDITABLE" nillable="true" type="xsd:boolean"/>
+     <element name="CREDIT_VALUE" nillable="true" type="xsd:float"/>
+     <element name="NEXT_RESET_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="OVERDRAFT_VALUE" nillable="true" type="xsd:float"/>
+     <element name="REAL_CREDIT" nillable="true" type="xsd:float"/>
+     <element name="SEQ_NO" nillable="true" type="xsd:long"/>
+     <element name="SNCODE" nillable="true" type="xsd:long"/>
+     <element name="STATE" nillable="true" type="xsd:string"/>
+     <element name="UMCODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReadBalancesOut">
+    <sequence>
+     <element name="balances" nillable="true" type="impl:ArrayOf_tns18_Balance"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <import namespace="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+   <complexType name="ReadBalanceAdjustmentRequestIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="CONTRACT_ID_COMPLEX_TARGET" nillable="true" type="tns3:ContractIdType"/>
+       <element name="CS_ID" nillable="true" type="xsd:long"/>
+       <element name="CS_ID_TARGET" nillable="true" type="xsd:long"/>
+       <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+       <element name="SN_CODE_TARGET" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="Request">
+    <sequence>
+     <element name="BP_ID" nillable="true" type="xsd:long"/>
+     <element name="COMPLETION_STATUS" nillable="true" type="xsd:string"/>
+     <element name="CO_ID" nillable="true" type="xsd:long"/>
+     <element name="CO_ID_TARGET" nillable="true" type="xsd:long"/>
+     <element name="CS_ID_TARGET" nillable="true" type="xsd:long"/>
+     <element name="DEBIT_MODE" nillable="true" type="xsd:string"/>
+     <element name="EFFECTIVE_UMCODE" nillable="true" type="xsd:long"/>
+     <element name="EFFECTIVE_VALUE" nillable="true" type="xsd:float"/>
+     <element name="ENTRY_DATE" nillable="true" type="xsd:dateTime"/>
+     <element name="ERROR_TEXT" nillable="true" type="xsd:string"/>
+     <element name="PURPOSE" nillable="true" type="xsd:string"/>
+     <element name="REASON_ID" nillable="true" type="xsd:long"/>
+     <element name="REMAINING_CREDIT" nillable="true" type="xsd:float"/>
+     <element name="REMAINING_UMCODE" nillable="true" type="xsd:long"/>
+     <element name="REMARK" nillable="true" type="xsd:string"/>
+     <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+     <element name="SEQ_NO" nillable="true" type="xsd:long"/>
+     <element name="SNCODE" nillable="true" type="xsd:long"/>
+     <element name="SN_CODE_TARGET" nillable="true" type="xsd:long"/>
+     <element name="STATUS" nillable="true" type="xsd:long"/>
+     <element name="TASK" nillable="true" type="xsd:string"/>
+     <element name="TX_TYPE_ID" nillable="true" type="xsd:long"/>
+     <element name="UMCODE" nillable="true" type="xsd:long"/>
+     <element name="VALUE" nillable="true" type="xsd:float"/>
+    </sequence>
+   </complexType>
+   <complexType name="ReadBalanceAdjustmentRequestOut">
+    <sequence>
+     <element name="requests" nillable="true" type="impl:ArrayOf_tns19_Request"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="readBalancesResponse">
+
+      <wsdl:part element="intf:readBalancesReturn" name="readBalancesReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractStatusChangeResponse">
+
+      <wsdl:part element="intf:contractStatusChangeReturn" name="contractStatusChangeReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="overrideServiceFeeRequest">
+
+      <wsdl:part element="intf:overrideServiceFeeIn" name="overrideServiceFeeIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeServiceParameterRequest">
+
+      <wsdl:part element="intf:changeServiceParameterIn" name="changeServiceParameterIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchContractsRequest">
+
+      <wsdl:part element="intf:searchContractsIn" name="searchContractsIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="provisionServicesRequest">
+
+      <wsdl:part element="intf:provisionServicesIn1" name="provisionServicesIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeviceDetailRequest">
+
+      <wsdl:part element="intf:getDeviceDetailIn" name="getDeviceDetailIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeServiceParameterResponse">
+
+      <wsdl:part element="intf:changeServiceParameterReturn" name="changeServiceParameterReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveContractResponse">
+
+      <wsdl:part element="intf:retrieveContractReturn" name="retrieveContractReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="provisionServiceResponse">
+
+      <wsdl:part element="intf:provisionServiceReturn" name="provisionServiceReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyContractResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="getContractHistoryResponse">
+
+      <wsdl:part element="intf:getContractHistoryReturn" name="getContractHistoryReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContractInfoRequest">
+
+      <wsdl:part element="intf:getContractInfoIn" name="getContractInfoIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="provisionServicesMultiActionResponse">
+
+      <wsdl:part element="intf:provisionServicesMultiActionReturn" name="provisionServicesMultiActionReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContractInfoResponse">
+
+      <wsdl:part element="intf:getContractInfoReturn" name="getContractInfoReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="overrideServiceFeeResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="readBalanceAdjustmentRequestResponse">
+
+      <wsdl:part element="intf:readBalanceAdjustmentRequestReturn" name="readBalanceAdjustmentRequestReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyContractRequest">
+
+      <wsdl:part element="intf:modifyContractIn" name="modifyContractIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveContractServicesRequest">
+
+      <wsdl:part element="intf:retrieveContractServicesIn" name="retrieveContractServicesIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="readServiceParameterResponse">
+
+      <wsdl:part element="intf:readServiceParameterReturn" name="readServiceParameterReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="contractStatusChangeRequest">
+
+      <wsdl:part element="intf:contractStatusChangeIn" name="contractStatusChangeIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="readBalanceAdjustmentRequestRequest">
+
+      <wsdl:part element="intf:readBalanceAdjustmentRequestIn" name="readBalanceAdjustmentRequestIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="searchContractsResponse">
+
+      <wsdl:part element="intf:searchContractsReturn" name="searchContractsReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getDeviceDetailResponse">
+
+      <wsdl:part element="intf:getDeviceDetailReturn" name="getDeviceDetailReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="provisionServiceRequest">
+
+      <wsdl:part element="intf:provisionServicesIn" name="provisionServicesIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="provisionServicesMultiActionRequest">
+
+      <wsdl:part element="intf:provisionServicesIn2" name="provisionServicesIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="getContractHistoryRequest">
+
+      <wsdl:part element="intf:getContractHistoryIn" name="getContractHistoryIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="readServiceParameterRequest">
+
+      <wsdl:part element="intf:readServiceParameterIn" name="readServiceParameterIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="provisionServicesResponse">
+
+      <wsdl:part element="intf:provisionServicesReturn" name="provisionServicesReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeProductResponse">
+
+      <wsdl:part element="intf:changeProductReturn" name="changeProductReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeProductRequest">
+
+      <wsdl:part element="intf:changeProductIn" name="changeProductIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveContractServicesResponse">
+
+      <wsdl:part element="intf:retrieveContractServicesReturn" name="retrieveContractServicesReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="retrieveContractRequest">
+
+      <wsdl:part element="intf:retrieveContract" name="retrieveContract"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="readBalancesRequest">
+
+      <wsdl:part element="intf:readBalancesIn" name="readBalancesIn"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ContractDomainManager">
+
+      <wsdl:operation name="readServiceParameter" parameterOrder="readServiceParameterIn">
+
+         <wsdl:input message="intf:readServiceParameterRequest" name="readServiceParameterRequest"/>
+
+         <wsdl:output message="intf:readServiceParameterResponse" name="readServiceParameterResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeServiceParameter" parameterOrder="changeServiceParameterIn">
+
+         <wsdl:input message="intf:changeServiceParameterRequest" name="changeServiceParameterRequest"/>
+
+         <wsdl:output message="intf:changeServiceParameterResponse" name="changeServiceParameterResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyContract" parameterOrder="modifyContractIn">
+
+         <wsdl:input message="intf:modifyContractRequest" name="modifyContractRequest"/>
+
+         <wsdl:output message="intf:modifyContractResponse" name="modifyContractResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContractInfo" parameterOrder="getContractInfoIn">
+
+         <wsdl:input message="intf:getContractInfoRequest" name="getContractInfoRequest"/>
+
+         <wsdl:output message="intf:getContractInfoResponse" name="getContractInfoResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractStatusChange" parameterOrder="contractStatusChangeIn">
+
+         <wsdl:input message="intf:contractStatusChangeRequest" name="contractStatusChangeRequest"/>
+
+         <wsdl:output message="intf:contractStatusChangeResponse" name="contractStatusChangeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContractHistory" parameterOrder="getContractHistoryIn">
+
+         <wsdl:input message="intf:getContractHistoryRequest" name="getContractHistoryRequest"/>
+
+         <wsdl:output message="intf:getContractHistoryResponse" name="getContractHistoryResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchContracts" parameterOrder="searchContractsIn">
+
+         <wsdl:input message="intf:searchContractsRequest" name="searchContractsRequest"/>
+
+         <wsdl:output message="intf:searchContractsResponse" name="searchContractsResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="provisionService" parameterOrder="provisionServicesIn">
+
+         <wsdl:input message="intf:provisionServiceRequest" name="provisionServiceRequest"/>
+
+         <wsdl:output message="intf:provisionServiceResponse" name="provisionServiceResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveContractServices" parameterOrder="retrieveContractServicesIn">
+
+         <wsdl:input message="intf:retrieveContractServicesRequest" name="retrieveContractServicesRequest"/>
+
+         <wsdl:output message="intf:retrieveContractServicesResponse" name="retrieveContractServicesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="overrideServiceFee" parameterOrder="overrideServiceFeeIn">
+
+         <wsdl:input message="intf:overrideServiceFeeRequest" name="overrideServiceFeeRequest"/>
+
+         <wsdl:output message="intf:overrideServiceFeeResponse" name="overrideServiceFeeResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="provisionServices" parameterOrder="provisionServicesIn">
+
+         <wsdl:input message="intf:provisionServicesRequest" name="provisionServicesRequest"/>
+
+         <wsdl:output message="intf:provisionServicesResponse" name="provisionServicesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="provisionServicesMultiAction" parameterOrder="provisionServicesIn">
+
+         <wsdl:input message="intf:provisionServicesMultiActionRequest" name="provisionServicesMultiActionRequest"/>
+
+         <wsdl:output message="intf:provisionServicesMultiActionResponse" name="provisionServicesMultiActionResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeviceDetail" parameterOrder="getDeviceDetailIn">
+
+         <wsdl:input message="intf:getDeviceDetailRequest" name="getDeviceDetailRequest"/>
+
+         <wsdl:output message="intf:getDeviceDetailResponse" name="getDeviceDetailResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeProduct" parameterOrder="changeProductIn">
+
+         <wsdl:input message="intf:changeProductRequest" name="changeProductRequest"/>
+
+         <wsdl:output message="intf:changeProductResponse" name="changeProductResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveContract" parameterOrder="retrieveContract">
+
+         <wsdl:input message="intf:retrieveContractRequest" name="retrieveContractRequest"/>
+
+         <wsdl:output message="intf:retrieveContractResponse" name="retrieveContractResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="readBalances" parameterOrder="readBalancesIn">
+
+         <wsdl:input message="intf:readBalancesRequest" name="readBalancesRequest"/>
+
+         <wsdl:output message="intf:readBalancesResponse" name="readBalancesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="readBalanceAdjustmentRequest" parameterOrder="readBalanceAdjustmentRequestIn">
+
+         <wsdl:input message="intf:readBalanceAdjustmentRequestRequest" name="readBalanceAdjustmentRequestRequest"/>
+
+         <wsdl:output message="intf:readBalanceAdjustmentRequestResponse" name="readBalanceAdjustmentRequestResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ContractDomainManagerSoapBinding" type="intf:ContractDomainManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="readServiceParameter">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="readServiceParameterRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="readServiceParameterResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeServiceParameter">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changeServiceParameterRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changeServiceParameterResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyContract">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyContractRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyContractResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContractInfo">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getContractInfoRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getContractInfoResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="contractStatusChange">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="contractStatusChangeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="contractStatusChangeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getContractHistory">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getContractHistoryRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getContractHistoryResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="searchContracts">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="searchContractsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="searchContractsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="provisionService">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="provisionServiceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="provisionServiceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveContractServices">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveContractServicesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveContractServicesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="overrideServiceFee">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="overrideServiceFeeRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="overrideServiceFeeResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="provisionServices">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="provisionServicesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="provisionServicesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="provisionServicesMultiAction">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="provisionServicesMultiActionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="provisionServicesMultiActionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getDeviceDetail">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getDeviceDetailRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getDeviceDetailResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changeProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changeProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="retrieveContract">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="retrieveContractRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="retrieveContractResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="readBalances">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="readBalancesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="readBalancesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="readBalanceAdjustmentRequest">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="readBalanceAdjustmentRequestRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="readBalanceAdjustmentRequestResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ContractDomainManagerService">
+
+      <wsdl:port binding="intf:ContractDomainManagerSoapBinding" name="ContractDomainManager">
+
+         <wsdlsoap:address location="http://localhost:8080/bscsWS/services/ContractDomainManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bundle PUBLIC "bundle.dtd" "bundle.dtd">
+<!--
+  - 
+-->
+
+<bundle version="1.0">
+    <header author="Dmitri Geller"
+            creationdate="28-05-2004"/>
+    <body>
+		<!-- 
+		1-9
+		Security server: setup problems
+		 -->
+		<setting key='S002' value="Baseline setup error, MODULES_HIERARCHY contains more than {0} nested levels (circular references?)" state="new" />
+		<setting key='S003' value="Database error during initialization of security subsystem. Vendor code: {0} SQLState: {1} Details {2}" state="new" />
+		<setting key='S004' value="This function is not availiable because security turned off in server" state="new" />
+		<!-- Begin PN00300362 chenf -->
+		<setting key='S005' value="Wrong security setup. User: {0} isn't found in database." state="new" />
+		<!-- End PN00300362 chenf -->
+		<setting key='S006' value="Wrong security setup. Security area {0} isn't found in MODULES table" state="new" />
+				
+		<!--
+        10-89
+		Security server: Command problems
+		-->
+		<setting key='S0011' value="Users and groups can not be specified together" state="new" />
+		<setting key='S0012' value="Mandatory parameter {0} is missing" state="new" />
+		
+		<!--PASSWORD.CHANGE -->
+		<setting key='S0021' value="NEW_PASSWORD and CONFIRM_PASSWORD are not the same" state="new" />
+		<setting key='S0022' value="Database error when changing password. Details: {0}" state="new" />
+		<setting key='S0023' value="OLD_PASSWORD is wrong" state="new" />
+		<setting key='S0024' value="The password is invalid. Reuse of old password is not allowed." state="new" />
+		<setting key='S0025' value="Maximum password length of {0} characters exceeded" state="new" />
+		<setting key='S0026' value="Only printable characters without special characters like umlauts are allowed. (ASCII codes between 32 and 126)" state="new" />
+		<setting key='S0027' value="The new password is invalid. The length of password is less than the minimum length: {0}" state="new" />
+		<setting key='S0028' value="The new password is invalid. It can not be identical with the user name." state="new" />
+
+		<!--USER_RIGHT.CHECK -->
+		<setting key='S0030' value="USERNAME is missing" state="new" />
+		<setting key='S0031' value="PASSWORD and NO_PASSWORD_REQUIRED can't be used together" state="new" />
+		<setting key='S0032' value="You are not allowed to read permissions of another user without his password: 'PermChangeOnBehalfOfUser' is required to do this" state="new" />
+		<setting key="S0033" value="USERNAME without PASSWORD or NO_PASSWORD_REQUIRED is not allowed" state="new" />
+		<setting key="S0034" value="{0} is not a valid BSCS user" state="new" />
+																
+		<!--
+		90-99 
+		Security checks in common framework
+		-->
+		<setting key='S090' value="General security restriction: access denied" state="new" />
+		
+		<!--
+		100-200 
+		Security checks in server framework
+		-->
+		<setting key='S0100' value="User: {0} has no access rights for: {1} or users password expired" state="new" />
+        <setting key='S0101' value="Wrong user or password" state="new" />
+        <setting key='S0102' value="Original user: {0} is not allowed to perform a 'switch user' action. Access right 'PermChangeOnBehalfOfUser' required to do this." state="new" />
+        <setting key='S0103' value="Oracle security error. Oracle code: {0}. Oracle message: {1}" state="new" />
+    </body>
+</bundle>

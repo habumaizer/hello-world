@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="KpsaManager Jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="KpsaManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}KpsaManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/KpsaManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/KpsaManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/KpsaManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://spchange.kpsa.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://deactreason.kpsa.beans.ws.orange.com" xmlns:tns4="http://getpuk.kpsa.beans.ws.orange.com" xmlns:tns5="http://rpchange.kpsa.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://rpchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://spchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://getpuk.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deactreason.kpsa.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://spchange.kpsa.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://rpchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://getpuk.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deactreason.kpsa.beans.ws.orange.com"/>
+      <complexType name="SpChangeIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="IMSI" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Service">
+        <sequence>
+          <element name="BSSRVCODE" nillable="true" type="xsd:string"/>
+          <element name="MAIN" nillable="true" type="xsd:string"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+          <element name="SPCODE_NEW" nillable="true" type="xsd:long"/>
+          <element name="SPCODE_OLD" nillable="true" type="xsd:long"/>
+          <element name="SSSRVCODE" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="SpChangeOut">
+        <sequence>
+          <element name="CO_STMEDNO" nillable="true" type="xsd:string"/>
+          <element name="NEW_SPCODE" nillable="true" type="xsd:long"/>
+          <element name="OLD_SPCODE" nillable="true" type="xsd:long"/>
+          <element name="services" nillable="true" type="impl:ArrayOf_tns1_Service"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://rpchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://spchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://getpuk.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://deactreason.kpsa.beans.ws.orange.com"/>
+      <element name="spChangeIn" type="tns1:SpChangeIn"/>
+      <complexType name="ArrayOf_tns1_Service">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Service"/>
+        </sequence>
+      </complexType>
+      <element name="spChangeReturn" type="tns1:SpChangeOut"/>
+      <element name="deactReasonIn" type="tns3:DeactReasonIn"/>
+      <element name="getDeactReasonReturn" type="tns3:DeactReasonOut"/>
+      <element name="getPukIn" type="tns4:GetPukIn"/>
+      <element name="getPukReturn" type="tns4:GetPukOut"/>
+      <element name="rpChangeIn" type="tns5:RpChangeIn"/>
+      <complexType name="ArrayOf_tns5_Service">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:Service"/>
+        </sequence>
+      </complexType>
+      <element name="rpChangeReturn" type="tns5:RpChangeOut"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://deactreason.kpsa.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://rpchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://spchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://getpuk.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <complexType name="DeactReasonIn">
+        <sequence>
+          <element name="IMSI" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="DeactReasonOut">
+        <sequence>
+          <element name="REASON_DESC" nillable="true" type="xsd:string"/>
+          <element name="REASON_ID" nillable="true" type="xsd:int"/>
+          <element name="REASON_SHDES" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://getpuk.kpsa.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://rpchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://spchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deactreason.kpsa.beans.ws.orange.com"/>
+      <complexType name="GetPukIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="imsi" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="GetPukOut">
+        <sequence>
+          <element name="PIN" nillable="true" type="xsd:string"/>
+          <element name="PIN2" nillable="true" type="xsd:string"/>
+          <element name="PUK" nillable="true" type="xsd:string"/>
+          <element name="PUK2" nillable="true" type="xsd:string"/>
+          <element name="REASON_DESC" nillable="true" type="xsd:string"/>
+          <element name="REASON_ID" nillable="true" type="xsd:long"/>
+          <element name="REASON_SHDES" nillable="true" type="xsd:string"/>
+          <element name="SIMSERIAL_NUM" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://rpchange.kpsa.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://spchange.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://getpuk.kpsa.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deactreason.kpsa.beans.ws.orange.com"/>
+      <complexType name="RpChangeIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="IMSI" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Service">
+        <sequence>
+          <element name="BSSRVCODE" nillable="true" type="xsd:string"/>
+          <element name="MAIN" nillable="true" type="xsd:string"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+          <element name="SPCODE_NEW" nillable="true" type="xsd:long"/>
+          <element name="SPCODE_OLD" nillable="true" type="xsd:long"/>
+          <element name="SSSRVCODE" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="RpChangeOut">
+        <sequence>
+          <element name="CO_STMEDNO" nillable="true" type="xsd:string"/>
+          <element name="NEW_RPCODE" nillable="true" type="xsd:long"/>
+          <element name="OLD_RPCODE" nillable="true" type="xsd:long"/>
+          <element name="listOfService" nillable="true" type="impl:ArrayOf_tns5_Service"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="spChangeRequest">
+    <wsdl:part element="impl:spChangeIn" name="spChangeIn"/>
+  </wsdl:message>
+  <wsdl:message name="getDeactReasonResponse">
+    <wsdl:part element="impl:getDeactReasonReturn" name="getDeactReasonReturn"/>
+  </wsdl:message>
+  <wsdl:message name="rpChangeRequest">
+    <wsdl:part element="impl:rpChangeIn" name="rpChangeIn"/>
+  </wsdl:message>
+  <wsdl:message name="getPukResponse">
+    <wsdl:part element="impl:getPukReturn" name="getPukReturn"/>
+  </wsdl:message>
+  <wsdl:message name="spChangeResponse">
+    <wsdl:part element="impl:spChangeReturn" name="spChangeReturn"/>
+  </wsdl:message>
+  <wsdl:message name="getDeactReasonRequest">
+    <wsdl:part element="impl:deactReasonIn" name="deactReasonIn"/>
+  </wsdl:message>
+  <wsdl:message name="rpChangeResponse">
+    <wsdl:part element="impl:rpChangeReturn" name="rpChangeReturn"/>
+  </wsdl:message>
+  <wsdl:message name="getPukRequest">
+    <wsdl:part element="impl:getPukIn" name="getPukIn"/>
+  </wsdl:message>
+  <wsdl:portType name="KpsaManager">
+    <wsdl:operation name="spChange" parameterOrder="spChangeIn">
+      <wsdl:input message="impl:spChangeRequest" name="spChangeRequest"/>
+      <wsdl:output message="impl:spChangeResponse" name="spChangeResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDeactReason" parameterOrder="deactReasonIn">
+      <wsdl:input message="impl:getDeactReasonRequest" name="getDeactReasonRequest"/>
+      <wsdl:output message="impl:getDeactReasonResponse" name="getDeactReasonResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getPuk" parameterOrder="getPukIn">
+      <wsdl:input message="impl:getPukRequest" name="getPukRequest"/>
+      <wsdl:output message="impl:getPukResponse" name="getPukResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="rpChange" parameterOrder="rpChangeIn">
+      <wsdl:input message="impl:rpChangeRequest" name="rpChangeRequest"/>
+      <wsdl:output message="impl:rpChangeResponse" name="rpChangeResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="KpsaManagerSoapBinding" type="impl:KpsaManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="spChange">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="spChangeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="spChangeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeactReason">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDeactReasonRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDeactReasonResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPuk">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getPukRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getPukResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rpChange">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="rpChangeRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="rpChangeResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KpsaManagerService">
+    <wsdl:port binding="impl:KpsaManagerSoapBinding" name="KpsaManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/KpsaManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/KpsaManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="getDeactReason" bindingOperationName="getDeactReason" type="Request-Response" outputName="getDeactReasonResponse" inputName="getDeactReasonRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/KpsaManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:deac="http://deactreason.kpsa.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+
+      <man:deactReasonIn>
+         <deac:IMSI>602012100000005</deac:IMSI>
+      </man:deactReasonIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/KpsaManager/getDeactReasonRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getPuk" bindingOperationName="getPuk" type="Request-Response" outputName="getPukResponse" inputName="getPukRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/KpsaManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:get="http://getpuk.kpsa.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:getPukIn>
+         <get:imsi>?</get:imsi>
+      </man:getPukIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/KpsaManager/getPukRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="rpChange" bindingOperationName="rpChange" type="Request-Response" outputName="rpChangeResponse" inputName="rpChangeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/KpsaManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:rpc="http://rpchange.kpsa.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:rpChangeIn>
+         <rpc:IMSI>?</rpc:IMSI>
+      </man:rpChangeIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/KpsaManager/rpChangeRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="spChange" bindingOperationName="spChange" type="Request-Response" outputName="spChangeResponse" inputName="spChangeRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/KpsaManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:spc="http://spchange.kpsa.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:spChangeIn>
+         <spc:IMSI>?</spc:IMSI>
+      </man:spChangeIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/KpsaManager/spChangeRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

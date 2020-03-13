@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="CacsDomainManage jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="CacsDomainManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}CacsDomainManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/CacsDomainManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/CacsDomainManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/CacsDomainManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://crmsaction.cacsdomain.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://crmscorpoaction.cacsdomain.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://crmscorpoaction.cacsdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://crmsaction.cacsdomain.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://crmsaction.cacsdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://crmscorpoaction.cacsdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <complexType name="ContractElementsIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="ACTION" nillable="true" type="xsd:string"/>
+              <element name="CO_ID" nillable="true" type="xsd:long"/>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CrmsActionIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="contracts_list" nillable="true" type="impl:ArrayOf_tns1_ContractElementsIn"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="ContractElementsOut">
+        <sequence>
+          <element name="ACTION" nillable="true" type="xsd:string"/>
+          <element name="ACTION_RESULT" nillable="true" type="xsd:int"/>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+          <element name="ERROR_MESSAGE" nillable="true" type="xsd:string"/>
+          <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="CrmsActionOut">
+        <sequence>
+          <element name="contracts_list" nillable="true" type="impl:ArrayOf_tns1_ContractElementsOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://crmscorpoaction.cacsdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://crmsaction.cacsdomain.beans.ws.orange.com"/>
+      <complexType name="ArrayOf_tns1_ContractElementsIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ContractElementsIn"/>
+        </sequence>
+      </complexType>
+      <element name="crmsActionIn" type="tns1:CrmsActionIn"/>
+      <complexType name="ArrayOf_tns1_ContractElementsOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:ContractElementsOut"/>
+        </sequence>
+      </complexType>
+      <element name="crmsActionReturn" type="tns1:CrmsActionOut"/>
+      <complexType name="ArrayOf_tns3_CustomerElementsIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:CustomerElementsIn"/>
+        </sequence>
+      </complexType>
+      <element name="crmsCorpoActionIn" type="tns3:CrmsCorpoActionIn"/>
+      <complexType name="ArrayOf_tns3_Contract">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:Contract"/>
+        </sequence>
+      </complexType>
+      <complexType name="ArrayOf_tns3_CustomerElementsOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:CustomerElementsOut"/>
+        </sequence>
+      </complexType>
+      <element name="crmsCorpoActionReturn" type="tns3:CrmsCorpoActionOut"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://crmscorpoaction.cacsdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://crmsaction.cacsdomain.beans.ws.orange.com"/>
+      <complexType name="CustomerElementsIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="ACTION" nillable="true" type="xsd:string"/>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CrmsCorpoActionIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="customersList" nillable="true" type="impl:ArrayOf_tns3_CustomerElementsIn"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Contract">
+        <sequence>
+          <element name="ACTION_RESULT" nillable="true" type="xsd:int"/>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="CUSTCODE_OWN" nillable="true" type="xsd:string"/>
+          <element name="ERROR_MESSAGE" nillable="true" type="xsd:string"/>
+          <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="CustomerElementsOut">
+        <sequence>
+          <element name="ACTION" nillable="true" type="xsd:string"/>
+          <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+          <element name="contractsList" nillable="true" type="impl:ArrayOf_tns3_Contract"/>
+        </sequence>
+      </complexType>
+      <complexType name="CrmsCorpoActionOut">
+        <sequence>
+          <element name="customersList" nillable="true" type="impl:ArrayOf_tns3_CustomerElementsOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="crmsActionResponse">
+    <wsdl:part element="impl:crmsActionReturn" name="crmsActionReturn"/>
+  </wsdl:message>
+  <wsdl:message name="crmsCorpoActionRequest">
+    <wsdl:part element="impl:crmsCorpoActionIn" name="crmsCorpoActionIn"/>
+  </wsdl:message>
+  <wsdl:message name="crmsCorpoActionResponse">
+    <wsdl:part element="impl:crmsCorpoActionReturn" name="crmsCorpoActionReturn"/>
+  </wsdl:message>
+  <wsdl:message name="crmsActionRequest">
+    <wsdl:part element="impl:crmsActionIn" name="crmsActionIn"/>
+  </wsdl:message>
+  <wsdl:portType name="CacsDomainManager">
+    <wsdl:operation name="crmsAction" parameterOrder="crmsActionIn">
+      <wsdl:input message="impl:crmsActionRequest" name="crmsActionRequest"/>
+      <wsdl:output message="impl:crmsActionResponse" name="crmsActionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="crmsCorpoAction" parameterOrder="crmsCorpoActionIn">
+      <wsdl:input message="impl:crmsCorpoActionRequest" name="crmsCorpoActionRequest"/>
+      <wsdl:output message="impl:crmsCorpoActionResponse" name="crmsCorpoActionResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CacsDomainManagerSoapBinding" type="impl:CacsDomainManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="crmsAction">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="crmsActionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crmsActionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crmsCorpoAction">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="crmsCorpoActionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="crmsCorpoActionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CacsDomainManagerService">
+    <wsdl:port binding="impl:CacsDomainManagerSoapBinding" name="CacsDomainManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/CacsDomainManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/CacsDomainManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="crmsAction" bindingOperationName="crmsAction" type="Request-Response" outputName="crmsActionResponse" inputName="crmsActionRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CacsDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:crm="http://crmsaction.cacsdomain.beans.ws.orange.com"
+
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+
+   <soapenv:Body>
+      <man:crmsActionIn>
+         <crm:contracts_list>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <crm:ACTION>1</crm:ACTION>
+               <crm:CO_ID>204</crm:CO_ID>
+               <crm:CUSTCODE> 1.71</crm:CUSTCODE>
+            </man:item>
+         </crm:contracts_list>
+      </man:crmsActionIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CacsDomainManager/crmsActionRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="crmsCorpoAction" bindingOperationName="crmsCorpoAction" type="Request-Response" outputName="crmsCorpoActionResponse" inputName="crmsCorpoActionRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CacsDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:crm="http://crmscorpoaction.cacsdomain.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:crmsCorpoActionIn>
+         <crm:customersList>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <crm:ACTION>?</crm:ACTION>
+               <crm:CUSTCODE>?</crm:CUSTCODE>
+            </man:item>
+         </crm:customersList>
+      </man:crmsCorpoActionIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CacsDomainManager/crmsCorpoActionRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

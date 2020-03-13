@@ -1,0 +1,83 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from OcaDomainManagerService WSDL service -->
+
+  <service name="OcaDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="OcaDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://commons.beans.ws.gfi.com,http://getcclines.ocadomain.beans.ws.gfi.com,http://updatepaymentmode.ocadomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://createaddress.ocadomain.beans.ws.gfi.com,http://beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="OcaDomainManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.OcaDomainManager"/>
+      <parameter name="wsdlPortType" value="OcaDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getCClines" qname="getCClines" returnQName="retNS:getCClinesReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GetCClinesOut" xmlns:rtns="http://getcclines.ocadomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:getCClinesIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:GetCClinesIn" xmlns:tns="http://getcclines.ocadomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="createAddress" qname="createAddress" soapAction="" >
+        <parameter qname="pns:createAddressIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:CreateAddressIn" xmlns:tns="http://createaddress.ocadomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="updatePaymentMode" qname="updatePaymentMode" soapAction="" >
+        <parameter qname="pns:updatePaymentModeIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:UpdatePaymentModeIn" xmlns:tns="http://updatepaymentmode.ocadomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="createAddress getCClines updatePaymentMode"/>
+
+      <typeMapping
+        xmlns:ns="http://getcclines.ocadomain.beans.ws.gfi.com"
+        qname="ns:GetCClinesOut"
+        type="java:com.gfi.ws.beans.ocadomain.getcclines.GetCClinesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://updatepaymentmode.ocadomain.beans.ws.gfi.com"
+        qname="ns:UpdatePaymentModeIn"
+        type="java:com.gfi.ws.beans.ocadomain.updatepaymentmode.UpdatePaymentModeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getcclines.ocadomain.beans.ws.gfi.com"
+        qname="ns:GetCClinesIn"
+        type="java:com.gfi.ws.beans.ocadomain.getcclines.GetCClinesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:CustomerIdType"
+        type="java:com.gfi.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createaddress.ocadomain.beans.ws.gfi.com"
+        qname="ns:CreateAddressIn"
+        type="java:com.gfi.ws.beans.ocadomain.createaddress.CreateAddressIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

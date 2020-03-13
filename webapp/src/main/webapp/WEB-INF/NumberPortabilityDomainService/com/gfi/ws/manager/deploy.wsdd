@@ -1,0 +1,56 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from NumberPortabilityDomainService WSDL service -->
+
+  <service name="NumberPortabilityDomain" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="NumberPortabilityDomainService"/>
+      <parameter name="schemaQualified" value="http://reimportnumber.numberportabilitydomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://exportnumber.numberportabilitydomain.beans.ws.gfi.com,http://beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="NumberPortabilityDomain"/>
+      <parameter name="className" value="com.gfi.ws.manager.NumberPortabilityDomain"/>
+      <parameter name="wsdlPortType" value="NumberPortabilityDomain"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="exportNumber" qname="exportNumber" soapAction="" >
+        <parameter qname="pns:exportNumberIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ExportNumberIn" xmlns:tns="http://exportnumber.numberportabilitydomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="reimportNumber" qname="reimportNumber" soapAction="" >
+        <parameter qname="pns:reimportNumberIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ReimportNumberIn" xmlns:tns="http://reimportnumber.numberportabilitydomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="exportNumber reimportNumber"/>
+
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://exportnumber.numberportabilitydomain.beans.ws.gfi.com"
+        qname="ns:ExportNumberIn"
+        type="java:com.gfi.ws.beans.numberportabilitydomain.exportnumber.ExportNumberIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://reimportnumber.numberportabilitydomain.beans.ws.gfi.com"
+        qname="ns:ReimportNumberIn"
+        type="java:com.gfi.ws.beans.numberportabilitydomain.reimportnumber.ReimportNumberIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

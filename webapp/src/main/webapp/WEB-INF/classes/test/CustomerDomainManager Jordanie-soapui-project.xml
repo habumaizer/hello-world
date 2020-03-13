@@ -1,0 +1,1729 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="CustomerDomainManager Jordanie" resourceRoot="" soapui-version="3.6.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="CustomerDomainManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}CustomerDomainManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/CustomerDomainManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/CustomerDomainManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/CustomerDomainManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://convertlaflat.customerdomain.beans.ws.orange.com" xmlns:tns10="http://modifyCustomer.customerdomain.beans.ws.orange.com" xmlns:tns11="http://getfinancialDocuments.customerdomain.beans.ws.orange.com" xmlns:tns12="http://autorelease.customerdomain.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://commons.beans.ws.orange.com" xmlns:tns4="http://getcashtransaction.customerdomain.beans.ws.orange.com" xmlns:tns5="http://createCustomer.customerdomain.beans.ws.orange.com" xmlns:tns6="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:tns7="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com" xmlns:tns8="http://beans.ws.lhs.com" xmlns:tns9="http://searchCustomer.customerdomain.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="CustomerIdType">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CS_ID" nillable="true" type="xsd:long"/>
+              <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://convertlaflat.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="ConvertLAFlatIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CS_BILLCYCLE" nillable="true" type="xsd:string"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="PRG_CODE" nillable="true" type="xsd:string"/>
+              <element name="TMCODE" nillable="true" type="xsd:long"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="ConvertLAFlatOut">
+        <sequence>
+          <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <element name="convertLAFlatIn" type="tns1:ConvertLAFlatIn"/>
+      <element name="convertLAFlatReturn" type="tns1:ConvertLAFlatOut"/>
+      <element name="getCashTransactionIn" type="tns4:GetCashTransactionIn"/>
+      <complexType name="ArrayOf_tns4_Document">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:Document"/>
+        </sequence>
+      </complexType>
+      <element name="getCashTransactionReturn" type="tns4:GetCashTransactionOut"/>
+      <element name="createCustomerIn" type="tns5:CreateCustomerIn"/>
+      <element name="createCustomerReturn" type="tns5:CreateCustomerOut"/>
+      <element name="retrieveCustomerIn" type="tns6:RetrieveCustomerIn"/>
+      <element name="retrieveCustomerReturn" type="tns6:RetrieveCustomerOut"/>
+      <element name="retrieveCustomerPGWIn" type="tns7:RetrieveCustomerPGWIn"/>
+      <element name="retrieveCustomerPGWReturn" type="tns7:RetrieveCustomerPGWOut"/>
+      <element name="searchCustomerIn" type="tns9:SearchCustomerIn"/>
+      <complexType name="ArrayOf_tns9_Customer">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:Customer"/>
+        </sequence>
+      </complexType>
+      <element name="searchCustomerReturn" type="tns9:SearchCustomerOut"/>
+      <element name="modifyCustomerIn" type="tns10:ModifyCustomerIn"/>
+      <element name="getFinancialDocumentsIn" type="tns11:GetFinancialDocumentsIn"/>
+      <complexType name="ArrayOf_tns11_Document">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns11:Document"/>
+        </sequence>
+      </complexType>
+      <element name="getFinancialDocumentsReturn" type="tns11:GetFinancialDocumentsOut"/>
+      <element name="autoReleaseIn" type="tns12:AutoReleaseIn"/>
+      <element name="autoReleaseReturn" type="tns12:AutoReleaseOut"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://getcashtransaction.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="GetCashTransactionIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="BT_OHSTATUS" nillable="true" type="xsd:string"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="END_BT_OHREFDATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAREASONCODE" nillable="true" type="xsd:long"/>
+              <element name="RT_CATYPE" nillable="true" type="xsd:string"/>
+              <element name="START_BT_OHREFDATE" nillable="true" type="xsd:dateTime"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Document">
+        <sequence>
+          <element name="CURRENCY_ID" nillable="true" type="xsd:long"/>
+          <element name="RT_CACHKAMT_PAY" nillable="true" type="xsd:float"/>
+          <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+          <element name="RT_CACURAMT_PAY" nillable="true" type="xsd:float"/>
+          <element name="RT_CAENTDATE" nillable="true" type="xsd:dateTime"/>
+          <element name="RT_CAREASONCODE" nillable="true" type="xsd:long"/>
+          <element name="RT_CAREM" nillable="true" type="xsd:string"/>
+          <element name="RT_CATYPE" nillable="true" type="xsd:string"/>
+          <element name="RT_CAXACT" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="GetCashTransactionOut">
+        <sequence>
+          <element name="documentList" nillable="true" type="impl:ArrayOf_tns4_Document"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://createCustomer.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="CreateCustomerIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="ADR_BIRTHDT" nillable="true" type="xsd:dateTime"/>
+              <element name="ADR_CITY" nillable="true" type="xsd:string"/>
+              <element name="ADR_COMPNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_CUSTTYPE" nillable="true" type="xsd:string"/>
+              <element name="ADR_DRIVELICENCE" nillable="true" type="xsd:string"/>
+              <element name="ADR_EMAIL" nillable="true" type="xsd:string"/>
+              <element name="ADR_EMPLOYEE" type="xsd:boolean"/>
+              <element name="ADR_EMPLOYER" nillable="true" type="xsd:string"/>
+              <element name="ADR_FAX" nillable="true" type="xsd:string"/>
+              <element name="ADR_FAX_AREA" nillable="true" type="xsd:string"/>
+              <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_FORWARD" type="xsd:boolean"/>
+              <element name="ADR_IDNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_JBDES" nillable="true" type="xsd:string"/>
+              <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_MNAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_NATIONALITY" nillable="true" type="xsd:string"/>
+              <element name="ADR_NOTE1" nillable="true" type="xsd:string"/>
+              <element name="ADR_NOTE2" nillable="true" type="xsd:string"/>
+              <element name="ADR_NOTE3" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN1" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN1_AREA" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN2" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN2_AREA" nillable="true" type="xsd:string"/>
+              <element name="ADR_SEX" nillable="true" type="xsd:string"/>
+              <element name="ADR_SMSNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_SOCIALSENO" nillable="true" type="xsd:string"/>
+              <element name="ADR_STATE" nillable="true" type="xsd:string"/>
+              <element name="ADR_STREET" nillable="true" type="xsd:string"/>
+              <element name="ADR_STREETNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_TAXNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_URGENT" type="xsd:boolean"/>
+              <element name="ADR_YEARS" nillable="true" type="xsd:int"/>
+              <element name="ADR_ZIP" nillable="true" type="xsd:string"/>
+              <element name="CCLINE1" nillable="true" type="xsd:string"/>
+              <element name="CCLINE2" nillable="true" type="xsd:string"/>
+              <element name="CCLINE3" nillable="true" type="xsd:string"/>
+              <element name="CCLINE4" nillable="true" type="xsd:string"/>
+              <element name="CCLINE5" nillable="true" type="xsd:string"/>
+              <element name="CCLINE6" nillable="true" type="xsd:string"/>
+              <element name="CHECK01" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK02" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK03" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK04" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK05" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK06" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK07" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK08" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK09" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK10" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK11" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK12" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK13" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK14" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK15" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK16" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK17" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK18" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK19" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK20" nillable="true" type="xsd:boolean"/>
+              <element name="COMBO01" nillable="true" type="xsd:string"/>
+              <element name="COMBO02" nillable="true" type="xsd:string"/>
+              <element name="COMBO03" nillable="true" type="xsd:string"/>
+              <element name="COMBO04" nillable="true" type="xsd:string"/>
+              <element name="COMBO05" nillable="true" type="xsd:string"/>
+              <element name="COMBO06" nillable="true" type="xsd:string"/>
+              <element name="COMBO07" nillable="true" type="xsd:string"/>
+              <element name="COMBO08" nillable="true" type="xsd:string"/>
+              <element name="COMBO09" nillable="true" type="xsd:string"/>
+              <element name="COMBO10" nillable="true" type="xsd:string"/>
+              <element name="COMBO11" nillable="true" type="xsd:string"/>
+              <element name="COMBO12" nillable="true" type="xsd:string"/>
+              <element name="COMBO13" nillable="true" type="xsd:string"/>
+              <element name="COMBO14" nillable="true" type="xsd:string"/>
+              <element name="COMBO15" nillable="true" type="xsd:string"/>
+              <element name="COMBO16" nillable="true" type="xsd:string"/>
+              <element name="COMBO17" nillable="true" type="xsd:string"/>
+              <element name="COMBO18" nillable="true" type="xsd:string"/>
+              <element name="COMBO19" nillable="true" type="xsd:string"/>
+              <element name="COMBO20" nillable="true" type="xsd:string"/>
+              <element name="COUNTRY_ID" type="xsd:long"/>
+              <element name="CSP_ACCNO" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKNAME" nillable="true" type="xsd:string"/>
+              <element name="CSP_PMNT_ID" type="xsd:long"/>
+              <element name="CS_BILLCYCLE" nillable="true" type="xsd:string"/>
+              <element name="CS_CLIMIT" nillable="true" type="xsd:float"/>
+              <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="CS_REMARK1" nillable="true" type="xsd:string"/>
+              <element name="CS_REMARK2" nillable="true" type="xsd:string"/>
+              <element name="CS_STATUS" nillable="true" type="xsd:string"/>
+              <element name="CUSTCAT_CODE" nillable="true" type="xsd:long"/>
+              <element name="CUSTCAT_CODE_PUB" nillable="true" type="xsd:string"/>
+              <element name="IDTYPE_CODE" nillable="true" type="xsd:long"/>
+              <element name="LNG_CODE" nillable="true" type="xsd:long"/>
+              <element name="MAS_CODE" nillable="true" type="xsd:long"/>
+              <element name="PRG_CODE" nillable="true" type="xsd:string"/>
+              <element name="TEXT01" nillable="true" type="xsd:string"/>
+              <element name="TEXT02" nillable="true" type="xsd:string"/>
+              <element name="TEXT03" nillable="true" type="xsd:string"/>
+              <element name="TEXT04" nillable="true" type="xsd:string"/>
+              <element name="TEXT05" nillable="true" type="xsd:string"/>
+              <element name="TEXT06" nillable="true" type="xsd:string"/>
+              <element name="TEXT07" nillable="true" type="xsd:string"/>
+              <element name="TEXT08" nillable="true" type="xsd:string"/>
+              <element name="TEXT09" nillable="true" type="xsd:string"/>
+              <element name="TEXT10" nillable="true" type="xsd:string"/>
+              <element name="TEXT11" nillable="true" type="xsd:string"/>
+              <element name="TEXT12" nillable="true" type="xsd:string"/>
+              <element name="TEXT13" nillable="true" type="xsd:string"/>
+              <element name="TEXT14" nillable="true" type="xsd:string"/>
+              <element name="TEXT15" nillable="true" type="xsd:string"/>
+              <element name="TEXT16" nillable="true" type="xsd:string"/>
+              <element name="TEXT17" nillable="true" type="xsd:string"/>
+              <element name="TEXT18" nillable="true" type="xsd:string"/>
+              <element name="TEXT19" nillable="true" type="xsd:string"/>
+              <element name="TEXT20" nillable="true" type="xsd:string"/>
+              <element name="TEXT21" nillable="true" type="xsd:string"/>
+              <element name="TEXT22" nillable="true" type="xsd:string"/>
+              <element name="TEXT23" nillable="true" type="xsd:string"/>
+              <element name="TEXT24" nillable="true" type="xsd:string"/>
+              <element name="TEXT25" nillable="true" type="xsd:string"/>
+              <element name="TEXT26" nillable="true" type="xsd:string"/>
+              <element name="TEXT27" nillable="true" type="xsd:string"/>
+              <element name="TEXT28" nillable="true" type="xsd:string"/>
+              <element name="TEXT29" nillable="true" type="xsd:string"/>
+              <element name="TEXT30" nillable="true" type="xsd:string"/>
+              <element name="TMCODE" nillable="true" type="xsd:long"/>
+              <element name="TTL_ID" nillable="true" type="xsd:long"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CreateCustomerOut">
+        <sequence>
+          <element name="CS_ID" nillable="true" type="xsd:long"/>
+          <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+          <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="RetrieveCustomerIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="RetrieveCustomerOut">
+        <sequence>
+          <element name="ADR_BIRTHDT" nillable="true" type="xsd:dateTime"/>
+          <element name="ADR_CITY" nillable="true" type="xsd:string"/>
+          <element name="ADR_COMPNO" nillable="true" type="xsd:string"/>
+          <element name="ADR_CUSTTYPE" nillable="true" type="xsd:string"/>
+          <element name="ADR_DRIVELICENCE" nillable="true" type="xsd:string"/>
+          <element name="ADR_EMAIL" nillable="true" type="xsd:string"/>
+          <element name="ADR_EMPLOYEE" nillable="true" type="xsd:boolean"/>
+          <element name="ADR_EMPLOYER" nillable="true" type="xsd:string"/>
+          <element name="ADR_FAX" nillable="true" type="xsd:string"/>
+          <element name="ADR_FAX_AREA" nillable="true" type="xsd:string"/>
+          <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+          <element name="ADR_FORWARD" nillable="true" type="xsd:boolean"/>
+          <element name="ADR_IDNO" nillable="true" type="xsd:string"/>
+          <element name="ADR_JBDES" nillable="true" type="xsd:string"/>
+          <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+          <element name="ADR_MNAME" nillable="true" type="xsd:string"/>
+          <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+          <element name="ADR_NATIONALITY" nillable="true" type="xsd:long"/>
+          <element name="ADR_NOTE1" nillable="true" type="xsd:string"/>
+          <element name="ADR_NOTE2" nillable="true" type="xsd:string"/>
+          <element name="ADR_NOTE3" nillable="true" type="xsd:string"/>
+          <element name="ADR_PHN1" nillable="true" type="xsd:string"/>
+          <element name="ADR_PHN1_AREA" nillable="true" type="xsd:string"/>
+          <element name="ADR_PHN2" nillable="true" type="xsd:string"/>
+          <element name="ADR_PHN2_AREA" nillable="true" type="xsd:string"/>
+          <element name="ADR_SEX" nillable="true" type="xsd:string"/>
+          <element name="ADR_SMSNO" nillable="true" type="xsd:string"/>
+          <element name="ADR_SOCIALSENO" nillable="true" type="xsd:string"/>
+          <element name="ADR_STATE" nillable="true" type="xsd:string"/>
+          <element name="ADR_STREET" nillable="true" type="xsd:string"/>
+          <element name="ADR_STREETNO" nillable="true" type="xsd:string"/>
+          <element name="ADR_TAXNO" nillable="true" type="xsd:string"/>
+          <element name="ADR_URGENT" nillable="true" type="xsd:boolean"/>
+          <element name="ADR_YEARS" nillable="true" type="xsd:int"/>
+          <element name="ADR_ZIP" nillable="true" type="xsd:string"/>
+          <element name="CHECK01" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK02" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK03" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK04" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK05" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK06" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK07" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK08" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK09" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK10" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK11" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK12" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK13" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK14" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK15" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK16" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK17" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK18" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK19" nillable="true" type="xsd:boolean"/>
+          <element name="CHECK20" nillable="true" type="xsd:boolean"/>
+          <element name="COMBO01" nillable="true" type="xsd:string"/>
+          <element name="COMBO02" nillable="true" type="xsd:string"/>
+          <element name="COMBO03" nillable="true" type="xsd:string"/>
+          <element name="COMBO04" nillable="true" type="xsd:string"/>
+          <element name="COMBO05" nillable="true" type="xsd:string"/>
+          <element name="COMBO06" nillable="true" type="xsd:string"/>
+          <element name="COMBO07" nillable="true" type="xsd:string"/>
+          <element name="COMBO08" nillable="true" type="xsd:string"/>
+          <element name="COMBO09" nillable="true" type="xsd:string"/>
+          <element name="COMBO10" nillable="true" type="xsd:string"/>
+          <element name="COMBO11" nillable="true" type="xsd:string"/>
+          <element name="COMBO12" nillable="true" type="xsd:string"/>
+          <element name="COMBO13" nillable="true" type="xsd:string"/>
+          <element name="COMBO14" nillable="true" type="xsd:string"/>
+          <element name="COMBO15" nillable="true" type="xsd:string"/>
+          <element name="COMBO16" nillable="true" type="xsd:string"/>
+          <element name="COMBO17" nillable="true" type="xsd:string"/>
+          <element name="COMBO18" nillable="true" type="xsd:string"/>
+          <element name="COMBO19" nillable="true" type="xsd:string"/>
+          <element name="COMBO20" nillable="true" type="xsd:string"/>
+          <element name="COUNTRY_ID" nillable="true" type="xsd:long"/>
+          <element name="CSP_ACCNO" nillable="true" type="xsd:string"/>
+          <element name="CSP_BANKNAME" nillable="true" type="xsd:string"/>
+          <element name="CSP_PMNT_ID" nillable="true" type="xsd:long"/>
+          <element name="CS_" nillable="true" type="xsd:string"/>
+          <element name="CS_ACTIVATION_DATE" nillable="true" type="xsd:dateTime"/>
+          <element name="CS_BILLCYCLE" nillable="true" type="xsd:string"/>
+          <element name="CS_CLIMIT" nillable="true" type="xsd:float"/>
+          <element name="CS_CODE" nillable="true" type="xsd:string"/>
+          <element name="CS_CSCURBALANCE" nillable="true" type="xsd:float"/>
+          <element name="CS_ID" nillable="true" type="xsd:long"/>
+          <element name="CS_ID_HIGH" nillable="true" type="xsd:long"/>
+          <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+          <element name="CS_LAST_BC_DATE" nillable="true" type="xsd:dateTime"/>
+          <element name="CS_PAYMNT_RESP_CODE" nillable="true" type="xsd:string"/>
+          <element name="CS_REMARK1" nillable="true" type="xsd:string"/>
+          <element name="CS_REMARK2" nillable="true" type="xsd:string"/>
+          <element name="CS_STATUS" nillable="true" type="xsd:string"/>
+          <element name="CS_UNBILLED_AMOUNT" nillable="true" type="xsd:float"/>
+          <element name="IDTYPE_CODE" nillable="true" type="xsd:long"/>
+          <element name="LNG_CODE" nillable="true" type="xsd:long"/>
+          <element name="MAS_CODE" nillable="true" type="xsd:long"/>
+          <element name="PAYMENT_RESP" nillable="true" type="xsd:boolean"/>
+          <element name="PAYMENT_RESP_ID" nillable="true" type="xsd:long"/>
+          <element name="PRG_CODE" nillable="true" type="xsd:string"/>
+          <element name="TEXT01" nillable="true" type="xsd:string"/>
+          <element name="TEXT02" nillable="true" type="xsd:string"/>
+          <element name="TEXT03" nillable="true" type="xsd:string"/>
+          <element name="TEXT04" nillable="true" type="xsd:string"/>
+          <element name="TEXT05" nillable="true" type="xsd:string"/>
+          <element name="TEXT06" nillable="true" type="xsd:string"/>
+          <element name="TEXT07" nillable="true" type="xsd:string"/>
+          <element name="TEXT08" nillable="true" type="xsd:string"/>
+          <element name="TEXT09" nillable="true" type="xsd:string"/>
+          <element name="TEXT10" nillable="true" type="xsd:string"/>
+          <element name="TEXT11" nillable="true" type="xsd:string"/>
+          <element name="TEXT12" nillable="true" type="xsd:string"/>
+          <element name="TEXT13" nillable="true" type="xsd:string"/>
+          <element name="TEXT14" nillable="true" type="xsd:string"/>
+          <element name="TEXT15" nillable="true" type="xsd:string"/>
+          <element name="TEXT16" nillable="true" type="xsd:string"/>
+          <element name="TEXT17" nillable="true" type="xsd:string"/>
+          <element name="TEXT18" nillable="true" type="xsd:string"/>
+          <element name="TEXT19" nillable="true" type="xsd:string"/>
+          <element name="TEXT20" nillable="true" type="xsd:string"/>
+          <element name="TEXT21" nillable="true" type="xsd:string"/>
+          <element name="TEXT22" nillable="true" type="xsd:string"/>
+          <element name="TEXT23" nillable="true" type="xsd:string"/>
+          <element name="TEXT24" nillable="true" type="xsd:string"/>
+          <element name="TEXT25" nillable="true" type="xsd:string"/>
+          <element name="TEXT26" nillable="true" type="xsd:string"/>
+          <element name="TEXT27" nillable="true" type="xsd:string"/>
+          <element name="TEXT28" nillable="true" type="xsd:string"/>
+          <element name="TEXT29" nillable="true" type="xsd:string"/>
+          <element name="TEXT30" nillable="true" type="xsd:string"/>
+          <element name="TMCODE" nillable="true" type="xsd:long"/>
+          <element name="TTL_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="RetrieveCustomerPGWIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="RetrieveCustomerPGWOut">
+        <sequence>
+          <element name="ACCOUNT_STATUS" nillable="true" type="xsd:string"/>
+          <element name="ACC_STATUS_DATE" nillable="true" type="tns8:DateTimeBean"/>
+          <element name="ADDRESS" nillable="true" type="xsd:string"/>
+          <element name="BILLCYCLE" nillable="true" type="xsd:string"/>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="CURRENT_BALANCE" nillable="true" type="xsd:float"/>
+          <element name="CYCLE_DAY" nillable="true" type="xsd:int"/>
+          <element name="DIAL_NUMBER" nillable="true" type="xsd:string"/>
+          <element name="FIRST_NAME" nillable="true" type="xsd:string"/>
+          <element name="LAST_NAME" nillable="true" type="xsd:string"/>
+          <element name="NAME" nillable="true" type="xsd:string"/>
+          <element name="NONPAYRESP_CUSTCODE" nillable="true" type="xsd:string"/>
+          <element name="NONPAYRESP_CUSTOMER_ID" nillable="true" type="xsd:long"/>
+          <element name="PAYRESP_CUSTCODE" nillable="true" type="xsd:string"/>
+          <element name="PAYRESP_CUSTOMER_ID" nillable="true" type="xsd:long"/>
+          <element name="RATEPLAN" nillable="true" type="xsd:string"/>
+          <element name="UNBILLED_AMOUNT" nillable="true" type="xsd:float"/>
+          <element name="WRITEOFF" nillable="true" type="xsd:float"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.lhs.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <complexType name="BaseSOIBean">
+        <sequence/>
+      </complexType>
+      <complexType name="DateTimeBean">
+        <complexContent>
+          <extension base="tns8:BaseSOIBean">
+            <sequence>
+              <element name="date" nillable="true" type="xsd:dateTime"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://searchCustomer.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="SearchCustomerIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="LA_FLAG" nillable="true" type="xsd:boolean"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Customer">
+        <sequence>
+          <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+          <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+          <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+          <element name="CS_CODE" nillable="true" type="xsd:string"/>
+          <element name="CS_ID" nillable="true" type="xsd:long"/>
+          <element name="CS_ID_HIGH" nillable="true" type="xsd:long"/>
+          <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+          <element name="CS_LEVEL_CODE" nillable="true" type="xsd:string"/>
+          <element name="PAYMENT_RESP" nillable="true" type="xsd:boolean"/>
+        </sequence>
+      </complexType>
+      <complexType name="SearchCustomerOut">
+        <sequence>
+          <element name="customersList" nillable="true" type="impl:ArrayOf_tns9_Customer"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://modifyCustomer.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="ModifyCustomerIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="ADR_BIRTHDT" nillable="true" type="xsd:dateTime"/>
+              <element name="ADR_CITY" nillable="true" type="xsd:string"/>
+              <element name="ADR_COMPNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_CUSTTYPE" nillable="true" type="xsd:string"/>
+              <element name="ADR_DRIVELICENCE" nillable="true" type="xsd:string"/>
+              <element name="ADR_EMAIL" nillable="true" type="xsd:string"/>
+              <element name="ADR_EMPLOYEE" nillable="true" type="xsd:boolean"/>
+              <element name="ADR_EMPLOYER" nillable="true" type="xsd:string"/>
+              <element name="ADR_FAX" nillable="true" type="xsd:string"/>
+              <element name="ADR_FAX_AREA" nillable="true" type="xsd:string"/>
+              <element name="ADR_FNAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_FORWARD" nillable="true" type="xsd:boolean"/>
+              <element name="ADR_IDNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_JBDES" nillable="true" type="xsd:string"/>
+              <element name="ADR_LNAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_MNAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_NAME" nillable="true" type="xsd:string"/>
+              <element name="ADR_NATIONALITY" nillable="true" type="xsd:long"/>
+              <element name="ADR_NOTE1" nillable="true" type="xsd:string"/>
+              <element name="ADR_NOTE2" nillable="true" type="xsd:string"/>
+              <element name="ADR_NOTE3" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN1" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN1_AREA" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN2" nillable="true" type="xsd:string"/>
+              <element name="ADR_PHN2_AREA" nillable="true" type="xsd:string"/>
+              <element name="ADR_ROLES" nillable="true" type="xsd:string"/>
+              <element name="ADR_SEQ" nillable="true" type="xsd:long"/>
+              <element name="ADR_SEX" nillable="true" type="xsd:string"/>
+              <element name="ADR_SMSNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_SOCIALSENO" nillable="true" type="xsd:string"/>
+              <element name="ADR_STATE" nillable="true" type="xsd:string"/>
+              <element name="ADR_STREET" nillable="true" type="xsd:string"/>
+              <element name="ADR_STREETNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_TAXNO" nillable="true" type="xsd:string"/>
+              <element name="ADR_URGENT" nillable="true" type="xsd:boolean"/>
+              <element name="ADR_YEARS" nillable="true" type="xsd:int"/>
+              <element name="ADR_ZIP" nillable="true" type="xsd:string"/>
+              <element name="CCLINE1" nillable="true" type="xsd:string"/>
+              <element name="CCLINE2" nillable="true" type="xsd:string"/>
+              <element name="CCLINE3" nillable="true" type="xsd:string"/>
+              <element name="CCLINE4" nillable="true" type="xsd:string"/>
+              <element name="CCLINE5" nillable="true" type="xsd:string"/>
+              <element name="CCLINE6" nillable="true" type="xsd:string"/>
+              <element name="CHECK01" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK02" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK03" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK04" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK05" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK06" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK07" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK08" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK09" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK10" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK11" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK12" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK13" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK14" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK15" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK16" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK17" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK18" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK19" nillable="true" type="xsd:boolean"/>
+              <element name="CHECK20" nillable="true" type="xsd:boolean"/>
+              <element name="COMBO01" nillable="true" type="xsd:string"/>
+              <element name="COMBO02" nillable="true" type="xsd:string"/>
+              <element name="COMBO03" nillable="true" type="xsd:string"/>
+              <element name="COMBO04" nillable="true" type="xsd:string"/>
+              <element name="COMBO05" nillable="true" type="xsd:string"/>
+              <element name="COMBO06" nillable="true" type="xsd:string"/>
+              <element name="COMBO07" nillable="true" type="xsd:string"/>
+              <element name="COMBO08" nillable="true" type="xsd:string"/>
+              <element name="COMBO09" nillable="true" type="xsd:string"/>
+              <element name="COMBO10" nillable="true" type="xsd:string"/>
+              <element name="COMBO11" nillable="true" type="xsd:string"/>
+              <element name="COMBO12" nillable="true" type="xsd:string"/>
+              <element name="COMBO13" nillable="true" type="xsd:string"/>
+              <element name="COMBO14" nillable="true" type="xsd:string"/>
+              <element name="COMBO15" nillable="true" type="xsd:string"/>
+              <element name="COMBO16" nillable="true" type="xsd:string"/>
+              <element name="COMBO17" nillable="true" type="xsd:string"/>
+              <element name="COMBO18" nillable="true" type="xsd:string"/>
+              <element name="COMBO19" nillable="true" type="xsd:string"/>
+              <element name="COMBO20" nillable="true" type="xsd:string"/>
+              <element name="COUNTRY_ID" nillable="true" type="xsd:long"/>
+              <element name="CSP_ACCNO" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKNAME" nillable="true" type="xsd:string"/>
+              <element name="CSP_CCVALIDDT" nillable="true" type="xsd:string"/>
+              <element name="CSP_PMNT_ID" nillable="true" type="xsd:long"/>
+              <element name="CS_BILLCYCLE" nillable="true" type="xsd:string"/>
+              <element name="CS_CLIMIT" nillable="true" type="xsd:float"/>
+              <element name="CS_PASSWORD" nillable="true" type="xsd:string"/>
+              <element name="CS_REMARK1" nillable="true" type="xsd:string"/>
+              <element name="CS_REMARK2" nillable="true" type="xsd:string"/>
+              <element name="CS_STATUS" nillable="true" type="xsd:string"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="IDTYPE_CODE" nillable="true" type="xsd:long"/>
+              <element name="LNG_CODE" nillable="true" type="xsd:long"/>
+              <element name="MAS_CODE" nillable="true" type="xsd:long"/>
+              <element name="PRG_CODE" nillable="true" type="xsd:string"/>
+              <element name="TEXT01" nillable="true" type="xsd:string"/>
+              <element name="TEXT02" nillable="true" type="xsd:string"/>
+              <element name="TEXT03" nillable="true" type="xsd:string"/>
+              <element name="TEXT04" nillable="true" type="xsd:string"/>
+              <element name="TEXT05" nillable="true" type="xsd:string"/>
+              <element name="TEXT06" nillable="true" type="xsd:string"/>
+              <element name="TEXT07" nillable="true" type="xsd:string"/>
+              <element name="TEXT08" nillable="true" type="xsd:string"/>
+              <element name="TEXT09" nillable="true" type="xsd:string"/>
+              <element name="TEXT10" nillable="true" type="xsd:string"/>
+              <element name="TEXT11" nillable="true" type="xsd:string"/>
+              <element name="TEXT12" nillable="true" type="xsd:string"/>
+              <element name="TEXT13" nillable="true" type="xsd:string"/>
+              <element name="TEXT14" nillable="true" type="xsd:string"/>
+              <element name="TEXT15" nillable="true" type="xsd:string"/>
+              <element name="TEXT16" nillable="true" type="xsd:string"/>
+              <element name="TEXT17" nillable="true" type="xsd:string"/>
+              <element name="TEXT18" nillable="true" type="xsd:string"/>
+              <element name="TEXT19" nillable="true" type="xsd:string"/>
+              <element name="TEXT20" nillable="true" type="xsd:string"/>
+              <element name="TEXT21" nillable="true" type="xsd:string"/>
+              <element name="TEXT22" nillable="true" type="xsd:string"/>
+              <element name="TEXT23" nillable="true" type="xsd:string"/>
+              <element name="TEXT24" nillable="true" type="xsd:string"/>
+              <element name="TEXT25" nillable="true" type="xsd:string"/>
+              <element name="TEXT26" nillable="true" type="xsd:string"/>
+              <element name="TEXT27" nillable="true" type="xsd:string"/>
+              <element name="TEXT28" nillable="true" type="xsd:string"/>
+              <element name="TEXT29" nillable="true" type="xsd:string"/>
+              <element name="TEXT30" nillable="true" type="xsd:string"/>
+              <element name="TMCODE" nillable="true" type="xsd:long"/>
+              <element name="TTL_ID" nillable="true" type="xsd:long"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="GetFinancialDocumentsIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="BT_OHREFNUM" nillable="true" type="xsd:string"/>
+              <element name="BT_OHSTATUS" nillable="true" type="xsd:string"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="END_BT_OHREFDATE" nillable="true" type="xsd:dateTime"/>
+              <element name="START_BT_OHREFDATE" nillable="true" type="xsd:dateTime"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Document">
+        <sequence>
+          <element name="BT_INVTYPE" nillable="true" type="xsd:int"/>
+          <element name="BT_OHDUEDATE" nillable="true" type="xsd:dateTime"/>
+          <element name="BT_OHENTDATE" nillable="true" type="xsd:dateTime"/>
+          <element name="BT_OHINVAMT_DOC" nillable="true" type="xsd:float"/>
+          <element name="BT_OHOPNAMT_DOC" nillable="true" type="xsd:float"/>
+          <element name="BT_OHREFDATE" nillable="true" type="xsd:dateTime"/>
+          <element name="BT_OHREFNUM" nillable="true" type="xsd:string"/>
+          <element name="BT_OHSTATUS" nillable="true" type="xsd:string"/>
+          <element name="BT_OHXACT" nillable="true" type="xsd:long"/>
+          <element name="CURRENCY_ID" nillable="true" type="xsd:long"/>
+          <element name="CUSTOMER_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="GetFinancialDocumentsOut">
+        <sequence>
+          <element name="documentList" nillable="true" type="impl:ArrayOf_tns11_Document"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://autorelease.customerdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://beans.ws.lhs.com"/>
+      <complexType name="AutoReleaseIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT_PAID" nillable="true" type="xsd:float"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="AutoReleaseOut">
+        <sequence>
+          <element name="REASON" nillable="true" type="xsd:string"/>
+          <element name="STATUS" nillable="true" type="xsd:int"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="createCustomerRequest">
+    <wsdl:part element="impl:createCustomerIn" name="createCustomerIn"/>
+  </wsdl:message>
+  <wsdl:message name="getCashTransactionRequest">
+    <wsdl:part element="impl:getCashTransactionIn" name="getCashTransactionIn"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveCustomerPGWResponse">
+    <wsdl:part element="impl:retrieveCustomerPGWReturn" name="retrieveCustomerPGWReturn"/>
+  </wsdl:message>
+  <wsdl:message name="getCashTransactionResponse">
+    <wsdl:part element="impl:getCashTransactionReturn" name="getCashTransactionReturn"/>
+  </wsdl:message>
+  <wsdl:message name="convertLAFlatResponse">
+    <wsdl:part element="impl:convertLAFlatReturn" name="convertLAFlatReturn"/>
+  </wsdl:message>
+  <wsdl:message name="autoReleaseRequest">
+    <wsdl:part element="impl:autoReleaseIn" name="autoReleaseIn"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveCustomerRequest">
+    <wsdl:part element="impl:retrieveCustomerIn" name="retrieveCustomerIn"/>
+  </wsdl:message>
+  <wsdl:message name="getFinancialDocumentsResponse">
+    <wsdl:part element="impl:getFinancialDocumentsReturn" name="getFinancialDocumentsReturn"/>
+  </wsdl:message>
+  <wsdl:message name="searchCustomerResponse">
+    <wsdl:part element="impl:searchCustomerReturn" name="searchCustomerReturn"/>
+  </wsdl:message>
+  <wsdl:message name="modifyCustomerResponse"></wsdl:message>
+  <wsdl:message name="autoReleaseResponse">
+    <wsdl:part element="impl:autoReleaseReturn" name="autoReleaseReturn"/>
+  </wsdl:message>
+  <wsdl:message name="modifyCustomerRequest">
+    <wsdl:part element="impl:modifyCustomerIn" name="modifyCustomerIn"/>
+  </wsdl:message>
+  <wsdl:message name="searchCustomerRequest">
+    <wsdl:part element="impl:searchCustomerIn" name="searchCustomerIn"/>
+  </wsdl:message>
+  <wsdl:message name="createCustomerResponse">
+    <wsdl:part element="impl:createCustomerReturn" name="createCustomerReturn"/>
+  </wsdl:message>
+  <wsdl:message name="getFinancialDocumentsRequest">
+    <wsdl:part element="impl:getFinancialDocumentsIn" name="getFinancialDocumentsIn"/>
+  </wsdl:message>
+  <wsdl:message name="convertLAFlatRequest">
+    <wsdl:part element="impl:convertLAFlatIn" name="convertLAFlatIn"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveCustomerResponse">
+    <wsdl:part element="impl:retrieveCustomerReturn" name="retrieveCustomerReturn"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveCustomerPGWRequest">
+    <wsdl:part element="impl:retrieveCustomerPGWIn" name="retrieveCustomerPGWIn"/>
+  </wsdl:message>
+  <wsdl:portType name="CustomerDomainManager">
+    <wsdl:operation name="convertLAFlat" parameterOrder="convertLAFlatIn">
+      <wsdl:input message="impl:convertLAFlatRequest" name="convertLAFlatRequest"/>
+      <wsdl:output message="impl:convertLAFlatResponse" name="convertLAFlatResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getCashTransaction" parameterOrder="getCashTransactionIn">
+      <wsdl:input message="impl:getCashTransactionRequest" name="getCashTransactionRequest"/>
+      <wsdl:output message="impl:getCashTransactionResponse" name="getCashTransactionResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createCustomer" parameterOrder="createCustomerIn">
+      <wsdl:input message="impl:createCustomerRequest" name="createCustomerRequest"/>
+      <wsdl:output message="impl:createCustomerResponse" name="createCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCustomer" parameterOrder="retrieveCustomerIn">
+      <wsdl:input message="impl:retrieveCustomerRequest" name="retrieveCustomerRequest"/>
+      <wsdl:output message="impl:retrieveCustomerResponse" name="retrieveCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCustomerPGW" parameterOrder="retrieveCustomerPGWIn">
+      <wsdl:input message="impl:retrieveCustomerPGWRequest" name="retrieveCustomerPGWRequest"/>
+      <wsdl:output message="impl:retrieveCustomerPGWResponse" name="retrieveCustomerPGWResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchCustomer" parameterOrder="searchCustomerIn">
+      <wsdl:input message="impl:searchCustomerRequest" name="searchCustomerRequest"/>
+      <wsdl:output message="impl:searchCustomerResponse" name="searchCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modifyCustomer" parameterOrder="modifyCustomerIn">
+      <wsdl:input message="impl:modifyCustomerRequest" name="modifyCustomerRequest"/>
+      <wsdl:output message="impl:modifyCustomerResponse" name="modifyCustomerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getFinancialDocuments" parameterOrder="getFinancialDocumentsIn">
+      <wsdl:input message="impl:getFinancialDocumentsRequest" name="getFinancialDocumentsRequest"/>
+      <wsdl:output message="impl:getFinancialDocumentsResponse" name="getFinancialDocumentsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="autoRelease" parameterOrder="autoReleaseIn">
+      <wsdl:input message="impl:autoReleaseRequest" name="autoReleaseRequest"/>
+      <wsdl:output message="impl:autoReleaseResponse" name="autoReleaseResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerDomainManagerSoapBinding" type="impl:CustomerDomainManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="convertLAFlat">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="convertLAFlatRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="convertLAFlatResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCashTransaction">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getCashTransactionRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCashTransactionResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createCustomer">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createCustomerRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createCustomerResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCustomer">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="retrieveCustomerRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveCustomerResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveCustomerPGW">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="retrieveCustomerPGWRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveCustomerPGWResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchCustomer">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="searchCustomerRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchCustomerResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyCustomer">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="modifyCustomerRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyCustomerResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFinancialDocuments">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getFinancialDocumentsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFinancialDocumentsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autoRelease">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="autoReleaseRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="autoReleaseResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerDomainManagerService">
+    <wsdl:port binding="impl:CustomerDomainManagerSoapBinding" name="CustomerDomainManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/CustomerDomainManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="autoRelease" bindingOperationName="autoRelease" type="Request-Response" outputName="autoReleaseResponse" inputName="autoReleaseRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="autoRelease by CS_ID"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:aut="http://autorelease.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:autoReleaseIn>
+         <aut:AMOUNT_PAID>10</aut:AMOUNT_PAID>
+         <aut:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </aut:CUSTOMER_ID_COMPLEX>
+      </man:autoReleaseIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/autoReleaseRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="convertLAFlat" bindingOperationName="convertLAFlat" type="Request-Response" outputName="convertLAFlatResponse" inputName="convertLAFlatRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:con="http://convertlaflat.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:convertLAFlatIn>
+         <con:CS_BILLCYCLE>?</con:CS_BILLCYCLE>
+         <con:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </con:CUSTOMER_ID_COMPLEX>
+         <con:PRG_CODE>?</con:PRG_CODE>
+         <con:TMCODE>?</con:TMCODE>
+      </man:convertLAFlatIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/convertLAFlatRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createCustomer" bindingOperationName="createCustomer" type="Request-Response" outputName="createCustomerResponse" inputName="createCustomerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="createCustomer" outgoingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:cre="http://createCustomer.customerdomain.beans.ws.orange.com"
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+  <soapenv:Header>
+    <wsse:Security>
+      <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+      </wsse:UsernameToken>
+    </wsse:Security>
+  </soapenv:Header>
+   <soapenv:Body>
+      <man:createCustomerIn>
+         <cre:ADR_CITY>Paris</cre:ADR_CITY>
+         <cre:ADR_EMAIL>jp.papin@cacolac.fr</cre:ADR_EMAIL>
+         <cre:ADR_FNAME>Papin</cre:ADR_FNAME>
+         <cre:ADR_LNAME>Jean-Pierre</cre:ADR_LNAME>
+         <cre:ADR_MNAME>JP</cre:ADR_MNAME>
+         <cre:ADR_NATIONALITY>1</cre:ADR_NATIONALITY>
+         <cre:ADR_NOTE1>Cacolac</cre:ADR_NOTE1>
+         <cre:ADR_SEX>M</cre:ADR_SEX>
+         <cre:COUNTRY_ID>1</cre:COUNTRY_ID>
+         <cre:CS_BILLCYCLE>13</cre:CS_BILLCYCLE>
+         <cre:CS_STATUS>a</cre:CS_STATUS>
+         <cre:CSP_PMNT_ID>1</cre:CSP_PMNT_ID>
+         <cre:CUSTCAT_CODE>2</cre:CUSTCAT_CODE>
+         <cre:CUSTCAT_CODE_PUB></cre:CUSTCAT_CODE_PUB>
+         <cre:PRG_CODE>2</cre:PRG_CODE>
+         <cre:TMCODE>20</cre:TMCODE>
+         <cre:TTL_ID>1</cre:TTL_ID>
+      </man:createCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/createCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getCashTransaction" bindingOperationName="getCashTransaction" type="Request-Response" outputName="getCashTransactionResponse" inputName="getCashTransactionRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="getCashTransaction by CS_ID"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:get="http://getcashtransaction.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:getCashTransactionIn>
+         <get:BT_OHSTATUS></get:BT_OHSTATUS>
+         <get:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </get:CUSTOMER_ID_COMPLEX>
+         <!--<get:END_BT_OHREFDATE>2021-05-16T12:39:08.000Z</get:END_BT_OHREFDATE>-->
+         <get:RT_CACHKNUM></get:RT_CACHKNUM>
+         <get:RT_CAREASONCODE></get:RT_CAREASONCODE>
+         <get:RT_CATYPE></get:RT_CATYPE>
+         <!--<get:START_BT_OHREFDATE>2000-05-16T12:39:08.000Z</get:START_BT_OHREFDATE>-->
+      </man:getCashTransactionIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/getCashTransactionRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getFinancialDocuments" bindingOperationName="getFinancialDocuments" type="Request-Response" outputName="getFinancialDocumentsResponse" inputName="getFinancialDocumentsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="getFinancialDocuments by CS_ID"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:get="http://getfinancialDocuments.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:getFinancialDocumentsIn>
+         <get:BT_OHREFNUM></get:BT_OHREFNUM>
+         <get:BT_OHSTATUS></get:BT_OHSTATUS>
+         <get:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </get:CUSTOMER_ID_COMPLEX>
+         <!--<get:END_BT_OHREFDATE>2020-05-16T12:39:08.000Z</get:END_BT_OHREFDATE>
+         <get:START_BT_OHREFDATE>2000-05-16T12:39:08.000Z</get:START_BT_OHREFDATE>-->
+      </man:getFinancialDocumentsIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/getFinancialDocumentsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="modifyCustomer" bindingOperationName="modifyCustomer" type="Request-Response" outputName="modifyCustomerResponse" inputName="modifyCustomerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="modifyCustomer"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:mod="http://modifyCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:modifyCustomerIn>
+         <mod:ADR_SEQ>1</mod:ADR_SEQ>
+         <mod:ADR_NOTE1>Note 1</mod:ADR_NOTE1>
+         <mod:ADR_NOTE2>Note 2</mod:ADR_NOTE2>
+         <mod:ADR_NOTE3>Note 3</mod:ADR_NOTE3>
+         <mod:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID/>
+            <com:CS_ID_PUB>CUST0010008144</com:CS_ID_PUB>
+            <com:CUSTCODE/>
+         </mod:CUSTOMER_ID_COMPLEX>
+      </man:modifyCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/modifyCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="retrieveCustomer" bindingOperationName="retrieveCustomer" type="Request-Response" outputName="retrieveCustomerResponse" inputName="retrieveCustomerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="retrieveCustomer by CUSTCODE" outgoingWss=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerIn>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID></com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE>1.15950683</com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+      </man:retrieveCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="retrieveCustomer by CS_ID"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerIn>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+      </man:retrieveCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="retrieveCustomer by CS_ID_PUB"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerIn>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID></com:CS_ID>
+            <com:CS_ID_PUB>CUST0010008144</com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+      </man:retrieveCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="retrieveCustomerPGW" bindingOperationName="retrieveCustomerPGW" type="Request-Response" outputName="retrieveCustomerPGWResponse" inputName="retrieveCustomerPGWRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="retrieveCustomerPGW by CUSTCODE"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerPGWIn>
+         <ret:CUSTCODE>1.15950683</ret:CUSTCODE>
+         <ret:MSISDN></ret:MSISDN>
+      </man:retrieveCustomerPGWIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerPGWRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="searchCustomer" bindingOperationName="searchCustomer" type="Request-Response" outputName="searchCustomerResponse" inputName="searchCustomerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="search by CS_ID"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchCustomer.customerdomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:searchCustomerIn>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+         </sear:CUSTOMER_ID_COMPLEX>
+  
+      </man:searchCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="search by CS_ID_PUB"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchCustomer.customerdomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:searchCustomerIn>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID_PUB>CUST0010008144</com:CS_ID_PUB>
+         </sear:CUSTOMER_ID_COMPLEX>
+  
+      </man:searchCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="search by CUSTCODE"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchCustomer.customerdomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:searchCustomerIn>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CUSTCODE>1.15950683</com:CUSTCODE>
+         </sear:CUSTOMER_ID_COMPLEX>
+  
+      </man:searchCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="CustomerDomain TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="autoRelease" searchProperties="true" id="e33de3d2-c755-452c-8996-9297aa460b1d" disabled="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="autoRelease by CS_ID"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>autoRelease</con:operation><con:request name="autoRelease by CS_ID" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:aut="http://autorelease.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:autoReleaseIn>
+         <aut:AMOUNT_PAID>10</aut:AMOUNT_PAID>
+         <aut:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </aut:CUSTOMER_ID_COMPLEX>
+      </man:autoReleaseIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/autoReleaseRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="createCustomer" searchProperties="true" id="5f21d017-f37c-49d4-bc27-a0118ea9b346" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="createCustomer"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>createCustomer</con:operation><con:request name="createCustomer" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:cre="http://createCustomer.customerdomain.beans.ws.orange.com"
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+  <soapenv:Header>
+    <wsse:Security>
+      <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+      </wsse:UsernameToken>
+    </wsse:Security>
+  </soapenv:Header>
+   <soapenv:Body>
+      <man:createCustomerIn>
+         <cre:ADR_CITY>Paris</cre:ADR_CITY>
+         <cre:ADR_EMAIL>jp.papin@cacolac.fr</cre:ADR_EMAIL>
+         <cre:ADR_FNAME>Papin</cre:ADR_FNAME>
+         <cre:ADR_LNAME>Jean-Pierre</cre:ADR_LNAME>
+         <cre:ADR_MNAME>JP</cre:ADR_MNAME>
+         <cre:ADR_NATIONALITY>1</cre:ADR_NATIONALITY>
+         <cre:ADR_NOTE1>Cacolac</cre:ADR_NOTE1>
+         <cre:ADR_SEX>M</cre:ADR_SEX>
+         <cre:COUNTRY_ID>1</cre:COUNTRY_ID>
+         <cre:CS_BILLCYCLE>13</cre:CS_BILLCYCLE>
+         <cre:CS_STATUS>a</cre:CS_STATUS>
+         <cre:CSP_PMNT_ID>1</cre:CSP_PMNT_ID>
+         <cre:CUSTCAT_CODE>2</cre:CUSTCAT_CODE>
+         <cre:CUSTCAT_CODE_PUB></cre:CUSTCAT_CODE_PUB>
+         <cre:PRG_CODE>2</cre:PRG_CODE>
+         <cre:TMCODE>20</cre:TMCODE>
+         <cre:TTL_ID>1</cre:TTL_ID>
+      </man:createCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token><![CDATA[(?s).*<CS_ID>\d+</CS_ID>.*
+.*<CS_ID_PUB>CUST\d+</CS_ID_PUB>.*
+.*<CUSTCODE>\d\.\d+</CUSTCODE>.*]]></token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/createCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCashTransaction" searchProperties="true" id="f149fc00-adc3-4003-ae1d-65e1e51c4f22" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="getCashTransaction by CS_ID"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>getCashTransaction</con:operation><con:request name="getCashTransaction by CS_ID" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:get="http://getcashtransaction.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:getCashTransactionIn>
+         <get:BT_OHSTATUS></get:BT_OHSTATUS>
+         <get:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </get:CUSTOMER_ID_COMPLEX>
+         <!--<get:END_BT_OHREFDATE>2021-05-16T12:39:08.000Z</get:END_BT_OHREFDATE>-->
+         <get:RT_CACHKNUM></get:RT_CACHKNUM>
+         <get:RT_CAREASONCODE></get:RT_CAREASONCODE>
+         <get:RT_CATYPE></get:RT_CATYPE>
+         <!--<get:START_BT_OHREFDATE>2000-05-16T12:39:08.000Z</get:START_BT_OHREFDATE>-->
+      </man:getCashTransactionIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/getCashTransactionRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getFinancialDocuments" searchProperties="true" id="715935ed-e913-479b-adc5-5477fffbb7e4" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="getFinancialDocuments - getFinancialDocuments by CS_ID"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>getFinancialDocuments</con:operation><con:request name="getFinancialDocuments - getFinancialDocuments by CS_ID" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:get="http://getfinancialDocuments.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:getFinancialDocumentsIn>
+         <get:BT_OHREFNUM></get:BT_OHREFNUM>
+         <get:BT_OHSTATUS></get:BT_OHSTATUS>
+         <get:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </get:CUSTOMER_ID_COMPLEX>
+         <!--<get:END_BT_OHREFDATE>2020-05-16T12:39:08.000Z</get:END_BT_OHREFDATE>
+         <get:START_BT_OHREFDATE>2000-05-16T12:39:08.000Z</get:START_BT_OHREFDATE>-->
+      </man:getFinancialDocumentsIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/getFinancialDocumentsRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="modifyCustomer" searchProperties="true" id="0b718e52-c13a-4aff-a6a3-b20abee697dd" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="modifyCustomer - modifyCustomer"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>modifyCustomer</con:operation><con:request name="modifyCustomer - modifyCustomer" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:mod="http://modifyCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+   <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:modifyCustomerIn>
+         <mod:ADR_SEQ>1</mod:ADR_SEQ>
+         <mod:ADR_NOTE1>Note 1</mod:ADR_NOTE1>
+         <mod:ADR_NOTE2>Note 2</mod:ADR_NOTE2>
+         <mod:ADR_NOTE3>Note 3</mod:ADR_NOTE3>
+         <mod:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID/>
+            <com:CS_ID_PUB>CUST0010008144</com:CS_ID_PUB>
+            <com:CUSTCODE/>
+         </mod:CUSTOMER_ID_COMPLEX>
+      </man:modifyCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/modifyCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="retrieveCustomer" searchProperties="true" id="ce40e7bd-1100-48fc-bb7b-f8397da9f4f3" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="retrieveCustomer by CS_ID"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>retrieveCustomer</con:operation><con:request name="retrieveCustomer by CS_ID" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerIn>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+      </man:retrieveCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token>(?s).*&lt;CS_ID>\d+&lt;/CS_ID>.*
+.*&lt;CS_ID_PUB>CUST\d+&lt;/CS_ID_PUB>.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="retrieveCustomer by CS_ID_PUB"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>retrieveCustomer</con:operation><con:request name="retrieveCustomer by CS_ID_PUB" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerIn>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID></com:CS_ID>
+            <com:CS_ID_PUB>CUST0010008144</com:CS_ID_PUB>
+            <com:CUSTCODE></com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+      </man:retrieveCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token>(?s).*&lt;CS_ID>\d+&lt;/CS_ID>.*
+.*&lt;CS_ID_PUB>CUST\d+&lt;/CS_ID_PUB>.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="retrieveCustomer by CUSTCODE"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>retrieveCustomer</con:operation><con:request name="retrieveCustomer by CUSTCODE" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomer.customerdomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerIn>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID></com:CS_ID>
+            <com:CS_ID_PUB></com:CS_ID_PUB>
+            <com:CUSTCODE>1.15950683</com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+      </man:retrieveCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token>(?s).*&lt;CS_ID>\d+&lt;/CS_ID>.*
+.*&lt;CS_ID_PUB>CUST\d+&lt;/CS_ID_PUB>.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="retrieveCustomerPGW" searchProperties="true" id="7a82c14b-e63c-436a-8e15-53106d3355ee" disabled="true" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="retrieveCustomerPGW by CUSTCODE"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>retrieveCustomerPGW</con:operation><con:request name="retrieveCustomerPGW by CUSTCODE" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:retrieveCustomerPGWIn>
+         <ret:CUSTCODE>1.15950683</ret:CUSTCODE>
+         <ret:MSISDN></ret:MSISDN>
+      </man:retrieveCustomerPGWIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerPGWRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase failOnError="false" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="searchCustomer" searchProperties="true" id="c18a6dc8-2a6b-447a-9171-4edfbb132eca" timeout="0" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" amfAuthorisation="false" amfEndpoint="" amfLogin="" amfPassword=""><con:settings/><con:testStep type="request" name="search by CS_ID"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>searchCustomer</con:operation><con:request name="search by CS_ID" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchCustomer.customerdomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:searchCustomerIn>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>10008514</com:CS_ID>
+         </sear:CUSTOMER_ID_COMPLEX>
+  
+      </man:searchCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token>(?s).*&lt;CS_ID>\d+&lt;/CS_ID>.*
+.*&lt;CS_ID_PUB>CUST\d+&lt;/CS_ID_PUB>.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="search by CS_ID_PUB"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>searchCustomer</con:operation><con:request name="search by CS_ID_PUB" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchCustomer.customerdomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:searchCustomerIn>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID_PUB>CUST0010008144</com:CS_ID_PUB>
+         </sear:CUSTOMER_ID_COMPLEX>
+  
+      </man:searchCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token>(?s).*&lt;CS_ID>\d+&lt;/CS_ID>.*
+.*&lt;CS_ID_PUB>CUST\d+&lt;/CS_ID_PUB>.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="search by CUSTCODE"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>CustomerDomainManagerSoapBinding</con:interface><con:operation>searchCustomer</con:operation><con:request name="search by CUSTCODE" outgoingWss="" incomingWss="" timeout="" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/CustomerDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchCustomer.customerdomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>${#Project#user}</wsse:Username>
+            <wsse:Password>${#Project#password}</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:searchCustomerIn>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CUSTCODE>1.15950683</com:CUSTCODE>
+         </sear:CUSTOMER_ID_COMPLEX>
+  
+      </man:searchCustomerIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Schema Compliance" name="Schema Compliance" disabled="true"><con:configuration/></con:assertion><con:assertion type="SOAP Fault Assertion" name="Not SOAP Fault"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token>(?s).*&lt;CS_ID>\d+&lt;/CS_ID>.*
+.*&lt;CS_ID_PUB>CUST\d+&lt;/CS_ID_PUB>.*</token><ignoreCase>false</ignoreCase><useRegEx>true</useRegEx></con:configuration></con:assertion><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService port="8080" path="/" host="FRTOUN0X01413" name="CustomerDomainMock"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="createCustomer" interface="CustomerDomainManagerSoapBinding" operation="createCustomer"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <createCustomerReturn xmlns="http://manager.ws.orange.com">
+         <CS_ID>10008514</CS_ID>
+         <CS_ID_PUB>CUST0010008144</CS_ID_PUB>
+         <CUSTCODE>1.15950683</CUSTCODE>
+      </createCustomerReturn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/createCustomerResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="searchCustomer" interface="CustomerDomainManagerSoapBinding" operation="searchCustomer"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <searchCustomerReturn xmlns="http://manager.ws.orange.com">
+         <customersList>
+            <item>
+               <ADR_FNAME>Papin</ADR_FNAME>
+               <ADR_LNAME>Jean-Pierre</ADR_LNAME>
+               <ADR_NAME xsi:nil="true"/>
+               <CS_CODE>1.15950683</CS_CODE>
+               <CS_ID>10008514</CS_ID>
+               <CS_ID_HIGH xsi:nil="true"/>
+               <CS_ID_PUB>CUST0010008144</CS_ID_PUB>
+               <CS_LEVEL_CODE>40</CS_LEVEL_CODE>
+               <PAYMENT_RESP>false</PAYMENT_RESP>
+            </item>
+         </customersList>
+      </searchCustomerReturn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/searchCustomerResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="retrieveCustomer" interface="CustomerDomainManagerSoapBinding" operation="retrieveCustomer"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <retrieveCustomerReturn xmlns="http://manager.ws.orange.com">
+         <ADR_BIRTHDT xsi:nil="true"/>
+         <ADR_CITY>PARIS</ADR_CITY>
+         <ADR_COMPNO xsi:nil="true"/>
+         <ADR_CUSTTYPE>C</ADR_CUSTTYPE>
+         <ADR_DRIVELICENCE xsi:nil="true"/>
+         <ADR_EMAIL>jp.papin@cacolac.fr</ADR_EMAIL>
+         <ADR_EMPLOYEE>false</ADR_EMPLOYEE>
+         <ADR_EMPLOYER xsi:nil="true"/>
+         <ADR_FAX xsi:nil="true"/>
+         <ADR_FAX_AREA xsi:nil="true"/>
+         <ADR_FNAME>Papin</ADR_FNAME>
+         <ADR_FORWARD xsi:nil="true"/>
+         <ADR_IDNO xsi:nil="true"/>
+         <ADR_JBDES xsi:nil="true"/>
+         <ADR_LNAME>Jean-Pierre</ADR_LNAME>
+         <ADR_MNAME>JP</ADR_MNAME>
+         <ADR_NAME xsi:nil="true"/>
+         <ADR_NATIONALITY>1</ADR_NATIONALITY>
+         <ADR_NOTE1>Cacolac</ADR_NOTE1>
+         <ADR_NOTE2 xsi:nil="true"/>
+         <ADR_NOTE3 xsi:nil="true"/>
+         <ADR_PHN1 xsi:nil="true"/>
+         <ADR_PHN1_AREA xsi:nil="true"/>
+         <ADR_PHN2 xsi:nil="true"/>
+         <ADR_PHN2_AREA xsi:nil="true"/>
+         <ADR_SEX>M</ADR_SEX>
+         <ADR_SMSNO xsi:nil="true"/>
+         <ADR_SOCIALSENO xsi:nil="true"/>
+         <ADR_STATE xsi:nil="true"/>
+         <ADR_STREET xsi:nil="true"/>
+         <ADR_STREETNO xsi:nil="true"/>
+         <ADR_TAXNO xsi:nil="true"/>
+         <ADR_URGENT>false</ADR_URGENT>
+         <ADR_YEARS xsi:nil="true"/>
+         <ADR_ZIP xsi:nil="true"/>
+         <CHECK01>false</CHECK01>
+         <CHECK02>false</CHECK02>
+         <CHECK03>false</CHECK03>
+         <CHECK04>false</CHECK04>
+         <CHECK05>false</CHECK05>
+         <CHECK06>false</CHECK06>
+         <CHECK07>false</CHECK07>
+         <CHECK08>false</CHECK08>
+         <CHECK09>false</CHECK09>
+         <CHECK10>false</CHECK10>
+         <CHECK11>false</CHECK11>
+         <CHECK12>false</CHECK12>
+         <CHECK13>false</CHECK13>
+         <CHECK14>false</CHECK14>
+         <CHECK15>false</CHECK15>
+         <CHECK16>false</CHECK16>
+         <CHECK17>false</CHECK17>
+         <CHECK18>false</CHECK18>
+         <CHECK19>false</CHECK19>
+         <CHECK20>false</CHECK20>
+         <COMBO01 xsi:nil="true"/>
+         <COMBO02 xsi:nil="true"/>
+         <COMBO03 xsi:nil="true"/>
+         <COMBO04 xsi:nil="true"/>
+         <COMBO05 xsi:nil="true"/>
+         <COMBO06 xsi:nil="true"/>
+         <COMBO07 xsi:nil="true"/>
+         <COMBO08 xsi:nil="true"/>
+         <COMBO09 xsi:nil="true"/>
+         <COMBO10 xsi:nil="true"/>
+         <COMBO11 xsi:nil="true"/>
+         <COMBO12 xsi:nil="true"/>
+         <COMBO13 xsi:nil="true"/>
+         <COMBO14 xsi:nil="true"/>
+         <COMBO15 xsi:nil="true"/>
+         <COMBO16 xsi:nil="true"/>
+         <COMBO17 xsi:nil="true"/>
+         <COMBO18 xsi:nil="true"/>
+         <COMBO19 xsi:nil="true"/>
+         <COMBO20 xsi:nil="true"/>
+         <COUNTRY_ID xsi:nil="true"/>
+         <CSP_ACCNO xsi:nil="true"/>
+         <CSP_BANKNAME xsi:nil="true"/>
+         <CSP_PMNT_ID>-1</CSP_PMNT_ID>
+         <CS_ACTIVATION_DATE>2011-05-16T12:39:08.000Z</CS_ACTIVATION_DATE>
+         <CS_BILLCYCLE>13</CS_BILLCYCLE>
+         <CS_CLIMIT>0.0</CS_CLIMIT>
+         <CS_CODE>1.15950683</CS_CODE>
+         <CS_CSCURBALANCE>0.0</CS_CSCURBALANCE>
+         <CS_ID>10008514</CS_ID>
+         <CS_ID_HIGH xsi:nil="true"/>
+         <CS_ID_PUB>CUST0010008144</CS_ID_PUB>
+         <CS_LAST_BC_DATE xsi:nil="true"/>
+         <CS_PAYMNT_RESP_CODE>1.15950683</CS_PAYMNT_RESP_CODE>
+         <CS_REMARK1 xsi:nil="true"/>
+         <CS_REMARK2 xsi:nil="true"/>
+         <CS_STATUS>a</CS_STATUS>
+         <CS_UNBILLED_AMOUNT>0.0</CS_UNBILLED_AMOUNT>
+         <IDTYPE_CODE xsi:nil="true"/>
+         <LNG_CODE xsi:nil="true"/>
+         <MAS_CODE xsi:nil="true"/>
+         <PAYMENT_RESP>true</PAYMENT_RESP>
+         <PAYMENT_RESP_ID>10008514</PAYMENT_RESP_ID>
+         <PRG_CODE xsi:nil="true"/>
+         <TEXT01 xsi:nil="true"/>
+         <TEXT02 xsi:nil="true"/>
+         <TEXT03 xsi:nil="true"/>
+         <TEXT04 xsi:nil="true"/>
+         <TEXT05 xsi:nil="true"/>
+         <TEXT06 xsi:nil="true"/>
+         <TEXT07 xsi:nil="true"/>
+         <TEXT08 xsi:nil="true"/>
+         <TEXT09 xsi:nil="true"/>
+         <TEXT10 xsi:nil="true"/>
+         <TEXT11 xsi:nil="true"/>
+         <TEXT12 xsi:nil="true"/>
+         <TEXT13 xsi:nil="true"/>
+         <TEXT14 xsi:nil="true"/>
+         <TEXT15 xsi:nil="true"/>
+         <TEXT16 xsi:nil="true"/>
+         <TEXT17 xsi:nil="true"/>
+         <TEXT18 xsi:nil="true"/>
+         <TEXT19 xsi:nil="true"/>
+         <TEXT20 xsi:nil="true"/>
+         <TEXT21 xsi:nil="true"/>
+         <TEXT22 xsi:nil="true"/>
+         <TEXT23 xsi:nil="true"/>
+         <TEXT24 xsi:nil="true"/>
+         <TEXT25 xsi:nil="true"/>
+         <TEXT26 xsi:nil="true"/>
+         <TEXT27 xsi:nil="true"/>
+         <TEXT28 xsi:nil="true"/>
+         <TEXT29 xsi:nil="true"/>
+         <TEXT30 xsi:nil="true"/>
+         <TMCODE>20</TMCODE>
+         <TTL_ID xsi:nil="true"/>
+      </retrieveCustomerReturn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/retrieveCustomerResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="modifyCustomer" interface="CustomerDomainManagerSoapBinding" operation="modifyCustomer"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent>&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   &lt;soapenv:Body>
+      &lt;modifyCustomerInResponse xmlns="http://manager.ws.orange.com"/>
+   &lt;/soapenv:Body>
+&lt;/soapenv:Envelope></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/modifyCustomerResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getCashTransaction" interface="CustomerDomainManagerSoapBinding" operation="getCashTransaction"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <getCashTransactionReturn xmlns="http://manager.ws.orange.com">
+         <documentList xsi:nil="true"/>
+      </getCashTransactionReturn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/getCashTransactionResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="getFinancialDocuments" interface="CustomerDomainManagerSoapBinding" operation="getFinancialDocuments"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <soapenv:Body>
+      <getFinancialDocumentsReturn xmlns="http://manager.ws.orange.com">
+         <documentList xsi:nil="true"/>
+      </getFinancialDocumentsReturn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/CustomerDomainManager/getFinancialDocumentsResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties><con:property><con:name>user</con:name><con:value>ALU</con:value></con:property><con:property><con:name>password</con:name><con:value>alu</con:value></con:property></con:properties><con:wssContainer><con:outgoing><con:name>WSSE</con:name><con:username>ALU</con:username><con:entry type="Username"><con:configuration><addCreated>false</addCreated><addNonce>false</addNonce><passwordType>PasswordText</passwordType></con:configuration></con:entry></con:outgoing></con:wssContainer></con:soapui-project>

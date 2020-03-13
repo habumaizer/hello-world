@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="KpsaDao">
+
+	<cacheModel id="reasonStatusCache" type="LRU" readOnly="true" serialize="false">
+		<flushInterval hours="24"/>
+		<property name="size" value="100" />
+	</cacheModel>
+	
+	<typeAlias alias="GetPukOut" type="com.gfi.mbn.ws.beans.kpsa.GetPukOut"/>
+	<typeAlias alias="ReasonStatus" type="com.gfi.mbn.ws.beans.kpsa.ReasonStatus"/>
+	<typeAlias alias="newSpCodeCriteria" type="com.gfi.mbn.ws.beans.kpsa.NewSpCodeCriteria"/>
+	<typeAlias alias="reasonIdCriteria" type="com.gfi.mbn.ws.beans.kpsa.ReasonIdCriteria"/>
+	<typeAlias alias="oldSpCodeCriteria" type="com.gfi.mbn.ws.beans.kpsa.OldSpCodeCriteria"/>
+	<typeAlias alias="Service" type="com.gfi.mbn.ws.beans.kpsa.Service"/>
+	<typeAlias alias="ServiceAllInfo" type="com.gfi.mbn.ws.beans.kpsa.ServiceAllInfo"/>
+	
+
+
+	<resultMap id="reasonStatus" class="ReasonStatus">
+		<result property="RS_ID" column="RS_ID"/>
+		<result property="RS_SDES" column="RS_SDES"/>
+		<result property="RS_DESC" column="RS_DESC"/>
+		
+	</resultMap>
+	
+	
+	<resultMap id="GetPukOut" class="GetPukOut">
+		<result property="SIMSERIAL_NUM" column="SM_SERIALNUM"/>
+		<result property="PUK" column="SM_PUK"/>
+		<result property="PIN" column="SM_PIN"/>
+		<result property="PUK2" column="SM_PUK2"/>
+		<result property="PIN2" column="SM_PIN2"/>
+	</resultMap>
+	
+	<resultMap id="ServiceAllInfo" class="ServiceAllInfo">
+		<result property="SNCODE" column="SNCODE"/>
+		<result property="SVLCODE" column="SVLCODE"/>
+		<result property="BSSRVCODE" column="BSSRVCODE"/>
+		<result property="SSSRVCODE" column="SSSRVCODE"/>
+		<result property="SNMML" column="SNMML"/>
+	</resultMap>
+	
+	
+	
+	
+	<select id="getCoId" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select CO_ID 
+		from CONTR_DEVICES
+		where PORT_ID in (select PORT_ID from PORT A where PORT_NUM=#value#) 
+	</select>
+	
+	
+	
+	
+	<select id="getSmId" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select SM_ID
+		from PORT
+		where PORT_NUM=#value#
+	</select>
+	
+	<select id="getPuk" parameterClass="java.lang.Long" resultMap="GetPukOut">
+		select SM_SERIALNUM, SM_PUK, SM_PIN,SM_PUK2,SM_PIN2
+		from STORAGE_MEDIUM
+		where SM_ID=#value#
+	</select>
+	
+	<select id="getRequestIdPendingforContractDeactivation" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select REQUEST
+		from MDSRRTAB
+		where CO_ID=#value# and ACTION_ID=4
+	</select>
+	
+	<select id="getReasonIdforContractDeactivation" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+	 select CH_REASON from contract_history ch 
+        where ch.co_id = #value# and ch.CH_STATUS  = 'd'   and ch.ch_pending is null
+        and ch.CH_SEQNO = ( select max(ch1.CH_SEQNO) from contract_history ch1
+        where ch1.co_id = ch.co_id and  ch1.CH_status= ch.CH_status)
+     </select>   
+	
+	<select id="getRequestIdPendingforServicePackageChange " parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select REQUEST
+		from MDSRRTAB
+		where CO_ID=#value# and ACTION_ID=39
+	</select>
+	
+	<select id="getnewSpCode" parameterClass="newSpCodeCriteria" resultClass="java.lang.Long">
+		select SPCODE
+		from PR_SERV_SPCODE_HIST
+		where CO_ID=#coId# and REQUEST_ID=#requestId#
+	</select>
+	 
+	 <select id="getReasonId" parameterClass="reasonIdCriteria" resultClass="java.lang.Long">
+		select CH_REASON
+		from CONTRACT_HISTORY
+		where CO_ID=#coId# and REQUEST=#request#
+	</select>
+	
+	<select id="getReasonStatusAll"  resultClass="reasonStatus" cacheModel="reasonStatusCache" >
+		select RS_ID, RS_SDES, RS_DESC from REASONSTATUS_ALL
+	</select>
+	
+	<select id="getListAllProvisionableService"  resultClass="Service" >
+		select SNCODE,SVLCODE from MPULKNXV where SNMML='Y'
+	</select>
+	
+	<select id="getListAllService"  resultClass="ServiceAllInfo">
+		select SNCODE,SVLCODE,BSSRVCODE,SSSRVCODE,SNMML from MPULKNXV
+	</select>
+	
+	
+	
+	<select id="getOldSpCode" parameterClass="oldSpCodeCriteria" resultClass="java.lang.String">
+		select SPCODE
+		from PR_SERV_SPCODE_HIST 
+		where CO_ID=#coId# and REQUEST=#request# and SNCODE=#newSpCode# sort by HISTNO 
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="MicrocellDomainManager jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="MicrocellDomainManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}MicrocellDomainManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/MicrocellDomainManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/MicrocellDomainManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/MicrocellDomainManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://addmicrocell.microcelldomain.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://commons.beans.ws.orange.com" xmlns:tns4="http://retrievemicrocell.microcelldomain.beans.ws.orange.com" xmlns:tns5="http://modifymicrocell.microcelldomain.beans.ws.orange.com" xmlns:tns6="http://deletemicrocell.microcelldomain.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <complexType name="ContractIdType">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CO_ID" nillable="true" type="xsd:long"/>
+              <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://addmicrocell.microcelldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <complexType name="MicroCellMember">
+        <sequence>
+          <element name="IMC_DESTINATION" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="AddMicrocellIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+              <element name="IMC_SCALEFACTOR" nillable="true" type="xsd:double"/>
+              <element name="IMC_TYPE" nillable="true" type="xsd:string"/>
+              <element name="microCellMemberList" nillable="true" type="impl:ArrayOf_tns1_MicroCellMember"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <complexType name="ArrayOf_tns1_MicroCellMember">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:MicroCellMember"/>
+        </sequence>
+      </complexType>
+      <element name="addMicrocellIn" type="tns1:AddMicrocellIn"/>
+      <element name="retrieveMicrocellIn" type="tns4:RetrieveMicrocellIn"/>
+      <complexType name="ArrayOf_tns4_MicrocellMemberIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MicrocellMemberIn"/>
+        </sequence>
+      </complexType>
+      <complexType name="ArrayOf_tns4_IMCIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:IMCIn"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveMicrocellReturn" type="tns4:RetrieveMicrocellOut"/>
+      <complexType name="ArrayOf_tns5_Destination">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:Destination"/>
+        </sequence>
+      </complexType>
+      <element name="modifyMicrocellIn" type="tns5:ModifyMicrocellIn"/>
+      <element name="deleteMicrocellIn" type="tns6:DeleteMicrocellIn"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <complexType name="RetrieveMicrocellIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="MicrocellMemberIn">
+        <sequence>
+          <element name="IMC_DESTINATION" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="IMCIn">
+        <sequence>
+          <element name="IMC_SCALEFACTOR" nillable="true" type="xsd:float"/>
+          <element name="IMC_TYPE" nillable="true" type="xsd:string"/>
+          <element name="microcellMemberList" nillable="true" type="impl:ArrayOf_tns4_MicrocellMemberIn"/>
+        </sequence>
+      </complexType>
+      <complexType name="RetrieveMicrocellOut">
+        <sequence>
+          <element name="imcList" nillable="true" type="impl:ArrayOf_tns4_IMCIn"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <complexType name="Destination">
+        <sequence>
+          <element name="IMC_DESTINATION_NEW" nillable="true" type="xsd:string"/>
+          <element name="IMC_DESTINATION_OLD" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="ModifyMicrocellIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+              <element name="IMC_TYPE" nillable="true" type="xsd:string"/>
+              <element name="action" nillable="true" type="xsd:string"/>
+              <element name="listOfDestination" nillable="true" type="impl:ArrayOf_tns5_Destination"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://deletemicrocell.microcelldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://modifymicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://addmicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrievemicrocell.microcelldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <complexType name="DeleteMicrocellIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+              <element name="IMC_TYPE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="addMicrocellResponse"></wsdl:message>
+  <wsdl:message name="retrieveMicrocellRequest">
+    <wsdl:part element="impl:retrieveMicrocellIn" name="retrieveMicrocellIn"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveMicrocellResponse">
+    <wsdl:part element="impl:retrieveMicrocellReturn" name="retrieveMicrocellReturn"/>
+  </wsdl:message>
+  <wsdl:message name="addMicrocellRequest">
+    <wsdl:part element="impl:addMicrocellIn" name="addMicrocellIn"/>
+  </wsdl:message>
+  <wsdl:message name="modifyMicrocellResponse"></wsdl:message>
+  <wsdl:message name="deleteMicrocellRequest">
+    <wsdl:part element="impl:deleteMicrocellIn" name="deleteMicrocellIn"/>
+  </wsdl:message>
+  <wsdl:message name="deleteMicrocellResponse"></wsdl:message>
+  <wsdl:message name="modifyMicrocellRequest">
+    <wsdl:part element="impl:modifyMicrocellIn" name="modifyMicrocellIn"/>
+  </wsdl:message>
+  <wsdl:portType name="MicrocellDomainManager">
+    <wsdl:operation name="addMicrocell" parameterOrder="addMicrocellIn">
+      <wsdl:input message="impl:addMicrocellRequest" name="addMicrocellRequest"/>
+      <wsdl:output message="impl:addMicrocellResponse" name="addMicrocellResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveMicrocell" parameterOrder="retrieveMicrocellIn">
+      <wsdl:input message="impl:retrieveMicrocellRequest" name="retrieveMicrocellRequest"/>
+      <wsdl:output message="impl:retrieveMicrocellResponse" name="retrieveMicrocellResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modifyMicrocell" parameterOrder="modifyMicrocellIn">
+      <wsdl:input message="impl:modifyMicrocellRequest" name="modifyMicrocellRequest"/>
+      <wsdl:output message="impl:modifyMicrocellResponse" name="modifyMicrocellResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMicrocell" parameterOrder="deleteMicrocellIn">
+      <wsdl:input message="impl:deleteMicrocellRequest" name="deleteMicrocellRequest"/>
+      <wsdl:output message="impl:deleteMicrocellResponse" name="deleteMicrocellResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MicrocellDomainManagerSoapBinding" type="impl:MicrocellDomainManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addMicrocell">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addMicrocellRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addMicrocellResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveMicrocell">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="retrieveMicrocellRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveMicrocellResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyMicrocell">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="modifyMicrocellRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyMicrocellResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteMicrocell">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="deleteMicrocellRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteMicrocellResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MicrocellDomainManagerService">
+    <wsdl:port binding="impl:MicrocellDomainManagerSoapBinding" name="MicrocellDomainManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/MicrocellDomainManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/MicrocellDomainManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="addMicrocell" bindingOperationName="addMicrocell" type="Request-Response" outputName="addMicrocellResponse" inputName="addMicrocellRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/MicrocellDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:add="http://addmicrocell.microcelldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:addMicrocellIn>
+         <add:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </add:CONTRACT_ID_COMPLEX>
+         <add:IMC_SCALEFACTOR>?</add:IMC_SCALEFACTOR>
+         <add:IMC_TYPE>?</add:IMC_TYPE>
+         <add:microCellMemberList>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <add:IMC_DESTINATION>?</add:IMC_DESTINATION>
+            </man:item>
+         </add:microCellMemberList>
+      </man:addMicrocellIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/MicrocellDomainManager/addMicrocellRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="deleteMicrocell" bindingOperationName="deleteMicrocell" type="Request-Response" outputName="deleteMicrocellResponse" inputName="deleteMicrocellRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/MicrocellDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:del="http://deletemicrocell.microcelldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:deleteMicrocellIn>
+         <del:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </del:CONTRACT_ID_COMPLEX>
+         <del:IMC_TYPE>?</del:IMC_TYPE>
+      </man:deleteMicrocellIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/MicrocellDomainManager/deleteMicrocellRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="modifyMicrocell" bindingOperationName="modifyMicrocell" type="Request-Response" outputName="modifyMicrocellResponse" inputName="modifyMicrocellRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/MicrocellDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:mod="http://modifymicrocell.microcelldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:modifyMicrocellIn>
+         <mod:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </mod:CONTRACT_ID_COMPLEX>
+         <mod:IMC_TYPE>?</mod:IMC_TYPE>
+         <mod:action>?</mod:action>
+         <mod:listOfDestination>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <mod:IMC_DESTINATION_NEW>?</mod:IMC_DESTINATION_NEW>
+               <mod:IMC_DESTINATION_OLD>?</mod:IMC_DESTINATION_OLD>
+            </man:item>
+         </mod:listOfDestination>
+      </man:modifyMicrocellIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/MicrocellDomainManager/modifyMicrocellRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="retrieveMicrocell" bindingOperationName="retrieveMicrocell" type="Request-Response" outputName="retrieveMicrocellResponse" inputName="retrieveMicrocellRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/MicrocellDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:ret="http://retrievemicrocell.microcelldomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:retrieveMicrocellIn>
+         <ret:CONTRACT_ID_COMPLEX>
+            <com:CO_ID_PUB>CONTR0000000063</com:CO_ID_PUB>
+           
+         </ret:CONTRACT_ID_COMPLEX>
+      </man:retrieveMicrocellIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/MicrocellDomainManager/retrieveMicrocellRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

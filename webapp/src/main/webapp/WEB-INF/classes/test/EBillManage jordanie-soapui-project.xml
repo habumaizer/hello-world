@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="EBillManage jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="EBillManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}EBillManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/EBillManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/EBillManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/EBillManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://addebill.ebill.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://commons.beans.ws.orange.com" xmlns:tns4="http://removeebill.ebill.beans.ws.orange.com" xmlns:tns5="http://hasebill.ebill.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://hasebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://addebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://removeebill.ebill.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://hasebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://addebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://removeebill.ebill.beans.ws.orange.com"/>
+      <complexType name="CustomerIdType">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CS_ID" nillable="true" type="xsd:long"/>
+              <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://addebill.ebill.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://hasebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://removeebill.ebill.beans.ws.orange.com"/>
+      <complexType name="AddEBillIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://hasebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://addebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://removeebill.ebill.beans.ws.orange.com"/>
+      <element name="addEBillIn" type="tns1:AddEBillIn"/>
+      <element name="removeEBillIn" type="tns4:RemoveEBillIn"/>
+      <element name="hasEBillIn" type="tns5:HasEBillIn"/>
+      <element name="hasEBillReturn" type="tns5:HasEBillOut"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://removeebill.ebill.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://hasebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://addebill.ebill.beans.ws.orange.com"/>
+      <complexType name="RemoveEBillIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://hasebill.ebill.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://addebill.ebill.beans.ws.orange.com"/>
+      <import namespace="http://removeebill.ebill.beans.ws.orange.com"/>
+      <complexType name="HasEBillIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="HasEBillOut">
+        <sequence>
+          <element name="HAS_EBILL" nillable="true" type="xsd:boolean"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="hasEBillRequest">
+    <wsdl:part element="impl:hasEBillIn" name="hasEBillIn"/>
+  </wsdl:message>
+  <wsdl:message name="removeEBillRequest">
+    <wsdl:part element="impl:removeEBillIn" name="removeEBillIn"/>
+  </wsdl:message>
+  <wsdl:message name="hasEBillResponse">
+    <wsdl:part element="impl:hasEBillReturn" name="hasEBillReturn"/>
+  </wsdl:message>
+  <wsdl:message name="addEBillRequest">
+    <wsdl:part element="impl:addEBillIn" name="addEBillIn"/>
+  </wsdl:message>
+  <wsdl:message name="removeEBillResponse"></wsdl:message>
+  <wsdl:message name="addEBillResponse"></wsdl:message>
+  <wsdl:portType name="EBillManager">
+    <wsdl:operation name="addEBill" parameterOrder="addEBillIn">
+      <wsdl:input message="impl:addEBillRequest" name="addEBillRequest"/>
+      <wsdl:output message="impl:addEBillResponse" name="addEBillResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="removeEBill" parameterOrder="removeEBillIn">
+      <wsdl:input message="impl:removeEBillRequest" name="removeEBillRequest"/>
+      <wsdl:output message="impl:removeEBillResponse" name="removeEBillResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="hasEBill" parameterOrder="hasEBillIn">
+      <wsdl:input message="impl:hasEBillRequest" name="hasEBillRequest"/>
+      <wsdl:output message="impl:hasEBillResponse" name="hasEBillResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EBillManagerSoapBinding" type="impl:EBillManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addEBill">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addEBillRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addEBillResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeEBill">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="removeEBillRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeEBillResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="hasEBill">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="hasEBillRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="hasEBillResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EBillManagerService">
+    <wsdl:port binding="impl:EBillManagerSoapBinding" name="EBillManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/EBillManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/EBillManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="addEBill" bindingOperationName="addEBill" type="Request-Response" outputName="addEBillResponse" inputName="addEBillRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/EBillManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:add="http://addebill.ebill.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:addEBillIn>
+         <add:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </add:CUSTOMER_ID_COMPLEX>
+      </man:addEBillIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/EBillManager/addEBillRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="hasEBill" bindingOperationName="hasEBill" type="Request-Response" outputName="hasEBillResponse" inputName="hasEBillRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/EBillManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:has="http://hasebill.ebill.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+
+   <soapenv:Body>
+      <man:hasEBillIn>
+         <has:CUSTOMER_ID_COMPLEX>
+            <com:CUSTCODE>1.329</com:CUSTCODE>
+         </has:CUSTOMER_ID_COMPLEX>
+      </man:hasEBillIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/EBillManager/hasEBillRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="removeEBill" bindingOperationName="removeEBill" type="Request-Response" outputName="removeEBillResponse" inputName="removeEBillRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/EBillManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:rem="http://removeebill.ebill.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:removeEBillIn>
+         <rem:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </rem:CUSTOMER_ID_COMPLEX>
+      </man:removeEBillIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/EBillManager/removeEBillRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

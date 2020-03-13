@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="NumberPortabilityDomain jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="NumberPortabilityDomainSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}NumberPortabilityDomainSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/NumberPortabilityDomain?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/NumberPortabilityDomain?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/NumberPortabilityDomain?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://exportnumber.numberportabilitydomain.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <import namespace="http://exportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://exportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <complexType name="ReimportNumberIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+              <element name="date" nillable="true" type="xsd:dateTime"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <import namespace="http://exportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <element name="reimportNumberIn" type="tns1:ReimportNumberIn"/>
+      <element name="exportNumberIn" type="tns3:ExportNumberIn"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://exportnumber.numberportabilitydomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <complexType name="ExportNumberIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="DEST_PLCODE" nillable="true" type="xsd:long"/>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+              <element name="date" nillable="true" type="xsd:dateTime"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="reimportNumberResponse"></wsdl:message>
+  <wsdl:message name="reimportNumberRequest">
+    <wsdl:part element="impl:reimportNumberIn" name="reimportNumberIn"/>
+  </wsdl:message>
+  <wsdl:message name="exportNumberResponse"></wsdl:message>
+  <wsdl:message name="exportNumberRequest">
+    <wsdl:part element="impl:exportNumberIn" name="exportNumberIn"/>
+  </wsdl:message>
+  <wsdl:portType name="NumberPortabilityDomain">
+    <wsdl:operation name="reimportNumber" parameterOrder="reimportNumberIn">
+      <wsdl:input message="impl:reimportNumberRequest" name="reimportNumberRequest"/>
+      <wsdl:output message="impl:reimportNumberResponse" name="reimportNumberResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="exportNumber" parameterOrder="exportNumberIn">
+      <wsdl:input message="impl:exportNumberRequest" name="exportNumberRequest"/>
+      <wsdl:output message="impl:exportNumberResponse" name="exportNumberResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NumberPortabilityDomainSoapBinding" type="impl:NumberPortabilityDomain">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="reimportNumber">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="reimportNumberRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="reimportNumberResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="exportNumber">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="exportNumberRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="exportNumberResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NumberPortabilityDomainService">
+    <wsdl:port binding="impl:NumberPortabilityDomainSoapBinding" name="NumberPortabilityDomain">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/NumberPortabilityDomain"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/NumberPortabilityDomain</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="exportNumber" bindingOperationName="exportNumber" type="Request-Response" outputName="exportNumberResponse" inputName="exportNumberRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/NumberPortabilityDomain</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com"
+xmlns:exp="http://exportnumber.numberportabilitydomain.beans.ws.orange.com"
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:exportNumberIn>
+       
+         <exp:MSISDN>122100174</exp:MSISDN>
+        <exp:DEST_PLCODE>3</exp:DEST_PLCODE>
+
+      </man:exportNumberIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/NumberPortabilityDomain/exportNumberRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 2"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/NumberPortabilityDomain</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:exp="http://exportnumber.numberportabilitydomain.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:exportNumberIn>
+         <exp:DEST_PLCODE>?</exp:DEST_PLCODE>
+         <exp:MSISDN>?</exp:MSISDN>
+         <exp:date>?</exp:date>
+      </man:exportNumberIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/NumberPortabilityDomain/exportNumberRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="reimportNumber" bindingOperationName="reimportNumber" type="Request-Response" outputName="reimportNumberResponse" inputName="reimportNumberRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/NumberPortabilityDomain</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:reim="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:reimportNumberIn>
+         <reim:MSISDN>?</reim:MSISDN>
+         <reim:date>?</reim:date>
+      </man:reimportNumberIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/NumberPortabilityDomain/reimportNumberRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

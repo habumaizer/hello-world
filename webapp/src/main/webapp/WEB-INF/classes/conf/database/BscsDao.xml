@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="BscsDao">
+
+
+
+	<resultMap id="transfertService" class="com.gfi.ws.dao.bscs.TransferService">
+		<result property="sncode" column="sncode"/>
+		<result property="des" column="des"/>
+		<result property="spcode" column="spcode"/>
+	</resultMap>
+
+
+	<select id="getActiveServicesForContract" parameterClass="long" resultMap="transfertService">
+		select a.sncode as sncode,
+			   d.des as des,
+			   s.spcode as spcode
+		from pr_serv_status_hist a ,mpusntab d, pr_serv_spcode_hist s											
+		where   a.sncode =d.sncode 											
+		and s.sncode=a.sncode											
+		and s.co_id=a.co_id 											
+		and a.co_id =#value#										
+		and s.histno =(select max(histno)from pr_serv_spcode_hist g where s.co_id=g.co_id and s.sncode=g.sncode )											
+		and a.histno =(select max(histno)from pr_serv_status_hist b where a.co_id=b.co_id and a.sncode=b.sncode) 											
+		and status ='A'											
+	</select>
+
+	<select id="getServicesToDeactivate" parameterClass="map" resultClass="com.gfi.ws.dao.bscs.TransferService">
+		select a.sncode as snCode,
+			   d.des	as des
+		from pr_serv_status_hist a ,mpusntab d										
+		where a.sncode=d.sncode and co_id=#coId# and histno=(select max(histno)from pr_serv_status_hist b where a.co_id=b.co_id and a.sncode=b.sncode) 										
+		and status ='A'										
+		minus 										
+		select m.sncode ,d.des from mpusntab d,mpulktmb m where m.sncode=d.sncode and m.tmcode=#newRpCode#										
+		and m.vscode=(select max(vscode) from mpulktmb r where m.tmcode=r.tmcode and tmcode=#newRpCode#) 										
+	</select>
+
+	<select id="getServicesToChangeServicePackage" parameterClass="map" resultClass="com.gfi.ws.dao.bscs.TransferService">
+		select m.sncode as snCode ,spcode  as newSpCode  from mpusntab d,mpulktmb m where m.sncode=d.sncode and m.tmcode=#newRpCode#
+        and m.vscode=(select max(vscode) from mpulktmb r where m.tmcode=r.tmcode and tmcode=#newRpCode#)
+		and d.sncode in
+		((
+		select sncode from
+		(
+		select a.sncode as snCode,
+               d.des        as des
+        from pr_serv_status_hist a ,mpusntab d
+        where a.sncode=d.sncode and co_id=#coId#  and histno=(select max(histno)from pr_serv_status_hist b where a.co_id=b.co_id and a.sncode=b.sncode)
+        and status ='A'
+        intersect
+        select m.sncode ,d.des from mpusntab d,mpulktmb m where m.sncode=d.sncode and m.tmcode=#newRpCode#
+        and m.vscode=(select max(vscode) from mpulktmb r where m.tmcode=r.tmcode and tmcode=#newRpCode#)))
+		minus
+		select sncode from
+		(
+        select m.sncode ,m.spcode from mpusntab d,mpulktmb m where m.sncode=d.sncode and m.tmcode=#newRpCode#
+        and m.vscode=(select max(vscode) from mpulktmb r where m.tmcode=r.tmcode and tmcode=#newRpCode#)
+        intersect
+        select m.sncode ,m.spcode from mpusntab d,mpulktmb m where m.sncode=d.sncode and m.tmcode=(select tmcode from contract_all where co_id=#coId#)
+        and m.vscode=(select max(vscode) from mpulktmb r where m.tmcode=r.tmcode and tmcode=(select tmcode from contract_all where co_id=#coId#))))
+	</select>
+
+</sqlMap>

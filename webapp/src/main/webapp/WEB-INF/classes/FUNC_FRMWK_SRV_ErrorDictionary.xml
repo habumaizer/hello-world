@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bundle PUBLIC "bundle.dtd" "bundle.dtd">
+<!--
+  - 
+-->
+
+<bundle version="1.0">
+    <header author="Dmitri Geller"
+            creationdate="11-06-2003"/>
+    <body>
+		
+<!-- Old error codes (taken from CCC and CMS)-->
+        <setting key="id0014" value="Error invoking method {0}.{1} Details: {2}" state="new" />
+        
+        <setting key="id0015" value="NoSuchMethodException when calling {1}.{0}" state="new" />
+        
+        <setting key="id0016" value="IllegalAccessException when calling {1}.{0}" state="new" />
+        
+		<setting key="id0020" value="Explicit creation of the objects of this class: {0} isn't allowed. Reason: {1}" state="new" />
+
+		<setting key="id0023" value="{0} isn't a singleton" state="new" />
+        
+        <setting key="id0027" value="Can not find class {0}. Details: {1}" state="new" />
+
+		<setting key="id0030" value="Object of class {0} isn not a clone for update" state="new" />
+		
+		<!-- defect 268383_func NIJ -->
+		<setting key="id0036" value="Failed to refresh object of class {0}." state="new" />
+		<!-- 268383 -->
+
+		<setting key="id0041" value="Persistent object is not found in cache/database. Object ID = {0}" state="new" />
+    
+		<!-- {0} should be a class and {1} should be an attribute -->
+		<setting key="id0050" value="NLS translation error. Translation of {0}.{1} in language {2} is not availiable" state="new" />
+
+		<setting key="id0051" value="Method {0} is not implemented in class {1}" state="new" />
+			
+		<setting key="id0055" value="{0} is not a valid instance of class: {1}" state="new" />
+
+		<setting key="id0059" value="Can't get primary key values for object of type: {0}" state="new"/>
+
+		<setting key="id0060" value="Can't obtain ObjectID for object of class: {0}. Details: {1}" state="new"/>
+		
+<!-- New error codes (Rating&Billing package only)-->    
+
+<!-- Server initialization -->    
+		<!-- SystemException -->
+		<setting key="id0201" value="Precondition failed: {0} isn't set" state="new" />
+		<setting key="id0202" value="File {0} not found in {1}" state="new" />
+		<setting key="id0203" value="Error reading file {0}. Details: {1}" state="new" />
+		<setting key="id0204" value="Can't create a new instance of class {0}. Details: {1}" state="new" />
+		<setting key="id0205" value="Can't obtain RootPOA. Details: {0}" state="new" />
+		<setting key="id0206" value="Mandatory command line parameter missing: {0}" state="new" />
+		<setting key="id0207" value="Can't register server in the naming service. Server named {0} already exists in context {1}" state="new" />
+		<setting key="id0208" value="The command {0} of version {1} is registered more than once in the SOI {2} of version {3}" state="new" />
+		<setting key="id0209" value="No command line arguments available." state="new" />
+		<setting key="id0210" value="Can't create trace. Details: {0}" state="new" />
+		<setting key="id0211" value="Could not create thread for ServerController." state="new" />
+		<setting key="id0212" value="Could not access file directory for ServerController. Details: {0}" state="new" />
+		<setting key="id0213" value="Missing class mapping for class identifier {0}." state="new" />
+		<setting key="id0214" value="Composite command {0} version {1} reference non-existing command {3} in SOI {4}" state="new" />
+		<setting key="id0215" value="Composite command {0} version {1} reference another composite command {2} in SOI {3}" state="new" />
+		<setting key="id0216" value="Duplicated command reference {0} in the composite command {1} version {2}" state="new" />
+		
+<!-- Different run-time errors -->    
+		<setting key="id0300" value="Can't read a property {0} from the property file {1}" state="new" />
+		<setting key="id0301" value="Can't read a value from registry. Path: {0}" state="new" />
+		<setting key="id0302" value="Can't instantiate service layer adapter: {0}. Details: {1}" state="new" />
+		<setting key="id0303" value="Error whan calling 'registerBOs' method of class {0}. Details: {1}" state="new" />
+		<setting key="id0306" value="Format error when reading properties from file {0}. Details: {1}" state="new" />
+		
+		<setting key="id0310" value="Error in SOI implementation. Details: {0}" state="new" />
+		<setting key="id0311" value="Current transaction context could not be found!" state="new" />
+		<setting key="id0312" value="Current service context could not be found!" state="new" />
+		<setting key="id0313" value="Current user could not be found!" state="new" />
+		<setting key="id0314" value="Specied component ID: {0} and component version: {1} isn't implemeted by server" state="new" />
+		
+		<!-- SystemException -->
+		<setting key="id0315" value="The ServiceObjectI implementing SOI: {0} in version {1} is disposed and can't be used more." state="new" />
+		<!-- SystemException -->
+		<setting key="id0316" value="The ServiceFactoryI for the user {0} is disposed and can't be used more." state="new" />
+		<!-- SystemException -->
+		<setting key="id0317" value="The TransactionContext is disposed and can't be used more." state="new" />
+
+		<setting key="id0318" value="Error using internal ServiceContext" state="new" />
+		
+		
+	<!-- Database/JDBC/TOPLink 400-469-->
+		<setting key="id0400" value="Database is not availiable. Server can't continue and will be terminated. Vendor code: {0} SQLState: {1} Details {2}" state="new" />
+		<setting key="id0401" value="Database error (JDBC) when {0}. Vendor code: {1} SQLState: {2} Details {3}" state="new" />
+		<!-- TOPLink DatabaseException -->
+		<setting key="id0402" value="Database operation {0} falied. TOPLink code: {1} TOPLink message: {2} Query: {3}" state="new" />
+        <!-- TOPLink OptimisticLockException -->
+		<setting key="id0403" 
+            value="Data cannot be updated because it has changed or been deleted by another user since it was last read. See server log file for more details."
+            state="new" 
+        />
+		<!--TOPLink ValidationException -->
+		<setting key="id0404" value="TopLink ValidationException during: {0}. UnitOfWork: {1} TOPLink message: {2}" state="new" />
+		<!--This is thrown in a case when TopLink runtime exception has no special handling in framework -->
+		<setting key="id0405" value="TopLink RuntimeException during: {0} TOPLink message: {1}" state="new" />
+		<!-- SystemException-->
+        <setting key="id0406" value="Error reading object of class {0}. ObjectID contains {1} field(s) but descriptor defines {2} field(s) " state="new" />
+        <setting key="id0407" value="Inconsistent configuration in file {0}. Attribute(s): {1}" state="new"/>
+
+    <!-- RefreshManager 447-449 product label check-->
+		<setting key="id0447" value="Component with product label {0} can't be used with the database having product label {1} " state="new" />
+		<setting key="id0448" value="Can not read product label from the database." state="new" />
+		<setting key="id0449" value="Can not read product label from the registry ({0})." state="new" />
+
+    <!-- RefreshManager 450-459 -->
+		<setting key="id0450" value="Error reading refresh configuration of the node: {0} Key: {1} Details: {2}" state="new" />
+		<setting key="id0451" value="Error reading refresh configuration of the node: {0} Key: {1} Can not access the method: {2} Details: {3}" state="new" />
+		<setting key="id0452" value="Invalid refresh configuration for node: {0}. CLASS is missing" state="new" />
+		<setting key="id0453" value="Invalid refresh configuration for node: {0}. METHOD and SQL_SELECT could not be used together" state="new" />
+    
+	<!--Database/KeyMapper 460-469 -->
+		<setting key="id0461" value="KeyMapper: unknown public/private code of the argument {0}" state="new" />
+		<setting key="id0462" value="KeyMapper: can't find the argument {0} in the group {1}" state="new" />
+		
+		<setting key="id0464" value="KeyMapper: Error accessing attribute {0} of the object {1}. Details: {2}" state="new" />
+		<setting key="id0465" value="KeyMapper: No AttributeDescription for attribute {0} of class {1}" state="new" />
+		<setting key="id0466" value="KeyMapper: doesn support classes with composed primary key: {0}" state="new" />
+		<setting key="id0467" value="KeyMapper: there is no public attribute defined in this class: {0}" state="new" />
+		<!--begin defect 00306738 TIN-->
+		<setting key="id0468" value="Invalid public key {0}, unable to retrieve corresponding private key. Probably the public key is invalid." state="new" />
+		<!--end 00306738-->
+
+		
+	<!--Database/FWPrimaryKeyFactory 470-479 -->
+		<setting key="id0470" value="Error when calling stored procedure NEXTFREE.GetStringValues. Details: {0}" state="new" />
+		<setting key="id0471" value="Error when calling stored procedure NEXTFREE.GetNumValues. Details: {0}" state="new" />
+		<setting key="id0472" value="Can't find NEXTFREE-related registry entry: {0}" state="new" />
+		<setting key="id0473" value="Error when calling stored procedure CustomerSet.DetCustomerSet. Details: {0}" state="new" />
+		<setting key="id0474" value="CustomerSet determination - customerSetId is less than 0" state="new" />
+		
+	<!--Database/AbstractSearcher 480-499 -->
+		<!-- RC2024 CommonDomain.Search.MissingCriteria  -->
+		<setting key="id0480" value="AbstractSearcher: criteria is missing (the number of criteria isn't equal the number of values)" state="new" />
+		<!-- RC2025 CommonDomain.Search.NoResult -->
+		<setting key="id0481" value="AbstractSearcher: Criteria required but no criteria provided" state="new" />
+		<!-- RC2025-001 CommonDomain.Search.WildCardQueryHasNotEnoughCharacters -->
+		<setting key="id0482" value="AbstractSearcher: There should be at least {0} character(s) before wildcard" state="new" />
+		<!-- RC2025-003 CommonDomain.Search.UnknownCriterion -->
+		<setting key="id0483" value="AbstractSearcher: This criteria combination isn't allowed: {0}" state="new" />
+		<!-- RC2027 CommonDomain.Search.MissingMandatoryCriteria -->
+		<setting key="id0484" value="AbstractSearcher: wildcards are not allowed for this criteria: {0}" state="new" />
+		<!-- RC2028 CommonDomain.Search.IllegalParameterValue -->
+		<setting key="id0485" value="AbstractSearcher: Not all mandatory criteria are provided. Mandatory criteria combinations: {0}" state="new" />
+		<!-- RC2029 CommonDomain.Search.IllegalParameterValues -->
+		<setting key="id0486" value="AbstractSearcher: there is no conversion for the value: {1} Criteria: {0}" state="new" />
+		<setting key="id0487" value="AbstractSearcher: there is no select clause for the attribute: {0}" state="new" />
+		<setting key="id0488" value="AbstractSearcher: The registry node {0} isn't found, can't initialize abstract searcher" state="new" />
+		<!-- pn 00311674 TuN: add the new exception id0489  -->
+		<setting key="id0489" value="AbstractSearcher: Maximum result set size as defined in the registry exceeded. The maximum result set size is {0}, the requested size was {1}." state="new"/>
+		
+<!-- Exceptions in server side of CORBA transport layer -->
+		<!-- ServiceObjectI implementation -->
+		<setting key="id0501" value="Unknown exception in DSA method {0} for SOI {1} vers. {2}: Details {3}" state="new" />
+		<setting key="id0502" value="Invalid transaction because validation is complete. Command rejected." state="new"/>
+		<setting key="id0503" value="Validation is already complete." state="new"/>
+		<setting key="id0504" value="Forbidden transition from transaction {0} to transaction {1}." state="new"/>
+		<!-- ImplementationRegistry -->
+		<setting key="id0601" value="No DSA found for command {0} of SOI {1} vers. {2}: Details {3}" state="new" />
+		<!-- SOIReader/CDFReader-->
+		<setting key="id0701" value="Parser error in file {0}. Details: {1}" state="new" />
+		<setting key="id0702" value="Parser initialization error. Details: {1}" state="new" />
+		<!-- ServiceFactoryI implementation -->
+		<setting key="id0801" value="Unknown exception in method {0} of ServiceFactoryI for user {1}." state="new" />
+		<setting key="id0802" value="Server shutdown. Operation not allowed." state="new" />
+		<!-- ServiceRootI implementation -->
+		<setting key="id0901" value="Could not contact Security Service. Details {0}" state="new" />
+	
+    </body>
+</bundle>

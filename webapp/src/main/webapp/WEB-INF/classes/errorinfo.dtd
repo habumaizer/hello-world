@@ -1,0 +1,16 @@
+<!-- ###########################  ERROR ########################### -->
+<!-- ERROR elements do not contain a clear text encoding (localized error message)
+     of the error that occured. A localized error message can be built based on 
+     the information stored here.
+-->
+<!ELEMENT ERROR (ARG*)>
+<!ATTLIST ERROR
+	code CDATA #REQUIRED
+	message CDATA #IMPLIED
+	debugInfo CDATA #IMPLIED
+>
+
+<!ELEMENT ARG EMPTY>
+<!ATTLIST ARG
+	val CDATA #REQUIRED
+>

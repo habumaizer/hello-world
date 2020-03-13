@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bundle PUBLIC "bundle.dtd" "bundle.dtd">
+
+<bundle version="1.0">
+    <header author="Dieter Schneiders"
+            creationdate="01-JUN-2003"
+            changedate="21-MAY-2004"/>
+    <body>        
+    
+		<setting key="SAXParserError" value="SAX Parser Error: {0}: {1}" state="approved" />
+		<setting key="NotInitialized" value="{0} not initialized." state="approved" />
+		<setting key="BadFormat" value="The registry entry {0} contains wrong value {1} for the type {2}" state="new" />
+		
+<!-- exceptions in CORBAAdapter.java -->
+		<!-- FUNC_FRMWK_CMN.id001 -->
+		<setting key="id001" value="Precondition failed: {0} isn't set in {1}" state="new" />
+		<!-- FUNC_FRMWK_CMN.id100 -->
+		<setting key="id100" value="The naming service could not be found. Check your environment, especially settings in /resource/orb.properties  Detailed error message: {0}. " state="new" />
+		<!--FUNC_FRMWK_CMN.id103 -->
+		<setting key="id103" value="When searching name {0} in the naming service corba exception happens: {1}" state="new" />
+		<!--FUNC_FRMWK_CMN.id0104 -->
+		<setting key="id104" value="CORBA error when finding the naming context. Details: {0}" state="new" />
+		<!--FUNC_FRMWK_CMN.id106 -->
+		<setting key="id106" value="CORBA error when creating the naming context. Details: {0}" state="new" />
+		<!-- FUNC_FRMWK_CMN.id107 -->
+		<setting key="id0107" value="Can not obtain RootPOA. Details: {0}" state="new" />
+		<!--FUNC_FRMWK_CMN.id0108 -->
+		<setting key="id0108" value="Can not register a CORBA object named {0} in the naming service under name: {1}. Details: {2}" state="new" />
+		<!--FUNC_FRMWK_CMN.id0112 -->
+		<setting key="id0112" value="CORBA error when activating a servant. Details: {0}" state="new" />
+		<!--FUNC_FRMWK_CMN.id0113 -->
+		<setting key="id0113" value="CORBA error when deactivating a servant. Details: {0}" state="new" />
+		<!--FUNC_FRMWK_SRV.id0207 -->
+		<setting key="id0207" value="Can't register server in the naming service. Server named {0} already exists in context {1}" state="new" />
+		<!--FUNC_FRMWK_SRV.id0202 -->
+		<setting key="id0202" value="File {0} not found in {1}" state="new" />
+		<!--FUNC_FRMWK_SRV.id0203 -->
+		<setting key="id0203" value="Error reading file {0}. Details: {1}" state="new" />
+		
+<!-- Logging-related exeptions: 0500-0569 -->
+		<setting key="id0500" value="Can't create log directory {0}" state="new" />
+		<setting key="id0501" value="Can't write log files because {0} is not a valid directory" state="new" />
+
+<!-- Java reflection exceptions: 0570-0589 -->
+<!-- PN 00308727 : old : pClass in null-->
+		<setting key="id0570" value="pClass is null" state="new" />
+		<setting key="id0571" value="Can't create a new instance of class {0}. Details: {1}" state="new" />
+						
+				
+<!-- Command-line exceptions: 0590-0599 -->
+		<setting key="id0590" value="Mandatory command line parameter missing: {0}" state="new" />
+						
+<!-- CORBA-related exeptions: 0600-0699 -->
+		<setting key="id0600" value="Can not access a CORBA object in the naming service under name: {0}. Details: {1}" state="new" />
+		<setting key="id0601" value="CORBA error when creating the naming context. Details: {0}" state="new" />
+		<setting key="id0602" value="Can not register a CORBA object named {0} in the naming service under name: {1}. Details: {2}" state="new" />
+		<setting key="id0603" value="Can not unregister a CORBA object from the naming service under name: {0}. Details: {1}" state="new" />
+		<setting key="id0604" value="Can not find naming service using 'resolve_initial_references'" state="new" />
+		<setting key="id0605" value="Can not resolve_initial_references() for name {0}. Details: {1}" state="new" />
+		<setting key="id0606" value="CORBA system exception {0} when {1}" state="new" />
+		<setting key="id0607" value="OrbManager not initialized." state="new" />
+		<setting key="id0608" value="Could not start thread for ORB listener." state="new" />
+
+
+    </body>
+</bundle>
+

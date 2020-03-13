@@ -1,0 +1,406 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ResourcesManagerService WSDL service -->
+
+  <service name="ResourcesManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="ResourcesManagerService"/>
+      <parameter name="schemaQualified" value="http://createsim.resources.beans.ws.gfi.com,http://recyclemsisdn.resources.beans.ws.gfi.com,http://portinnumber.resources.beans.ws.gfi.com,http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com,http://distributemsisdn.resources.beans.ws.gfi.com,http://manager.ws.gfi.com,http://resourcestate.resources.beans.ws.gfi.com,http://blockServiceResource.resources.beans.ws.gfi.com,http://createmsisdn.resources.beans.ws.gfi.com,http://distributesim.resources.beans.ws.gfi.com,http://beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="ResourcesManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.ResourcesManager"/>
+      <parameter name="wsdlPortType" value="ResourcesManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="createSIM" qname="createSIM" returnQName="retNS:createSIMReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:CreateSIMOut" xmlns:rtns="http://createsim.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:createSIMIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:CreateSIMIn" xmlns:tns="http://createsim.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="createMSISDN" qname="createMSISDN" returnQName="retNS:createMSISDNReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:CreateMSISDNOut" xmlns:rtns="http://createmsisdn.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:createMSISDN" xmlns:pns="http://manager.ws.gfi.com" type="tns:CreateMSISDNIn" xmlns:tns="http://createmsisdn.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="distributeMSISDN" qname="distributeMSISDN" returnQName="retNS:distributeMSISDNReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:DistributeMSISDNOut" xmlns:rtns="http://distributemsisdn.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:distributeMSISDNIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:DistributeMSISDNIn" xmlns:tns="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="distributeSIM" qname="distributeSIM" returnQName="retNS:distributeSIMReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:DistributeSIMOut" xmlns:rtns="http://distributesim.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:distributeSIMIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:DistributeSIMIn" xmlns:tns="http://distributesim.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="recycleMSISDN" qname="recycleMSISDN" returnQName="retNS:recycleMSISDNReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:RecycleMSISDNOut" xmlns:rtns="http://recyclemsisdn.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:recycleMSISDNIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:RecycleMSISDNIn" xmlns:tns="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="portInNumber" qname="portInNumber" soapAction="" >
+        <parameter qname="pns:portInNumberIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:PortInNumberIn" xmlns:tns="http://portinnumber.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="resourceState" qname="resourceState" soapAction="" >
+        <parameter qname="pns:resourceStateIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ResourceStateIn" xmlns:tns="http://resourcestate.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="genericDirectoryNumberSearch" qname="genericDirectoryNumberSearch" returnQName="retNS:genericDirectoryNumberSearchReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GenericDirectoryNumberSearchOut" xmlns:rtns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:genericDirectoryNumberSearchIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:GenericDirectoryNumberSearchIn" xmlns:tns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="blockServiceResource" qname="blockServiceResource" returnQName="retNS:blockServiceResourceReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:BlockServiceResourceOut" xmlns:rtns="http://blockServiceResource.resources.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:blockServiceResourceIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:BlockServiceResourceIn" xmlns:tns="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="createSIM distributeMSISDN recycleMSISDN portInNumber distributeSIM resourceState genericDirectoryNumberSearch blockServiceResource createMSISDN"/>
+
+      <typeMapping
+        xmlns:ns="http://distributesim.resources.beans.ws.gfi.com"
+        qname="ns:SimIn"
+        type="java:com.gfi.ws.beans.resources.distributesim.SimIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createsim.resources.beans.ws.gfi.com"
+        qname="ns:PortIn"
+        type="java:com.gfi.ws.beans.resources.createsim.PortIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns5_SimIn"
+        type="java:com.gfi.ws.beans.resources.distributesim.SimIn[]"
+        innerType="cmp-ns:SimIn" xmlns:cmp-ns="http://distributesim.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_MsisdnOut"
+        type="java:com.gfi.ws.beans.resources.createmsisdn.MsisdnOut[]"
+        innerType="cmp-ns:MsisdnOut" xmlns:cmp-ns="http://createmsisdn.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:DnTypes"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.DnTypes"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createsim.resources.beans.ws.gfi.com"
+        qname="ns:CreateSIMIn"
+        type="java:com.gfi.ws.beans.resources.createsim.CreateSIMIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributesim.resources.beans.ws.gfi.com"
+        qname="ns:DistributeSIMOut"
+        type="java:com.gfi.ws.beans.resources.distributesim.DistributeSIMOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns9_DnTypes"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.DnTypes[]"
+        innerType="cmp-ns:DnTypes" xmlns:cmp-ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_PortOut"
+        type="java:com.gfi.ws.beans.resources.createsim.PortOut[]"
+        innerType="cmp-ns:PortOut" xmlns:cmp-ns="http://createsim.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://portinnumber.resources.beans.ws.gfi.com"
+        qname="ns:PortInNumberIn"
+        type="java:com.gfi.ws.beans.resources.portinnumber.PortInNumberIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:ParameterValuesIn"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.ParameterValuesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:GenericDirectoryNumberSearchOut"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.GenericDirectoryNumberSearchOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:GenericDirectoryNumberSearchIn"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.GenericDirectoryNumberSearchIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://resourcestate.resources.beans.ws.gfi.com"
+        qname="ns:ResourceStateIn"
+        type="java:com.gfi.ws.beans.resources.resourcestate.ResourceStateIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createsim.resources.beans.ws.gfi.com"
+        qname="ns:CreateSIMOut"
+        type="java:com.gfi.ws.beans.resources.createsim.CreateSIMOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns9_StatusIn"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.StatusIn[]"
+        innerType="cmp-ns:StatusIn" xmlns:cmp-ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns9_ParameterValuesIn"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.ParameterValuesIn[]"
+        innerType="cmp-ns:ParameterValuesIn" xmlns:cmp-ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributesim.resources.beans.ws.gfi.com"
+        qname="ns:DistributeSIMIn"
+        type="java:com.gfi.ws.beans.resources.distributesim.DistributeSIMIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://blockServiceResource.resources.beans.ws.gfi.com"
+        qname="ns:BlockServiceResourceIn"
+        type="java:com.gfi.ws.beans.resources.blockServiceResource.BlockServiceResourceIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createmsisdn.resources.beans.ws.gfi.com"
+        qname="ns:CreateMSISDNIn"
+        type="java:com.gfi.ws.beans.resources.createmsisdn.CreateMSISDNIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createsim.resources.beans.ws.gfi.com"
+        qname="ns:PortOut"
+        type="java:com.gfi.ws.beans.resources.createsim.PortOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_MsisdnIn"
+        type="java:com.gfi.ws.beans.resources.createmsisdn.MsisdnIn[]"
+        innerType="cmp-ns:MsisdnIn" xmlns:cmp-ns="http://createmsisdn.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns6_MsisdnOut"
+        type="java:com.gfi.ws.beans.resources.recyclemsisdn.MsisdnOut[]"
+        innerType="cmp-ns:MsisdnOut" xmlns:cmp-ns="http://recyclemsisdn.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:BlockOut"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.BlockOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns9_BlockOut"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.BlockOut[]"
+        innerType="cmp-ns:BlockOut" xmlns:cmp-ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns5_SimOut"
+        type="java:com.gfi.ws.beans.resources.distributesim.SimOut[]"
+        innerType="cmp-ns:SimOut" xmlns:cmp-ns="http://distributesim.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:DistributeMSISDNOut"
+        type="java:com.gfi.ws.beans.resources.distributemsisdn.DistributeMSISDNOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:DirectoryNumberOut"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.DirectoryNumberOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://recyclemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:MsisdnOut"
+        type="java:com.gfi.ws.beans.resources.recyclemsisdn.MsisdnOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://recyclemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:RecycleMSISDNIn"
+        type="java:com.gfi.ws.beans.resources.recyclemsisdn.RecycleMSISDNIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://recyclemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:RecycleMSISDNOut"
+        type="java:com.gfi.ws.beans.resources.recyclemsisdn.RecycleMSISDNOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:MsisdnIn"
+        type="java:com.gfi.ws.beans.resources.distributemsisdn.MsisdnIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns4_MsisdnIn"
+        type="java:com.gfi.ws.beans.resources.distributemsisdn.MsisdnIn[]"
+        innerType="cmp-ns:MsisdnIn" xmlns:cmp-ns="http://distributemsisdn.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:MsisdnOut"
+        type="java:com.gfi.ws.beans.resources.distributemsisdn.MsisdnOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://blockServiceResource.resources.beans.ws.gfi.com"
+        qname="ns:BlockServiceResourceOut"
+        type="java:com.gfi.ws.beans.resources.blockServiceResource.BlockServiceResourceOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns4_MsisdnOut"
+        type="java:com.gfi.ws.beans.resources.distributemsisdn.MsisdnOut[]"
+        innerType="cmp-ns:MsisdnOut" xmlns:cmp-ns="http://distributemsisdn.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createmsisdn.resources.beans.ws.gfi.com"
+        qname="ns:MsisdnIn"
+        type="java:com.gfi.ws.beans.resources.createmsisdn.MsisdnIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createmsisdn.resources.beans.ws.gfi.com"
+        qname="ns:MsisdnOut"
+        type="java:com.gfi.ws.beans.resources.createmsisdn.MsisdnOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns9_DirectoryNumberOut"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.DirectoryNumberOut[]"
+        innerType="cmp-ns:DirectoryNumberOut" xmlns:cmp-ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_PortIn"
+        type="java:com.gfi.ws.beans.resources.createsim.PortIn[]"
+        innerType="cmp-ns:PortIn" xmlns:cmp-ns="http://createsim.resources.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributesim.resources.beans.ws.gfi.com"
+        qname="ns:SimOut"
+        type="java:com.gfi.ws.beans.resources.distributesim.SimOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"
+        qname="ns:StatusIn"
+        type="java:com.gfi.ws.beans.resources.genericDirectoryNumberSearch.StatusIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://distributemsisdn.resources.beans.ws.gfi.com"
+        qname="ns:DistributeMSISDNIn"
+        type="java:com.gfi.ws.beans.resources.distributemsisdn.DistributeMSISDNIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_xsd_string"
+        type="java:java.lang.String[]"
+        innerType="cmp-ns:string" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createmsisdn.resources.beans.ws.gfi.com"
+        qname="ns:CreateMSISDNOut"
+        type="java:com.gfi.ws.beans.resources.createmsisdn.CreateMSISDNOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

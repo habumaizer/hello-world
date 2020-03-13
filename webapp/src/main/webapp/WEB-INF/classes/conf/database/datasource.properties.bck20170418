@@ -1,0 +1,7 @@
+driver=oracle.jdbc.OracleDriver
+
+url=jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=yes)(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=jtgbscsdbprod1-vip)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=jtgbscsdbprod2-vip)(PORT=1521)))(CONNECT_DATA=(SERVER=dedicated)(SERVICE_NAME=BSCSPROD_TMFAPI)))
+
+username=TMF_API
+password=ttmfapi$new
+

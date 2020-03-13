@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+    
+    <description>
+    </description>
+    
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSourceFactory" factory-method="createDataSource" destroy-method="close">
+    	<constructor-arg ref="dataSourceConfiguration" />
+    </bean>
+    
+	<bean id="dataSourceTxManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<description>
+			The transaction manager.
+			It is linked to a datasource and manages the transactions.
+		</description>
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<!-- 
+		A Spring 2 customed declaration for a transaction interceptor.
+		This declaration is equivalent to a 
+		org.springframework.transaction.interceptor.TransactionInterceptor
+		bean declaration.
+		This interceptor defines the various transaction configuration according
+		to the transactional method name. All transactional methods rollback
+		when an exception is raised.	
+	-->
+	<tx:advice id="dataSourceTxInterceptor" transaction-manager="dataSourceTxManager">
+		<tx:attributes>
+			<tx:method name="getTransaction*" propagation="NEVER" />
+			<tx:method name="get*" read-only="true" rollback-for="java.lang.Throwable" />
+			<tx:method name="search*" read-only="true" rollback-for="java.lang.Throwable" />
+			<tx:method name="*" rollback-for="java.lang.Throwable" />
+		</tx:attributes>
+	</tx:advice>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<description>
+			The factory that creates a iBatis SqlMapClient bean.
+			The factory is configured with the iBatis main configuration file
+			and a datasource.
+		</description>
+		<property name="configLocation" value="classpath:conf/database/sqlmap-config.xml"/>
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<bean id="bscsSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<description>
+			Spring encapsulation of the iBatis SqlMapClient bean.
+			This implementation redefines SqlMapClient interface with runtime exceptions.
+		</description>
+		<constructor-arg ref="sqlMapClient" />
+	</bean>
+
+	
+		
+</beans>

@@ -1,0 +1,305 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CmsBasicManagerService WSDL service -->
+
+  <service name="CmsBasicManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="CmsBasicManagerService"/>
+      <parameter name="schemaQualified" value="http://taxexemptions.cmsbasic.beans.ws.orange.com,http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com,http://beans.ws.orange.com,http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com,http://commons.beans.ws.orange.com,http://contracttakeover.cmsbasic.beans.ws.orange.com,http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com,http://manager.ws.orange.com,http://contractPromotionsWrite.cmsbasic.beans.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="CmsBasicManager"/>
+      <parameter name="className" value="com.orange.ws.manager.CmsBasicManager"/>
+      <parameter name="wsdlPortType" value="CmsBasicManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="customerTaxExemptionsWrite" qname="customerTaxExemptionsWrite" returnQName="retNS:customerTaxExemptionsWriteReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:TaxExemptionOut" xmlns:rtns="http://taxexemptions.cmsbasic.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:customerTaxExemptionsWriteIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CustomerTaxExemptionsWriteIn" xmlns:tns="http://taxexemptions.cmsbasic.beans.ws.orange.com"/>
+      </operation>
+      <operation name="contractPromotionsWrite" qname="contractPromotionsWrite" returnQName="retNS:contractPromotionsWriteReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ContractPromotionsWriteOut" xmlns:rtns="http://contractPromotionsWrite.cmsbasic.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:contractPromotionsWriteIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ContractPromotionsWriteIn" xmlns:tns="http://contractPromotionsWrite.cmsbasic.beans.ws.orange.com"/>
+      </operation>
+      <operation name="bonusPointConversionExecute" qname="bonusPointConversionExecute" soapAction="" >
+        <parameter qname="pns:bonusConversionExecutein" xmlns:pns="http://manager.ws.orange.com" type="tns:BonusPointConversionExecuteIn" xmlns:tns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"/>
+      </operation>
+      <operation name="contractTakeOver" qname="contractTakeOver" returnQName="retNS:contractTakeOverReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ContractTakeOverOut" xmlns:rtns="http://contracttakeover.cmsbasic.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:contractTakeOverIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ContractTakeOverIn" xmlns:tns="http://contracttakeover.cmsbasic.beans.ws.orange.com"/>
+      </operation>
+      <operation name="contractServicesCUGParametersRead" qname="contractServicesCUGParametersRead" returnQName="retNS:contractServicesCUGParametersReadReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ContractServicesCUGParametersReadOut" xmlns:rtns="http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:contractServicesCUGParametersReadIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ContractServicesCUGParametersReadIn" xmlns:tns="http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com"/>
+      </operation>
+      <operation name="contractServicesCUGParametersWrite" qname="contractServicesCUGParametersWrite" soapAction="" >
+        <parameter qname="pns:contractServicesCUGParametersWrite" xmlns:pns="http://manager.ws.orange.com" type="tns:ContractServicesCUGParametersWriteIn" xmlns:tns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="bonusPointConversionExecute contractPromotionsWrite contractTakeOver customerTaxExemptionsWrite contractServicesCUGParametersRead contractServicesCUGParametersWrite"/>
+
+      <typeMapping
+        xmlns:ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        qname="ns:TargetParamValues"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.TargetParamValues"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        qname="ns:FupChange"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.FupChange"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://taxexemptions.cmsbasic.beans.ws.orange.com"
+        qname="ns:TaxExemption"
+        type="java:com.orange.ws.beans.cmsbasic.taxexemptions.TaxExemption"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns7_NumParam"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparametersread.NumParam[]"
+        innerType="cmp-ns:NumParam" xmlns:cmp-ns="http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        qname="ns:RatePlanChange"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.RatePlanChange"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractServicesCUGParametersReadIn"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparametersread.ContractServicesCUGParametersReadIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns5_RatePlanChange"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.RatePlanChange[]"
+        innerType="cmp-ns:RatePlanChange" xmlns:cmp-ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        qname="ns:FreeUnitService"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.FreeUnitService"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:ContractIdType"
+        type="java:com.orange.ws.beans.commons.ContractIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractServicesCUGParametersWriteIn"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.ContractServicesCUGParametersWriteIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        qname="ns:BonusPointConversionExecuteIn"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.BonusPointConversionExecuteIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contracttakeover.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractTakeOverOut"
+        type="java:com.orange.ws.beans.cmsbasic.contracttakeover.ContractTakeOverOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com"
+        qname="ns:NumParam"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparametersread.NumParam"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:CustomerIdType"
+        type="java:com.orange.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractPromotionsWrite.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractPromotionsWriteIn"
+        type="java:com.orange.ws.beans.cmsbasic.contractPromotionsWrite.ContractPromotionsWriteIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_TaxExemption"
+        type="java:com.orange.ws.beans.cmsbasic.taxexemptions.TaxExemption[]"
+        innerType="cmp-ns:TaxExemption" xmlns:cmp-ns="http://taxexemptions.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns5_FreeUnitService"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.FreeUnitService[]"
+        innerType="cmp-ns:FreeUnitService" xmlns:cmp-ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contracttakeover.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractTakeOverIn"
+        type="java:com.orange.ws.beans.cmsbasic.contracttakeover.ContractTakeOverIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractservicescugparametersread.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractServicesCUGParametersReadOut"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparametersread.ContractServicesCUGParametersReadOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_TaxExemptionIn"
+        type="java:com.orange.ws.beans.cmsbasic.taxexemptions.TaxExemptionIn[]"
+        innerType="cmp-ns:TaxExemptionIn" xmlns:cmp-ns="http://taxexemptions.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contracttakeover.cmsbasic.beans.ws.orange.com"
+        qname="ns:Service"
+        type="java:com.orange.ws.beans.cmsbasic.contracttakeover.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns8_TargetParamValues"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.TargetParamValues[]"
+        innerType="cmp-ns:TargetParamValues" xmlns:cmp-ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        qname="ns:ParamValue"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.ParamValue"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns6_Service"
+        type="java:com.orange.ws.beans.cmsbasic.contracttakeover.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://contracttakeover.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_ContractIdType"
+        type="java:com.orange.ws.beans.commons.ContractIdType[]"
+        innerType="cmp-ns:ContractIdType" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://taxexemptions.cmsbasic.beans.ws.orange.com"
+        qname="ns:CustomerTaxExemptionsWriteIn"
+        type="java:com.orange.ws.beans.cmsbasic.taxexemptions.CustomerTaxExemptionsWriteIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://taxexemptions.cmsbasic.beans.ws.orange.com"
+        qname="ns:TaxExemptionOut"
+        type="java:com.orange.ws.beans.cmsbasic.taxexemptions.TaxExemptionOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://taxexemptions.cmsbasic.beans.ws.orange.com"
+        qname="ns:TaxExemptionIn"
+        type="java:com.orange.ws.beans.cmsbasic.taxexemptions.TaxExemptionIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns8_ParamValue"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.ParamValue[]"
+        innerType="cmp-ns:ParamValue" xmlns:cmp-ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns8_MultValues"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.MultValues[]"
+        innerType="cmp-ns:MultValues" xmlns:cmp-ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns5_FupChange"
+        type="java:com.orange.ws.beans.cmsbasic.bonuspointconversionexecute.FupChange[]"
+        innerType="cmp-ns:FupChange" xmlns:cmp-ns="http://bonuspointconversionexecute.cmsbasic.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractservicescugparameterswrite.cmsbasic.beans.ws.orange.com"
+        qname="ns:MultValues"
+        type="java:com.orange.ws.beans.cmsbasic.contractservicescugparameterswrite.MultValues"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractPromotionsWrite.cmsbasic.beans.ws.orange.com"
+        qname="ns:ContractPromotionsWriteOut"
+        type="java:com.orange.ws.beans.cmsbasic.contractPromotionsWrite.ContractPromotionsWriteOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

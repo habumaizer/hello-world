@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE Registry PUBLIC 'Registry.dtd' "Registry.dtd">
+
+<!-- Registry for CMS server -->
+
+<Registry>
+
+    <!-- Location of a package registry file. -->
+
+    <!--
+    Following two files are in bsst_main/bscs/batch/src/func/frmwk/srv/resource
+    Being in the development environment please include this directory in your classpath
+     -->
+	<Link location="WS_Registry.xml"/>
+	<Link location="WS_Server.xml"/>
+	<Link location="WS_Integration.xml"/>
+</Registry>
+
+

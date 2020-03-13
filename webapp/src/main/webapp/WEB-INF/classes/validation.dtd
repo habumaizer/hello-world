@@ -1,0 +1,36 @@
+<!--
+    The root element for a validation definition document.
+ -->
+<!ELEMENT ValidationDefinition (ValidationClass)* >
+
+<!--
+    Defines all the validation features of a class. There may exist at 
+    most one ValidationClass element per class per validation document.
+    
+    The ValidationClass element is used by the ValidationDefinition
+    element and must contain at least one ValidationMethod entry.
+    
+    The classname attribute must be unique within the document.
+ -->
+<!ELEMENT ValidationClass (ValidationMethod)+ >
+<!ATTLIST ValidationClass
+    classname          ID           #REQUIRED
+>
+
+<!--
+    The ValidationMethod element is used by the ValidationClass element.
+    Four attributes are defined for the ValidationMethod element:
+        name - the method name, which must be provided.
+        description - an optional description of the validation performed
+            by this method.
+        group - the validation group the method belongs to. Defaults to 
+            the "Commit" validation group.
+        isActive - allows to disable validation methods. Defaults to "true".
+ -->
+<!ELEMENT ValidationMethod EMPTY>
+<!ATTLIST ValidationMethod
+    name               CDATA        #REQUIRED
+    description        CDATA        #IMPLIED
+    group              CDATA        "Commit"
+    isActive           (true|false) "true"
+>

@@ -1,0 +1,965 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="PaymentManager jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="PaymentManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}PaymentManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/PaymentManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/PaymentManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/PaymentManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://addpayment.payment.beans.ws.orange.com" xmlns:tns10="http://autoreleasecheck.payment.beans.ws.orange.com" xmlns:tns11="http://primorenewal.payment.beans.ws.orange.com" xmlns:tns12="http://cancelprimorenewal.payment.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://commons.beans.ws.orange.com" xmlns:tns4="http://modifypayment.payment.beans.ws.orange.com" xmlns:tns5="http://cancelpayment.payment.beans.ws.orange.com" xmlns:tns6="http://adddeposit.payment.beans.ws.orange.com" xmlns:tns7="http://canceldeposit.payment.beans.ws.orange.com" xmlns:tns8="http://refunddeposit.payment.beans.ws.orange.com" xmlns:tns9="http://cancelrefunddeposit.payment.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="CustomerIdType">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CS_ID" nillable="true" type="xsd:long"/>
+              <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://addpayment.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="AddPaymentIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT" nillable="true" type="xsd:float"/>
+              <element name="CHANNELCODE" nillable="true" type="xsd:string"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="OHREFNUM" nillable="true" type="xsd:string"/>
+              <element name="PAYMENT_DATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_OHXACT" nillable="true" type="xsd:long"/>
+              <element name="RT_PAYMENT_MODE" nillable="true" type="xsd:string"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="AddPaymentOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <element name="addPaymentIn" type="tns1:AddPaymentIn"/>
+      <element name="addPaymentReturn" type="tns1:AddPaymentOut"/>
+      <element name="modifyPaymentIn" type="tns4:ModifyPaymentIn"/>
+      <element name="modifyPaymentReturn" type="tns4:ModifyPaymentOut"/>
+      <element name="cancelPaymentIn" type="tns5:CancelPaymentIn"/>
+      <element name="cancelPaymentReturn" type="tns5:CancelPaymentOut"/>
+      <element name="addDepositIn" type="tns6:AddDepositIn"/>
+      <element name="addDepositReturn" type="tns6:AddDepositOut"/>
+      <element name="cancelDepositIn" type="tns7:CancelDepositIn"/>
+      <element name="cancelDepositReturn" type="tns7:CancelDepositOut"/>
+      <element name="refundDepositIn" type="tns8:RefundDepositIn"/>
+      <element name="refundDepositReturn" type="tns8:RefundDepositOut"/>
+      <element name="cancelRefundDepositIn" type="tns9:CancelRefundDepositIn"/>
+      <element name="cancelRefundDepositReturn" type="tns9:CancelRefundDepositOut"/>
+      <element name="autoReleaseCheckIn" type="tns10:AutoReleaseCheckIn"/>
+      <element name="autoReleaseCheckReturn" type="tns10:AutoReleaseCheckOut"/>
+      <element name="primoRenewalIn" type="tns11:PrimoRenewalIn"/>
+      <element name="primoRenewalReturn" type="tns11:PrimoRenewalOut"/>
+      <element name="cancelPrimoRenewalIn" type="tns12:CancelPrimoRenewalIn"/>
+      <element name="cancelPrimoRenewalReturn" type="tns12:CancelPrimoRenewalOut"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://modifypayment.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="ModifyPaymentIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="AUTH_IND" nillable="true" type="xsd:boolean"/>
+              <element name="AUTH_REMARK" nillable="true" type="xsd:string"/>
+              <element name="BANK_NAME" nillable="true" type="xsd:string"/>
+              <element name="BT_CAXACT" nillable="true" type="xsd:long"/>
+              <element name="BT_OHXACT" nillable="true" type="xsd:long"/>
+              <element name="CSP_ACCNO" nillable="true" type="xsd:string"/>
+              <element name="CSP_ACCOWNER" nillable="true" type="xsd:string"/>
+              <element name="CSP_ACT_USED" nillable="true" type="xsd:boolean"/>
+              <element name="CSP_BANKCITY" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKCODE" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKCOUNTRY" nillable="true" type="xsd:long"/>
+              <element name="CSP_BANKCOUNTRY_PUB" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKCOUNTY" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKNAME" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKSTATE" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKSTREET" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKSTREETNO" nillable="true" type="xsd:string"/>
+              <element name="CSP_BANKZIP" nillable="true" type="xsd:string"/>
+              <element name="CSP_CCAG_CODE" nillable="true" type="xsd:long"/>
+              <element name="CSP_CCAG_CODE_PUB" nillable="true" type="xsd:string"/>
+              <element name="CSP_CCVALIDDT" nillable="true" type="xsd:string"/>
+              <element name="CSP_DELETED" nillable="true" type="xsd:boolean"/>
+              <element name="CSP_ORDERNUMBER" nillable="true" type="xsd:string"/>
+              <element name="CSP_PMNT_ID" nillable="true" type="xsd:long"/>
+              <element name="CSP_PMNT_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="CSP_SEQNO" nillable="true" type="xsd:long"/>
+              <element name="CSP_SWIFTCODE" nillable="true" type="xsd:string"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="PAYMENT_CURRENCY_ID" nillable="true" type="xsd:long"/>
+              <element name="PAYMENT_MODE" nillable="true" type="xsd:string"/>
+              <element name="RT_CACHKAMT_PAY" nillable="true" type="xsd:long"/>
+              <element name="RT_CACHKDATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CADISAMT_PAY" nillable="true" type="xsd:long"/>
+              <element name="RT_CARECDATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CAREM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_EXCHANGERATE_CURRENCY" nillable="true" type="xsd:long"/>
+              <element name="RT_FCCODE_PAY" nillable="true" type="xsd:string"/>
+              <element name="SYNCHRONOUS_MODE" type="xsd:boolean"/>
+              <element name="TRANSX_CODE" nillable="true" type="xsd:string"/>
+              <element name="VALIDTHROUGH_DATE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="ModifyPaymentOut">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://cancelpayment.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <complexType name="CancelPaymentIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CancelPaymentOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://adddeposit.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="AddDepositIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT" nillable="true" type="xsd:float"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="PAYMENT_DATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_PAYMENT_MODE" nillable="true" type="xsd:string"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="AddDepositOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://canceldeposit.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="CancelDepositIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CancelDepositOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://refunddeposit.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="RefundDepositIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="PAYMENT_DATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_OHXACT" nillable="true" type="xsd:long"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="RefundDepositOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://cancelrefunddeposit.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="CancelRefundDepositIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CancelRefundDepositOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://autoreleasecheck.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="AutoReleaseCheckIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT_PAID" nillable="true" type="xsd:float"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="AutoReleaseCheckOut">
+        <sequence>
+          <element name="REASON" nillable="true" type="xsd:string"/>
+          <element name="STATUS" nillable="true" type="xsd:int"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://primorenewal.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="PrimoRenewalIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT" nillable="true" type="xsd:float"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+              <element name="PAYMENT_DATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RENEW_PERIOD" nillable="true" type="xsd:int"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_PAYMENT_MODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="PrimoRenewalOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://cancelprimorenewal.payment.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://primorenewal.payment.beans.ws.orange.com"/>
+      <import namespace="http://canceldeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://refunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://modifypayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://addpayment.payment.beans.ws.orange.com"/>
+      <import namespace="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://adddeposit.payment.beans.ws.orange.com"/>
+      <import namespace="http://cancelpayment.payment.beans.ws.orange.com"/>
+      <complexType name="CancelPrimoRenewalIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+              <element name="PAYMENT_DATE" nillable="true" type="xsd:dateTime"/>
+              <element name="RT_CACHKNUM" nillable="true" type="xsd:string"/>
+              <element name="RT_CAUSERNAME" nillable="true" type="xsd:string"/>
+              <element name="RT_REMARK" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CancelPrimoRenewalOut">
+        <sequence>
+          <element name="PIHTAB_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="autoReleaseCheckRequest">
+    <wsdl:part element="impl:autoReleaseCheckIn" name="autoReleaseCheckIn"/>
+  </wsdl:message>
+  <wsdl:message name="refundDepositRequest">
+    <wsdl:part element="impl:refundDepositIn" name="refundDepositIn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelRefundDepositRequest">
+    <wsdl:part element="impl:cancelRefundDepositIn" name="cancelRefundDepositIn"/>
+  </wsdl:message>
+  <wsdl:message name="addPaymentRequest">
+    <wsdl:part element="impl:addPaymentIn" name="addPaymentIn"/>
+  </wsdl:message>
+  <wsdl:message name="addPaymentResponse">
+    <wsdl:part element="impl:addPaymentReturn" name="addPaymentReturn"/>
+  </wsdl:message>
+  <wsdl:message name="modifyPaymentResponse">
+    <wsdl:part element="impl:modifyPaymentReturn" name="modifyPaymentReturn"/>
+  </wsdl:message>
+  <wsdl:message name="primoRenewalResponse">
+    <wsdl:part element="impl:primoRenewalReturn" name="primoRenewalReturn"/>
+  </wsdl:message>
+  <wsdl:message name="primoRenewalRequest">
+    <wsdl:part element="impl:primoRenewalIn" name="primoRenewalIn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelDepositRequest">
+    <wsdl:part element="impl:cancelDepositIn" name="cancelDepositIn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelPrimoRenewalResponse">
+    <wsdl:part element="impl:cancelPrimoRenewalReturn" name="cancelPrimoRenewalReturn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelPaymentRequest">
+    <wsdl:part element="impl:cancelPaymentIn" name="cancelPaymentIn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelRefundDepositResponse">
+    <wsdl:part element="impl:cancelRefundDepositReturn" name="cancelRefundDepositReturn"/>
+  </wsdl:message>
+  <wsdl:message name="autoReleaseCheckResponse">
+    <wsdl:part element="impl:autoReleaseCheckReturn" name="autoReleaseCheckReturn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelDepositResponse">
+    <wsdl:part element="impl:cancelDepositReturn" name="cancelDepositReturn"/>
+  </wsdl:message>
+  <wsdl:message name="refundDepositResponse">
+    <wsdl:part element="impl:refundDepositReturn" name="refundDepositReturn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelPrimoRenewalRequest">
+    <wsdl:part element="impl:cancelPrimoRenewalIn" name="cancelPrimoRenewalIn"/>
+  </wsdl:message>
+  <wsdl:message name="addDepositRequest">
+    <wsdl:part element="impl:addDepositIn" name="addDepositIn"/>
+  </wsdl:message>
+  <wsdl:message name="cancelPaymentResponse">
+    <wsdl:part element="impl:cancelPaymentReturn" name="cancelPaymentReturn"/>
+  </wsdl:message>
+  <wsdl:message name="modifyPaymentRequest">
+    <wsdl:part element="impl:modifyPaymentIn" name="modifyPaymentIn"/>
+  </wsdl:message>
+  <wsdl:message name="addDepositResponse">
+    <wsdl:part element="impl:addDepositReturn" name="addDepositReturn"/>
+  </wsdl:message>
+  <wsdl:portType name="PaymentManager">
+    <wsdl:operation name="addPayment" parameterOrder="addPaymentIn">
+      <wsdl:input message="impl:addPaymentRequest" name="addPaymentRequest"/>
+      <wsdl:output message="impl:addPaymentResponse" name="addPaymentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modifyPayment" parameterOrder="modifyPaymentIn">
+      <wsdl:input message="impl:modifyPaymentRequest" name="modifyPaymentRequest"/>
+      <wsdl:output message="impl:modifyPaymentResponse" name="modifyPaymentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelPayment" parameterOrder="cancelPaymentIn">
+      <wsdl:input message="impl:cancelPaymentRequest" name="cancelPaymentRequest"/>
+      <wsdl:output message="impl:cancelPaymentResponse" name="cancelPaymentResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addDeposit" parameterOrder="addDepositIn">
+      <wsdl:input message="impl:addDepositRequest" name="addDepositRequest"/>
+      <wsdl:output message="impl:addDepositResponse" name="addDepositResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelDeposit" parameterOrder="cancelDepositIn">
+      <wsdl:input message="impl:cancelDepositRequest" name="cancelDepositRequest"/>
+      <wsdl:output message="impl:cancelDepositResponse" name="cancelDepositResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="refundDeposit" parameterOrder="refundDepositIn">
+      <wsdl:input message="impl:refundDepositRequest" name="refundDepositRequest"/>
+      <wsdl:output message="impl:refundDepositResponse" name="refundDepositResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelRefundDeposit" parameterOrder="cancelRefundDepositIn">
+      <wsdl:input message="impl:cancelRefundDepositRequest" name="cancelRefundDepositRequest"/>
+      <wsdl:output message="impl:cancelRefundDepositResponse" name="cancelRefundDepositResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="autoReleaseCheck" parameterOrder="autoReleaseCheckIn">
+      <wsdl:input message="impl:autoReleaseCheckRequest" name="autoReleaseCheckRequest"/>
+      <wsdl:output message="impl:autoReleaseCheckResponse" name="autoReleaseCheckResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="primoRenewal" parameterOrder="primoRenewalIn">
+      <wsdl:input message="impl:primoRenewalRequest" name="primoRenewalRequest"/>
+      <wsdl:output message="impl:primoRenewalResponse" name="primoRenewalResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="cancelPrimoRenewal" parameterOrder="cancelPrimoRenewalIn">
+      <wsdl:input message="impl:cancelPrimoRenewalRequest" name="cancelPrimoRenewalRequest"/>
+      <wsdl:output message="impl:cancelPrimoRenewalResponse" name="cancelPrimoRenewalResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PaymentManagerSoapBinding" type="impl:PaymentManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addPayment">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addPaymentRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addPaymentResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyPayment">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="modifyPaymentRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyPaymentResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelPayment">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cancelPaymentRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelPaymentResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addDeposit">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addDepositRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addDepositResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelDeposit">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cancelDepositRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelDepositResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="refundDeposit">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="refundDepositRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="refundDepositResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelRefundDeposit">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cancelRefundDepositRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelRefundDepositResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="autoReleaseCheck">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="autoReleaseCheckRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="autoReleaseCheckResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="primoRenewal">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="primoRenewalRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="primoRenewalResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cancelPrimoRenewal">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="cancelPrimoRenewalRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelPrimoRenewalResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentManagerService">
+    <wsdl:port binding="impl:PaymentManagerSoapBinding" name="PaymentManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/PaymentManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="addDeposit" bindingOperationName="addDeposit" type="Request-Response" outputName="addDepositResponse" inputName="addDepositRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:add="http://adddeposit.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:addDepositIn>
+         <add:AMOUNT>?</add:AMOUNT>
+         <add:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </add:CUSTOMER_ID_COMPLEX>
+         <add:PAYMENT_DATE>?</add:PAYMENT_DATE>
+         <add:RT_CACHKNUM>?</add:RT_CACHKNUM>
+         <add:RT_CAUSERNAME>?</add:RT_CAUSERNAME>
+         <add:RT_PAYMENT_MODE>?</add:RT_PAYMENT_MODE>
+         <add:RT_REMARK>?</add:RT_REMARK>
+      </man:addDepositIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/addDepositRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="addPayment" bindingOperationName="addPayment" type="Request-Response" outputName="addPaymentResponse" inputName="addPaymentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:add="http://addpayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" >
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+      <man:addPaymentIn>
+         <add:CUSTOMER_ID_COMPLEX>
+           
+             <com:CUSTCODE>1.10034030</com:CUSTCODE>
+        
+         </add:CUSTOMER_ID_COMPLEX>
+         <add:AMOUNT>100</add:AMOUNT>
+            <add:RT_CACHKNUM>DOP Entry</add:RT_CACHKNUM>
+            <add:RT_CAUSERNAME>PIH</add:RT_CAUSERNAME>
+            <add:RT_PAYMENT_MODE>P</add:RT_PAYMENT_MODE>
+      </man:addPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/addPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="autoReleaseCheck" bindingOperationName="autoReleaseCheck" type="Request-Response" outputName="autoReleaseCheckResponse" inputName="autoReleaseCheckRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:aut="http://autoreleasecheck.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:autoReleaseCheckIn>
+         <aut:AMOUNT_PAID>?</aut:AMOUNT_PAID>
+         <aut:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </aut:CUSTOMER_ID_COMPLEX>
+      </man:autoReleaseCheckIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/autoReleaseCheckRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="cancelDeposit" bindingOperationName="cancelDeposit" type="Request-Response" outputName="cancelDepositResponse" inputName="cancelDepositRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:can="http://canceldeposit.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:cancelDepositIn>
+         <can:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </can:CUSTOMER_ID_COMPLEX>
+         <can:RT_CACHKNUM>?</can:RT_CACHKNUM>
+         <can:RT_CAUSERNAME>?</can:RT_CAUSERNAME>
+         <can:RT_REMARK>?</can:RT_REMARK>
+      </man:cancelDepositIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/cancelDepositRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="cancelPayment" bindingOperationName="cancelPayment" type="Request-Response" outputName="cancelPaymentResponse" inputName="cancelPaymentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:can="http://cancelpayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+
+   <soapenv:Body>
+      <man:cancelPaymentIn>
+         <can:CUSTOMER_ID_COMPLEX>
+   
+            <com:CUSTCODE>1.30</com:CUSTCODE>
+         </can:CUSTOMER_ID_COMPLEX>
+         <can:RT_CACHKNUM>?</can:RT_CACHKNUM>
+         <can:RT_CAUSERNAME>?</can:RT_CAUSERNAME>
+         <can:RT_REMARK>?</can:RT_REMARK>
+      </man:cancelPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/cancelPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="cancelPrimoRenewal" bindingOperationName="cancelPrimoRenewal" type="Request-Response" outputName="cancelPrimoRenewalResponse" inputName="cancelPrimoRenewalRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:can="http://cancelprimorenewal.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:cancelPrimoRenewalIn>
+         <can:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </can:CUSTOMER_ID_COMPLEX>
+         <can:PAYMENT_DATE>?</can:PAYMENT_DATE>
+         <can:RT_CACHKNUM>?</can:RT_CACHKNUM>
+         <can:RT_CAUSERNAME>?</can:RT_CAUSERNAME>
+         <can:RT_REMARK>?</can:RT_REMARK>
+      </man:cancelPrimoRenewalIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/cancelPrimoRenewalRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="cancelRefundDeposit" bindingOperationName="cancelRefundDeposit" type="Request-Response" outputName="cancelRefundDepositResponse" inputName="cancelRefundDepositRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:can="http://cancelrefunddeposit.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:cancelRefundDepositIn>
+         <can:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </can:CUSTOMER_ID_COMPLEX>
+         <can:RT_CACHKNUM>?</can:RT_CACHKNUM>
+         <can:RT_CAUSERNAME>?</can:RT_CAUSERNAME>
+         <can:RT_REMARK>?</can:RT_REMARK>
+      </man:cancelRefundDepositIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/cancelRefundDepositRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="primoRenewal" bindingOperationName="primoRenewal" type="Request-Response" outputName="primoRenewalResponse" inputName="primoRenewalRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:prim="http://primorenewal.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:primoRenewalIn>
+         <prim:AMOUNT>?</prim:AMOUNT>
+         <prim:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </prim:CUSTOMER_ID_COMPLEX>
+         <prim:MSISDN>?</prim:MSISDN>
+         <prim:PAYMENT_DATE>?</prim:PAYMENT_DATE>
+         <prim:RENEW_PERIOD>?</prim:RENEW_PERIOD>
+         <prim:RT_CACHKNUM>?</prim:RT_CACHKNUM>
+         <prim:RT_CAUSERNAME>?</prim:RT_CAUSERNAME>
+         <prim:RT_PAYMENT_MODE>?</prim:RT_PAYMENT_MODE>
+      </man:primoRenewalIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/primoRenewalRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="refundDeposit" bindingOperationName="refundDeposit" type="Request-Response" outputName="refundDepositResponse" inputName="refundDepositRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ref="http://refunddeposit.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:refundDepositIn>
+         <ref:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </ref:CUSTOMER_ID_COMPLEX>
+         <ref:PAYMENT_DATE>?</ref:PAYMENT_DATE>
+         <ref:RT_CACHKNUM>?</ref:RT_CACHKNUM>
+         <ref:RT_CAUSERNAME>?</ref:RT_CAUSERNAME>
+         <ref:RT_OHXACT>?</ref:RT_OHXACT>
+         <ref:RT_REMARK>?</ref:RT_REMARK>
+      </man:refundDepositIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/refundDepositRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="modifyPayment" bindingOperationName="modifyPayment" type="Request-Response" outputName="modifyPaymentResponse" inputName="modifyPaymentRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:mod="http://modifypayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" >
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+
+      <man:modifyPaymentIn>
+        
+             <mod:CSP_SEQNO>6</mod:CSP_SEQNO>
+        <mod:CSP_ACCOWNER>bill gatessss</mod:CSP_ACCOWNER>
+
+     
+         <mod:CUSTOMER_ID_COMPLEX>
+            <com:CUSTCODE>1.10034030</com:CUSTCODE>
+         </mod:CUSTOMER_ID_COMPLEX>
+       
+      </man:modifyPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/modifyPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="TRANSX_CODE"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:mod="http://modifypayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" >
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+
+      <man:modifyPaymentIn>
+        
+            
+       
+       <mod:CSP_BANKSTREET>wall street</mod:CSP_BANKSTREET>
+	 <mod:PAYMENT_MODE>X</mod:PAYMENT_MODE>
+	<mod:TRANSX_CODE>CE2DP</mod:TRANSX_CODE>
+
+         <mod:CUSTOMER_ID_COMPLEX>
+            <com:CUSTCODE>1.10034030</com:CUSTCODE>
+         </mod:CUSTOMER_ID_COMPLEX>
+       
+      </man:modifyPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/modifyPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 3"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:mod="http://modifypayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com">
+ <soapenv:Header>
+        <wsse:Security>
+           <wsse:UsernameToken>
+              <wsse:Username>CXTEST</wsse:Username>
+              <wsse:Password>CXTEST</wsse:Password>
+           </wsse:UsernameToken>
+        </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:modifyPaymentIn>
+         <!--<mod:CSP_ACCNO>123456</mod:CSP_ACCNO>-->
+         <mod:CSP_ACCOWNER>Guillaume</mod:CSP_ACCOWNER>
+         <!--<mod:CSP_BANKCITY>Amman</mod:CSP_BANKCITY>-->
+         <!--<mod:CSP_BANKCODE>AUDI</mod:CSP_BANKCODE>-->
+         <!--<mod:CSP_BANKCOUNTRY>107</mod:CSP_BANKCOUNTRY>-->
+         <!--<mod:CSP_BANKNAME>Pemo</mod:CSP_BANKNAME>-->
+         <!--<mod:CSP_PMNT_ID>-5</mod:CSP_PMNT_ID>-->
+       
+        <!-- <mod:CSP_SWIFTCODE>PBN12</mod:CSP_SWIFTCODE>-->
+	<mod:CSP_CCVALIDDT>0512</mod:CSP_CCVALIDDT>
+         <mod:CUSTOMER_ID_COMPLEX>
+               <com:CUSTCODE>1.10034030</com:CUSTCODE>
+         </mod:CUSTOMER_ID_COMPLEX>
+         <mod:PAYMENT_MODE>X</mod:PAYMENT_MODE>
+	<mod:SYNCHRONOUS_MODE>false</mod:SYNCHRONOUS_MODE>
+
+         <mod:VALIDTHROUGH_DATE>0311</mod:VALIDTHROUGH_DATE>
+      </man:modifyPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/modifyPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="PaymentMode"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" xmlns:man="http://manager.ws.orange.com" xmlns:mod="http://modifypayment.payment.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+ <soapenv:Header>
+        <wsse:Security>
+           <wsse:UsernameToken>
+              <wsse:Username>CXTEST</wsse:Username>
+              <wsse:Password>CXTEST</wsse:Password>
+           </wsse:UsernameToken>
+        </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:modifyPaymentIn>
+         <!--<mod:CSP_ACCNO>123456</mod:CSP_ACCNO>-->
+        <!-- <mod:CSP_ACCOWNER>Toni Khalifa</mod:CSP_ACCOWNER>-->
+         <!--<mod:CSP_BANKCITY>Amman</mod:CSP_BANKCITY>-->
+         <!--<mod:CSP_BANKCODE>AUDI</mod:CSP_BANKCODE>-->
+         <!--<mod:CSP_BANKCOUNTRY>107</mod:CSP_BANKCOUNTRY>-->
+         <!--<mod:CSP_BANKNAME>Pemo</mod:CSP_BANKNAME>-->
+         <!--<mod:CSP_PMNT_ID>-5</mod:CSP_PMNT_ID>-->
+       	<!--<mod:CSP_CCVALIDDT>0312</mod:CSP_CCVALIDDT>-->
+        <!-- <mod:CSP_SWIFTCODE>PBN12</mod:CSP_SWIFTCODE>-->
+         <mod:CUSTOMER_ID_COMPLEX>
+               <com:CUSTCODE>1.10034030</com:CUSTCODE>
+         </mod:CUSTOMER_ID_COMPLEX>
+         <mod:PAYMENT_MODE>X</mod:PAYMENT_MODE>
+
+        <!--<mod:VALIDTHROUGH_DATE>0312</mod:VALIDTHROUGH_DATE>
+      </man:modifyPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/modifyPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="createUnkowPayment"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:mod="http://modifypayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com">
+ <soapenv:Header>
+        <wsse:Security>
+           <wsse:UsernameToken>
+              <wsse:Username>CXTEST</wsse:Username>
+              <wsse:Password>CXTEST</wsse:Password>
+           </wsse:UsernameToken>
+        </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:modifyPaymentIn>
+        <mod:CSP_CCVALIDDT>0512</mod:CSP_CCVALIDDT>
+         <mod:CUSTOMER_ID_COMPLEX>
+               <com:CUSTCODE>1.10034030</com:CUSTCODE>
+         </mod:CUSTOMER_ID_COMPLEX>
+         
+	<mod:SYNCHRONOUS_MODE>false</mod:SYNCHRONOUS_MODE>
+
+         <mod:VALIDTHROUGH_DATE>0311</mod:VALIDTHROUGH_DATE>
+      </man:modifyPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/modifyPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="modifyPaymentknow"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/PaymentManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:mod="http://modifypayment.payment.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com">
+ <soapenv:Header>
+        <wsse:Security>
+           <wsse:UsernameToken>
+              <wsse:Username>CXTEST</wsse:Username>
+              <wsse:Password>CXTEST</wsse:Password>
+           </wsse:UsernameToken>
+        </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:modifyPaymentIn>
+        <mod:CSP_CCVALIDDT>0512</mod:CSP_CCVALIDDT>
+         <mod:CUSTOMER_ID_COMPLEX>
+               <com:CUSTCODE>1.10034030</com:CUSTCODE>
+         </mod:CUSTOMER_ID_COMPLEX>
+         
+	<mod:SYNCHRONOUS_MODE>false</mod:SYNCHRONOUS_MODE>
+	<mod:CSP_SEQNO>5</mod:CSP_SEQNO>
+         <mod:VALIDTHROUGH_DATE>0311</mod:VALIDTHROUGH_DATE>
+      </man:modifyPaymentIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/PaymentManager/modifyPaymentRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

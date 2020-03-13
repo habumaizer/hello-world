@@ -1,0 +1,459 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.alcatel-lucent.ws</groupId>
+	<artifactId>bscsWS</artifactId>
+	<version>1.0</version>
+	<name>bscsWS</name>
+
+	<profiles>
+		<profile>
+		<!--
+			This profile is used to build the application, and to generate the wsdl for
+			the PRODUCTION environment.
+
+			This profile is used by default
+		-->
+			<id>prod</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<target.name.generatewsdl>wsdlprod</target.name.generatewsdl>
+				<target.name.generatewsdd>wsddprod</target.name.generatewsdd>
+			</properties>
+		</profile>
+		<profile>
+		<!--
+			This profile is used to build the application, and to generate the wsdl for
+			the TEST environment (ie, using the bscsWsClient project)
+
+			To use this profile, add the argument '-Denv=test' to the command line.
+			Example:
+				mvn -Denv=test clean package
+
+			Into eclipse, create a new Run configuration of type 'Maven build',
+			and enter 'test' in the field 'Profiles' (m2 eclipse plugin mandatory until eclipse 3.6)
+		-->
+			<id>test</id>
+			<activation>
+				<property>
+					<name>env</name>
+					<value>test</value>
+				</property>
+			</activation>
+			<properties>
+				<target.name.generatewsdl>wsdltest</target.name.generatewsdl>
+				<target.name.generatewsdd>wsddtest</target.name.generatewsdd>
+			</properties>
+		</profile>
+	</profiles>
+	<repositories>
+		<repository>
+			<id>external</id>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>internal</id>
+			<url>http://172.201.33.95:8090/archiva/repository/internal</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ibatis</groupId>
+			<artifactId>ibatis2-dao</artifactId>
+			<version>2.2.0.638</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.5</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- ibatis -->
+
+		<dependency>
+			<groupId>ibatis</groupId>
+			<artifactId>ibatis</artifactId>
+			<version>2.3.0.677</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>10.2.0</version>
+		</dependency>
+
+		<!-- axis server -->
+
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis-path</artifactId>
+			<version>1.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-httpclient</groupId>
+			<artifactId>commons-httpclient</artifactId>
+			<version>3.1</version>
+		</dependency>
+
+		<!-- lhs -->
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>func_frwmwk_srv</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/func_frwmwk_srv.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>func_frwmwk_cmn</artifactId>
+			<version>1.0.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/func_frwmwk_cmn.jar</systemPath>
+	
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>func_util</artifactId>
+			<version>1.0.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/func_util.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>ws_cms</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>func_frwmwk_clt</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>ws_common</artifactId>
+			<version>2.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/ws_common-2.0.0.jar</systemPath>
+	
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>soi</artifactId>
+			<version>2.0.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/soi-2.0.0.jar</systemPath>
+		</dependency>
+
+		<dependency>
+			<groupId>com.lhs</groupId>
+			<artifactId>ws_v2</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alcatel-lucent</groupId>
+			<artifactId>ccl</artifactId>
+			<version>1.51</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alcatel-lucent</groupId>
+			<artifactId>CMSInterface</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<!-- spring ioc -->
+		<dependency>
+			<groupId>spring</groupId>
+			<artifactId>spring</artifactId>
+			<version>1.0</version>
+		</dependency>
+
+		<!-- log -->
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging-api</artifactId>
+			<version>1.0.4</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alcatel-lucent</groupId>
+			<artifactId>log4j-utils</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.9</version>
+		</dependency>
+
+		<!-- other -->
+		<dependency>
+			<groupId>org.apache.ws.commons.util</groupId>
+			<artifactId>ws-commons-utils</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tribes</artifactId>
+			<version>6.0.16</version>
+		</dependency>
+
+		<!-- config file -->
+
+		<dependency>
+			<groupId>commons-configuration</groupId>
+			<artifactId>commons-configuration</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.2.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.activation</groupId>
+			<artifactId>activation</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis-ant</artifactId>
+			<version>1.4</version>
+			<type>jar</type>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis-jaxrpc</artifactId>
+			<version>1.4</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis-saaj</artifactId>
+			<version>1.4</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+	<packaging>war</packaging>
+		<build>
+		<finalName>bscsWS</finalName>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.1</version>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/bscsWS/WEB-INF/lib</outputDirectory>
+							<overWriteReleases>false</overWriteReleases>
+							<overWriteSnapshots>false</overWriteSnapshots>
+							<overWriteIfNewer>true</overWriteIfNewer>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+<!--
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<doclet>org.umlgraph.doclet.UmlGraphDoc</doclet>
+					<docletPath>/path/to/UmlGraph.jar</docletPath>
+					<docletArtifact>
+						<groupId>org.umlgraph</groupId>
+						<artifactId>doclet</artifactId>
+						<version>5.1</version>
+					</docletArtifact>
+					<additionalparam>-views</additionalparam>
+					<useStandardDocletOptions>true</useStandardDocletOptions>
+				</configuration>
+			</plugin>
+-->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>2.1.1</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+
+				<version>2.7</version>
+				<configuration>
+					<minmemory>128m</minmemory>
+					<maxmemory>512m</maxmemory>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+				 <fork>true</fork>
+      				<meminitial>128m</meminitial>
+      				<maxmem>1024m</maxmem>
+      				<compilerArgs>
+        				<arg>-XX:MaxPermSize=256m</arg>
+      				</compilerArgs>
+					<source>1.5</source>
+					<target>1.5</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.1.1</version>
+				<configuration>
+					<format>{0,date,yyyy-MM-dd HH:mm:ss}</format>
+					<items>
+						<item>timestamp</item>
+					</items>
+
+					<archive>
+						<manifestEntries>
+							<Specification-Title>J2EE Servlet</Specification-Title>
+							<Specification-Version>2.4</Specification-Version>
+							<Specification-Vendor>Sun Microsystems</Specification-Vendor>
+							<Implementation-Title>${project.name}</Implementation-Title>
+							<Implementation-Version>${project.version}</Implementation-Version>
+						</manifestEntries>
+					</archive>
+
+					<packagingExcludes>WEB-INF/classes/orb.properties,META-INF/context.xml</packagingExcludes>
+					<webResources>
+						<resource>
+							<directory>src/main/webapp</directory>
+						</resource>
+					</webResources>
+					<archive>
+						<manifest>
+							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>generate-wsdl</id>
+						<phase>process-classes</phase>
+						<configuration>
+						<fork>true</fork>
+      				<meminitial>512m</meminitial>
+      				<maxmem>1024m</maxmem>
+      				<compilerArgs>
+        				<arg>-XX:MaxPermSize=1024m</arg>
+        				<arg>-XX:PermSize=1024m</arg>
+        			</compilerArgs>
+							<target>
+								<ant inheritRefs="true" antfile="${basedir}/build.xml">
+									<target name="generate_${target.name.generatewsdl}" />
+									<target name="generate_${target.name.generatewsdd}" />
+								</ant>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+		
+		</plugins>
+	</build>
+	<properties>
+		<project.build.sourceEncoding>ISO-8859-15</project.build.sourceEncoding>
+	</properties>
+	
+</project>
+
+
+
+
+

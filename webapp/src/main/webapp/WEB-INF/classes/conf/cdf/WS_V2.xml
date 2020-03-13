@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE SOI PUBLIC "SOIDefinition.dtd" "SOIDefinition.dtd">
+
+<SOI soiName="WS" soiVersion="2">
+
+    <COMMAND cmdName="BONUSPOINT_CONVERSION.EXECUTE"    cmdVersion="cmd_1" deprecated="no"/>
+<!-- <COMMAND cmdName="CONTRACT.CANCEL"                                     cmdVersion="CMD_1_0" deprecated="no"/> -->
+    <COMMAND cmdName="CONTRACT.MOVE"                                    cmdVersion="CMD_1_0" deprecated="no"/>
+<COMMAND cmdName="CONTRACT.NEW"                                     cmdVersion="CMD_2_0" deprecated="no"/>
+    <COMMAND cmdName="CONTRACT.WRITE"                                   cmdVersion="CMD_2_0" deprecated="no"/>
+<COMMAND cmdName="SESSION.CHANGE"                                   cmdVersion="CMD_1_0" deprecated="no"/>
+    <COMMAND cmdName="SYSTEM_SETTING.READ"                              cmdVersion="CMD_1_0" deprecated="no"/>
+
+<COMMAND cmdName="CUSTOMER.CREATE"                              cmdVersion="CMD_1_0" deprecated="no"/>
+<COMMAND cmdName="CONTRACT.CREATE"                              cmdVersion="CMD_1_0" deprecated="no"/>
+
+<!-- PN00282798 DZI, since the following composite commands are contained in WS_2.xml disabled them here -->
+   <!-- Composite Commands start -->
+<!-- COMMAND cmdName="CUSTOMER.CREATE"                  cmdVersion="CMD_1_0" deprecated="no" / -->
+   <!-- COMMAND cmdName="CUSTOMER.RETRIEVE"                cmdVersion="CMD_1_0" deprecated="no" / -->
+<!-- COMMAND cmdName="CONTRACT.CREATE"                  cmdVersion="CMD_1_0" deprecated="no" / -->
+   <!-- COMMAND cmdName="CONTRACT.RETRIEVE"                cmdVersion="CMD_1_0" deprecated="no" / -->
+<!-- COMMAND cmdName="CUSTOMER_AND_CONTRACT.CREATE"     cmdVersion="CMD_1_0" deprecated="no" / -->
+   <!-- Composite Commands end -->
+<!-- PN00282798 end -->
+</SOI>
+"build.xml"

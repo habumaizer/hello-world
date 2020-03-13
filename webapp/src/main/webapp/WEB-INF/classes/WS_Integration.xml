@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE ComponentRegistry PUBLIC 'ComponentRegistry.dtd' "ComponentRegistry.dtd" >
+
+<ComponentRegistry>
+<Node name="FUNC_WCLT">
+
+
+   <!-- Jaas context.  -->
+   <KeyValue key="JaasContext" type="String" value="WSContext" comment="JAAS context to be used"/>
+
+     <!--
+	    - Defines the server connection pools that should be used for the application.
+	    - Each node inside the ServerConnectionPools contains a configuratrion for a connection pool. con
+	    -->
+
+	<Node name="ServerConnectionPools">
+
+		 <!--
+	        - The list of the connection pools to be used by the application. This list is
+	        - only used as key postfix of  node of individual connection pool configuration.
+	        -
+	        - Pattern of the constant: <connectionPoolName>[,<connectionPoolName]*
+	      -->
+	 	 <KeyValue key="ConnectionPoolNames"  type="String"  value="ALU,NICO" comment="Name of the connection pools"/>
+	 	 
+	 	 <!-- <KeyValue key="DefaultConnectionPoolUser"  type="String"  value="EAI" comment="Name of the default connection pool"/> -->
+	<KeyValue key="DefaultConnectionPoolUser"  type="String"  value="ALU" comment="Name of the default connection pool"/>
+
+		 <!--
+		   - Specifies the default standard setting of pool. Note :This pool is not created  maintained.
+		   - If some options of connection pool is not configured then the settings of DefaultPoolSettings is used.
+		  -->
+
+		 <Node name="DefaultPoolSettings">
+		      <KeyValue key="ConnectionTimeOut"  type="Integer"  value="100" comment="time out in seconds"/>
+		      <KeyValue key="MaximumNumberOfConnections"  type="Integer"  value="5" comment="Maximum no of connection to be created for the pool"/>
+		      <KeyValue key="MinimumNumberOfConnections"  type="Integer"  value="1" comment="Minimum no of connection to be created when the pool starts"/>
+		      <KeyValue key="NoOfConnectionAttempts"  type="Integer"  value="3" comment="No of attempts to be done by application to get a connection from pool"/>
+		      <KeyValue key="ConnectionAttemptInterval"  type="Integer"  value="50" comment="Time interval in milli seconds between two successive interval"/>
+		  </Node>
+
+
+	      <!--
+            - The configurations for individual connection pool.
+            - For every defined ConnectionPoolName a configuration node must be be defined
+            - Pattern of the node: ConnectionPool_<connectionPoolName>
+           -->
+	  	 
+	     <Node name="ConnectionPool_ALU">
+	     	         <KeyValue key="BscsUser"  type="String"  value="ALU" comment="Integration User"/>
+	     	         <KeyValue key="BscsUserPassword"  type="String"  value="ALU" comment=""/>
+	     		     <KeyValue key="ConnectionTimeOut"  type="Integer"  value="100" comment="time out in seconds"/>
+	     		     <KeyValue key="MaximumNumberOfConnections"  type="Integer"  value="5" comment="Maximum no of connection to be created for the pool"/>
+	     		     <KeyValue key="MinimumNumberOfConnections"  type="Integer"  value="2" comment="Minimum no of connection to be created when the pool starts"/>
+	     		     <KeyValue key="NoOfConnectionAttempts"  type="Integer"  value="5" comment="No of attempts to be done by application to get a connection from pool"/>
+	     		     <KeyValue key="ConnectionAttemptInterval"  type="Integer"  value="15" comment="Time interval in milli seconds between two successive interval"/>
+	     </Node>
+	     <Node name="ConnectionPool_NICO">
+	     	         <KeyValue key="BscsUser"  type="String"  value="NICO" comment="Integration User"/>
+	     	         <KeyValue key="BscsUserPassword"  type="String"  value="nicoleta1" comment=""/>
+	     		     <KeyValue key="ConnectionTimeOut"  type="Integer"  value="100" comment="time out in seconds"/>
+	     		     <KeyValue key="MaximumNumberOfConnections"  type="Integer"  value="5" comment="Maximum no of connection to be created for the pool"/>
+	     		     <KeyValue key="MinimumNumberOfConnections"  type="Integer"  value="2" comment="Minimum no of connection to be created when the pool starts"/>
+	     		     <KeyValue key="NoOfConnectionAttempts"  type="Integer"  value="5" comment="No of attempts to be done by application to get a connection from pool"/>
+	     		     <KeyValue key="ConnectionAttemptInterval"  type="Integer"  value="15" comment="Time interval in milli seconds between two successive interval"/>
+	     </Node>		     
+	</Node>
+
+
+</Node>
+</ComponentRegistry>
+
+

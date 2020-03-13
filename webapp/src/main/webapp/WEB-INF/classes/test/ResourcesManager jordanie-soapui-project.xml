@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="ResourcesManager jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ResourcesManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}ResourcesManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/ResourcesManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/ResourcesManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/ResourcesManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://createmsisdn.resources.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:tns3="http://createsim.resources.beans.ws.orange.com" xmlns:tns4="http://distributemsisdn.resources.beans.ws.orange.com" xmlns:tns5="http://distributesim.resources.beans.ws.orange.com" xmlns:tns6="http://recyclemsisdn.resources.beans.ws.orange.com" xmlns:tns7="http://portinnumber.resources.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://createmsisdn.resources.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType name="MsisdnIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="DN_TYPE" nillable="true" type="xsd:string"/>
+              <element name="HLCODE" nillable="true" type="xsd:long"/>
+              <element name="HMCODE" nillable="true" type="xsd:long"/>
+              <element name="MSISDN_SN" nillable="true" type="xsd:string"/>
+              <element name="NDC" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CreateMSISDNIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns1_MsisdnIn"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="MsisdnOut">
+        <sequence>
+          <element name="DN_ID" nillable="true" type="xsd:long"/>
+          <element name="ERROR_MESSAGE" nillable="true" type="xsd:string"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="CreateMSISDNOut">
+        <sequence>
+          <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns1_MsisdnOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType name="ArrayOf_tns1_MsisdnIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:MsisdnIn"/>
+        </sequence>
+      </complexType>
+      <element name="createMSISDN" type="tns1:CreateMSISDNIn"/>
+      <complexType name="ArrayOf_tns1_MsisdnOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:MsisdnOut"/>
+        </sequence>
+      </complexType>
+      <element name="createMSISDNReturn" type="tns1:CreateMSISDNOut"/>
+      <complexType name="ArrayOf_tns3_PortIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:PortIn"/>
+        </sequence>
+      </complexType>
+      <element name="createSIMIn" type="tns3:CreateSIMIn"/>
+      <complexType name="ArrayOf_tns3_PortOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:PortOut"/>
+        </sequence>
+      </complexType>
+      <element name="createSIMReturn" type="tns3:CreateSIMOut"/>
+      <complexType name="ArrayOf_tns4_MsisdnIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MsisdnIn"/>
+        </sequence>
+      </complexType>
+      <element name="distributeMSISDNIn" type="tns4:DistributeMSISDNIn"/>
+      <complexType name="ArrayOf_tns4_MsisdnOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MsisdnOut"/>
+        </sequence>
+      </complexType>
+      <element name="distributeMSISDNReturn" type="tns4:DistributeMSISDNOut"/>
+      <complexType name="ArrayOf_tns5_SimIn">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:SimIn"/>
+        </sequence>
+      </complexType>
+      <element name="distributeSIMIn" type="tns5:DistributeSIMIn"/>
+      <complexType name="ArrayOf_tns5_SimOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:SimOut"/>
+        </sequence>
+      </complexType>
+      <element name="distributeSIMReturn" type="tns5:DistributeSIMOut"/>
+      <complexType name="ArrayOf_xsd_string">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <element name="recycleMSISDNIn" type="tns6:RecycleMSISDNIn"/>
+      <complexType name="ArrayOf_tns6_MsisdnOut">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns6:MsisdnOut"/>
+        </sequence>
+      </complexType>
+      <element name="recycleMSISDNReturn" type="tns6:RecycleMSISDNOut"/>
+      <element name="portInNumberIn" type="tns7:PortInNumberIn"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://createsim.resources.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType name="PortIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="CODE_ADM" nillable="true" type="xsd:string"/>
+              <element name="HLCODE" nillable="true" type="xsd:long"/>
+              <element name="KI" nillable="true" type="xsd:string"/>
+              <element name="PIN" nillable="true" type="xsd:string"/>
+              <element name="PIN2" nillable="true" type="xsd:string"/>
+              <element name="PORT_NUM" nillable="true" type="xsd:string"/>
+              <element name="PUK" nillable="true" type="xsd:string"/>
+              <element name="PUK2" nillable="true" type="xsd:string"/>
+              <element name="SIM_CLASS" nillable="true" type="xsd:long"/>
+              <element name="SIM_SERIALNUM" nillable="true" type="xsd:string"/>
+              <element name="accessControl" nillable="true" type="xsd:string"/>
+              <element name="e_PROFILE" nillable="true" type="xsd:string"/>
+              <element name="g_PROFILE" nillable="true" type="xsd:string"/>
+              <element name="t_KEY" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CreateSIMIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="listOfPort" nillable="true" type="impl:ArrayOf_tns3_PortIn"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="PortOut">
+        <sequence>
+          <element name="ERROR_MESSAGE" nillable="true" type="xsd:string"/>
+          <element name="PORTNUM" nillable="true" type="xsd:string"/>
+          <element name="PORT_ID" nillable="true" type="xsd:long"/>
+          <element name="SIM_SERIALNUM" nillable="true" type="xsd:string"/>
+          <element name="SM_ID" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="CreateSIMOut">
+        <sequence>
+          <element name="listOfPort" nillable="true" type="impl:ArrayOf_tns3_PortOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://distributemsisdn.resources.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType name="MsisdnIn">
+        <sequence>
+          <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="DistributeMSISDNIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns4_MsisdnIn"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="MsisdnOut">
+        <sequence>
+          <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+          <element name="DN_ID" nillable="true" type="xsd:long"/>
+          <element name="DN_STATUS" nillable="true" type="xsd:string"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="DistributeMSISDNOut">
+        <sequence>
+          <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns4_MsisdnOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://distributesim.resources.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType name="SimIn">
+        <sequence>
+          <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+          <element name="SM_SERIALNUM" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="DistributeSIMIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="listOfSim" nillable="true" type="impl:ArrayOf_tns5_SimIn"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="SimOut">
+        <sequence>
+          <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+          <element name="SM_ID" nillable="true" type="xsd:long"/>
+          <element name="SM_SERIALNUM" nillable="true" type="xsd:string"/>
+          <element name="SM_STATUS" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="DistributeSIMOut">
+        <sequence>
+          <element name="listOfSim" nillable="true" type="impl:ArrayOf_tns5_SimOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://recyclemsisdn.resources.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://portinnumber.resources.beans.ws.orange.com"/>
+      <complexType name="RecycleMSISDNIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="listOfMSISDN" nillable="true" type="impl:ArrayOf_xsd_string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="MsisdnOut">
+        <sequence>
+          <element name="DN_STATUS" nillable="true" type="xsd:string"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="RecycleMSISDNOut">
+        <sequence>
+          <element name="listOfMSISDN" nillable="true" type="impl:ArrayOf_tns6_MsisdnOut"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://portinnumber.resources.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://createsim.resources.beans.ws.orange.com"/>
+      <import namespace="http://createmsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://distributemsisdn.resources.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://distributesim.resources.beans.ws.orange.com"/>
+      <import namespace="http://recyclemsisdn.resources.beans.ws.orange.com"/>
+      <complexType name="PortInNumberIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="ACTION" nillable="true" type="xsd:boolean"/>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+              <element name="SIMNUMBER" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="createMSISDNResponse">
+    <wsdl:part element="impl:createMSISDNReturn" name="createMSISDNReturn"/>
+  </wsdl:message>
+  <wsdl:message name="createSIMRequest">
+    <wsdl:part element="impl:createSIMIn" name="createSIMIn"/>
+  </wsdl:message>
+  <wsdl:message name="createMSISDNRequest">
+    <wsdl:part element="impl:createMSISDN" name="createMSISDN"/>
+  </wsdl:message>
+  <wsdl:message name="distributeSIMResponse">
+    <wsdl:part element="impl:distributeSIMReturn" name="distributeSIMReturn"/>
+  </wsdl:message>
+  <wsdl:message name="distributeMSISDNRequest">
+    <wsdl:part element="impl:distributeMSISDNIn" name="distributeMSISDNIn"/>
+  </wsdl:message>
+  <wsdl:message name="portInNumberRequest">
+    <wsdl:part element="impl:portInNumberIn" name="portInNumberIn"/>
+  </wsdl:message>
+  <wsdl:message name="recycleMSISDNResponse">
+    <wsdl:part element="impl:recycleMSISDNReturn" name="recycleMSISDNReturn"/>
+  </wsdl:message>
+  <wsdl:message name="distributeSIMRequest">
+    <wsdl:part element="impl:distributeSIMIn" name="distributeSIMIn"/>
+  </wsdl:message>
+  <wsdl:message name="recycleMSISDNRequest">
+    <wsdl:part element="impl:recycleMSISDNIn" name="recycleMSISDNIn"/>
+  </wsdl:message>
+  <wsdl:message name="distributeMSISDNResponse">
+    <wsdl:part element="impl:distributeMSISDNReturn" name="distributeMSISDNReturn"/>
+  </wsdl:message>
+  <wsdl:message name="portInNumberResponse"></wsdl:message>
+  <wsdl:message name="createSIMResponse">
+    <wsdl:part element="impl:createSIMReturn" name="createSIMReturn"/>
+  </wsdl:message>
+  <wsdl:portType name="ResourcesManager">
+    <wsdl:operation name="createMSISDN" parameterOrder="createMSISDN">
+      <wsdl:input message="impl:createMSISDNRequest" name="createMSISDNRequest"/>
+      <wsdl:output message="impl:createMSISDNResponse" name="createMSISDNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="createSIM" parameterOrder="createSIMIn">
+      <wsdl:input message="impl:createSIMRequest" name="createSIMRequest"/>
+      <wsdl:output message="impl:createSIMResponse" name="createSIMResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="distributeMSISDN" parameterOrder="distributeMSISDNIn">
+      <wsdl:input message="impl:distributeMSISDNRequest" name="distributeMSISDNRequest"/>
+      <wsdl:output message="impl:distributeMSISDNResponse" name="distributeMSISDNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="distributeSIM" parameterOrder="distributeSIMIn">
+      <wsdl:input message="impl:distributeSIMRequest" name="distributeSIMRequest"/>
+      <wsdl:output message="impl:distributeSIMResponse" name="distributeSIMResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="recycleMSISDN" parameterOrder="recycleMSISDNIn">
+      <wsdl:input message="impl:recycleMSISDNRequest" name="recycleMSISDNRequest"/>
+      <wsdl:output message="impl:recycleMSISDNResponse" name="recycleMSISDNResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="portInNumber" parameterOrder="portInNumberIn">
+      <wsdl:input message="impl:portInNumberRequest" name="portInNumberRequest"/>
+      <wsdl:output message="impl:portInNumberResponse" name="portInNumberResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ResourcesManagerSoapBinding" type="impl:ResourcesManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createMSISDN">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createMSISDNRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createMSISDNResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSIM">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="createSIMRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createSIMResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="distributeMSISDN">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="distributeMSISDNRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="distributeMSISDNResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="distributeSIM">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="distributeSIMRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="distributeSIMResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="recycleMSISDN">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="recycleMSISDNRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="recycleMSISDNResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="portInNumber">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="portInNumberRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="portInNumberResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ResourcesManagerService">
+    <wsdl:port binding="impl:ResourcesManagerSoapBinding" name="ResourcesManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/ResourcesManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="createMSISDN" bindingOperationName="createMSISDN" type="Request-Response" outputName="createMSISDNResponse" inputName="createMSISDNRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:cre="http://createmsisdn.resources.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+
+      <man:createMSISDN>
+         <cre:listOfMsisdn>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <cre:DN_TYPE>1</cre:DN_TYPE>
+               <cre:HLCODE>1</cre:HLCODE>
+               <cre:HMCODE>1</cre:HMCODE>
+               <cre:MSISDN_SN>1</cre:MSISDN_SN>
+               <cre:NDC>1</cre:NDC>
+            </man:item>
+         </cre:listOfMsisdn>
+      </man:createMSISDN>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ResourcesManager/createMSISDNRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="createSIM" bindingOperationName="createSIM" type="Request-Response" outputName="createSIMResponse" inputName="createSIMRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:cre="http://createsim.resources.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:createSIMIn>
+         <cre:listOfPort>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <cre:CODE_ADM>?</cre:CODE_ADM>
+               <cre:HLCODE>?</cre:HLCODE>
+               <cre:KI>?</cre:KI>
+               <cre:PIN>?</cre:PIN>
+               <cre:PIN2>?</cre:PIN2>
+               <cre:PORT_NUM>?</cre:PORT_NUM>
+               <cre:PUK>?</cre:PUK>
+               <cre:PUK2>?</cre:PUK2>
+               <cre:SIM_CLASS>?</cre:SIM_CLASS>
+               <cre:SIM_SERIALNUM>?</cre:SIM_SERIALNUM>
+               <cre:accessControl>?</cre:accessControl>
+               <cre:e_PROFILE>?</cre:e_PROFILE>
+               <cre:g_PROFILE>?</cre:g_PROFILE>
+               <cre:t_KEY>?</cre:t_KEY>
+            </man:item>
+         </cre:listOfPort>
+      </man:createSIMIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ResourcesManager/createSIMRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="distributeMSISDN" bindingOperationName="distributeMSISDN" type="Request-Response" outputName="distributeMSISDNResponse" inputName="distributeMSISDNRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:dis="http://distributemsisdn.resources.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:distributeMSISDNIn>
+         <dis:listOfMsisdn>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <dis:DEALER_ID>?</dis:DEALER_ID>
+               <dis:MSISDN>?</dis:MSISDN>
+            </man:item>
+         </dis:listOfMsisdn>
+      </man:distributeMSISDNIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ResourcesManager/distributeMSISDNRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="distributeSIM" bindingOperationName="distributeSIM" type="Request-Response" outputName="distributeSIMResponse" inputName="distributeSIMRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:dis="http://distributesim.resources.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:distributeSIMIn>
+         <dis:listOfSim>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <dis:DEALER_ID>?</dis:DEALER_ID>
+               <dis:SM_SERIALNUM>?</dis:SM_SERIALNUM>
+            </man:item>
+         </dis:listOfSim>
+      </man:distributeSIMIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ResourcesManager/distributeSIMRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="portInNumber" bindingOperationName="portInNumber" type="Request-Response" outputName="portInNumberResponse" inputName="portInNumberRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:por="http://portinnumber.resources.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:portInNumberIn>
+         <por:ACTION>?</por:ACTION>
+         <por:MSISDN>?</por:MSISDN>
+         <por:SIMNUMBER>?</por:SIMNUMBER>
+      </man:portInNumberIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ResourcesManager/portInNumberRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="recycleMSISDN" bindingOperationName="recycleMSISDN" type="Request-Response" outputName="recycleMSISDNResponse" inputName="recycleMSISDNRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ResourcesManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:rec="http://recyclemsisdn.resources.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:recycleMSISDNIn>
+         <rec:listOfMSISDN>
+            <!--Zero or more repetitions:-->
+            <man:item>?</man:item>
+         </rec:listOfMSISDN>
+      </man:recycleMSISDNIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ResourcesManager/recycleMSISDNRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

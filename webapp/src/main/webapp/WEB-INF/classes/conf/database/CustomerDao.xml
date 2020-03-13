@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CustomerDao">
+
+	<typeAlias alias="InsertCMSINTIn" type="com.gfi.ws.beans.customerdomain.autorelease.InsertCMSINTIn"/>
+
+	<resultMap class="InsertCMSINTIn" id="ReportResult">
+		<result column="ORIGIN" property="ORIGIN" />
+		<result column="STATUS" property="STATUS" />
+		<result column="ACTION_ID" property="ACTION_ID" />
+		<result column="PRIORITY" property="PRIORITY" />
+		<result column="INPUT_DATA" property="INPUT_DATA" jdbcType="CLOB" />
+	</resultMap>
+	
+	<insert id="insertCMSINT" parameterClass="InsertCMSINTIn">
+		INSERT INTO CMS_INT (ORIGIN, STATUS, ACTION_ID, PRIORITY, INPUT_DATA)
+		VALUES (#ORIGIN#, #STATUS#, #ACTION_ID#, #PRIORITY#, #INPUT_DATA#)
+	</insert>
+
+	<parameterMap id="pgwRetrieveCustParams" class="com.gfi.ws.beans.customerdomain.retrieveCustomerPGW.PGWRetrieveCustInOut">
+		
+		<parameter property="PKEY" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="PVALUE" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+
+		<parameter property="PPAYRESP_CUSTOMER_ID" jdbcType="INTEGER" javaType="java.lang.Long" mode="OUT"/>
+		<parameter property="PPAYRESP_CUSTCODE" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PNAME" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PFIRST_NAME" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PLAST_NAME" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PADDRESS" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PBILLCYCLE" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PCYCLE_DAY" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT"/>
+		<parameter property="PCURRENT_BALANCE" jdbcType="FLOAT" javaType="java.lang.Float" mode="OUT"/>
+		<parameter property="PWRITEOFF" jdbcType="FLOAT" javaType="java.lang.Float" mode="OUT"/>
+		<parameter property="PNONPAYRESP_CUSTOMER_ID" jdbcType="INTEGER" javaType="java.lang.Long" mode="OUT"/>
+		<parameter property="PNONPAYRESP_CUSTCODE" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PCO_ID" jdbcType="INTEGER" javaType="java.lang.Long" mode="OUT"/>
+		<parameter property="PDIAL_NUMBER" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PACCOUNT_STATUS" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="PACC_STATUS_DATE" jdbcType="DATE" javaType="java.util.Date" mode="OUT"/>
+		<parameter property="PUNBILLED_AMOUNT" jdbcType="FLOAT" javaType="java.lang.Float" mode="OUT"/>
+ 		<parameter property="PRATEPLAN" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+ 
+	</parameterMap>
+	
+	<procedure id="pgw_retrieve_cust" parameterMap="pgwRetrieveCustParams">
+		<!-- {call ALCATEL.pgw_retrieve_cust(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)} -->
+		{call ALCATEL.pgw_retrieve_cust(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>
+	
+	<select id="getCUSTCODEwithCOID" parameterClass="java.lang.Long" resultClass="java.lang.String">
+		SELECT CUST.CUSTCODE
+		FROM CONTRACT_ALL CONT, CUSTOMER_ALL CUST
+		WHERE CUST.CUSTOMER_ID=CONT.CUSTOMER_ID
+		AND CONT.CO_ID=#co_id#
+	</select>	
+	
+	<insert id="updateCCONTACT_1" parameterClass="com.gfi.ws.beans.customerdomain.updateCCONTACT.UpdateCCONTACTIn">
+		UPDATE CCONTACT_ALL
+		SET CCLINE1=#CCLINE#
+		WHERE CUSTOMER_ID=#CS_ID#
+	</insert>
+	
+	<insert id="updateCCONTACT_2" parameterClass="com.gfi.ws.beans.customerdomain.updateCCONTACT.UpdateCCONTACTIn">
+		UPDATE CCONTACT_ALL
+		SET CCLINE2=#CCLINE#
+		WHERE CUSTOMER_ID=#CS_ID#
+	</insert>
+	
+	<insert id="updateCCONTACT_3" parameterClass="com.gfi.ws.beans.customerdomain.updateCCONTACT.UpdateCCONTACTIn">
+		UPDATE CCONTACT_ALL
+		SET CCLINE3=#CCLINE#
+		WHERE CUSTOMER_ID=#CS_ID#
+	</insert>
+	
+	<insert id="updateCCONTACT_4" parameterClass="com.gfi.ws.beans.customerdomain.updateCCONTACT.UpdateCCONTACTIn">
+		UPDATE CCONTACT_ALL
+		SET CCLINE4=#CCLINE#
+		WHERE CUSTOMER_ID=#CS_ID#
+	</insert>
+	
+	<insert id="updateCCONTACT_5" parameterClass="com.gfi.ws.beans.customerdomain.updateCCONTACT.UpdateCCONTACTIn">
+		UPDATE CCONTACT_ALL
+		SET CCLINE5=#CCLINE#
+		WHERE CUSTOMER_ID=#CS_ID#
+	</insert>
+	
+	<insert id="updateCCONTACT_6" parameterClass="com.gfi.ws.beans.customerdomain.updateCCONTACT.UpdateCCONTACTIn">
+		UPDATE CCONTACT_ALL
+		SET CCLINE6=#CCLINE#
+		WHERE CUSTOMER_ID=#CS_ID#
+	</insert>
+	
+</sqlMap>

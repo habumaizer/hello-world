@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manager.ws.gfi.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.gfi.com" xmlns:intf="http://manager.ws.gfi.com" xmlns:tns1="http://cardomain.beans.ws.gfi.com" xmlns:tns2="http://beans.ws.gfi.com" xmlns:tns3="http://commons.beans.ws.gfi.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://cardomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType abstract="true" name="BasicBeanIn">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://cardomain.beans.ws.gfi.com"/>
+   <complexType name="ContractIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CO_ID" nillable="true" type="xsd:long"/>
+       <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="MSISDN" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CustomerIdType">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CS_ID" nillable="true" type="xsd:long"/>
+       <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://cardomain.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <complexType name="AddOCC_CARIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="AMOUNT" nillable="true" type="xsd:double"/>
+       <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns3:ContractIdType"/>
+       <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns3:CustomerIdType"/>
+       <element name="DESCRIPTION" nillable="true" type="xsd:string"/>
+       <element name="PERIOD" nillable="true" type="xsd:long"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="AddOCC_CAROut">
+    <sequence>
+     <element name="ELIGIBLE" nillable="true" type="xsd:string"/>
+     <element name="REASON" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://cardomain.beans.ws.gfi.com"/>
+   <import namespace="http://commons.beans.ws.gfi.com"/>
+   <element name="addOCC_CARIn" type="tns1:AddOCC_CARIn"/>
+   <element name="addOCC_CARReturn" type="tns1:AddOCC_CAROut"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="addOCC_CARRequest">
+
+      <wsdl:part element="impl:addOCC_CARIn" name="addOCC_CARIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addOCC_CARResponse">
+
+      <wsdl:part element="impl:addOCC_CARReturn" name="addOCC_CARReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CARDomainManager">
+
+      <wsdl:operation name="addOCC_CAR" parameterOrder="addOCC_CARIn">
+
+         <wsdl:input message="impl:addOCC_CARRequest" name="addOCC_CARRequest"/>
+
+         <wsdl:output message="impl:addOCC_CARResponse" name="addOCC_CARResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CARDomainManagerSoapBinding" type="impl:CARDomainManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addOCC_CAR">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addOCC_CARRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addOCC_CARResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CARDomainManagerService">
+
+      <wsdl:port binding="impl:CARDomainManagerSoapBinding" name="CARDomainManager">
+
+         <wsdlsoap:address location="http://localhost:8080/bscsWS/services/CARDomainManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

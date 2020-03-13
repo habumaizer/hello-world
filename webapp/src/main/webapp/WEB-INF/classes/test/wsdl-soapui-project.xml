@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:con="http://contracttakeover.cmsbasic.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+<soapenv:Body>
+
+      <man:contractTakeOverIn>
+         <con:chargeSubs>?</con:chargeSubs>
+         <con:contractIdComplex>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </con:contractIdComplex>
+         <con:customerIdComplex>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </con:customerIdComplex>
+         <con:extProductId>?</con:extProductId>
+         <con:extproductIdPub>?</con:extproductIdPub>
+         <con:newRpCodePub>?</con:newRpCodePub>
+         <con:newRpcode>?</con:newRpcode>
+         <con:reason>?</con:reason>
+         <con:serviceList>
+            <!--Zero or more repetitions:-->
+            <man:item>
+               <con:snCode>?</con:snCode>
+               <con:snCodePub>?</con:snCodePub>
+               <con:spCode>?</con:spCode>
+               <con:spCodePub>?</con:spCodePub>
+            </man:item>
+         </con:serviceList>
+      </man:contractTakeOverIn>
+   </soapenv:Body>
+</soapenv:Envelope>

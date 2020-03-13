@@ -1,0 +1,424 @@
+<?xml version="1.0" ?>
+
+ <project name="deploy"  basedir=".">
+
+        <property environment="env"/>
+ 	
+		
+ 		<property name="project.dir" location="." />
+ 	 	<property name="project.src.java" location="src/java" />
+ 	 	<property name="project.src.conf" location="src/conf" />
+ 	 	<property name="project.web" location="WebContent" />
+ 	 	<property name="project.dest" location="${project.dir}/classes" />
+ 	
+ 		<!-- External properties for custom project management -->
+ 	 	<property file="${project.dir}/build.properties" />
+ 	 	
+ 	
+ 	  	<property name="project.lib" location="${project.dir}/lib" />
+		<property name="axis.home" value="{project.lib}"/>
+ 		<property name="axis.deploy" value="{project.web}/WEB-INF/deploy"/>
+ 	
+ 	 	<property name="tomcat_home"            value="${env.CATALINA_HOME}"/>
+ 	    <property name="bscs_jar"               value="${env.BSCS_JAR}"/>
+ 	    <property name="resource"               value="${basedir}/resource"/>
+ 	    
+ 	
+ 	    <property name="dest.dir"               value="${project.dir}"/>
+ 	    <property name="wsdl.dir"               value="${dest.dir}/wsdl"/>
+ 	
+ 	    <property name="bin.dir"                value="${dest.dir}/classes" />
+ 	    <property name="lib.dir"                value="${dest.dir}/lib" />
+ 	    <property name="wsdd.dir"               value="${dest.dir}" />
+ 	    <property name="wsdd.package"               value="com/gfi/ws/manager/deploy.wsdd" />
+ 	    <property name="wsdd.undeploy.package"               value="com/gfi/ws/manager/undeploy.wsdd" />
+ 	    <property name="tmp.resource"           value="${src.dir}/resource"/>
+
+ 	
+ 		<!--<property name="home" value="-hsethi"/>
+ 	 	<property name="port" value="-p7081"/>
+ 	 	<property name="servletPath" value="-sbscsWS/servlet/AxisServlet"/>-->
+ 	
+ 		<property name="home" value="-h${server.ip}"/>
+ 	 	<property name="port" value="-p${server.port}"/>
+ 	 	<property name="servletPath" value="-s${server.axis.servlet.path}"/>	
+ 	 	
+ 			
+ 	
+ 	<!-- =================================================================== -->
+ 	<!-- Build classpath                                                     -->
+ 	<!-- =================================================================== -->
+		<path id="classpath">
+			<fileset dir="${project.lib}">
+ 				<include name="**/*.jar" />
+ 			</fileset>
+ 			<fileset dir="${env.CATALINA_HOME}/common">
+ 				<include name="**/*.jar" />
+ 			</fileset>
+ 		</path>
+
+		<!-- /Use in Integration -->
+ 		<target name="install_integration">
+	 		<mkdir dir="${project.dir}/classes"/>
+	 		<copy todir="${project.dir}/classes/" overwrite="true" failonerror="false">
+		 	     <fileset dir="${project.dir}/conf" >
+		 	     	<include name="*" />
+		 	     </fileset>
+		 	</copy>
+	 		<mkdir dir="${project.dir}/classes/com/alcatel/mbn/ws/conf"/>
+	 		<copy todir="${project.dir}/classes/com/alcatel/mbn/ws/conf" overwrite="true" failonerror="false">
+	 			<fileset dir="${project.dir}/conf/database" >
+	 			 	 <include name="*" />
+	 			</fileset>
+	 		</copy>
+ 		</target>
+ 	
+		<!-- /Use in PRODUCTION -->
+	 	<target name="install" depends="install_integration">
+	 		<copy todir="${project.dir}/classes/" overwrite="true" failonerror="false">
+	 			<fileset dir="${project.dir}/conf_prod" >
+	 			 	 <include name="*" />
+	 			</fileset>
+	 		</copy>
+	 	</target>
+ 	 		
+ 		<target name="deploy_wsdd">
+ 			<!-- =================================================================== -->
+ 			<!-- /CascDomain                                                     -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />
+ 			 	<arg value="${wsdd.dir}/CacsDomainManagerService/${wsdd.package}" />
+ 				<sysproperty value="" key="log4j"/>
+ 			</java>
+ 			
+ 			<!-- =================================================================== -->
+ 			<!-- CmsManager		                                                 -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 			 	<arg value="${home}"/> 
+ 			 			 	<arg value="${port}" />  
+ 			 			 	<arg value="${servletPath}" />
+ 			 			 	<arg value="${wsdd.dir}/CmsManagerService/${wsdd.package}" />
+ 			 				<sysproperty value="" key="log4j"/>
+ 			 </java>
+ 			<!-- =================================================================== -->
+ 			 <!-- CmsBasicManager		                                                 -->
+ 			 <!-- =================================================================== -->
+ 			 <java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 			 	<arg value="${home}"/> 
+ 			  			 	<arg value="${port}" />  
+ 			  		 		<arg value="${servletPath}" />
+ 			 	 			<arg value="${wsdd.dir}/CmsBasicManagerService/${wsdd.package}" />
+ 			 	 			<sysproperty value="" key="log4j"/>
+ 			 			 </java>
+ 			<!-- =================================================================== -->
+ 			<!-- OcaDomainManager		                                                 -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	 	<arg value="${home}"/> 
+ 			 		<arg value="${port}" />  
+ 			 		<arg value="${servletPath}" />
+ 			 		<arg value="${wsdd.dir}/OcaDomainManagerService/${wsdd.package}" />
+ 			 		<sysproperty value="" key="log4j"/>
+ 			 </java>
+ 			<!-- =================================================================== -->
+ 			<!-- /ContractDomain                                                     -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />
+ 			 	<arg value="${wsdd.dir}/ContractDomainManagerService/${wsdd.package}" />
+ 				<sysproperty value="" key="log4j"/>
+ 			 			
+ 			 </java>
+ 			<!-- =================================================================== -->
+ 			 <!-- GeneralDomainManager                                              -->
+ 			 <!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 				 <arg value="${home}"/> 
+ 				 <arg value="${port}" />  
+ 				 <arg value="${servletPath}" />  
+ 				 <arg value="${wsdd.dir}/GeneralDomainManagerService/${wsdd.package}" />
+ 				<sysproperty value="" key="log4j"/>
+ 			 			
+ 			</java>
+ 			<!-- =================================================================== -->
+ 			<!-- CustomerDomainManager                                              -->
+ 			<!-- =================================================================== -->
+	 		<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+	 		 	 <arg value="${home}"/> 
+	 		 	 <arg value="${port}" />  
+	 		 	 <arg value="${servletPath}" />  
+	 		 	 <arg value="${wsdd.dir}/CustomerDomainManagerService/${wsdd.package}" />
+	 			<sysproperty value="" key="log4j"/>
+	 		 			
+	 		 </java>
+ 			<!-- =================================================================== -->
+ 			<!-- /KabiraManager                                                -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			     <arg value="${home}"/> 
+ 			     <arg value="${port}" />  
+ 			     <arg value="${servletPath}" />  
+ 			     <arg value="${wsdd.dir}/KpsaManagerService/${wsdd.package}" />
+ 				<sysproperty value="" key="log4j"/>
+ 			 			
+ 			</java>
+ 			<!-- =================================================================== -->
+ 			<!-- /EBillManager                                                -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			     <arg value="${home}"/> 
+ 			     <arg value="${port}" />  
+ 			     <arg value="${servletPath}" />  
+ 			     <arg value="${wsdd.dir}/EbillManagerService/${wsdd.package}" />
+ 				<sysproperty value="" key="log4j"/>
+ 			 </java>
+ 			<!-- =================================================================== -->
+ 			<!-- /ETopUpManager                                                -->
+ 			<!-- =================================================================== -->
+ 			 <java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />  
+ 			 	<arg value="${wsdd.dir}/ETopUpManagerService/${wsdd.package}" />
+ 			 	<sysproperty value="" key="log4j"/>
+ 			 </java>
+ 
+ 			<!-- =================================================================== -->
+ 			<!-- /MicrocellDomainManager                                                -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />  
+ 			 	<arg value="${wsdd.dir}/MicroCellDomainManagerService/${wsdd.package}" />
+ 			 	<sysproperty value="" key="log4j"/>
+ 			</java>
+ 			<!-- =================================================================== -->
+ 			<!-- /NumberPortabilityDomain                                                -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />  
+ 			 	<arg value="${wsdd.dir}/NumberPortabilityDomainService/${wsdd.package}" />
+ 			 	<sysproperty value="" key="log4j"/>
+ 			</java>
+ 			<!-- =================================================================== -->
+ 			<!-- /PaymentManager                                                -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />  
+ 			 	<arg value="${wsdd.dir}/PaymentManagerService/${wsdd.package}" />
+ 			 	<sysproperty value="" key="log4j"/>
+ 			 </java>
+ 			<!-- =================================================================== -->
+ 			<!-- /ResourcesDomainManager                                            -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />  
+ 			 	<arg value="${wsdd.dir}/ResourcesManagerService/${wsdd.package}" />
+ 			 	<sysproperty value="" key="log4j"/>
+ 			</java>
+ 			
+ 			<!-- =================================================================== -->
+ 			<!-- /CARDomainManager                                            -->
+ 			<!-- =================================================================== -->
+ 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+ 			 	<arg value="${home}"/> 
+ 			 	<arg value="${port}" />  
+ 			 	<arg value="${servletPath}" />  
+ 			 	<arg value="${wsdd.dir}/CARDomainManagerService/${wsdd.package}" />
+ 			 	<sysproperty value="" key="log4j"/>
+ 			</java>
+ 			
+ 		</target>
+ 	
+	<target name="undeploy_wsdd">
+
+		 			<!-- =================================================================== -->
+		 			<!-- /CascDomain                                                     -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />
+		 			 	<arg value="${wsdd.dir}/CacsDomainManagerService/${wsdd.undeploy.package}" />
+		 				<sysproperty value="" key="log4j"/>
+		 			</java>
+		 			
+		 			<!-- =================================================================== -->
+		 			<!-- CmsManager		                                                 -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 			 	<arg value="${home}"/> 
+		 			 			 	<arg value="${port}" />  
+		 			 			 	<arg value="${servletPath}" />
+		 			 			 	<arg value="${wsdd.dir}/CmsManagerService/${wsdd.undeploy.package}" />
+		 			 				<sysproperty value="" key="log4j"/>
+		 			 </java>
+		 			<!-- =================================================================== -->
+		 			 <!-- CmsBasicManager		                                                 -->
+		 			 <!-- =================================================================== -->
+		 			 <java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 			 	<arg value="${home}"/> 
+		 			  			 	<arg value="${port}" />  
+		 			  		 		<arg value="${servletPath}" />
+		 			 	 			<arg value="${wsdd.dir}/CmsBasicManagerService/${wsdd.undeploy.package}" />
+		 			 	 			<sysproperty value="" key="log4j"/>
+		 			 			 </java>
+					<!-- =================================================================== -->
+				 	<!-- /ContractDomain                                                     -->
+					<!-- =================================================================== -->
+				 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+				 			 	<arg value="${home}"/> 
+				 			 	<arg value="${port}" />  
+				 			 	<arg value="${servletPath}" />
+				 			 	<arg value="${wsdd.dir}/OcaDomainManagerService/${wsdd.undeploy.package}" />
+				 				<sysproperty value="" key="log4j"/>
+				 			 			
+				 			 </java>
+		 			<!-- =================================================================== -->
+		 			<!-- /ContractDomain                                                     -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />
+		 			 	<arg value="${wsdd.dir}/ContractDomainManagerService/${wsdd.undeploy.package}" />
+		 				<sysproperty value="" key="log4j"/>
+		 			 			
+		 			 </java>
+		 			<!-- =================================================================== -->
+		 			 <!-- GeneralDomainManager                                              -->
+		 			 <!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 				 <arg value="${home}"/> 
+		 				 <arg value="${port}" />  
+		 				 <arg value="${servletPath}" />  
+		 				 <arg value="${wsdd.dir}/GeneralDomainManagerService/${wsdd.undeploy.package}" />
+		 				<sysproperty value="" key="log4j"/>
+		 			 			
+		 			</java>
+		 			<!-- =================================================================== -->
+		 			<!-- CustomerDomainManager                                              -->
+		 			<!-- =================================================================== -->
+			 		<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+			 		 	 <arg value="${home}"/> 
+			 		 	 <arg value="${port}" />  
+			 		 	 <arg value="${servletPath}" />  
+			 		 	 <arg value="${wsdd.dir}/CustomerDomainManagerService/${wsdd.undeploy.package}" />
+			 			<sysproperty value="" key="log4j"/>
+			 		 			
+			 		 </java>
+		 			<!-- =================================================================== -->
+		 			<!-- /KabiraManager                                                -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			     <arg value="${home}"/> 
+		 			     <arg value="${port}" />  
+		 			     <arg value="${servletPath}" />  
+		 			     <arg value="${wsdd.dir}/KpsaManagerService/${wsdd.undeploy.package}" />
+		 				<sysproperty value="" key="log4j"/>
+		 			 			
+		 			</java>
+		 			<!-- =================================================================== -->
+		 			<!-- /EBillManager                                                -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			     <arg value="${home}"/> 
+		 			     <arg value="${port}" />  
+		 			     <arg value="${servletPath}" />  
+		 			     <arg value="${wsdd.dir}/EBillManagerService/${wsdd.package}" />
+		 				<sysproperty value="" key="log4j"/>
+		 			 </java>
+		 			<!-- =================================================================== -->
+		 			<!-- /ETopUpManager                                                -->
+		 			<!-- =================================================================== -->
+		 			 <java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />  
+		 			 	<arg value="${wsdd.dir}/ETopUpManagerService/${wsdd.undeploy.package}" />
+		 			 	<sysproperty value="" key="log4j"/>
+		 			 </java>
+		 
+		 			<!-- =================================================================== -->
+		 			<!-- /MicrocellDomainManager                                                -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />  
+		 			 	<arg value="${wsdd.dir}/MicroCellDomainManagerService/${wsdd.undeploy.package}" />
+		 			 	<sysproperty value="" key="log4j"/>
+		 			</java>
+		 			<!-- =================================================================== -->
+		 			<!-- /NumberPortabilityDomain                                                -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />  
+		 			 	<arg value="${wsdd.dir}/NumberPortabilityDomainService/${wsdd.undeploy.package}" />
+		 			 	<sysproperty value="" key="log4j"/>
+		 			</java>
+		 			<!-- =================================================================== -->
+		 			<!-- /PaymentManager                                                -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />  
+		 			 	<arg value="${wsdd.dir}/PaymentManagerService/${wsdd.undeploy.package}" />
+		 			 	<sysproperty value="" key="log4j"/>
+		 			 </java>
+		 			<!-- =================================================================== -->
+		 			<!-- /ResourcesDomainManager                                            -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />  
+		 			 	<arg value="${wsdd.dir}/ResourcesManagerService/${wsdd.undeploy.package}" />
+		 			 	<sysproperty value="" key="log4j"/>
+		 			</java>
+		 			
+		 			<!-- =================================================================== -->
+		 			<!-- /CARDomainManager                                            -->
+		 			<!-- =================================================================== -->
+		 			<java classpathref="classpath" classname="org.apache.axis.client.AdminClient" fork="true" >
+		 			 	<arg value="${home}"/> 
+		 			 	<arg value="${port}" />  
+		 			 	<arg value="${servletPath}" />  
+		 			 	<arg value="${wsdd.dir}/CARDomainManagerService/${wsdd.undeploy.package}" />
+		 			 	<sysproperty value="" key="log4j"/>
+		 			</java>
+		 			
+		 		</target>
+			 	
+ 				
+ 		 	
+ 			 <!-- tomcat must be running by the time when deploy/undeploy is called-->
+ 			 <target name="deploy" depends="undeploy_wsdd,install,deploy_wsdd" >
+ 			         <ant antfile="${project.dir}/deploy.xml" target="deploy" inheritall="false" />
+ 			 </target>
+
+ 			 <target name="undeploy" depends="undeploy_wsdd" >
+ 			         <!-- <ant antfile="${project.dir}/deploy.xml" target="undeploy" inheritall="false" /> -->
+ 			 </target>
+
+ 			 <target name="uninstall" >
+ 			        <ant antfile="${project.dir}/deploy.xml" target="uninstall" inheritall="false" />
+ 			 </target>
+ 	</project>
+ 	 	

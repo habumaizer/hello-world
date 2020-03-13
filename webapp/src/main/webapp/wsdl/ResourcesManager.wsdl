@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manager.ws.gfi.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.gfi.com" xmlns:intf="http://manager.ws.gfi.com" xmlns:tns1="http://createsim.resources.beans.ws.gfi.com" xmlns:tns10="http://blockServiceResource.resources.beans.ws.gfi.com" xmlns:tns2="http://beans.ws.gfi.com" xmlns:tns3="http://createmsisdn.resources.beans.ws.gfi.com" xmlns:tns4="http://distributemsisdn.resources.beans.ws.gfi.com" xmlns:tns5="http://distributesim.resources.beans.ws.gfi.com" xmlns:tns6="http://recyclemsisdn.resources.beans.ws.gfi.com" xmlns:tns7="http://portinnumber.resources.beans.ws.gfi.com" xmlns:tns8="http://resourcestate.resources.beans.ws.gfi.com" xmlns:tns9="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType abstract="true" name="BasicBeanIn">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://createsim.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <complexType name="PortIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CODE_ADM" nillable="true" type="xsd:string"/>
+       <element name="HLCODE" nillable="true" type="xsd:long"/>
+       <element name="KI" nillable="true" type="xsd:string"/>
+       <element name="PIN" nillable="true" type="xsd:string"/>
+       <element name="PIN2" nillable="true" type="xsd:string"/>
+       <element name="PORT_NUM" nillable="true" type="xsd:string"/>
+       <element name="PUK" nillable="true" type="xsd:string"/>
+       <element name="PUK2" nillable="true" type="xsd:string"/>
+       <element name="SIM_CLASS" nillable="true" type="xsd:long"/>
+       <element name="SIM_SERIALNUM" nillable="true" type="xsd:string"/>
+       <element name="accessControl" nillable="true" type="xsd:string"/>
+       <element name="e_PROFILE" nillable="true" type="xsd:string"/>
+       <element name="g_PROFILE" nillable="true" type="xsd:string"/>
+       <element name="t_KEY" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CreateSIMIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="listOfPort" nillable="true" type="impl:ArrayOf_tns1_PortIn"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="PortOut">
+    <sequence>
+     <element name="ERROR_MESSAGE" nillable="true" type="xsd:string"/>
+     <element name="PORTNUM" nillable="true" type="xsd:string"/>
+     <element name="PORT_ID" nillable="true" type="xsd:long"/>
+     <element name="SIM_SERIALNUM" nillable="true" type="xsd:string"/>
+     <element name="SM_ID" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="CreateSIMOut">
+    <sequence>
+     <element name="listOfPort" nillable="true" type="impl:ArrayOf_tns1_PortOut"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="ArrayOf_tns1_PortIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:PortIn"/>
+    </sequence>
+   </complexType>
+   <element name="createSIMIn" type="tns1:CreateSIMIn"/>
+   <complexType name="ArrayOf_tns1_PortOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:PortOut"/>
+    </sequence>
+   </complexType>
+   <element name="createSIMReturn" type="tns1:CreateSIMOut"/>
+   <complexType name="ArrayOf_tns3_MsisdnIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:MsisdnIn"/>
+    </sequence>
+   </complexType>
+   <element name="createMSISDN" type="tns3:CreateMSISDNIn"/>
+   <complexType name="ArrayOf_tns3_MsisdnOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:MsisdnOut"/>
+    </sequence>
+   </complexType>
+   <element name="createMSISDNReturn" type="tns3:CreateMSISDNOut"/>
+   <complexType name="ArrayOf_tns4_MsisdnIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MsisdnIn"/>
+    </sequence>
+   </complexType>
+   <element name="distributeMSISDNIn" type="tns4:DistributeMSISDNIn"/>
+   <complexType name="ArrayOf_tns4_MsisdnOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns4:MsisdnOut"/>
+    </sequence>
+   </complexType>
+   <element name="distributeMSISDNReturn" type="tns4:DistributeMSISDNOut"/>
+   <complexType name="ArrayOf_tns5_SimIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:SimIn"/>
+    </sequence>
+   </complexType>
+   <element name="distributeSIMIn" type="tns5:DistributeSIMIn"/>
+   <complexType name="ArrayOf_tns5_SimOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns5:SimOut"/>
+    </sequence>
+   </complexType>
+   <element name="distributeSIMReturn" type="tns5:DistributeSIMOut"/>
+   <complexType name="ArrayOf_xsd_string">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="recycleMSISDNIn" type="tns6:RecycleMSISDNIn"/>
+   <complexType name="ArrayOf_tns6_MsisdnOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns6:MsisdnOut"/>
+    </sequence>
+   </complexType>
+   <element name="recycleMSISDNReturn" type="tns6:RecycleMSISDNOut"/>
+   <element name="portInNumberIn" type="tns7:PortInNumberIn"/>
+   <element name="resourceStateIn" type="tns8:ResourceStateIn"/>
+   <complexType name="ArrayOf_tns9_DnTypes">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:DnTypes"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns9_ParameterValuesIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:ParameterValuesIn"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns9_StatusIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:StatusIn"/>
+    </sequence>
+   </complexType>
+   <element name="genericDirectoryNumberSearchIn" type="tns9:GenericDirectoryNumberSearchIn"/>
+   <complexType name="ArrayOf_tns9_BlockOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:BlockOut"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns9_DirectoryNumberOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns9:DirectoryNumberOut"/>
+    </sequence>
+   </complexType>
+   <element name="genericDirectoryNumberSearchReturn" type="tns9:GenericDirectoryNumberSearchOut"/>
+   <element name="blockServiceResourceIn" type="tns10:BlockServiceResourceIn"/>
+   <element name="blockServiceResourceReturn" type="tns10:BlockServiceResourceOut"/>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://createmsisdn.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="MsisdnIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="DN_TYPE" nillable="true" type="xsd:string"/>
+       <element name="HLCODE" nillable="true" type="xsd:long"/>
+       <element name="HMCODE" nillable="true" type="xsd:long"/>
+       <element name="MSISDN_SN" nillable="true" type="xsd:string"/>
+       <element name="NDC" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="CreateMSISDNIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns3_MsisdnIn"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="MsisdnOut">
+    <sequence>
+     <element name="DN_ID" nillable="true" type="xsd:long"/>
+     <element name="ERROR_MESSAGE" nillable="true" type="xsd:string"/>
+     <element name="MSISDN" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CreateMSISDNOut">
+    <sequence>
+     <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns3_MsisdnOut"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://distributemsisdn.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="MsisdnIn">
+    <sequence>
+     <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+     <element name="MSISDN" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DistributeMSISDNIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns4_MsisdnIn"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="MsisdnOut">
+    <sequence>
+     <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+     <element name="DN_ID" nillable="true" type="xsd:long"/>
+     <element name="DN_STATUS" nillable="true" type="xsd:string"/>
+     <element name="MSISDN" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DistributeMSISDNOut">
+    <sequence>
+     <element name="listOfMsisdn" nillable="true" type="impl:ArrayOf_tns4_MsisdnOut"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://distributesim.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="SimIn">
+    <sequence>
+     <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+     <element name="SM_SERIALNUM" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DistributeSIMIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="listOfSim" nillable="true" type="impl:ArrayOf_tns5_SimIn"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="SimOut">
+    <sequence>
+     <element name="DEALER_ID" nillable="true" type="xsd:long"/>
+     <element name="SM_ID" nillable="true" type="xsd:long"/>
+     <element name="SM_SERIALNUM" nillable="true" type="xsd:string"/>
+     <element name="SM_STATUS" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="DistributeSIMOut">
+    <sequence>
+     <element name="listOfSim" nillable="true" type="impl:ArrayOf_tns5_SimOut"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://recyclemsisdn.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="RecycleMSISDNIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="listOfMSISDN" nillable="true" type="impl:ArrayOf_xsd_string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="MsisdnOut">
+    <sequence>
+     <element name="DN_STATUS" nillable="true" type="xsd:string"/>
+     <element name="MSISDN" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="RecycleMSISDNOut">
+    <sequence>
+     <element name="listOfMSISDN" nillable="true" type="impl:ArrayOf_tns6_MsisdnOut"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://portinnumber.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="PortInNumberIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="ACTION" nillable="true" type="xsd:boolean"/>
+       <element name="MSISDN" nillable="true" type="xsd:string"/>
+       <element name="SIMNUMBER" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://resourcestate.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="ResourceStateIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="NPCODE" nillable="true" type="xsd:long"/>
+       <element name="NPCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="PLCODE" nillable="true" type="xsd:long"/>
+       <element name="PLCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="RESOURCE_ID" nillable="true" type="xsd:long"/>
+       <element name="RESOURCE_NUMBER" nillable="true" type="xsd:string"/>
+       <element name="RESOURCE_STATE" nillable="true" type="xsd:string"/>
+       <element name="RESOURCE_TYPE" nillable="true" type="xsd:string"/>
+       <element name="SCCODE" nillable="true" type="xsd:long"/>
+       <element name="SCCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="VPN_ID" nillable="true" type="xsd:long"/>
+       <element name="VPN_ID_PUB" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://blockServiceResource.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="DnTypes">
+    <sequence>
+     <element name="DN_CODE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ParameterValuesIn">
+    <sequence>
+     <element name="PRM_NO" nillable="true" type="xsd:long"/>
+     <element name="PRM_VALUE_STRING" nillable="true" type="xsd:string"/>
+     <element name="RESOURCE_LIKE" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="StatusIn">
+    <sequence>
+     <element name="DN_STATUS" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="GenericDirectoryNumberSearchIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="CS_ID" nillable="true" type="xsd:long"/>
+       <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="DIRNUM" nillable="true" type="xsd:string"/>
+       <element name="HLCODE" nillable="true" type="xsd:long"/>
+       <element name="HLCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="HMCODE" nillable="true" type="xsd:long"/>
+       <element name="HMCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="MAX_BLK_SIZE" nillable="true" type="xsd:int"/>
+       <element name="MIN_BLK_SIZE" nillable="true" type="xsd:int"/>
+       <element name="NPCODE" nillable="true" type="xsd:long"/>
+       <element name="NPCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="PLCODE" nillable="true" type="xsd:long"/>
+       <element name="PLCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="PREFIX" nillable="true" type="xsd:string"/>
+       <element name="PUBLIC_DN_NUM" nillable="true" type="xsd:string"/>
+       <element name="PUBLIC_NPCODE" nillable="true" type="xsd:long"/>
+       <element name="PUBLIC_NPCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="REQUIRED_MAPPING_RULE" nillable="true" type="xsd:boolean"/>
+       <element name="RESERVATION" nillable="true" type="xsd:boolean"/>
+       <element name="SEARCH_BLOCK" nillable="true" type="xsd:boolean"/>
+       <element name="SEARCH_COUNT" nillable="true" type="xsd:int"/>
+       <element name="SNCODE" nillable="true" type="xsd:long"/>
+       <element name="SNCODE_PUB" nillable="true" type="xsd:string"/>
+       <element name="SUBM_ID" nillable="true" type="xsd:long"/>
+       <element name="SUBM_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="VPN_ID" nillable="true" type="xsd:long"/>
+       <element name="VPN_ID_PUB" nillable="true" type="xsd:string"/>
+       <element name="listOfDnTypes" nillable="true" type="impl:ArrayOf_tns9_DnTypes"/>
+       <element name="listOfPARAMETER_VALUES" nillable="true" type="impl:ArrayOf_tns9_ParameterValuesIn"/>
+       <element name="listOfStatus" nillable="true" type="impl:ArrayOf_tns9_StatusIn"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="BlockOut">
+    <sequence>
+     <element name="DN_BLOCK_SEQNO" nillable="true" type="xsd:long"/>
+     <element name="DN_BLOCK_STATUS" nillable="true" type="xsd:string"/>
+     <element name="HIGH" nillable="true" type="xsd:string"/>
+     <element name="LOW" nillable="true" type="xsd:string"/>
+     <element name="SIZE" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="DirectoryNumberOut">
+    <sequence>
+     <element name="DES" nillable="true" type="xsd:string"/>
+     <element name="DIRNUM" nillable="true" type="xsd:string"/>
+     <element name="DN_CODE" nillable="true" type="xsd:long"/>
+     <element name="DN_ID" nillable="true" type="xsd:long"/>
+     <element name="DN_STATUS" nillable="true" type="xsd:string"/>
+     <element name="HLCODE" nillable="true" type="xsd:long"/>
+     <element name="NPCODE" nillable="true" type="xsd:long"/>
+     <element name="PORT_ID" nillable="true" type="xsd:long"/>
+     <element name="VPN_ID" nillable="true" type="xsd:long"/>
+     <element name="listOfBlock" nillable="true" type="impl:ArrayOf_tns9_BlockOut"/>
+    </sequence>
+   </complexType>
+   <complexType name="GenericDirectoryNumberSearchOut">
+    <sequence>
+     <element name="SEARCH_IS_COMPLETE" nillable="true" type="xsd:boolean"/>
+     <element name="listOfdirectoryNumbersOut" nillable="true" type="impl:ArrayOf_tns9_DirectoryNumberOut"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://blockServiceResource.resources.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans.ws.gfi.com"/>
+   <import namespace="http://distributesim.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createmsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://resourcestate.resources.beans.ws.gfi.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://distributemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://genericDirectoryNumberSearch.resources.beans.ws.gfi.com"/>
+   <import namespace="http://portinnumber.resources.beans.ws.gfi.com"/>
+   <import namespace="http://recyclemsisdn.resources.beans.ws.gfi.com"/>
+   <import namespace="http://createsim.resources.beans.ws.gfi.com"/>
+   <complexType name="BlockServiceResourceIn">
+    <complexContent>
+     <extension base="tns2:BasicBeanIn">
+      <sequence>
+       <element name="MSISDN" nillable="true" type="xsd:string"/>
+       <element name="NPCODE" nillable="true" type="xsd:long"/>
+       <element name="PLCODE" nillable="true" type="xsd:long"/>
+       <element name="newStatus" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="BlockServiceResourceOut">
+    <sequence>
+     <element name="errorMessage" nillable="true" type="xsd:string"/>
+     <element name="success" nillable="true" type="xsd:boolean"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="distributeSIMResponse">
+
+      <wsdl:part element="intf:distributeSIMReturn" name="distributeSIMReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="distributeSIMRequest">
+
+      <wsdl:part element="intf:distributeSIMIn" name="distributeSIMIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="genericDirectoryNumberSearchResponse">
+
+      <wsdl:part element="intf:genericDirectoryNumberSearchReturn" name="genericDirectoryNumberSearchReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMSISDNRequest">
+
+      <wsdl:part element="intf:createMSISDN" name="createMSISDN"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="recycleMSISDNRequest">
+
+      <wsdl:part element="intf:recycleMSISDNIn" name="recycleMSISDNIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="resourceStateRequest">
+
+      <wsdl:part element="intf:resourceStateIn" name="resourceStateIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="genericDirectoryNumberSearchRequest">
+
+      <wsdl:part element="intf:genericDirectoryNumberSearchIn" name="genericDirectoryNumberSearchIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="portInNumberResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="blockServiceResourceResponse">
+
+      <wsdl:part element="intf:blockServiceResourceReturn" name="blockServiceResourceReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="recycleMSISDNResponse">
+
+      <wsdl:part element="intf:recycleMSISDNReturn" name="recycleMSISDNReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="resourceStateResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="createSIMResponse">
+
+      <wsdl:part element="intf:createSIMReturn" name="createSIMReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="portInNumberRequest">
+
+      <wsdl:part element="intf:portInNumberIn" name="portInNumberIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createMSISDNResponse">
+
+      <wsdl:part element="intf:createMSISDNReturn" name="createMSISDNReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="blockServiceResourceRequest">
+
+      <wsdl:part element="intf:blockServiceResourceIn" name="blockServiceResourceIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="distributeMSISDNRequest">
+
+      <wsdl:part element="intf:distributeMSISDNIn" name="distributeMSISDNIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="distributeMSISDNResponse">
+
+      <wsdl:part element="intf:distributeMSISDNReturn" name="distributeMSISDNReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createSIMRequest">
+
+      <wsdl:part element="intf:createSIMIn" name="createSIMIn"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ResourcesManager">
+
+      <wsdl:operation name="createSIM" parameterOrder="createSIMIn">
+
+         <wsdl:input message="intf:createSIMRequest" name="createSIMRequest"/>
+
+         <wsdl:output message="intf:createSIMResponse" name="createSIMResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createMSISDN" parameterOrder="createMSISDN">
+
+         <wsdl:input message="intf:createMSISDNRequest" name="createMSISDNRequest"/>
+
+         <wsdl:output message="intf:createMSISDNResponse" name="createMSISDNResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="distributeMSISDN" parameterOrder="distributeMSISDNIn">
+
+         <wsdl:input message="intf:distributeMSISDNRequest" name="distributeMSISDNRequest"/>
+
+         <wsdl:output message="intf:distributeMSISDNResponse" name="distributeMSISDNResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="distributeSIM" parameterOrder="distributeSIMIn">
+
+         <wsdl:input message="intf:distributeSIMRequest" name="distributeSIMRequest"/>
+
+         <wsdl:output message="intf:distributeSIMResponse" name="distributeSIMResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="recycleMSISDN" parameterOrder="recycleMSISDNIn">
+
+         <wsdl:input message="intf:recycleMSISDNRequest" name="recycleMSISDNRequest"/>
+
+         <wsdl:output message="intf:recycleMSISDNResponse" name="recycleMSISDNResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="portInNumber" parameterOrder="portInNumberIn">
+
+         <wsdl:input message="intf:portInNumberRequest" name="portInNumberRequest"/>
+
+         <wsdl:output message="intf:portInNumberResponse" name="portInNumberResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resourceState" parameterOrder="resourceStateIn">
+
+         <wsdl:input message="intf:resourceStateRequest" name="resourceStateRequest"/>
+
+         <wsdl:output message="intf:resourceStateResponse" name="resourceStateResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="genericDirectoryNumberSearch" parameterOrder="genericDirectoryNumberSearchIn">
+
+         <wsdl:input message="intf:genericDirectoryNumberSearchRequest" name="genericDirectoryNumberSearchRequest"/>
+
+         <wsdl:output message="intf:genericDirectoryNumberSearchResponse" name="genericDirectoryNumberSearchResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="blockServiceResource" parameterOrder="blockServiceResourceIn">
+
+         <wsdl:input message="intf:blockServiceResourceRequest" name="blockServiceResourceRequest"/>
+
+         <wsdl:output message="intf:blockServiceResourceResponse" name="blockServiceResourceResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ResourcesManagerSoapBinding" type="intf:ResourcesManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="createSIM">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createSIMRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createSIMResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createMSISDN">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createMSISDNRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createMSISDNResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="distributeMSISDN">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="distributeMSISDNRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="distributeMSISDNResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="distributeSIM">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="distributeSIMRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="distributeSIMResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="recycleMSISDN">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="recycleMSISDNRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="recycleMSISDNResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="portInNumber">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="portInNumberRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="portInNumberResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="resourceState">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="resourceStateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="resourceStateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="genericDirectoryNumberSearch">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="genericDirectoryNumberSearchRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="genericDirectoryNumberSearchResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="blockServiceResource">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="blockServiceResourceRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="blockServiceResourceResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ResourcesManagerService">
+
+      <wsdl:port binding="intf:ResourcesManagerSoapBinding" name="ResourcesManager">
+
+         <wsdlsoap:address location="http://localhost:8080/bscsWS/services/ResourcesManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

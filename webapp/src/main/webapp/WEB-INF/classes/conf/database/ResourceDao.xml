@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ResourceDao">
+	
+	<typeAlias alias="ResultDistributeMsisdn" type="com.gfi.ws.beans.resources.distributemsisdn.Result"/>
+	
+	<typeAlias alias="ResultRecycleMsisdn" type="com.gfi.ws.beans.resources.recyclemsisdn.Result"/>
+		
+	<typeAlias alias="ResultSim" type="com.gfi.ws.beans.resources.distributesim.Result"/>
+	
+	
+	<resultMap id="resultDistributeMsisdn" class="ResultDistributeMsisdn">
+		<result property="DN_NUM" column="DN_NUM"/>
+		<result property="DN_ID" column="DN_ID"/>
+		<result property="DN_STATUS" column="DN_STATUS"/>
+		<result property="DEALER_ID" column="DEALER_ID"/>
+	</resultMap>
+	
+	<resultMap id="resultRecycleMsisdn" class="ResultRecycleMsisdn">
+		<result property="DN_NUM" column="DN_NUM"/>
+		<result property="DN_STATUS" column="DN_STATUS"/>
+	</resultMap>
+	
+	<resultMap id="resultSim" class="ResultSim">
+		<result property="SM_SERIALNUM" column="SM_SERIALNUM"/>
+		<result property="SM_ID" column="SM_ID"/>
+		<result property="SM_STATUS" column="SM_STATUS"/>
+		<result property="DEALER_ID" column="DEALER_ID"/>
+	</resultMap>
+	
+	<update id="updateDistributeMsisdn" parameterClass="com.gfi.ws.beans.resources.distributemsisdn.Parameter">
+		UPDATE DIRECTORY_NUMBER 
+		SET DN_STATUS_MOD_DATE = SYSDATE,
+			DN_MODDATE = SYSDATE,
+			DN_MODFLAG = 'X',
+			REC_VERSION = REC_VERSION + 1,
+			DN_STATUS = 'r',
+			DEALER_ID = #DEALER_ID#,
+			DN_ASSIGN_DATE = SYSDATE,
+			BUSINESS_UNIT_ID = 1
+		WHERE DN_NUM IN <iterate open="(" close=")" conjunction="," property="LISTDN"> #LISTDN[]#</iterate> AND DN_STATUS in ('f','r')
+	</update>
+	
+	<select id="getDistributeMsisdn"  resultClass="resultDistributeMsisdn">
+		SELECT DN_NUM, DN_ID, DN_STATUS, DEALER_ID 
+		FROM DIRECTORY_NUMBER 
+		WHERE DN_NUM in <iterate open="(" close=")" conjunction=","> #[]#</iterate> 
+	</select>
+	
+	<update id="updateDistributeSimPort" parameterClass="com.gfi.ws.beans.resources.distributesim.Parameter">
+		UPDATE PORT
+		SET PORT_STATUSMODDAT = SYSDATE,
+			PORT_MODDATE = SYSDATE,
+			REC_VERSION = REC_VERSION + 1,
+			PORT_STATUS = 'r',
+			DEALER_ID = #DEALER_ID#,
+			PORT_ASSIGN_DATE = SYSDATE,
+			BUSINESS_UNIT_ID = 1
+		WHERE SM_ID IN 
+			(SELECT SM_ID 
+			 FROM STORAGE_MEDIUM 
+			 WHERE SM_SERIALNUM IN <iterate open="(" close=")" conjunction="," property="LISTSM"> #LISTSM[]#</iterate>  
+			 	AND SM_STATUS IN ('r','f'))
+	</update>
+	
+	<update id="updateDistributeSimStorageMedium" parameterClass="com.gfi.ws.beans.resources.distributesim.Parameter">
+		UPDATE STORAGE_MEDIUM 
+		SET SM_STATUS_MOD_DATE = SYSDATE,
+			SM_MODDATE = SYSDATE,
+			REC_VERSION = REC_VERSION + 1,
+			SM_STATUS = 'r',
+			DEALER_ID = #DEALER_ID#,
+			SM_DELIVERY_ID = #DEALER_ID#,
+			SM_DELIVERY_DATE = SYSDATE,
+			BUSINESS_UNIT_ID = 1
+		WHERE SM_SERIALNUM IN <iterate open="(" close=")" conjunction="," property="LISTSM"> #LISTSM[]#</iterate>  
+			AND SM_STATUS IN ('r','f')
+	</update>
+	
+	<select id="getDistributeSim"  resultClass="resultSim">
+		SELECT SM_SERIALNUM, SM_ID, SM_STATUS, DEALER_ID 
+		FROM STORAGE_MEDIUM 
+		WHERE SM_SERIALNUM IN <iterate open="(" close=")" conjunction=","> #[]#</iterate> 
+	</select>
+	
+	<update id="updateRecycleMsisdn">
+		UPDATE DIRECTORY_NUMBER   
+		SET	DN_STATUS ='f',
+			DEALER_ID = NULL,
+			DN_ASSIGN_DATE = NULL,
+			DN_STATUS_MOD_DATE = SYSDATE,
+    		DN_MODDATE = SYSDATE,
+    		DN_MODFLAG = 'X',
+   		 	BUSINESS_UNIT_ID = NULL    
+    	WHERE DIRNUM_NPCODE = 1 AND VPN_ID IS NULL AND DN_STATUS = 'd' AND EXTERNAL_IND  = 'N'    	
+    		AND DN_NUM IN <iterate open="(" close=")" conjunction=","> #[]#</iterate>     
+    </update>
+    
+    <select id="getRecycleMsisdn"  resultClass="resultRecycleMsisdn">
+		SELECT DN_NUM, DN_STATUS
+		FROM DIRECTORY_NUMBER 
+		WHERE DN_NUM IN <iterate open="(" close=")" conjunction=","> #[]#</iterate> 
+	</select>
+	
+	<parameterMap id="createMSISDNParams" class="com.gfi.ws.beans.resources.createmsisdn.CreateMSISDNInOut">
+		<parameter property="PISMSISDN_SN"  jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PINHMCODE"     jdbcType="INTEGER"     javaType="java.lang.Integer"   mode="IN"/>
+		<parameter property="PINHLCODE"     jdbcType="INTEGER"     javaType="java.lang.Integer"   mode="IN"/>
+		<parameter property="PISDN_TYPE"    jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISNDC"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		
+		<parameter property="PONDN_ID"        jdbcType="INTEGER"  javaType="java.lang.Integer" mode="OUT"/>
+		<parameter property="PONERROR_CODE"    jdbcType="INTEGER"    javaType="java.lang.Integer" mode="OUT"/>
+		<parameter property="POSERROR_MESSAGE" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		
+	</parameterMap>	
+	
+	<procedure id="createMSISDN"  parameterMap="createMSISDNParams">
+		{call ALCATEL.resources.create_msisdn(?,?,?,?,?,?,?,?)}
+	</procedure>	
+
+    <parameterMap id="createSIMParams" class="com.gfi.ws.beans.resources.createsim.createSIMInOut">
+		<parameter property="PISPORT_NUM"  jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PINHLCODE"     jdbcType="INTEGER"     javaType="java.lang.Integer"   mode="IN"/>
+		<parameter property="PINSIM_CLASS"     jdbcType="INTEGER"     javaType="java.lang.Integer"   mode="IN"/>
+		<parameter property="PISSIM_SERIALNUM"    jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISE_PROFILE"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISG_PROFILE"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PIST_KEY"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISPIN"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISPUK"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISPIN2"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISPUK2"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISKI"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISACCESS_CONTROL"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+		<parameter property="PISCODE_ADM"        jdbcType="VARCHAR"  javaType="java.lang.String" mode="IN"/>
+
+		<parameter property="PONSM_ID"        jdbcType="INTEGER"  javaType="java.lang.Integer" mode="OUT"/>
+		<parameter property="PONPORT_ID"        jdbcType="INTEGER"  javaType="java.lang.Integer" mode="OUT"/>
+		<parameter property="PONERROR_CODE"    jdbcType="INTEGER"    javaType="java.lang.Integer" mode="OUT"/>
+		<parameter property="POSERROR_MESSAGE" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>	
+	</parameterMap>	
+	
+	<procedure id="createSIM"  parameterMap="createSIMParams">
+		{call ALCATEL.resources.create_sim(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}
+	</procedure>	
+	
+    <select id="isADealer" parameterClass="java.lang.Long" resultClass="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM CUSTOMER_ALL CU, CUSTOMER_ROLE CR
+		WHERE CU.CUSTOMER_ID = CR.CUSTOMER_ID
+		AND CR.PARTY_ROLE_ID = 14
+		AND CU.CUSTOMER_ID = #cs_id#
+	</select>	
+
+    <parameterMap id="portInNumberParams" class="com.gfi.ws.beans.resources.portinnumber.PortInNumberInOut">
+		<parameter property="RESULT"	jdbcType="VARCHAR"	javaType="java.lang.String" mode="OUT"/>
+
+		<parameter property="MSISDN"	jdbcType="VARCHAR"	javaType="java.lang.String"	 mode="IN"/>
+		<parameter property="ACTION"	jdbcType="INTEGER"	javaType="java.lang.Integer" mode="IN"/>		
+	</parameterMap>	
+	
+	<procedure id="portInNumber" parameterMap="portInNumberParams">
+		{? = call ALCATEL.resources.portInNumber(?,?)}
+	</procedure>	
+
+
+    <select id="hlrInfoForSn"  parameterClass="com.gfi.ws.beans.resources.HLRInfoCriteria" resultClass="com.gfi.ws.beans.resources.HLRInfo">
+		select HMCODE as HMCODE,
+		HLCODE as HLCODE,
+		SNHLRID as SNHLRID, 
+		MSISDNLB as MSISDNLB,
+		MSISDNRB as MSISDNRB,
+		DES as DES,
+		DIRNUM_NPCODE as DIRNUM_NPCODE,
+		SHDES as SHDES
+		 from mpdhmtab where DES like 'Wa%' 
+		 and HLCODE=3 and
+		  DIRNUM_NPCODE=95 and
+		   SNHLRID = #SNHLRID#
+	</select>
+	
+	<select id="getFreeStmendo"  resultClass="String">
+		 select SM_SERIALNUM from STORAGE_MEDIUM where sm_status ='r' and rownum=1
+	</select>
+	
+		<select id="getFreeMsisdnForMobil"  resultClass="String">
+		select dn_num from DIRECTORY_NUMBER where dn_status = 'r'
+ 		and  regexp_like(dn_num,'^[0-9]+$') 
+ 		and  rownum='1'
+ 		</select>
+ 
+ 
+ 
+ <update id="lockMsisdn" parameterClass="com.gfi.ws.dao.resourcedomain.BlockServiceResource">
+		UPDATE SYSADM.DIRECTORY_NUMBER 
+            SET DN_STATUS_MOD_DATE = SYSDATE,
+                  DN_MODDATE = SYSDATE,
+                  DN_STATUS_REQU = 'l'
+                  WHERE DN_NUM=#MSISDN#    
+                  AND DN_STATUS IN ('r','f') AND PLCODE=#PLCODE# AND DIRNUM_NPCODE=#NPCODE#
+</update>
+	
+<update id="unlockMsisdn" parameterClass="com.gfi.ws.dao.resourcedomain.BlockServiceResource">
+		UPDATE SYSADM.DIRECTORY_NUMBER 
+            SET DN_STATUS_MOD_DATE = SYSDATE,
+                  DN_MODDATE = SYSDATE,
+                  DN_STATUS_REQU = NULL
+                  WHERE DN_NUM=#MSISDN#    
+                  AND DN_STATUS IN ('a','r','f') AND PLCODE=#PLCODE# AND DIRNUM_NPCODE=#NPCODE#
+	</update>
+ 
+ 
+ 
+ 
+ 
+</sqlMap>

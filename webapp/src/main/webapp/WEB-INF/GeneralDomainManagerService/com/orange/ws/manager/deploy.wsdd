@@ -1,0 +1,340 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GeneralDomainManagerService WSDL service -->
+
+  <service name="GeneralDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="GeneralDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://modifyfuturerequests.generaldomain.beans.ws.orange.com,http://getservicepackage.contractdomain.beans.ws.orange.com,http://searchfuturerequests.generaldomain.beans.ws.orange.com,http://beans.ws.orange.com,http://getdns.generaldomain.beans.ws.orange.com,http://commons.beans.ws.orange.com,http://pendingrequestcount.generaldomain.beans.ws.orange.com,http://manager.ws.orange.com,http://addocc.generaldomain.beans.ws.orange.com,http://delocc.generaldomain.beans.ws.orange.com,http://retrieveticklers.generaldomain.beans.ws.orange.com,http://searchrequests.generaldomain.beans.ws.orange.com,http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="GeneralDomainManager"/>
+      <parameter name="className" value="com.orange.ws.manager.GeneralDomainManager"/>
+      <parameter name="wsdlPortType" value="GeneralDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addOcc" qname="addOcc" soapAction="" >
+        <parameter qname="pns:in" xmlns:pns="http://manager.ws.orange.com" type="tns:AddOccIn" xmlns:tns="http://addocc.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getDNs" qname="getDNs" returnQName="retNS:getDNsReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetDNsOut" xmlns:rtns="http://getdns.generaldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in1" xmlns:pns="http://manager.ws.orange.com" type="tns:GetDNsIn" xmlns:tns="http://getdns.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="addTickler" qname="addTickler" returnQName="retNS:addTicklerReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:AddTicklerOut" xmlns:rtns="http://addtickler.generaldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in2" xmlns:pns="http://manager.ws.orange.com" type="tns:AddTicklerIn" xmlns:tns="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="delOcc" qname="delOcc" soapAction="" >
+        <parameter qname="pns:in3" xmlns:pns="http://manager.ws.orange.com" type="tns:DelOccIn" xmlns:tns="http://delocc.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="retrieveTicklers" qname="retrieveTicklers" returnQName="retNS:retrieveTicklersReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RetrieveTicklersOut" xmlns:rtns="http://retrieveticklers.generaldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in4" xmlns:pns="http://manager.ws.orange.com" type="tns:RetrieveTicklersIn" xmlns:tns="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="searchRequests" qname="searchRequests" returnQName="retNS:searchRequestsReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:SearchRequestsOut" xmlns:rtns="http://searchrequests.generaldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in5" xmlns:pns="http://manager.ws.orange.com" type="tns:SearchRequestsIn" xmlns:tns="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getAvailableServices" qname="getAvailableServices" returnQName="retNS:getAvailableServicesReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetAvailableServicesBeanOut" xmlns:rtns="http://getservicepackage.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in6" xmlns:pns="http://manager.ws.orange.com" type="tns:GetAvailableServicesBeanIn" xmlns:tns="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getServicePackage" qname="getServicePackage" returnQName="retNS:getServicePackageReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetServicePackageBeanOut" xmlns:rtns="http://getservicepackage.contractdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in7" xmlns:pns="http://manager.ws.orange.com" type="tns:GetServicePackageBeanIn" xmlns:tns="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="pendingRequestCount" qname="pendingRequestCount" returnQName="retNS:pendingRequestCountReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:PendingRequestCountOut" xmlns:rtns="http://pendingrequestcount.generaldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:in8" xmlns:pns="http://manager.ws.orange.com" type="tns:PendingRequestCountIn" xmlns:tns="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="searchFutureRequests" qname="searchFutureRequests" returnQName="retNS:searchFutureRequestsReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:SearchFutureRequestsOut" xmlns:rtns="http://searchfuturerequests.generaldomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:searchFutureRequestsIn" xmlns:pns="http://manager.ws.orange.com" type="tns:SearchFutureRequestsIn" xmlns:tns="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="modifyFutureRequests" qname="modifyFutureRequests" soapAction="" >
+        <parameter qname="pns:modifyFutureRequestsIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyFutureRequestsIn" xmlns:tns="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="delOcc searchFutureRequests searchRequests retrieveTicklers getAvailableServices pendingRequestCount addTickler addOcc getDNs getServicePackage modifyFutureRequests"/>
+
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:Msisdn_list_element"
+        type="java:com.orange.ws.beans.commons.Msisdn_list_element"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addtickler.generaldomain.beans.ws.orange.com"
+        qname="ns:AddTicklerOut"
+        type="java:com.orange.ws.beans.generaldomain.addtickler.AddTicklerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addocc.generaldomain.beans.ws.orange.com"
+        qname="ns:AddOccIn"
+        type="java:com.orange.ws.beans.generaldomain.addocc.AddOccIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getdns.generaldomain.beans.ws.orange.com"
+        qname="ns:GetDNsIn"
+        type="java:com.orange.ws.beans.generaldomain.getdns.GetDNsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.orange.com"
+        qname="ns:GetServicePackageBeanIn"
+        type="java:com.orange.ws.beans.contractdomain.getservicepackage.GetServicePackageBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns9_SpcodeElement"
+        type="java:com.orange.ws.beans.contractdomain.getservicepackage.SpcodeElement[]"
+        innerType="cmp-ns:SpcodeElement" xmlns:cmp-ns="http://getservicepackage.contractdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchfuturerequests.generaldomain.beans.ws.orange.com"
+        qname="ns:Job"
+        type="java:com.orange.ws.beans.generaldomain.searchfuturerequests.Job"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:ContractIdType"
+        type="java:com.orange.ws.beans.commons.ContractIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getdns.generaldomain.beans.ws.orange.com"
+        qname="ns:GetDNsOut"
+        type="java:com.orange.ws.beans.generaldomain.getdns.GetDNsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_SncodeElement"
+        type="java:com.orange.ws.beans.commons.SncodeElement[]"
+        innerType="cmp-ns:SncodeElement" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pendingrequestcount.generaldomain.beans.ws.orange.com"
+        qname="ns:PendingRequestCountIn"
+        type="java:com.orange.ws.beans.generaldomain.pendingrequestcount.PendingRequestCountIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchfuturerequests.generaldomain.beans.ws.orange.com"
+        qname="ns:SearchFutureRequestsIn"
+        type="java:com.orange.ws.beans.generaldomain.searchfuturerequests.SearchFutureRequestsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addtickler.generaldomain.beans.ws.orange.com"
+        qname="ns:AddTicklerIn"
+        type="java:com.orange.ws.beans.generaldomain.addtickler.AddTicklerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:CustomerIdType"
+        type="java:com.orange.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_Msisdn_list_element"
+        type="java:com.orange.ws.beans.commons.Msisdn_list_element[]"
+        innerType="cmp-ns:Msisdn_list_element" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_TicklerElement"
+        type="java:com.orange.ws.beans.commons.TicklerElement[]"
+        innerType="cmp-ns:TicklerElement" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"
+        qname="ns:ModifyFutureRequestsIn"
+        type="java:com.orange.ws.beans.generaldomain.modifyfuturerequests.ModifyFutureRequestsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveticklers.generaldomain.beans.ws.orange.com"
+        qname="ns:RetrieveTicklersOut"
+        type="java:com.orange.ws.beans.generaldomain.retrieveticklers.RetrieveTicklersOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchrequests.generaldomain.beans.ws.orange.com"
+        qname="ns:SearchRequestsOut"
+        type="java:com.orange.ws.beans.generaldomain.searchrequests.SearchRequestsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://delocc.generaldomain.beans.ws.orange.com"
+        qname="ns:DelOccIn"
+        type="java:com.orange.ws.beans.generaldomain.delocc.DelOccIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:TicklerElement"
+        type="java:com.orange.ws.beans.commons.TicklerElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:RequestElement"
+        type="java:com.orange.ws.beans.commons.RequestElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.orange.com"
+        qname="ns:GetAvailableServicesBeanOut"
+        type="java:com.orange.ws.beans.contractdomain.getservicepackage.GetAvailableServicesBeanOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_SpcodeElement"
+        type="java:com.orange.ws.beans.commons.SpcodeElement[]"
+        innerType="cmp-ns:SpcodeElement" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://pendingrequestcount.generaldomain.beans.ws.orange.com"
+        qname="ns:PendingRequestCountOut"
+        type="java:com.orange.ws.beans.generaldomain.pendingrequestcount.PendingRequestCountOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns3_RequestElement"
+        type="java:com.orange.ws.beans.commons.RequestElement[]"
+        innerType="cmp-ns:RequestElement" xmlns:cmp-ns="http://commons.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.orange.com"
+        qname="ns:GetServicePackageBeanOut"
+        type="java:com.orange.ws.beans.contractdomain.getservicepackage.GetServicePackageBeanOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchrequests.generaldomain.beans.ws.orange.com"
+        qname="ns:SearchRequestsIn"
+        type="java:com.orange.ws.beans.generaldomain.searchrequests.SearchRequestsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:SpcodeElement"
+        type="java:com.orange.ws.beans.commons.SpcodeElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.orange.com"
+        qname="ns:GetAvailableServicesBeanIn"
+        type="java:com.orange.ws.beans.contractdomain.getservicepackage.GetAvailableServicesBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchfuturerequests.generaldomain.beans.ws.orange.com"
+        qname="ns:SearchFutureRequestsOut"
+        type="java:com.orange.ws.beans.generaldomain.searchfuturerequests.SearchFutureRequestsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns11_Job"
+        type="java:com.orange.ws.beans.generaldomain.searchfuturerequests.Job[]"
+        innerType="cmp-ns:Job" xmlns:cmp-ns="http://searchfuturerequests.generaldomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.orange.com"
+        qname="ns:SpcodeElement"
+        type="java:com.orange.ws.beans.contractdomain.getservicepackage.SpcodeElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:SncodeElement"
+        type="java:com.orange.ws.beans.commons.SncodeElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveticklers.generaldomain.beans.ws.orange.com"
+        qname="ns:RetrieveTicklersIn"
+        type="java:com.orange.ws.beans.generaldomain.retrieveticklers.RetrieveTicklersIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

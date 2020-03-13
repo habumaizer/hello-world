@@ -1,0 +1,53 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ETopUpManagerService WSDL service -->
+
+  <service name="ETopUpManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="ETopUpManagerService"/>
+      <parameter name="schemaQualified" value="http://beans.ws.orange.com,http://iswhitelist.etopup.beans.ws.orange.com,http://manager.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="ETopUpManager"/>
+      <parameter name="className" value="com.orange.ws.manager.ETopUpManager"/>
+      <parameter name="wsdlPortType" value="ETopUpManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="isWhiteList" qname="isWhiteList" returnQName="retNS:isWhiteListReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:IsWhiteListOut" xmlns:rtns="http://iswhitelist.etopup.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:isWhiteListIn" xmlns:pns="http://manager.ws.orange.com" type="tns:IsWhiteListIn" xmlns:tns="http://iswhitelist.etopup.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="isWhiteList"/>
+
+      <typeMapping
+        xmlns:ns="http://iswhitelist.etopup.beans.ws.orange.com"
+        qname="ns:IsWhiteListOut"
+        type="java:com.orange.ws.beans.etopup.iswhitelist.IsWhiteListOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://iswhitelist.etopup.beans.ws.orange.com"
+        qname="ns:IsWhiteListIn"
+        type="java:com.orange.ws.beans.etopup.iswhitelist.IsWhiteListIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

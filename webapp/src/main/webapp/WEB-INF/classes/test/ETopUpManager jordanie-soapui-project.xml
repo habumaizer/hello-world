@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="ETopUpManager jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ETopUpManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}ETopUpManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/ETopUpManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/ETopUpManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/ETopUpManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://iswhitelist.etopup.beans.ws.orange.com" xmlns:tns2="http://beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://iswhitelist.etopup.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://iswhitelist.etopup.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://beans.ws.orange.com"/>
+      <complexType name="IsWhiteListIn">
+        <complexContent>
+          <extension base="tns2:BasicBeanIn">
+            <sequence>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+              <element name="TRX_NUMBER" nillable="true" type="xsd:long"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="IsWhiteListOut">
+        <sequence>
+          <element name="ACCOUNT_STATUS" nillable="true" type="xsd:string"/>
+          <element name="CREDIT_LIMIT" nillable="true" type="xsd:float"/>
+          <element name="CSCURBALANCE" nillable="true" type="xsd:float"/>
+          <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+          <element name="IMSI" nillable="true" type="xsd:string"/>
+          <element name="LANGUAGE" nillable="true" type="xsd:string"/>
+          <element name="SRV_CLASS" nillable="true" type="xsd:string"/>
+          <element name="TRX_NUMBER" nillable="true" type="xsd:long"/>
+          <element name="WHITELIST_FLAG" nillable="true" type="xsd:boolean"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://iswhitelist.etopup.beans.ws.orange.com"/>
+      <element name="isWhiteListIn" type="tns1:IsWhiteListIn"/>
+      <element name="isWhiteListReturn" type="tns1:IsWhiteListOut"/>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="isWhiteListRequest">
+    <wsdl:part element="impl:isWhiteListIn" name="isWhiteListIn"/>
+  </wsdl:message>
+  <wsdl:message name="isWhiteListResponse">
+    <wsdl:part element="impl:isWhiteListReturn" name="isWhiteListReturn"/>
+  </wsdl:message>
+  <wsdl:portType name="ETopUpManager">
+    <wsdl:operation name="isWhiteList" parameterOrder="isWhiteListIn">
+      <wsdl:input message="impl:isWhiteListRequest" name="isWhiteListRequest"/>
+      <wsdl:output message="impl:isWhiteListResponse" name="isWhiteListResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ETopUpManagerSoapBinding" type="impl:ETopUpManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="isWhiteList">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="isWhiteListRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="isWhiteListResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ETopUpManagerService">
+    <wsdl:port binding="impl:ETopUpManagerSoapBinding" name="ETopUpManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/ETopUpManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/ETopUpManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="isWhiteList" bindingOperationName="isWhiteList" type="Request-Response" outputName="isWhiteListResponse" inputName="isWhiteListRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/ETopUpManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:isw="http://iswhitelist.etopup.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+      <man:isWhiteListIn>
+         <isw:MSISDN>122100174</isw:MSISDN>
+         <isw:TRX_NUMBER>1</isw:TRX_NUMBER>
+      </man:isWhiteListIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/ETopUpManager/isWhiteListRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

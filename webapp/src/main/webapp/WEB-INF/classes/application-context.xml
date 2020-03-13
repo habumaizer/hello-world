@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+    
+  <bean class="com.gfi.ws.conf.Config" id="configDao" name="configDaoName" >
+	</bean>
+  	 
+  	 <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="localOverride" value="true" />
+    	<property name="properties">
+    		<bean class="org.springframework.jndi.JndiObjectFactoryBean">
+				<description>
+					The declaration of application configuration.
+					A JndiObjectFactoryBean will extract it from a JNDI context.
+					The resourceRef property specifies if the JNDI name is declared
+					under the standard J2EE context: java:comp/env/
+				</description>
+				<property name="expectedType" value="java.util.Properties" />
+				<property name="jndiName" value="webapp/configuration" />
+				<property name="resourceRef" value="true" />
+    		</bean>
+    	</property>
+    	<property name="location" value="classpath:conf/application.properties" />
+    </bean>
+    
+	<bean id="dataSourceConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    	<property name="localOverride" value="true" />
+    	<property name="properties">
+			<bean class="org.springframework.jndi.JndiObjectFactoryBean">
+				<description>
+					The declaration of the data source configuration.
+					A JndiObjectFactoryBean will extract it from a JNDI context.
+					The resourceRef property specifies if the JNDI name is declared
+					under the standard J2EE context: java:comp/env/
+				</description>
+				<property name="expectedType" value="java.util.Properties" />
+				<property name="jndiName" value="datasource/configuration" />
+				<property name="resourceRef" value="true" />
+			</bean>
+		</property>
+    	<property name="location" value="classpath:conf/database/datasource.properties" />
+    </bean>
+    
+     <import resource="classpath:conf/transaction-context.xml"/>
+     <import resource="classpath:conf/business-context.xml"/>
+</beans>
+
+     

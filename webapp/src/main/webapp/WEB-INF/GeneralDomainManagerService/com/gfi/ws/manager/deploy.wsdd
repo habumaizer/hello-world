@@ -1,0 +1,117 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GeneralDomainManagerService WSDL service -->
+
+  <service name="GeneralDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="GeneralDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://getservicepackage.contractdomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://beans.ws.gfi.com,http://commons.beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="GeneralDomainManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.GeneralDomainManager"/>
+      <parameter name="wsdlPortType" value="GeneralDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getServicePackage" qname="getServicePackage" returnQName="retNS:getServicePackageReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GetServicePackageBeanOut" xmlns:rtns="http://getservicepackage.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:in" xmlns:pns="http://manager.ws.gfi.com" type="tns:GetServicePackageBeanIn" xmlns:tns="http://getservicepackage.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="getAvailableServices" qname="getAvailableServices" returnQName="retNS:getAvailableServicesReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GetAvailableServicesBeanOut" xmlns:rtns="http://getservicepackage.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:in1" xmlns:pns="http://manager.ws.gfi.com" type="tns:GetAvailableServicesBeanIn" xmlns:tns="http://getservicepackage.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="getAvailableServices getServicePackage"/>
+
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_SpcodeElement"
+        type="java:com.gfi.ws.beans.contractdomain.getservicepackage.SpcodeElement[]"
+        innerType="cmp-ns:SpcodeElement" xmlns:cmp-ns="http://getservicepackage.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetAvailableServicesBeanOut"
+        type="java:com.gfi.ws.beans.contractdomain.getservicepackage.GetAvailableServicesBeanOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:SpcodeElement"
+        type="java:com.gfi.ws.beans.commons.SpcodeElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetServicePackageBeanOut"
+        type="java:com.gfi.ws.beans.contractdomain.getservicepackage.GetServicePackageBeanOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetServicePackageBeanIn"
+        type="java:com.gfi.ws.beans.contractdomain.getservicepackage.GetServicePackageBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_SncodeElement"
+        type="java:com.gfi.ws.beans.commons.SncodeElement[]"
+        innerType="cmp-ns:SncodeElement" xmlns:cmp-ns="http://commons.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_SpcodeElement"
+        type="java:com.gfi.ws.beans.commons.SpcodeElement[]"
+        innerType="cmp-ns:SpcodeElement" xmlns:cmp-ns="http://commons.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:SncodeElement"
+        type="java:com.gfi.ws.beans.commons.SncodeElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetAvailableServicesBeanIn"
+        type="java:com.gfi.ws.beans.contractdomain.getservicepackage.GetAvailableServicesBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getservicepackage.contractdomain.beans.ws.gfi.com"
+        qname="ns:SpcodeElement"
+        type="java:com.gfi.ws.beans.contractdomain.getservicepackage.SpcodeElement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

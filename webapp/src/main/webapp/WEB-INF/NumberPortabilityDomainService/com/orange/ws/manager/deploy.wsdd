@@ -1,0 +1,56 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from NumberPortabilityDomainService WSDL service -->
+
+  <service name="NumberPortabilityDomain" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="NumberPortabilityDomainService"/>
+      <parameter name="schemaQualified" value="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com,http://beans.ws.orange.com,http://manager.ws.orange.com,http://exportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="NumberPortabilityDomain"/>
+      <parameter name="className" value="com.orange.ws.manager.NumberPortabilityDomain"/>
+      <parameter name="wsdlPortType" value="NumberPortabilityDomain"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="reimportNumber" qname="reimportNumber" soapAction="" >
+        <parameter qname="pns:reimportNumberIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ReimportNumberIn" xmlns:tns="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="exportNumber" qname="exportNumber" soapAction="" >
+        <parameter qname="pns:exportNumberIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ExportNumberIn" xmlns:tns="http://exportnumber.numberportabilitydomain.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="exportNumber reimportNumber"/>
+
+      <typeMapping
+        xmlns:ns="http://exportnumber.numberportabilitydomain.beans.ws.orange.com"
+        qname="ns:ExportNumberIn"
+        type="java:com.orange.ws.beans.numberportabilitydomain.exportnumber.ExportNumberIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://reimportnumber.numberportabilitydomain.beans.ws.orange.com"
+        qname="ns:ReimportNumberIn"
+        type="java:com.orange.ws.beans.numberportabilitydomain.reimportnumber.ReimportNumberIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

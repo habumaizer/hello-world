@@ -1,0 +1,95 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CustomerDomainManagerService WSDL service -->
+
+  <service name="CustomerDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="CustomerDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://searchCustomer.customerdomain.beans.ws.gfi.com,http://retrieveCustomer.customerdomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://beans.ws.gfi.com,http://commons.beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="CustomerDomainManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.CustomerDomainManager"/>
+      <parameter name="wsdlPortType" value="CustomerDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="retrieveCustomer" qname="retrieveCustomer" returnQName="retNS:retrieveCustomerReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:RetrieveCustomerOut" xmlns:rtns="http://retrieveCustomer.customerdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:retrieveCustomerIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:RetrieveCustomerIn" xmlns:tns="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="searchCustomer" qname="searchCustomer" returnQName="retNS:searchCustomerReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:SearchCustomerOut" xmlns:rtns="http://searchCustomer.customerdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:searchCustomerIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:SearchCustomerIn" xmlns:tns="http://searchCustomer.customerdomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="retrieveCustomer searchCustomer"/>
+
+      <typeMapping
+        xmlns:ns="http://searchCustomer.customerdomain.beans.ws.gfi.com"
+        qname="ns:Customer"
+        type="java:com.gfi.ws.beans.customerdomain.searchCustomer.Customer"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchCustomer.customerdomain.beans.ws.gfi.com"
+        qname="ns:SearchCustomerIn"
+        type="java:com.gfi.ws.beans.customerdomain.searchCustomer.SearchCustomerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:CustomerIdType"
+        type="java:com.gfi.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns4_Customer"
+        type="java:com.gfi.ws.beans.customerdomain.searchCustomer.Customer[]"
+        innerType="cmp-ns:Customer" xmlns:cmp-ns="http://searchCustomer.customerdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"
+        qname="ns:RetrieveCustomerOut"
+        type="java:com.gfi.ws.beans.customerdomain.retrieveCustomer.RetrieveCustomerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveCustomer.customerdomain.beans.ws.gfi.com"
+        qname="ns:RetrieveCustomerIn"
+        type="java:com.gfi.ws.beans.customerdomain.retrieveCustomer.RetrieveCustomerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchCustomer.customerdomain.beans.ws.gfi.com"
+        qname="ns:SearchCustomerOut"
+        type="java:com.gfi.ws.beans.customerdomain.searchCustomer.SearchCustomerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

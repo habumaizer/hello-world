@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="KpsaDao">
+
+	<cacheModel id="reasonStatusCache" type="LRU" readOnly="true" serialize="false">
+		<flushInterval hours="24"/>
+		<property name="size" value="100" />
+	</cacheModel>
+	
+	<cacheModel id="listAllService" type="LRU" readOnly="true" serialize="false">
+		<flushInterval hours="1"/>
+		<property name="size" value="100" />
+	</cacheModel>
+	
+	<typeAlias alias="GetPukOut" type="com.gfi.ws.beans.kpsa.getpuk.GetPukOut"/>
+	<typeAlias alias="ReasonStatus" type="com.gfi.ws.beans.kpsa.deactreason.ReasonStatus"/>
+	
+	<typeAlias alias="newSpCodeCriteria" type="com.gfi.ws.beans.kpsa.spchange.NewSpCodeCriteria"/>
+	<typeAlias alias="oldSpCodeCriteria" type="com.gfi.ws.beans.kpsa.spchange.OldSpCodeCriteria"/>
+	<typeAlias alias="reasonIdCriteria" type="com.gfi.ws.beans.kpsa.deactreason.ReasonIdCriteria"/>
+	
+	<typeAlias alias="dnServiceCriteria" type="com.gfi.ws.beans.kpsa.spchange.DnServiceCriteria"/>
+	<typeAlias alias="serviceAllInfo" type="com.gfi.ws.beans.kpsa.spchange.ServiceAllInfo"/>
+
+	<typeAlias alias="NewSpCodeResult" type="com.gfi.ws.beans.kpsa.spchange.NewSpCodeResult"/>
+	<typeAlias alias="OldSpCodeResult" type="com.gfi.ws.beans.kpsa.spchange.OldSpCodeResult"/>
+	<typeAlias alias="DnServiceResult" type="com.gfi.ws.beans.kpsa.spchange.DnServiceResult"/>
+	
+	<resultMap id="newSpCodeResult" class="NewSpCodeResult">
+		<result property="spCode" column="SPCODE"/>
+	</resultMap>
+	
+	<resultMap id="oldSpCodeResult" class="OldSpCodeResult">
+		<result property="spCode" column="SPCODE"/>
+	</resultMap>
+	
+	<resultMap id="dnServiceResult" class="DnServiceResult">
+		<result property="dn_num" column="dn_num"/>
+		<result property="main_dirnum" column="main_dirnum"/>
+	</resultMap>
+	
+	<resultMap id="serviceAllInfo" class="ServiceAllInfo">
+		<result property="SVLCODE" column="SVLCODE"/>
+		<result property="SNCODE" column="SNCODE"/>
+	</resultMap>
+
+	<resultMap id="reasonStatus" class="ReasonStatus">
+		<result property="RS_SDES" column="RS_SDES"/>
+		<result property="RS_DESC" column="RS_DESC"/>
+		<result property="RS_ID" column="RS_ID"/>
+	</resultMap>
+	
+	<resultMap id="GetPukOut" class="GetPukOut">
+		<result property="SIMSERIAL_NUM" column="SM_SERIALNUM"/>
+		<result property="PUK" column="SM_PUK"/>
+		<result property="PIN" column="SM_PIN"/>
+		<result property="PUK2" column="SM_PUK2"/>
+		<result property="PIN2" column="SM_PIN2"/>
+	</resultMap>
+	
+	<select id="getCoId" parameterClass="java.lang.String" resultClass="Long">
+		select CO_ID 
+		from CONTR_DEVICES cd
+		where PORT_ID in (select PORT_ID from PORT A where PORT_NUM=#value#)
+	    and cd_activ_date = (select max(cd_activ_date) from contr_devices cd1 where cd1.port_id = cd.port_id)        
+	</select>
+
+	<select id="getCoIdWithSIM" parameterClass="java.lang.String" resultClass="Long">
+		select CO_ID 
+		from CONTR_DEVICES cd
+		where CD_SM_NUM=#value#
+	    and cd_activ_date = (select max(cd_activ_date) from contr_devices cd1 where cd1.port_id = cd.port_id)        
+	</select>
+
+	<select id="getSIM" parameterClass="java.lang.Long" resultClass="String">
+		SELECT CD_SM_NUM
+		FROM CONTR_DEVICES
+		WHERE CO_ID=#value# and CD_DEACTIV_DATE is NULL
+	</select>
+	
+	<select id="getSmId" parameterClass="java.lang.String" resultClass="Long">
+		select SM_ID
+		from PORT
+		where PORT_NUM=#value#
+	</select>
+	
+	<select id="getPuk" parameterClass="java.lang.Long" resultMap="GetPukOut">
+		select SM_SERIALNUM, SM_PUK, SM_PIN,SM_PUK2,SM_PIN2
+		from STORAGE_MEDIUM
+		where SM_ID=#value#
+	</select>
+	
+	<select id="getRequestIdPendingforContractDeactivation" parameterClass="java.lang.Long" resultClass="Long">
+		select REQUEST
+		from MDSRRTAB
+		where CO_ID=#value# and ACTION_ID=4
+	</select>
+	
+	<select id="getRequestIdPendingforServicePackageChange" parameterClass="java.lang.Long" resultClass="Long">
+		select REQUEST
+		from MDSRRTAB
+		where CO_ID=#value# and ACTION_ID=39
+	</select>
+				
+	<select id="getRequestIdPendingforRatePlanChange" parameterClass="java.lang.Long" resultClass="Long">
+		select REQUEST
+		from MDSRRTAB
+		where CO_ID=#value# and ACTION_ID=16
+	</select>
+	
+	<select id="getNewSpcodeWithSN" parameterClass="newSpCodeCriteria" resultClass="newSpCodeResult">
+		SELECT SPCODE
+		FROM PR_SERV_SPCODE_HIST 
+		WHERE CO_ID=#coId# AND REQUEST_ID=#requestId# AND SNCODE=#snCode#
+		ORDER BY HISTNO DESC
+	</select>
+	
+	<select id="getNewSpCode" parameterClass="newSpCodeCriteria" resultClass="newSpCodeResult">
+		SELECT SPCODE, SNCODE
+		FROM PR_SERV_SPCODE_HIST 
+		WHERE CO_ID=#coId# AND REQUEST_ID=#requestId#
+		ORDER BY HISTNO DESC
+	</select>
+	
+	<select id="getLastSpCode" parameterClass="newSpCodeCriteria" resultClass="newSpCodeResult">
+		SELECT SPCODE, SNCODE
+		FROM PR_SERV_SPCODE_HIST 
+		WHERE CO_ID=#coId# AND SNCODE=#snCode#
+		ORDER BY HISTNO DESC
+	</select>
+	
+	<select id="getOldSpCode" parameterClass="oldSpCodeCriteria" resultClass="oldSpCodeResult">
+		select SPCODE,HISTNO
+		from ( select * from PR_SERV_SPCODE_HIST
+		where CO_ID=#coId# order by HISTNO desc)
+         where rownum &lt; 3
+	</select>
+	
+	<select id="getOldSpCodeWithSN" parameterClass="oldSpCodeCriteria" resultClass="oldSpCodeResult">
+		select SPCODE,HISTNO
+		from ( select * from PR_SERV_SPCODE_HIST
+		where CO_ID=#coId# and SNCODE=#snCode# order by HISTNO desc)
+         where rownum &lt; 3
+	</select>
+
+	<select id="getNewRpCode" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		SELECT PENDING_TMCODE
+		FROM CONTRACT_ALL
+		WHERE CO_ID=#coId#
+	</select>
+	
+	<select id="getOldRpCode" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		SELECT TMCODE
+		FROM CONTRACT_ALL
+		WHERE CO_ID=#coId#
+	</select> 
+	
+	 <select id="getReasonId" parameterClass="reasonIdCriteria" resultClass="Long">
+		select CH_REASON
+		from CONTRACT_HISTORY
+		where CO_ID=#coId# and REQUEST=#request#
+	</select>
+	
+	<select id="getReasonIdforContractDeactivation" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select CH_REASON
+		from CONTRACT_HISTORY
+		where CO_ID=#coId# and  CH_STATUS='d'  and 
+            CH_SEQNO = (select max (CH_SEQNO) from
+                CONTRACT_HISTORY where CO_ID=#coId#)
+	</select>
+	
+	<select id="getActivatedServicesFromAContract" parameterClass="java.lang.Long" resultClass="serviceAllInfo" cacheModel="listAllService" >
+		SELECT MP.SVLCODE, MP.SNCODE 
+		FROM PROFILE_SERVICE PS, PR_SERV_STATUS_HIST HIST, MPULKNXV MP 
+		WHERE PS.CO_ID=#coId#
+		AND PS.CO_ID = HIST.CO_ID
+		AND PS.SNCODE = HIST.SNCODE 
+		AND PS.SNCODE = MP.SNCODE
+		AND PS.STATUS_HISTNO = HIST.HISTNO 
+		AND HIST.STATUS IN ('A', 'S')
+		AND MP.SNMML = 'Y'
+	</select>
+	
+	<select id="getReasonStatusAll"  resultClass="reasonStatus" cacheModel="reasonStatusCache" >
+		select RS_ID, RS_SDES, RS_DESC from REASONSTATUS_ALL
+	</select>
+	
+	<select id="getDnService" resultClass="dnServiceResult" parameterClass="dnServiceCriteria" >
+	   select dn_num, main_dirnum from directory_number dn, curr_contr_services_cap cap
+    	where dn.dn_id = cap.dn_id and cap.co_id = #coId# and cap.sncode = #snCode#
+	</select>
+		
+</sqlMap>

@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="GeneralDomainManage Jordanie" resourceRoot="" soapui-version="3.0.1" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="GeneralDomainManagerSoapBinding" type="wsdl" bindingName="{http://manager.ws.orange.com}GeneralDomainManagerSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/bscsWS/services/GeneralDomainManager?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/bscsWS/services/GeneralDomainManager?wsdl"><con:part><con:url>http://localhost:8080/bscsWS/services/GeneralDomainManager?wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://manager.ws.orange.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.orange.com" xmlns:intf="http://manager.ws.orange.com" xmlns:tns1="http://getservicepackage.contractdomain.beans.ws.orange.com" xmlns:tns10="http://getdns.generaldomain.beans.ws.orange.com" xmlns:tns11="http://searchfuturerequests.generaldomain.beans.ws.orange.com" xmlns:tns12="http://modifyfuturerequests.generaldomain.beans.ws.orange.com" xmlns:tns2="http://commons.beans.ws.orange.com" xmlns:tns3="http://beans.ws.orange.com" xmlns:tns4="http://searchrequests.generaldomain.beans.ws.orange.com" xmlns:tns5="http://pendingrequestcount.generaldomain.beans.ws.orange.com" xmlns:tns6="http://addocc.generaldomain.beans.ws.orange.com" xmlns:tns7="http://delocc.generaldomain.beans.ws.orange.com" xmlns:tns8="http://addtickler.generaldomain.beans.ws.orange.com" xmlns:tns9="http://retrieveticklers.generaldomain.beans.ws.orange.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://getservicepackage.contractdomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="GetAvailableServicesBeanIn">
+        <sequence>
+          <element name="RPCODE" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="GetAvailableServicesBeanOut">
+        <sequence>
+          <element name="spcode_list" nillable="true" type="impl:ArrayOf_tns2_SpcodeElement"/>
+        </sequence>
+      </complexType>
+      <complexType name="GetServicePackageBeanIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="RPCODE" nillable="true" type="xsd:long"/>
+              <element name="SNCODE" nillable="true" type="xsd:long"/>
+              <element name="SPCODE" nillable="true" type="xsd:long"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="SpcodeElement">
+        <sequence>
+          <element name="SPCODE" nillable="true" type="xsd:long"/>
+          <element name="SP_DES" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="GetServicePackageBeanOut">
+        <sequence>
+          <element name="spcode_list" nillable="true" type="impl:ArrayOf_tns1_SpcodeElement"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <element name="in" type="tns1:GetAvailableServicesBeanIn"/>
+      <complexType name="ArrayOf_tns2_SncodeElement">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:SncodeElement"/>
+        </sequence>
+      </complexType>
+      <complexType name="ArrayOf_tns2_SpcodeElement">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:SpcodeElement"/>
+        </sequence>
+      </complexType>
+      <element name="getAvailableServicesReturn" type="tns1:GetAvailableServicesBeanOut"/>
+      <element name="in1" type="tns1:GetServicePackageBeanIn"/>
+      <complexType name="ArrayOf_tns1_SpcodeElement">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:SpcodeElement"/>
+        </sequence>
+      </complexType>
+      <element name="getServicePackageReturn" type="tns1:GetServicePackageBeanOut"/>
+      <element name="in2" type="tns4:SearchRequestsIn"/>
+      <complexType name="ArrayOf_tns2_RequestElement">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:RequestElement"/>
+        </sequence>
+      </complexType>
+      <element name="searchRequestsReturn" type="tns4:SearchRequestsOut"/>
+      <element name="in3" type="tns5:PendingRequestCountIn"/>
+      <element name="pendingRequestCountReturn" type="tns5:PendingRequestCountOut"/>
+      <element name="in4" type="tns6:AddOccIn"/>
+      <element name="in5" type="tns7:DelOccIn"/>
+      <element name="in6" type="tns8:AddTicklerIn"/>
+      <element name="addTicklerReturn" type="tns8:AddTicklerOut"/>
+      <element name="in7" type="tns9:RetrieveTicklersIn"/>
+      <complexType name="ArrayOf_tns2_TicklerElement">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:TicklerElement"/>
+        </sequence>
+      </complexType>
+      <element name="retrieveTicklersReturn" type="tns9:RetrieveTicklersOut"/>
+      <element name="in8" type="tns10:GetDNsIn"/>
+      <complexType name="ArrayOf_tns2_Msisdn_list_element">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns2:Msisdn_list_element"/>
+        </sequence>
+      </complexType>
+      <element name="getDNsReturn" type="tns10:GetDNsOut"/>
+      <element name="searchFutureRequestsIn" type="tns11:SearchFutureRequestsIn"/>
+      <complexType name="ArrayOf_tns11_Job">
+        <sequence>
+          <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns11:Job"/>
+        </sequence>
+      </complexType>
+      <element name="searchFutureRequestsReturn" type="tns11:SearchFutureRequestsOut"/>
+      <element name="modifyFutureRequestsIn" type="tns12:ModifyFutureRequestsIn"/>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://commons.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="SncodeElement">
+        <sequence>
+          <element name="SNCODE" nillable="true" type="xsd:long"/>
+          <element name="SRV_PARAM_IND" nillable="true" type="xsd:boolean"/>
+        </sequence>
+      </complexType>
+      <complexType name="SpcodeElement">
+        <sequence>
+          <element name="SPCODE" nillable="true" type="xsd:long"/>
+          <element name="SP_DES" nillable="true" type="xsd:string"/>
+          <element name="sncode_list" nillable="true" type="impl:ArrayOf_tns2_SncodeElement"/>
+        </sequence>
+      </complexType>
+      <complexType name="RequestElement">
+        <sequence>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+          <element name="RE_STATUS" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="ContractIdType">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="CO_ID" nillable="true" type="xsd:long"/>
+              <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="MSISDN" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="CustomerIdType">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="CS_ID" nillable="true" type="xsd:long"/>
+              <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+              <element name="CUSTCODE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="TicklerElement">
+        <sequence>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="CREATION_DATE" nillable="true" type="xsd:dateTime"/>
+          <element name="CS_ID" nillable="true" type="xsd:long"/>
+          <element name="FOLLOW_UP_USER" nillable="true" type="xsd:string"/>
+          <element name="TICK_CODE" nillable="true" type="xsd:string"/>
+          <element name="TICK_LDES" nillable="true" type="xsd:string"/>
+          <element name="TICK_NUMBER" nillable="true" type="xsd:long"/>
+          <element name="TICK_PRIORITY" nillable="true" type="xsd:int"/>
+          <element name="TICK_SHDES" nillable="true" type="xsd:string"/>
+          <element name="TICK_STATUS" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="Msisdn_list_element">
+        <sequence>
+          <element name="DN_ID" nillable="true" type="xsd:long"/>
+          <element name="HLCODE" nillable="true" type="xsd:long"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType abstract="true" name="BasicBeanIn">
+        <sequence/>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://searchrequests.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="SearchRequestsIn">
+        <sequence>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="REQUEST_ID" nillable="true" type="xsd:long"/>
+          <element name="RE_SEARCH_MASK" nillable="true" type="xsd:int"/>
+        </sequence>
+      </complexType>
+      <complexType name="SearchRequestsOut">
+        <sequence>
+          <element name="request_list" nillable="true" type="impl:ArrayOf_tns2_RequestElement"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="PendingRequestCountIn">
+        <sequence/>
+      </complexType>
+      <complexType name="PendingRequestCountOut">
+        <sequence>
+          <element name="COUNT" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://addocc.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <complexType name="AddOccIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT" nillable="true" type="xsd:double"/>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns2:ContractIdType"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns2:CustomerIdType"/>
+              <element name="DESCRIPTION" nillable="true" type="xsd:string"/>
+              <element name="PERIOD" nillable="true" type="xsd:long"/>
+              <element name="SNCODE" nillable="true" type="xsd:long"/>
+              <element name="VALID_FROM" nillable="true" type="xsd:dateTime"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://delocc.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="DelOccIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="AMOUNT" nillable="true" type="xsd:double"/>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns2:ContractIdType"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns2:CustomerIdType"/>
+              <element name="DESCRIPTION" nillable="true" type="xsd:string"/>
+              <element name="PERIOD" nillable="true" type="xsd:long"/>
+              <element name="SEQ_NO" nillable="true" type="xsd:long"/>
+              <element name="SNCODE" nillable="true" type="xsd:long"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://addtickler.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="AddTicklerIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns2:ContractIdType"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns2:CustomerIdType"/>
+              <element name="FOLLOW_UP_USER" nillable="true" type="xsd:string"/>
+              <element name="TICK_CODE" nillable="true" type="xsd:string"/>
+              <element name="TICK_LONGDESC" nillable="true" type="xsd:string"/>
+              <element name="TICK_SHDES" nillable="true" type="xsd:string"/>
+              <element name="TICK_STATUS" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="AddTicklerOut">
+        <sequence>
+          <element name="TICK_NUMBER" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://retrieveticklers.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="RetrieveTicklersIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns2:ContractIdType"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns2:CustomerIdType"/>
+              <element name="FOLLOW_UP_USER" nillable="true" type="xsd:string"/>
+              <element name="TICK_CODE" nillable="true" type="xsd:string"/>
+              <element name="TICK_PRIORITY" nillable="true" type="xsd:int"/>
+              <element name="TICK_SHDES" nillable="true" type="xsd:string"/>
+              <element name="TICK_STATUS" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="RetrieveTicklersOut">
+        <sequence>
+          <element name="ticklers" nillable="true" type="impl:ArrayOf_tns2_TicklerElement"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://getdns.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="GetDNsIn">
+        <sequence>
+          <element name="HLCODE" nillable="true" type="xsd:long"/>
+          <element name="MSISDN" nillable="true" type="xsd:string"/>
+        </sequence>
+      </complexType>
+      <complexType name="GetDNsOut">
+        <sequence>
+          <element name="msisdn_list" nillable="true" type="impl:ArrayOf_tns2_Msisdn_list_element"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="SearchFutureRequestsIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="CONTRACT_ID_COMPLEX" nillable="true" type="tns2:ContractIdType"/>
+              <element name="CUSTOMER_ID_COMPLEX" nillable="true" type="tns2:CustomerIdType"/>
+              <element name="JOB_TYPE_ID" nillable="true" type="xsd:long"/>
+              <element name="ORIGINATOR" nillable="true" type="xsd:string"/>
+              <element name="PERIOD_FROM" nillable="true" type="xsd:dateTime"/>
+              <element name="PERIOD_TO" nillable="true" type="xsd:dateTime"/>
+              <element name="SRCH_COUNT" nillable="true" type="xsd:long"/>
+              <element name="STATE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="Job">
+        <sequence>
+          <element name="CO_ID" nillable="true" type="xsd:long"/>
+          <element name="CO_ID_PUB" nillable="true" type="xsd:string"/>
+          <element name="CS_CODE" nillable="true" type="xsd:string"/>
+          <element name="CS_ID" nillable="true" type="xsd:long"/>
+          <element name="CS_ID_PUB" nillable="true" type="xsd:string"/>
+          <element name="DESCRIPTION" nillable="true" type="xsd:string"/>
+          <element name="ENTRY_DATE" nillable="true" type="xsd:dateTime"/>
+          <element name="ERROR_DESCRIPTION" nillable="true" type="xsd:string"/>
+          <element name="EXECUTION_DATE" nillable="true" type="xsd:dateTime"/>
+          <element name="JOB_ID" nillable="true" type="xsd:long"/>
+          <element name="JOB_TYPE_ID" nillable="true" type="xsd:long"/>
+          <element name="LAST_MOD_USER" nillable="true" type="xsd:string"/>
+          <element name="ORIGINATOR" nillable="true" type="xsd:string"/>
+          <element name="RECURRING_PERIOD" nillable="true" type="xsd:long"/>
+          <element name="REMARK" nillable="true" type="xsd:string"/>
+          <element name="STATE" nillable="true" type="xsd:string"/>
+          <element name="VERSION" nillable="true" type="xsd:long"/>
+        </sequence>
+      </complexType>
+      <complexType name="SearchFutureRequestsOut">
+        <sequence>
+          <element name="JOB_LIST" nillable="true" type="impl:ArrayOf_tns11_Job"/>
+        </sequence>
+      </complexType>
+    </schema>
+    <schema elementFormDefault="qualified" targetNamespace="http://modifyfuturerequests.generaldomain.beans.ws.orange.com" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://addtickler.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://searchrequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getdns.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://delocc.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://retrieveticklers.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://pendingrequestcount.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://getservicepackage.contractdomain.beans.ws.orange.com"/>
+      <import namespace="http://searchfuturerequests.generaldomain.beans.ws.orange.com"/>
+      <import namespace="http://beans.ws.orange.com"/>
+      <import namespace="http://commons.beans.ws.orange.com"/>
+      <import namespace="http://manager.ws.orange.com"/>
+      <import namespace="http://addocc.generaldomain.beans.ws.orange.com"/>
+      <complexType name="ModifyFutureRequestsIn">
+        <complexContent>
+          <extension base="tns3:BasicBeanIn">
+            <sequence>
+              <element name="DESCRIPTION" nillable="true" type="xsd:string"/>
+              <element name="EXECUTION_DATE" nillable="true" type="xsd:dateTime"/>
+              <element name="JOB_ID" nillable="true" type="xsd:long"/>
+              <element name="REMARK" nillable="true" type="xsd:string"/>
+              <element name="STATE" nillable="true" type="xsd:string"/>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="addTicklerRequest">
+    <wsdl:part element="impl:in6" name="in6"/>
+  </wsdl:message>
+  <wsdl:message name="addOccResponse"></wsdl:message>
+  <wsdl:message name="modifyFutureRequestsRequest">
+    <wsdl:part element="impl:modifyFutureRequestsIn" name="modifyFutureRequestsIn"/>
+  </wsdl:message>
+  <wsdl:message name="getDNsRequest">
+    <wsdl:part element="impl:in8" name="in8"/>
+  </wsdl:message>
+  <wsdl:message name="getServicePackageResponse">
+    <wsdl:part element="impl:getServicePackageReturn" name="getServicePackageReturn"/>
+  </wsdl:message>
+  <wsdl:message name="searchFutureRequestsRequest">
+    <wsdl:part element="impl:searchFutureRequestsIn" name="searchFutureRequestsIn"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveTicklersResponse">
+    <wsdl:part element="impl:retrieveTicklersReturn" name="retrieveTicklersReturn"/>
+  </wsdl:message>
+  <wsdl:message name="getServicePackageRequest">
+    <wsdl:part element="impl:in1" name="in1"/>
+  </wsdl:message>
+  <wsdl:message name="modifyFutureRequestsResponse"></wsdl:message>
+  <wsdl:message name="pendingRequestCountRequest">
+    <wsdl:part element="impl:in3" name="in3"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveTicklersRequest">
+    <wsdl:part element="impl:in7" name="in7"/>
+  </wsdl:message>
+  <wsdl:message name="getAvailableServicesRequest">
+    <wsdl:part element="impl:in" name="in"/>
+  </wsdl:message>
+  <wsdl:message name="searchRequestsRequest">
+    <wsdl:part element="impl:in2" name="in2"/>
+  </wsdl:message>
+  <wsdl:message name="getDNsResponse">
+    <wsdl:part element="impl:getDNsReturn" name="getDNsReturn"/>
+  </wsdl:message>
+  <wsdl:message name="addTicklerResponse">
+    <wsdl:part element="impl:addTicklerReturn" name="addTicklerReturn"/>
+  </wsdl:message>
+  <wsdl:message name="delOccResponse"></wsdl:message>
+  <wsdl:message name="addOccRequest">
+    <wsdl:part element="impl:in4" name="in4"/>
+  </wsdl:message>
+  <wsdl:message name="searchRequestsResponse">
+    <wsdl:part element="impl:searchRequestsReturn" name="searchRequestsReturn"/>
+  </wsdl:message>
+  <wsdl:message name="getAvailableServicesResponse">
+    <wsdl:part element="impl:getAvailableServicesReturn" name="getAvailableServicesReturn"/>
+  </wsdl:message>
+  <wsdl:message name="pendingRequestCountResponse">
+    <wsdl:part element="impl:pendingRequestCountReturn" name="pendingRequestCountReturn"/>
+  </wsdl:message>
+  <wsdl:message name="delOccRequest">
+    <wsdl:part element="impl:in5" name="in5"/>
+  </wsdl:message>
+  <wsdl:message name="searchFutureRequestsResponse">
+    <wsdl:part element="impl:searchFutureRequestsReturn" name="searchFutureRequestsReturn"/>
+  </wsdl:message>
+  <wsdl:portType name="GeneralDomainManager">
+    <wsdl:operation name="getAvailableServices" parameterOrder="in">
+      <wsdl:input message="impl:getAvailableServicesRequest" name="getAvailableServicesRequest"/>
+      <wsdl:output message="impl:getAvailableServicesResponse" name="getAvailableServicesResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getServicePackage" parameterOrder="in1">
+      <wsdl:input message="impl:getServicePackageRequest" name="getServicePackageRequest"/>
+      <wsdl:output message="impl:getServicePackageResponse" name="getServicePackageResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchRequests" parameterOrder="in2">
+      <wsdl:input message="impl:searchRequestsRequest" name="searchRequestsRequest"/>
+      <wsdl:output message="impl:searchRequestsResponse" name="searchRequestsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="pendingRequestCount" parameterOrder="in3">
+      <wsdl:input message="impl:pendingRequestCountRequest" name="pendingRequestCountRequest"/>
+      <wsdl:output message="impl:pendingRequestCountResponse" name="pendingRequestCountResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addOcc" parameterOrder="in4">
+      <wsdl:input message="impl:addOccRequest" name="addOccRequest"/>
+      <wsdl:output message="impl:addOccResponse" name="addOccResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="delOcc" parameterOrder="in5">
+      <wsdl:input message="impl:delOccRequest" name="delOccRequest"/>
+      <wsdl:output message="impl:delOccResponse" name="delOccResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="addTickler" parameterOrder="in6">
+      <wsdl:input message="impl:addTicklerRequest" name="addTicklerRequest"/>
+      <wsdl:output message="impl:addTicklerResponse" name="addTicklerResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveTicklers" parameterOrder="in7">
+      <wsdl:input message="impl:retrieveTicklersRequest" name="retrieveTicklersRequest"/>
+      <wsdl:output message="impl:retrieveTicklersResponse" name="retrieveTicklersResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="getDNs" parameterOrder="in8">
+      <wsdl:input message="impl:getDNsRequest" name="getDNsRequest"/>
+      <wsdl:output message="impl:getDNsResponse" name="getDNsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchFutureRequests" parameterOrder="searchFutureRequestsIn">
+      <wsdl:input message="impl:searchFutureRequestsRequest" name="searchFutureRequestsRequest"/>
+      <wsdl:output message="impl:searchFutureRequestsResponse" name="searchFutureRequestsResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="modifyFutureRequests" parameterOrder="modifyFutureRequestsIn">
+      <wsdl:input message="impl:modifyFutureRequestsRequest" name="modifyFutureRequestsRequest"/>
+      <wsdl:output message="impl:modifyFutureRequestsResponse" name="modifyFutureRequestsResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GeneralDomainManagerSoapBinding" type="impl:GeneralDomainManager">
+    <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAvailableServices">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getAvailableServicesRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAvailableServicesResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getServicePackage">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getServicePackageRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getServicePackageResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchRequests">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="searchRequestsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchRequestsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pendingRequestCount">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="pendingRequestCountRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="pendingRequestCountResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addOcc">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addOccRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addOccResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delOcc">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="delOccRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="delOccResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addTickler">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="addTicklerRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addTicklerResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveTicklers">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="retrieveTicklersRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveTicklersResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDNs">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="getDNsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getDNsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchFutureRequests">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="searchFutureRequestsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchFutureRequestsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modifyFutureRequests">
+      <wsdlsoap:operation soapAction=""/>
+      <wsdl:input name="modifyFutureRequestsRequest">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="modifyFutureRequestsResponse">
+        <wsdlsoap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GeneralDomainManagerService">
+    <wsdl:port binding="impl:GeneralDomainManagerSoapBinding" name="GeneralDomainManager">
+      <wsdlsoap:address location="http://localhost:8080/bscsWS/services/GeneralDomainManager"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint></con:endpoints><con:operation isOneWay="false" action="" name="addOcc" bindingOperationName="addOcc" type="Request-Response" outputName="addOccResponse" inputName="addOccRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:add="http://addocc.generaldomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+
+
+   <soapenv:Body>
+      <man:in4>
+         <add:AMOUNT>1</add:AMOUNT>
+         <add:CUSTOMER_ID_COMPLEX>
+            <com:CUSTCODE>1.329</com:CUSTCODE>
+         </add:CUSTOMER_ID_COMPLEX>
+         <add:DESCRIPTION>coicoi</add:DESCRIPTION>
+         <add:PERIOD>1</add:PERIOD>
+         <add:SNCODE>173</add:SNCODE>
+      </man:in4>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/addOccRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 2"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:add="http://addocc.generaldomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+ 
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+   <soapenv:Body>
+
+      <man:in4>
+         <add:AMOUNT>1</add:AMOUNT>
+         <add:CONTRACT_ID_COMPLEX>
+            <com:CO_ID_PUB>CONTR0000000101</com:CO_ID_PUB>
+            
+         </add:CONTRACT_ID_COMPLEX>
+         <add:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID_PUB>CUST0000000071</com:CS_ID_PUB>
+        
+         </add:CUSTOMER_ID_COMPLEX>
+         <add:DESCRIPTION>coucou</add:DESCRIPTION>
+         <add:PERIOD>1</add:PERIOD>
+         <add:SNCODE>408</add:SNCODE>
+         <add:VALID_FROM>2011-05-23T13:29:14.000Z</add:VALID_FROM>
+      </man:in4>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/addOccRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="addTickler" bindingOperationName="addTickler" type="Request-Response" outputName="addTicklerResponse" inputName="addTicklerRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:add="http://addtickler.generaldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:in5>
+         <add:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </add:CONTRACT_ID_COMPLEX>
+         <add:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </add:CUSTOMER_ID_COMPLEX>
+         <add:FOLLOW_UP_USER>?</add:FOLLOW_UP_USER>
+         <add:TICK_CODE>?</add:TICK_CODE>
+         <add:TICK_LONGDESC>?</add:TICK_LONGDESC>
+         <add:TICK_SHDES>?</add:TICK_SHDES>
+         <add:TICK_STATUS>?</add:TICK_STATUS>
+      </man:in5>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/addTicklerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getAvailableServices" bindingOperationName="getAvailableServices" type="Request-Response" outputName="getAvailableServicesResponse" inputName="getAvailableServicesRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:get="http://getservicepackage.contractdomain.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+
+   <soapenv:Body>
+      <man:in>
+         <get:RPCODE>1</get:RPCODE>
+      </man:in>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/getAvailableServicesRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getDNs" bindingOperationName="getDNs" type="Request-Response" outputName="getDNsResponse" inputName="getDNsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:get="http://getdns.generaldomain.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+      <man:in7>
+  
+         <get:MSISDN>122100123</get:MSISDN>
+      </man:in7>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/getDNsRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Request 2"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:get="http://getdns.generaldomain.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+      <man:in7>
+         <get:HLCODE>?</get:HLCODE>
+         <get:MSISDN>?</get:MSISDN>
+      </man:in7>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/getDNsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="getServicePackage" bindingOperationName="getServicePackage" type="Request-Response" outputName="getServicePackageResponse" inputName="getServicePackageRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:get="http://getservicepackage.contractdomain.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:in1>
+         <get:RPCODE>?</get:RPCODE>
+         <get:SNCODE>?</get:SNCODE>
+         <get:SPCODE>?</get:SPCODE>
+      </man:in1>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/getServicePackageRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="modifyFutureRequests" bindingOperationName="modifyFutureRequests" type="Request-Response" outputName="modifyFutureRequestsResponse" inputName="modifyFutureRequestsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:mod="http://modifyfuturerequests.generaldomain.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:modifyFutureRequestsIn>
+         <mod:DESCRIPTION>?</mod:DESCRIPTION>
+         <mod:EXECUTION_DATE>?</mod:EXECUTION_DATE>
+         <mod:JOB_ID>?</mod:JOB_ID>
+         <mod:REMARK>?</mod:REMARK>
+         <mod:STATE>?</mod:STATE>
+      </man:modifyFutureRequestsIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/modifyFutureRequestsRequest"/></con:call></con:operation><con:operation isOneWay="false" action="" name="pendingRequestCount" bindingOperationName="pendingRequestCount" type="Request-Response" outputName="pendingRequestCountResponse" inputName="pendingRequestCountRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:in3/>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/pendingRequestCountRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="retrieveTicklers" bindingOperationName="retrieveTicklers" type="Request-Response" outputName="retrieveTicklersResponse" inputName="retrieveTicklersRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:ret="http://retrieveticklers.generaldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:in6>
+         <ret:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </ret:CONTRACT_ID_COMPLEX>
+         <ret:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </ret:CUSTOMER_ID_COMPLEX>
+         <ret:FOLLOW_UP_USER>?</ret:FOLLOW_UP_USER>
+         <ret:TICK_CODE>?</ret:TICK_CODE>
+         <ret:TICK_PRIORITY>?</ret:TICK_PRIORITY>
+         <ret:TICK_SHDES>?</ret:TICK_SHDES>
+         <ret:TICK_STATUS>?</ret:TICK_STATUS>
+      </man:in6>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/retrieveTicklersRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="searchFutureRequests" bindingOperationName="searchFutureRequests" type="Request-Response" outputName="searchFutureRequestsResponse" inputName="searchFutureRequestsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:sear="http://searchfuturerequests.generaldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:searchFutureRequestsIn>
+         <sear:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </sear:CONTRACT_ID_COMPLEX>
+         <sear:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </sear:CUSTOMER_ID_COMPLEX>
+         <sear:JOB_TYPE_ID>?</sear:JOB_TYPE_ID>
+         <sear:ORIGINATOR>?</sear:ORIGINATOR>
+         <sear:PERIOD_FROM>?</sear:PERIOD_FROM>
+         <sear:PERIOD_TO>?</sear:PERIOD_TO>
+         <sear:SRCH_COUNT>?</sear:SRCH_COUNT>
+         <sear:STATE>?</sear:STATE>
+      </man:searchFutureRequestsIn>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/searchFutureRequestsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="searchRequests" bindingOperationName="searchRequests" type="Request-Response" outputName="searchRequestsResponse" inputName="searchRequestsRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope 
+xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:sear="http://searchrequests.generaldomain.beans.ws.orange.com"
+
+ xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>NICO</wsse:Username>
+            <wsse:Password>nicoleta1</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+
+
+  
+      <man:in2>
+         <sear:CO_ID>63</sear:CO_ID>
+         
+      </man:in2>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/searchRequestsRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="" name="delOcc" bindingOperationName="delOcc" type="Request-Response" outputName="delOccResponse" inputName="delOccRequest" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="with contract and without  customer"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:del="http://delocc.generaldomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+
+
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+
+      <man:in5>
+        
+ <del:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID_PUB>CUST0000000106</com:CS_ID_PUB>
+         </del:CUSTOMER_ID_COMPLEX>
+
+  <del:CONTRACT_ID_COMPLEX>
+            <com:CO_ID_PUB>CONTR0000000136</com:CO_ID_PUB>
+         
+  </del:CONTRACT_ID_COMPLEX>
+         <del:SNCODE>1</del:SNCODE>
+ 	<del:SEQ_NO>149</del:SEQ_NO>
+
+      </man:in5>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/delOccRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="without customer and with contract"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:del="http://delocc.generaldomain.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <man:in5>
+         <del:AMOUNT>?</del:AMOUNT>
+         <del:CONTRACT_ID_COMPLEX>
+            <com:CO_ID>?</com:CO_ID>
+            <com:CO_ID_PUB>?</com:CO_ID_PUB>
+            <com:MSISDN>?</com:MSISDN>
+         </del:CONTRACT_ID_COMPLEX>
+         <del:CUSTOMER_ID_COMPLEX>
+            <com:CS_ID>?</com:CS_ID>
+            <com:CS_ID_PUB>?</com:CS_ID_PUB>
+            <com:CUSTCODE>?</com:CUSTCODE>
+         </del:CUSTOMER_ID_COMPLEX>
+         <del:DESCRIPTION>?</del:DESCRIPTION>
+         <del:PERIOD>?</del:PERIOD>
+         <del:SEQ_NO>?</del:SEQ_NO>
+         <del:SNCODE>?</del:SNCODE>
+      </man:in5>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/delOccRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="without contract with customer"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/bscsWS/services/GeneralDomainManager</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:man="http://manager.ws.orange.com" 
+xmlns:del="http://delocc.generaldomain.beans.ws.orange.com" 
+xmlns:com="http://commons.beans.ws.orange.com"
+
+
+
+xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXTEST</wsse:Username>
+            <wsse:Password>CXTEST</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+  <soapenv:Body>
+
+      <man:in5>
+        
+ 
+
+  <del:CONTRACT_ID_COMPLEX>
+            <com:CO_ID_PUB>CONTR0000000136</com:CO_ID_PUB>
+         
+  </del:CONTRACT_ID_COMPLEX>
+         <del:SNCODE>1</del:SNCODE>
+ 	<del:SEQ_NO>111</del:SEQ_NO>
+
+      </man:in5>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://manager.ws.orange.com/GeneralDomainManager/delOccRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/></con:soapui-project>

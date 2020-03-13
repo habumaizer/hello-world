@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+It is possible to insert documentation for the whole command,
+for the in arguments as a whole, for the out arguments as a whole,
+for each error, for each argument (in as well as out).
+For the moment, all doc elements are optional.
+All elements contain their documentation as a child.
+This means that the doc element as child of the command element
+holds the documentation for the command as a whole. The in element
+holds a doc element that contains the documentation for all in arguments
+as a whole and so on.
+A doc element can contain paragraphs and lists. Paragraphs are tagged
+with the p element, lists are tagged with the ul element.
+Paragraphs may hold text (#PCDATA), bold (b element) text, italic (i element)
+text and monospace (code element) text.
+A list (ul element) holds n listitems (li elements). Listitems hold the same kind
+of data as paragraphs (p elements).
+Text cannot be placed immediately in the doc element.
+The cas element holds that same kind of data as the doc element.
+
+-->
+<!-- Define an entity for the basic documentation formats 
+html tags are used for transparency -->
+<!ENTITY % DOC-FORMATS1 "
+(#PCDATA | b | i | code | ul )*">
+<!ENTITY % DOC-FORMATS2 "
+(#PCDATA | b | i | code)*">
+<!-- Define basic documentation formatting elements
+this is pretty much html here -->
+<!-- encloses a parahgraph -->
+<!ELEMENT p %DOC-FORMATS1;>
+<!-- enlcoses bold text -->
+<!ELEMENT b (#PCDATA)>
+<!-- encloses italic text -->
+<!ELEMENT i (#PCDATA)>
+<!-- encloses text - will be formatted in a monospace-font-->
+<!ELEMENT code (#PCDATA)>
+<!-- unodered (bulleted list)-->
+<!ELEMENT ul (li*)>
+<!ELEMENT li %DOC-FORMATS2;>
+<!--	
+
+Different command versions are controlled by ClearCase. 
+-->
+  
+<!--	
+The command element is used for the definition of a SOI command.
+It defines an attribute representing the name of the command and the
+definitions of the structure for the input arguments and the result. 
+Moreover the possible errors are documented in a separate error list.
+     	
+Attributes: 
+	name - the name of the command
+-->
+
+<!ELEMENT command (doc, cmdref_base, in?, out?, err?)>
+<!ATTLIST command 
+	name 	CDATA #REQUIRED
+	version CDATA #REQUIRED
+	transactionType (regular|finalizing|nested|invariant) "regular"
+> 
+<!-- holds the text that will be used for the documentation -->
+<!ELEMENT doc (p)*>
+
+<!-- 
+Provides the SOI name/version where the referenced commands are searched.
+Note: this tag is NOT related to the "version" attribute of the "command" tag
+-->
+<!ELEMENT cmdref_base EMPTY>
+<!ATTLIST cmdref_base
+	soiName		CDATA #REQUIRED
+	soiVersion  CDATA #REQUIRED
+>
+
+<!-- Defines the structure of the input arguments to the command -->
+<!ELEMENT in (doc?,(cmdref|list)+)>
+
+<!-- Defines the stucture of output (result) of the command.  -->
+<!ELEMENT out (doc?,(cmdref|list)+)>
+
+<!-- Definition of the errors that might result from executing the command. -->
+<!ELEMENT err (error)+>
+
+
+<!--	
+Reference to another command or argument. (for documentation purposes)
+Contents of the element gives further explanation  Use this element whenever a parameter is associated with reference data and state the corresponding reference data read-command.
+	
+Attributes:
+	item - '/' separated path to command or argument 
+ 	e.g. "COMMAND.READ/in/cs_id" or simply "COMMAND.READ"
+-->
+<!ELEMENT see (#PCDATA)>
+<!ATTLIST see
+	item CDATA #REQUIRED
+>
+
+
+<!-- 
+Definition of a nested parameter list. 
+ 	
+This list is both used for the definition of in parameters to and the output of a command.
+
+Note: there is no "mandatory" attribute here - it means a list is always optional
+	
+Attributes:
+	name - the name of the argument
+ 	minlength - the minimum length of the list
+ 	maxlength - the maximum length of the list. An asterisk "*" is used to denote that 
+ 	            the list may have arbitrary length
+-->
+<!ELEMENT list (doc,(cmdref|list)*, see*)>
+<!ATTLIST list 
+	name 		CDATA #REQUIRED
+	minlength 	CDATA "0"
+	maxlength 	CDATA "*"
+>
+
+
+<!--	
+Definition of a command reference. All the arguments of the referenced command are 
+included here. The referenced command should exists in the SOI (name, version)
+specified by the "cmdref_base" tag
+
+Attributes: 
+	name 		-  the name of the command
+ 	mandatory 	- 
+-->
+<!ELEMENT cmdref (doc, see*)>
+<!ATTLIST cmdref
+	name 		CDATA #REQUIRED
+	mandatory   (yes|no) "no"
+>
+
+<!--	
+This element describes an error code that might be delivered as a result of the execution of the  Service Layer command. 
+     
+Attributes:
+	code -  the return code of the error info being described. Must correspond to an errorcode
+ 			as defined in the ErrorDictionary
+-->
+<!ELEMENT error (doc?, param*)>
+<!ATTLIST error
+	code CDATA #REQUIRED 
+>
+
+<!--	
+This element describes a parameter of the associated error. It contains a verbose description of the information that is associated with the parameter (e.g. contract id). 
+	
+Attributes:
+	name - the name of the parameter. Must correspond to an errror argument defined for the 
+ 		   associated error element
+-->
+
+<!ELEMENT param EMPTY>
+<!ATTLIST param
+	name CDATA #REQUIRED
+>  

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="EtopUpDao">
+
+	<cacheModel id="listRatePlan" type="LRU" readOnly="true" serialize="false">
+		<flushInterval hours="1"/>
+		<property name="size" value="100" />
+	</cacheModel>
+	
+	
+	<cacheModel id="listLanguage" type="LRU" readOnly="true" serialize="false">
+		<flushInterval hours="1"/>
+		<property name="size" value="100" />
+	</cacheModel>
+	
+	<typeAlias alias="WhiteList" type="com.gfi.ws.beans.etopup.iswhitelist.WhiteList"/>
+	<typeAlias alias="Language" type="com.gfi.ws.beans.etopup.iswhitelist.Language"/>
+	<typeAlias alias="RatePlan" type="com.gfi.ws.beans.etopup.iswhitelist.RatePlan"/>
+	
+	<resultMap id="ratePlan" class="RatePlan">
+		<result property="rpCode" column="tmcode"/>
+		<result property="description" column="des"/>
+		
+	</resultMap>
+	
+	<resultMap id="language" class="Language">
+		<result property="id" column="lng_id"/>
+		<result property="description" column="lng_des"/>
+		
+	</resultMap>
+	
+	<resultMap id="whiteList" class="WhiteList">
+		<result property="custCode" column="custcode"/>
+		<result property="tmCode" column="tmcode"/>
+		<result property="coId" column="co_id"/>
+		<result property="ccLanguage" column="CCLANGUAGE"/>
+		<result property="csCurbalance" column="cscurbalance"/>
+		<result property="chStatus" column="ch_Status"/>
+		<result property="creditLimit" column="csclimit"/>
+	</resultMap>
+	
+	<select id="getRatePlanDesc"  resultMap="ratePlan" cacheModel="listRatePlan" >
+		select des,tmcode from rateplan 
+	</select>
+	
+	<select id="getLanguageDesc"  resultMap="language" cacheModel="listLanguage" >
+		Select lng_des,lng_id from language
+	</select>
+	
+	<select id="getImsiByCoId" parameterClass="java.lang.Long" resultClass="Long">
+		select p.port_num from curr_co_device cd, port p where co_id = #coId# and cd.port_id = p.port_id 
+	</select>
+	
+	<select id="getWhiteListDb"  parameterClass="java.lang.String" resultMap="whiteList">
+		SELECT CUSTCODE, CO.TMCODE, CO.CO_ID,CU.CSCLIMIT,
+		CC.CCLANGUAGE, CSCURBALANCE, CO.CH_STATUS
+		FROM CUSTOMER_ALL CU, CONTRACT_ALL CO, CURR_CONTR_SERVICES_CAP CAP,
+		DIRECTORY_NUMBER DN, MPUUBTAB UB, CCONTACT_ALL CC
+		WHERE DN.DN_NUM = #msisdn# 
+		AND DN.DN_ID = CAP.DN_ID 
+		AND CAP.CO_ID = CO.CO_ID
+		AND CO.CUSTOMER_ID = CU.CUSTOMER_ID
+		AND CO.CUSTOMER_ID = CC.CUSTOMER_ID 
+		AND CC.CCBILL = 'X'
+		AND CU.CUSTOMER_ID = UB.CUSTOMER_ID 
+		AND CO.TMCODE NOT IN (20, 29)
+		AND CUSTCODE LIKE '1.%' 
+		AND CO.CH_STATUS = 'a'
+		AND CO.CO_ACTIVATED &lt; ADD_MONTHS (SYSDATE, -12)
+		AND CU.CSCLIMIT &gt; UB.UNBILLED_AMOUNT
+		AND ( CSCURBALANCE &lt;= 0 OR CU.LBC_DATE &gt; SYSDATE - 20)
+		AND EXISTS
+			( SELECT 1 FROM INFO_CONTR_COMBO ICC
+			WHERE ICC.CO_ID = CO.CO_ID
+			AND (ICC.COMBO06 IS NULL OR ICC.COMBO06 = 'Initiator'))
+		AND NOT EXISTS 
+			(SELECT 1 FROM PR_SERV_STATUS_HIST HIST
+			WHERE HIST.SNCODE = 68 
+			AND HIST.CO_ID = CO.CO_ID
+			AND HIST.STATUS = 'A' 
+			AND HIST.VALID_FROM_DATE &gt; ADD_MONTHS (SYSDATE, -6))
+	</select>
+	
+		
+</sqlMap>

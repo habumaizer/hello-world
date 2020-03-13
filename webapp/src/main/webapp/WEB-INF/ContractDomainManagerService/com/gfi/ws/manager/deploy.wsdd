@@ -1,0 +1,558 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ContractDomainManagerService WSDL service -->
+
+  <service name="ContractDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="ContractDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://modifycontract.contractdomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://getContractInfo.contractdomain.beans.ws.gfi.com,http://changeproduct.contractdomain.beans.ws.gfi.com,http://commons.beans.ws.gfi.com,http://retrieveContractServices.contractdomain.beans.ws.gfi.com,http://getContractHistory.contractdomain.beans.ws.gfi.com,http://provisionServices.contractdomain.beans.ws.gfi.com,http://overrideServiceFee.contractdomain.beans.ws.gfi.com,http://getdevicedetail.contractdomain.beans.ws.gfi.com,http://changeserviceparameter.contractdomain.beans.ws.gfi.com,http://retrievecontract.contractdomain.beans.ws.gfi.com,http://provisionService.contractdomain.beans.ws.gfi.com,http://contractStatusChange.contractdomain.beans.ws.gfi.com,http://beans.ws.gfi.com,http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com,http://readserviceparameter.contractdomain.beans.ws.gfi.com,http://readbalances.contractdomain.beans.ws.gfi.com,http://searchContracts.contractdomain.beans.ws.gfi.com,http://contractdomain.beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="ContractDomainManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.ContractDomainManager"/>
+      <parameter name="wsdlPortType" value="ContractDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="readServiceParameter" qname="readServiceParameter" returnQName="retNS:readServiceParameterReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ReadServiceParameterOut" xmlns:rtns="http://readserviceparameter.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:readServiceParameterIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ReadServiceParameterIn" xmlns:tns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="changeServiceParameter" qname="changeServiceParameter" returnQName="retNS:changeServiceParameterReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ChangeServiceParameterOut" xmlns:rtns="http://changeserviceparameter.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:changeServiceParameterIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ChangeServiceParameterIn" xmlns:tns="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="modifyContract" qname="modifyContract" soapAction="" >
+        <parameter qname="pns:modifyContractIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ModifyContractIn" xmlns:tns="http://modifycontract.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="getContractInfo" qname="getContractInfo" returnQName="retNS:getContractInfoReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GetContractInfoOut" xmlns:rtns="http://getContractInfo.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:getContractInfoIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:GetContractInfoIn" xmlns:tns="http://getContractInfo.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="contractStatusChange" qname="contractStatusChange" returnQName="retNS:contractStatusChangeReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ContractStatusChangeOut" xmlns:rtns="http://contractStatusChange.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:contractStatusChangeIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ContractStatusChangeIn" xmlns:tns="http://contractStatusChange.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="getContractHistory" qname="getContractHistory" returnQName="retNS:getContractHistoryReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GetContractHistoryOut" xmlns:rtns="http://getContractHistory.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:getContractHistoryIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:GetContractHistoryIn" xmlns:tns="http://getContractHistory.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="searchContracts" qname="searchContracts" returnQName="retNS:searchContractsReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:SearchContractsOut" xmlns:rtns="http://searchContracts.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:searchContractsIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:SearchContractsIn" xmlns:tns="http://searchContracts.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="provisionService" qname="provisionService" returnQName="retNS:provisionServiceReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ProvisionServiceOut" xmlns:rtns="http://provisionService.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:provisionServicesIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ProvisionServiceIn" xmlns:tns="http://provisionService.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="retrieveContractServices" qname="retrieveContractServices" returnQName="retNS:retrieveContractServicesReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:RetrieveContractServicesOut" xmlns:rtns="http://retrieveContractServices.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:retrieveContractServicesIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:RetrieveContractServicesIn" xmlns:tns="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="overrideServiceFee" qname="overrideServiceFee" soapAction="" >
+        <parameter qname="pns:overrideServiceFeeIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:OverrideServiceFeeIn" xmlns:tns="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="provisionServices" qname="provisionServices" returnQName="retNS:provisionServicesReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ProvisionServicesOut" xmlns:rtns="http://provisionServices.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:provisionServicesIn1" xmlns:pns="http://manager.ws.gfi.com" type="tns:ProvisionServicesIn" xmlns:tns="http://provisionServices.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="provisionServicesMultiAction" qname="provisionServicesMultiAction" returnQName="retNS:provisionServicesMultiActionReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ProvisionServicesOut" xmlns:rtns="http://provisionServices.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:provisionServicesIn2" xmlns:pns="http://manager.ws.gfi.com" type="tns:>provisionServicesIn2" xmlns:tns="http://manager.ws.gfi.com" itemQName="itns:item" xmlns:itns="http://manager.ws.gfi.com"/>
+      </operation>
+      <operation name="getDeviceDetail" qname="getDeviceDetail" returnQName="retNS:getDeviceDetailReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:DeviceDetailOut" xmlns:rtns="http://getdevicedetail.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:getDeviceDetailIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:DeviceDetailIn" xmlns:tns="http://getdevicedetail.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="changeProduct" qname="changeProduct" returnQName="retNS:changeProductReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ChangeProductOut" xmlns:rtns="http://changeproduct.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:changeProductIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ChangeProductIn" xmlns:tns="http://changeproduct.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="retrieveContract" qname="retrieveContract" returnQName="retNS:retrieveContractReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:RetrieveContractOut" xmlns:rtns="http://retrievecontract.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:retrieveContract" xmlns:pns="http://manager.ws.gfi.com" type="tns:RetrieveContractIn" xmlns:tns="http://retrievecontract.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="readBalances" qname="readBalances" returnQName="retNS:readBalancesReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ReadBalancesOut" xmlns:rtns="http://readbalances.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:readBalancesIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ReadBalancesIn" xmlns:tns="http://readbalances.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="readBalanceAdjustmentRequest" qname="readBalanceAdjustmentRequest" returnQName="retNS:readBalanceAdjustmentRequestReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:ReadBalanceAdjustmentRequestOut" xmlns:rtns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:readBalanceAdjustmentRequestIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:ReadBalanceAdjustmentRequestIn" xmlns:tns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="readBalanceAdjustmentRequest overrideServiceFee getDeviceDetail provisionServices retrieveContractServices provisionService retrieveContract modifyContract searchContracts provisionServicesMultiAction contractStatusChange readServiceParameter changeProduct changeServiceParameter getContractInfo getContractHistory readBalances"/>
+
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_Value"
+        type="java:com.gfi.ws.beans.contractdomain.readserviceparameter.Value[]"
+        innerType="cmp-ns:Value" xmlns:cmp-ns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns19_Request"
+        type="java:com.gfi.ws.beans.contractdomain.readbalanceadjustmentrequest.Request[]"
+        innerType="cmp-ns:Request" xmlns:cmp-ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns13_Service"
+        type="java:com.gfi.ws.beans.contractdomain.overrideServiceFee.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns16_Service"
+        type="java:com.gfi.ws.beans.contractdomain.changeproduct.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://changeproduct.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeproduct.contractdomain.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.contractdomain.changeproduct.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.commons.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:ContractIdType"
+        type="java:com.gfi.ws.beans.commons.ContractIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"
+        qname="ns:RetrieveContractServicesIn"
+        type="java:com.gfi.ws.beans.contractdomain.retrieveContractServices.RetrieveContractServicesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeproduct.contractdomain.beans.ws.gfi.com"
+        qname="ns:ChangeProductIn"
+        type="java:com.gfi.ws.beans.contractdomain.changeproduct.ChangeProductIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetContractHistoryOut"
+        type="java:com.gfi.ws.beans.contractdomain.getContractHistory.GetContractHistoryOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.contractdomain.overrideServiceFee.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetContractHistoryIn"
+        type="java:com.gfi.ws.beans.contractdomain.getContractHistory.GetContractHistoryIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"
+        qname="ns:ReadBalanceAdjustmentRequestOut"
+        type="java:com.gfi.ws.beans.contractdomain.readbalanceadjustmentrequest.ReadBalanceAdjustmentRequestOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns11_ServiceParameter"
+        type="java:com.gfi.ws.beans.contractdomain.ServiceParameter[]"
+        innerType="cmp-ns:ServiceParameter" xmlns:cmp-ns="http://contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalances.contractdomain.beans.ws.gfi.com"
+        qname="ns:ReadBalancesOut"
+        type="java:com.gfi.ws.beans.contractdomain.readbalances.ReadBalancesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalances.contractdomain.beans.ws.gfi.com"
+        qname="ns:Balance"
+        type="java:com.gfi.ws.beans.contractdomain.readbalances.Balance"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.gfi.com"
+        qname="ns:Contract"
+        type="java:com.gfi.ws.beans.contractdomain.getContractHistory.Contract"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContracts.contractdomain.beans.ws.gfi.com"
+        qname="ns:SearchContractsOut"
+        type="java:com.gfi.ws.beans.contractdomain.searchContracts.SearchContractsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:>provisionServicesIn2"
+        type="java:com.gfi.ws.beans.contractdomain.provisionServices.ProvisionServicesIn[]"
+        innerType="cmp-ns:ProvisionServicesIn" xmlns:cmp-ns="http://provisionServices.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractStatusChange.contractdomain.beans.ws.gfi.com"
+        qname="ns:ContractStatusChangeIn"
+        type="java:com.gfi.ws.beans.contractdomain.contractStatusChange.ContractStatusChangeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeproduct.contractdomain.beans.ws.gfi.com"
+        qname="ns:ChangeProductOut"
+        type="java:com.gfi.ws.beans.contractdomain.changeproduct.ChangeProductOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"
+        qname="ns:RetrieveContractServicesOut"
+        type="java:com.gfi.ws.beans.contractdomain.retrieveContractServices.RetrieveContractServicesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"
+        qname="ns:ChangeServiceParameterOut"
+        type="java:com.gfi.ws.beans.contractdomain.changeserviceparameter.ChangeServiceParameterOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContracts.contractdomain.beans.ws.gfi.com"
+        qname="ns:Contract"
+        type="java:com.gfi.ws.beans.contractdomain.searchContracts.Contract"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_ParameterService"
+        type="java:com.gfi.ws.beans.contractdomain.readserviceparameter.ParameterService[]"
+        innerType="cmp-ns:ParameterService" xmlns:cmp-ns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns8_ContractDevice"
+        type="java:com.gfi.ws.beans.contractdomain.getContractHistory.ContractDevice[]"
+        innerType="cmp-ns:ContractDevice" xmlns:cmp-ns="http://getContractHistory.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns9_Contract"
+        type="java:com.gfi.ws.beans.contractdomain.searchContracts.Contract[]"
+        innerType="cmp-ns:Contract" xmlns:cmp-ns="http://searchContracts.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getdevicedetail.contractdomain.beans.ws.gfi.com"
+        qname="ns:DeviceDetailIn"
+        type="java:com.gfi.ws.beans.contractdomain.getdevicedetail.DeviceDetailIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractdomain.beans.ws.gfi.com"
+        qname="ns:Value"
+        type="java:com.gfi.ws.beans.contractdomain.Value"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"
+        qname="ns:ReadBalanceAdjustmentRequestIn"
+        type="java:com.gfi.ws.beans.contractdomain.readbalanceadjustmentrequest.ReadBalanceAdjustmentRequestIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://changeserviceparameter.contractdomain.beans.ws.gfi.com"
+        qname="ns:ChangeServiceParameterIn"
+        type="java:com.gfi.ws.beans.contractdomain.changeserviceparameter.ChangeServiceParameterIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_Service"
+        type="java:com.gfi.ws.beans.commons.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://commons.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionService.contractdomain.beans.ws.gfi.com"
+        qname="ns:ProvisionServiceIn"
+        type="java:com.gfi.ws.beans.contractdomain.provisionService.ProvisionServiceIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalanceadjustmentrequest.contractdomain.beans.ws.gfi.com"
+        qname="ns:Request"
+        type="java:com.gfi.ws.beans.contractdomain.readbalanceadjustmentrequest.Request"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractdomain.beans.ws.gfi.com"
+        qname="ns:ServiceParameter"
+        type="java:com.gfi.ws.beans.contractdomain.ServiceParameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns14_Service"
+        type="java:com.gfi.ws.beans.contractdomain.provisionServices.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://provisionServices.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"
+        qname="ns:ReadServiceParameterIn"
+        type="java:com.gfi.ws.beans.contractdomain.readserviceparameter.ReadServiceParameterIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns8_Contract"
+        type="java:com.gfi.ws.beans.contractdomain.getContractHistory.Contract[]"
+        innerType="cmp-ns:Contract" xmlns:cmp-ns="http://getContractHistory.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getdevicedetail.contractdomain.beans.ws.gfi.com"
+        qname="ns:DeviceDetailOut"
+        type="java:com.gfi.ws.beans.contractdomain.getdevicedetail.DeviceDetailOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractInfo.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetContractInfoIn"
+        type="java:com.gfi.ws.beans.contractdomain.getContractInfo.GetContractInfoIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns12_Service"
+        type="java:com.gfi.ws.beans.contractdomain.retrieveContractServices.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"
+        qname="ns:Value"
+        type="java:com.gfi.ws.beans.contractdomain.readserviceparameter.Value"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns11_Value"
+        type="java:com.gfi.ws.beans.contractdomain.Value[]"
+        innerType="cmp-ns:Value" xmlns:cmp-ns="http://contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifycontract.contractdomain.beans.ws.gfi.com"
+        qname="ns:ModifyContractIn"
+        type="java:com.gfi.ws.beans.contractdomain.modifycontract.ModifyContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievecontract.contractdomain.beans.ws.gfi.com"
+        qname="ns:RetrieveContractOut"
+        type="java:com.gfi.ws.beans.contractdomain.retrievecontract.RetrieveContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://overrideServiceFee.contractdomain.beans.ws.gfi.com"
+        qname="ns:OverrideServiceFeeIn"
+        type="java:com.gfi.ws.beans.contractdomain.overrideServiceFee.OverrideServiceFeeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns18_Balance"
+        type="java:com.gfi.ws.beans.contractdomain.readbalances.Balance[]"
+        innerType="cmp-ns:Balance" xmlns:cmp-ns="http://readbalances.contractdomain.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServices.contractdomain.beans.ws.gfi.com"
+        qname="ns:ProvisionServicesOut"
+        type="java:com.gfi.ws.beans.contractdomain.provisionServices.ProvisionServicesOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contractStatusChange.contractdomain.beans.ws.gfi.com"
+        qname="ns:ContractStatusChangeOut"
+        type="java:com.gfi.ws.beans.contractdomain.contractStatusChange.ContractStatusChangeOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionService.contractdomain.beans.ws.gfi.com"
+        qname="ns:ProvisionServiceOut"
+        type="java:com.gfi.ws.beans.contractdomain.provisionService.ProvisionServiceOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrievecontract.contractdomain.beans.ws.gfi.com"
+        qname="ns:RetrieveContractIn"
+        type="java:com.gfi.ws.beans.contractdomain.retrievecontract.RetrieveContractIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveContractServices.contractdomain.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.contractdomain.retrieveContractServices.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractInfo.contractdomain.beans.ws.gfi.com"
+        qname="ns:GetContractInfoOut"
+        type="java:com.gfi.ws.beans.contractdomain.getContractInfo.GetContractInfoOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServices.contractdomain.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.contractdomain.provisionServices.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:CustomerIdType"
+        type="java:com.gfi.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readbalances.contractdomain.beans.ws.gfi.com"
+        qname="ns:ReadBalancesIn"
+        type="java:com.gfi.ws.beans.contractdomain.readbalances.ReadBalancesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"
+        qname="ns:ReadServiceParameterOut"
+        type="java:com.gfi.ws.beans.contractdomain.readserviceparameter.ReadServiceParameterOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://provisionServices.contractdomain.beans.ws.gfi.com"
+        qname="ns:ProvisionServicesIn"
+        type="java:com.gfi.ws.beans.contractdomain.provisionServices.ProvisionServicesIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getContractHistory.contractdomain.beans.ws.gfi.com"
+        qname="ns:ContractDevice"
+        type="java:com.gfi.ws.beans.contractdomain.getContractHistory.ContractDevice"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchContracts.contractdomain.beans.ws.gfi.com"
+        qname="ns:SearchContractsIn"
+        type="java:com.gfi.ws.beans.contractdomain.searchContracts.SearchContractsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://readserviceparameter.contractdomain.beans.ws.gfi.com"
+        qname="ns:ParameterService"
+        type="java:com.gfi.ws.beans.contractdomain.readserviceparameter.ParameterService"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

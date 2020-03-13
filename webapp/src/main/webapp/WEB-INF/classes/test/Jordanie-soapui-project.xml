@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:man="http://manager.ws.orange.com" xmlns:con="http://contracttakeover.cmsbasic.beans.ws.orange.com" xmlns:com="http://commons.beans.ws.orange.com" xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+     <soapenv:Header>
+      <wsse:Security>
+         <wsse:UsernameToken>
+            <wsse:Username>CXADMIN</wsse:Username>
+            <wsse:Password>CXADMIN</wsse:Password>
+         </wsse:UsernameToken>
+      </wsse:Security>
+   </soapenv:Header>
+<soapenv:Body>
+      <man:contractTakeOverIn>
+         <con:chargeSubs>true</con:chargeSubs>
+         <con:contractIdComplex>
+	 <com:CO_ID>1</com:CO_ID>
+         </con:contractIdComplex>
+         <con:customerIdComplex>
+            <com:CS_ID>1</com:CS_ID>
+         </con:customerIdComplex>
+	  <con:reason>2</con:reason>
+      </man:contractTakeOverIn>
+</soapenv:Body>
+
+</soapenv:Envelope>

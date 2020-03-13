@@ -1,0 +1,114 @@
+<!-- This DTD describes the structure of command trace files.
+ 	 Traces contain a number of SL commands, that can be executed
+ 	 from a batch client using such a trace as input. 
+ 	 
+ 	 Traces can either be written by human beings or generated from
+ 	 a command tracing facility. The tracing facility writes the commands 
+ 	 received by the Service Layer to a specified trace file.  
+-->
+
+
+<!ELEMENT LIST (SVLOBJECT*)>
+<!ATTLIST LIST
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT SVLOBJECT ((CHAR|STRING|INTEGER|LONG|DATE|DATETIME|MONEY|BOOLEAN|FLOAT|BINARY|LIST|SVLANY|SVLOBJECT)*)>
+<!ATTLIST SVLOBJECT
+	name CDATA #IMPLIED
+>
+
+<!--SVLANY can contains same tags as the SVLOBJECT-->
+<!ELEMENT SVLANY    ((CHAR|STRING|INTEGER|LONG|DATE|DATETIME|MONEY|BOOLEAN|FLOAT|BINARY|LIST|SVLANY|SVLOBJECT)*)>
+<!--additionaly SVLANY has a "name" attribute-->
+<!ATTLIST SVLANY
+	name CDATA #REQUIRED
+>
+
+<!ELEMENT CHAR EMPTY>
+<!ATTLIST CHAR
+	name CDATA #REQUIRED
+	val	CDATA #REQUIRED
+>
+
+<!ELEMENT STRING EMPTY>
+<!ATTLIST STRING
+	name CDATA #REQUIRED
+	val	CDATA #REQUIRED
+>
+
+<!ELEMENT INTEGER EMPTY>
+<!ATTLIST INTEGER
+	name CDATA #REQUIRED
+	val	CDATA #REQUIRED
+>
+
+<!ELEMENT LONG EMPTY>
+<!ATTLIST LONG
+	name CDATA #REQUIRED
+	val	CDATA #REQUIRED
+>
+
+<!-- 
+  A date represents a timezone independent date, like e.g. a birthdate. 
+  The attributes day, month and year are numeric values, e.g.
+  &lt;DATE name="weddingDate" day="20" month="2" year="1956"/&gt;
+  
+  day    - between 1 and 31
+  month  - between 1 and 12
+-->
+<!ELEMENT DATE EMPTY>
+<!ATTLIST DATE
+	name  CDATA #REQUIRED
+	day   CDATA #REQUIRED
+	month CDATA #REQUIRED
+	year  CDATA #REQUIRED
+>
+
+<!-- 
+  There are two different ways to specify a datetime value:
+  1. either set the time value as UTC milliseconds
+  2. or set the time value as a string conforming to the current DateTimeFormat.
+  
+  If a time string is used the format can be set using the 'dateTimeFormat'
+  attribute of the TRACE element (see trace.dtd). If no dateTimeFormat is 
+  explicitly set, the used format will be "yyyy.MM.dd hh:mm:ss z". 
+  More info on datetime formats can be found in the javadocs of 
+  java.text.SimpleDateFormat.
+
+  Examples
+  1. &lt;DATETIME name="activationDate" val="530914051000"/&gt;
+  2. &lt;DATETIME name="modificationDate" val="12.18.2002 10:49:12 ECT"/&gt;
+-->
+<!ELEMENT DATETIME EMPTY>
+<!ATTLIST DATETIME
+	name CDATA #REQUIRED
+	val  CDATA #REQUIRED
+>
+
+<!ELEMENT MONEY EMPTY>
+<!ATTLIST MONEY
+	name CDATA #REQUIRED
+	amount	CDATA #REQUIRED
+	currency CDATA #REQUIRED
+>
+
+<!ELEMENT BOOLEAN EMPTY>
+<!ATTLIST BOOLEAN
+	name CDATA #REQUIRED
+	val	(T|F) #REQUIRED
+>
+
+<!ELEMENT FLOAT EMPTY>
+<!ATTLIST FLOAT
+	name CDATA #REQUIRED
+	val	CDATA #REQUIRED
+>
+
+<!-- For this datatype value is optional.
+-->
+<!ELEMENT BINARY (#PCDATA)>
+<!ATTLIST BINARY
+	name CDATA #REQUIRED
+	val	CDATA #IMPLIED
+>

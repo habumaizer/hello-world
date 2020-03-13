@@ -1,0 +1,1343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://manager.ws.gfi.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://manager.ws.gfi.com" xmlns:intf="http://manager.ws.gfi.com" xmlns:tns1="http://common.ccl.alcatel.com" xmlns:tns2="http://common.cms.alcatel.com" xmlns:tns3="http://common.ws.cms.alcatel.com" xmlns:tns4="http://cmsbasic.beans.ws.gfi.com" xmlns:tns5="http://v2.beans.ws.lhs.com" xmlns:tns6="http://beans.ws.lhs.com" xmlns:tns7="http://contract_product_write.v2.beans.ws.lhs.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 09, 2009 (02:08:07 CEST)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://common.ccl.alcatel.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="CustomerModification">
+    <sequence>
+     <element name="csId" nillable="true" type="xsd:long"/>
+     <element name="sourceFamilyId" nillable="true" type="xsd:long"/>
+     <element name="targetFamilyId" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="Money">
+    <sequence>
+     <element name="amount" type="xsd:double"/>
+     <element name="currency" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ActionCode">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Device">
+    <sequence>
+     <element name="hlCode" nillable="true" type="xsd:long"/>
+     <element name="npCode" nillable="true" type="xsd:long"/>
+     <element name="portNumber" nillable="true" type="xsd:string"/>
+     <element name="storageMediumNumber" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="FeeClass">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="FeeType">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContractIdentifierType">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="OCC">
+    <sequence>
+     <element name="actionCode" nillable="true" type="tns1:ActionCode"/>
+     <element name="amount" nillable="true" type="tns1:Money"/>
+     <element name="basePartId" nillable="true" type="xsd:int"/>
+     <element name="chargePartId" nillable="true" type="xsd:int"/>
+     <element name="coId" nillable="true" type="xsd:long"/>
+     <element name="csId" nillable="true" type="xsd:long"/>
+     <element name="device" nillable="true" type="tns1:Device"/>
+     <element name="dirNum" nillable="true" type="xsd:string"/>
+     <element name="evCode" nillable="true" type="xsd:long"/>
+     <element name="feeClass" nillable="true" type="tns1:FeeClass"/>
+     <element name="feeType" nillable="true" type="tns1:FeeType"/>
+     <element name="freeUnits" nillable="true" type="xsd:int"/>
+     <element name="fuPackId" nillable="true" type="xsd:int"/>
+     <element name="glCode" nillable="true" type="xsd:string"/>
+     <element name="glCodeDisc" nillable="true" type="xsd:string"/>
+     <element name="glCodeMin" nillable="true" type="xsd:string"/>
+     <element name="identifierType" nillable="true" type="tns1:ContractIdentifierType"/>
+     <element name="identifierValue" nillable="true" type="xsd:string"/>
+     <element name="invId" nillable="true" type="xsd:long"/>
+     <element name="numPeriods" nillable="true" type="xsd:int"/>
+     <element name="recordId" nillable="true" type="xsd:int"/>
+     <element name="recordSubId" nillable="true" type="xsd:int"/>
+     <element name="remark" nillable="true" type="xsd:string"/>
+     <element name="rpCode" nillable="true" type="xsd:long"/>
+     <element name="rpVsCode" nillable="true" type="xsd:long"/>
+     <element name="seqNo" nillable="true" type="xsd:long"/>
+     <element name="servCatCode" nillable="true" type="xsd:string"/>
+     <element name="servCode" nillable="true" type="xsd:string"/>
+     <element name="servType" nillable="true" type="xsd:string"/>
+     <element name="snCode" nillable="true" type="xsd:long"/>
+     <element name="spCode" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="AdditionalInfo">
+    <sequence>
+     <element name="fieldName" nillable="true" type="xsd:string"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Address">
+    <sequence>
+     <element name="adrCity" nillable="true" type="xsd:string"/>
+     <element name="adrEmail" nillable="true" type="xsd:string"/>
+     <element name="adrFName" nillable="true" type="xsd:string"/>
+     <element name="adrFax" nillable="true" type="xsd:string"/>
+     <element name="adrFaxArea" nillable="true" type="xsd:string"/>
+     <element name="adrJbDes" nillable="true" type="xsd:string"/>
+     <element name="adrLName" nillable="true" type="xsd:string"/>
+     <element name="adrMName" nillable="true" type="xsd:string"/>
+     <element name="adrName" nillable="true" type="xsd:string"/>
+     <element name="adrNote1" nillable="true" type="xsd:string"/>
+     <element name="adrNote2" nillable="true" type="xsd:string"/>
+     <element name="adrNote3" nillable="true" type="xsd:string"/>
+     <element name="adrPhn1" nillable="true" type="xsd:string"/>
+     <element name="adrPhn1Area" nillable="true" type="xsd:string"/>
+     <element name="adrPhn2" nillable="true" type="xsd:string"/>
+     <element name="adrPhn2Area" nillable="true" type="xsd:string"/>
+     <element name="adrRemark" nillable="true" type="xsd:string"/>
+     <element name="adrSeqNo" nillable="true" type="xsd:long"/>
+     <element name="adrSmsNo" nillable="true" type="xsd:string"/>
+     <element name="adrState" nillable="true" type="xsd:string"/>
+     <element name="adrStreet" nillable="true" type="xsd:string"/>
+     <element name="adrStreetNo" nillable="true" type="xsd:string"/>
+     <element name="adrYears" nillable="true" type="xsd:int"/>
+     <element name="adrZip" nillable="true" type="xsd:string"/>
+     <element name="countryId" nillable="true" type="xsd:long"/>
+     <element name="lngCode" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="AddressCustomerType">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="AddressRole">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Gender">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomerAddress">
+    <complexContent>
+     <extension base="tns1:Address">
+      <sequence>
+       <element name="adrBirthDt" nillable="true" type="xsd:dateTime"/>
+       <element name="adrCompNo" nillable="true" type="xsd:string"/>
+       <element name="adrCustType" nillable="true" type="tns1:AddressCustomerType"/>
+       <element name="adrDriveLicence" nillable="true" type="xsd:string"/>
+       <element name="adrEmployee" nillable="true" type="xsd:boolean"/>
+       <element name="adrEmployer" nillable="true" type="xsd:string"/>
+       <element name="adrIdNo" nillable="true" type="xsd:string"/>
+       <element name="adrNationality" nillable="true" type="xsd:long"/>
+       <element name="adrRole" nillable="true" type="tns1:AddressRole"/>
+       <element name="adrRoles" nillable="true" type="impl:ArrayOf_tns1_AddressRole"/>
+       <element name="adrSex" nillable="true" type="tns1:Gender"/>
+       <element name="adrSocialSeNo" nillable="true" type="xsd:string"/>
+       <element name="adrTaxNo" nillable="true" type="xsd:string"/>
+       <element name="csId" nillable="true" type="xsd:long"/>
+       <element name="idTypeCode" nillable="true" type="xsd:long"/>
+       <element name="masCode" nillable="true" type="xsd:long"/>
+       <element name="titleId" nillable="true" type="xsd:long"/>
+       <element name="type" nillable="true" type="tns1:AddressRole"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+   <complexType name="BillingAccount">
+    <sequence>
+     <element name="baId" nillable="true" type="xsd:long"/>
+     <element name="baMedium" nillable="true" type="xsd:long"/>
+     <element name="individualtax_from_ind" nillable="true" type="xsd:string"/>
+     <element name="termcode" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="CallDetailType">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CallDetail">
+    <sequence>
+     <element name="medium" nillable="true" type="xsd:long"/>
+     <element name="type" nillable="true" type="tns1:CallDetailType"/>
+    </sequence>
+   </complexType>
+   <complexType name="RetentionMode">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContractStatus">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="ItemizeAction">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Itemize">
+    <sequence>
+     <element name="action" nillable="true" type="tns1:ItemizeAction"/>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContractReasonStatus">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="Parameter">
+    <sequence>
+     <element name="prmId" nillable="true" type="xsd:long"/>
+     <element name="prmNo" nillable="true" type="xsd:long"/>
+     <element maxOccurs="unbounded" name="seqno" nillable="true" type="xsd:long"/>
+     <element name="seqnoTab" nillable="true" type="impl:ArrayOf_xsd_long"/>
+     <element maxOccurs="unbounded" name="value" nillable="true" type="xsd:string"/>
+     <element maxOccurs="unbounded" name="valueDes" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Service">
+    <sequence>
+     <element name="cosSubfeeOvw" nillable="true" type="xsd:double"/>
+     <element name="cosSubfeeOvwType" nillable="true" type="xsd:string"/>
+     <element name="createDirNumIfUnexisting" nillable="true" type="xsd:boolean"/>
+     <element name="dirNum" nillable="true" type="xsd:string"/>
+     <element name="hlCode" nillable="true" type="xsd:long"/>
+     <element name="hmCode" nillable="true" type="xsd:long"/>
+     <element name="lacLengh" nillable="true" type="xsd:long"/>
+     <element name="lowerExt" nillable="true" type="xsd:string"/>
+     <element name="mainDirNum" nillable="true" type="xsd:boolean"/>
+     <element name="npCode" nillable="true" type="xsd:long"/>
+     <element name="parameters" nillable="true" type="impl:ArrayOf_tns1_Parameter"/>
+     <element name="snCode" nillable="true" type="xsd:long"/>
+     <element name="spCode" nillable="true" type="xsd:long"/>
+     <element name="upperExt" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="ContractType">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Contract">
+    <sequence>
+     <element name="additionalInfos" nillable="true" type="impl:ArrayOf_tns1_AdditionalInfo"/>
+     <element name="baId" nillable="true" type="xsd:long"/>
+     <element name="callDetail" nillable="true" type="tns1:CallDetail"/>
+     <element name="coDevRetention" nillable="true" type="tns1:RetentionMode"/>
+     <element name="coDnRetention" nillable="true" type="tns1:RetentionMode"/>
+     <element name="coId" nillable="true" type="xsd:long"/>
+     <element name="coPortRetention" nillable="true" type="tns1:RetentionMode"/>
+     <element name="coStatus" nillable="true" type="tns1:ContractStatus"/>
+     <element name="customReason" nillable="true" type="xsd:long"/>
+     <element name="dealerId" nillable="true" type="xsd:long"/>
+     <element name="device" nillable="true" type="tns1:Device"/>
+     <element name="identifierType" nillable="true" type="tns1:ContractIdentifierType"/>
+     <element name="identifierValue" nillable="true" type="xsd:string"/>
+     <element name="installationAddress" nillable="true" type="tns1:Address"/>
+     <element name="itemize" nillable="true" type="tns1:Itemize"/>
+     <element name="plCode" nillable="true" type="xsd:long"/>
+     <element name="reason" nillable="true" type="tns1:ContractReasonStatus"/>
+     <element name="rpCode" nillable="true" type="xsd:long"/>
+     <element name="scCode" nillable="true" type="xsd:long"/>
+     <element name="services" nillable="true" type="impl:ArrayOf_tns1_Service"/>
+     <element name="sourceSpCode" nillable="true" type="xsd:long"/>
+     <element name="submId" nillable="true" type="xsd:long"/>
+     <element name="targetRpCode" nillable="true" type="xsd:long"/>
+     <element name="targetSpCode" nillable="true" type="xsd:long"/>
+     <element name="type" nillable="true" type="tns1:ContractType"/>
+     <element name="validFrom" nillable="true" type="xsd:dateTime"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomerStatus">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="PaymentArrangement">
+    <sequence>
+     <element name="authInd" nillable="true" type="xsd:boolean"/>
+     <element name="cspAccNo" nillable="true" type="xsd:string"/>
+     <element name="cspAccOwner" nillable="true" type="xsd:string"/>
+     <element name="cspBankCity" nillable="true" type="xsd:string"/>
+     <element name="cspBankCode" nillable="true" type="xsd:string"/>
+     <element name="cspBankCountry" nillable="true" type="xsd:long"/>
+     <element name="cspBankCounty" nillable="true" type="xsd:string"/>
+     <element name="cspBankName" nillable="true" type="xsd:string"/>
+     <element name="cspBankState" nillable="true" type="xsd:string"/>
+     <element name="cspBankStreet" nillable="true" type="xsd:string"/>
+     <element name="cspBankStreetNo" nillable="true" type="xsd:string"/>
+     <element name="cspBankZip" nillable="true" type="xsd:string"/>
+     <element name="cspCcValidDt" nillable="true" type="xsd:string"/>
+     <element name="cspCcagCode" nillable="true" type="xsd:long"/>
+     <element name="cspOrderNumber" nillable="true" type="xsd:string"/>
+     <element name="cspPmntId" nillable="true" type="xsd:long"/>
+     <element name="cspSwiftCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="CustomerReasonStatus">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="TaxExemptionType">
+    <sequence>
+     <element name="value" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="TaxExemption">
+    <sequence>
+     <element name="code" nillable="true" type="xsd:long"/>
+     <element name="rate" nillable="true" type="xsd:double"/>
+     <element name="seqNo" nillable="true" type="xsd:long"/>
+     <element name="type" nillable="true" type="tns1:TaxExemptionType"/>
+    </sequence>
+   </complexType>
+   <complexType name="Tickler">
+    <sequence>
+     <element name="coId" nillable="true" type="xsd:long"/>
+     <element name="followUpUser" nillable="true" type="xsd:string"/>
+     <element name="identifierType" nillable="true" type="tns1:ContractIdentifierType"/>
+     <element name="identifierValue" nillable="true" type="xsd:string"/>
+     <element name="ticklerCode" nillable="true" type="xsd:string"/>
+     <element name="ticklerId" nillable="true" type="xsd:long"/>
+     <element name="ticklerLDes" nillable="true" type="xsd:string"/>
+     <element name="ticklerPriority" nillable="true" type="xsd:int"/>
+     <element name="ticklerShDes" nillable="true" type="xsd:string"/>
+     <element name="ticklerStatus" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Customer">
+    <sequence>
+     <element name="additionalInfos" nillable="true" type="impl:ArrayOf_tns1_AdditionalInfo"/>
+     <element name="addresses" nillable="true" type="impl:ArrayOf_tns1_CustomerAddress"/>
+     <element name="areaCode" nillable="true" type="xsd:long"/>
+     <element name="billingAccount" nillable="true" type="impl:ArrayOf_tns1_BillingAccount"/>
+     <element name="businessPartnerInd" nillable="true" type="xsd:boolean"/>
+     <element name="contractRespInd" nillable="true" type="xsd:boolean"/>
+     <element name="contracts" nillable="true" type="impl:ArrayOf_tns1_Contract"/>
+     <element name="costId" nillable="true" type="xsd:long"/>
+     <element name="csBillCycle" nillable="true" type="xsd:string"/>
+     <element name="csCLimit" nillable="true" type="tns1:Money"/>
+     <element name="csCLimitRemark" nillable="true" type="xsd:string"/>
+     <element name="csDeposit" nillable="true" type="tns1:Money"/>
+     <element name="csId" nillable="true" type="xsd:long"/>
+     <element name="csIdHigh" nillable="true" type="xsd:long"/>
+     <element name="csLevelCode" nillable="true" type="xsd:string"/>
+     <element name="csLimitTr1" nillable="true" type="xsd:long"/>
+     <element name="csLimitTr2" nillable="true" type="xsd:long"/>
+     <element name="csLimitTr3" nillable="true" type="xsd:long"/>
+     <element name="csPassword" nillable="true" type="xsd:string"/>
+     <element name="csPrepayment" nillable="true" type="xsd:boolean"/>
+     <element name="csRemark1" nillable="true" type="xsd:string"/>
+     <element name="csRemark2" nillable="true" type="xsd:string"/>
+     <element name="csStatus" nillable="true" type="tns1:CustomerStatus"/>
+     <element name="currency" nillable="true" type="xsd:long"/>
+     <element name="custCatCode" nillable="true" type="xsd:long"/>
+     <element name="dealerId" nillable="true" type="xsd:long"/>
+     <element name="externalCustomerId" nillable="true" type="xsd:string"/>
+     <element name="externalCustomerSetId" nillable="true" type="xsd:string"/>
+     <element name="familyId" nillable="true" type="xsd:long"/>
+     <element name="occ" nillable="true" type="tns1:OCC"/>
+     <element name="parentFamilyInd" nillable="true" type="xsd:boolean"/>
+     <element name="paymentArrangement" nillable="true" type="tns1:PaymentArrangement"/>
+     <element name="paymentRespInd" nillable="true" type="xsd:boolean"/>
+     <element name="prgCode" nillable="true" type="xsd:string"/>
+     <element name="rpCode" nillable="true" type="xsd:long"/>
+     <element name="rsCode" nillable="true" type="tns1:CustomerReasonStatus"/>
+     <element name="taxExemption" nillable="true" type="impl:ArrayOf_tns1_TaxExemption"/>
+     <element name="ticklers" nillable="true" type="impl:ArrayOf_tns1_Tickler"/>
+     <element name="tradeCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://manager.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <element name="arg0" type="tns1:CustomerModification"/>
+   <element name="familyMoveReturn" type="xsd:boolean"/>
+   <element name="arg1" type="tns2:Payment"/>
+   <element name="createPaymentReturn" type="xsd:boolean"/>
+   <element name="arg2" type="tns1:OCC"/>
+   <element name="createOCCReturn" type="xsd:boolean"/>
+   <complexType name="ArrayOf_tns1_AdditionalInfo">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:AdditionalInfo"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_AddressRole">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:AddressRole"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_CustomerAddress">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:CustomerAddress"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_BillingAccount">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:BillingAccount"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_xsd_long">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_Parameter">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Parameter"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_Service">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Service"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_Contract">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Contract"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_TaxExemption">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:TaxExemption"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns1_Tickler">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns1:Tickler"/>
+    </sequence>
+   </complexType>
+   <element name="arg3" type="tns1:Customer"/>
+   <element name="modifyContractReturn" type="xsd:boolean"/>
+   <element name="arg4" type="tns1:Customer"/>
+   <element name="setItemizeOnBillReturn" type="xsd:boolean"/>
+   <element name="arg5" type="tns1:Customer"/>
+   <complexType name="ArrayOf_tns3_AddServiceListOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:AddServiceListOut"/>
+    </sequence>
+   </complexType>
+   <element name="addServiceListReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:AddServiceListOut"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="arg6" type="tns1:Customer"/>
+   <element name="createTicklerReturn" type="tns3:CreateTicklerOut"/>
+   <element name="arg7" type="tns1:Customer"/>
+   <complexType name="ArrayOf_tns3_DelServiceListOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:DelServiceListOut"/>
+    </sequence>
+   </complexType>
+   <element name="delServiceListReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:DelServiceListOut"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="arg8" type="tns1:Customer"/>
+   <complexType name="ArrayOf_tns3_ServicesMap">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:ServicesMap"/>
+    </sequence>
+   </complexType>
+   <complexType name="ArrayOf_tns3_ChangeContractProductOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:ChangeContractProductOut"/>
+    </sequence>
+   </complexType>
+   <element name="changeContractProductReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:ChangeContractProductOut"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="arg9" type="tns1:Customer"/>
+   <element name="convertFromLAToFlatReturn" type="xsd:boolean"/>
+   <element name="arg10" type="tns1:Customer"/>
+   <element name="createLargeAccountReturn" type="xsd:long"/>
+   <element name="arg11" type="tns1:Customer"/>
+   <element name="modifyServiceParametersReturn" type="xsd:boolean"/>
+   <element name="arg12" type="tns1:Customer"/>
+   <element name="changeContractStatusReturn" type="xsd:boolean"/>
+   <complexType name="ArrayOf_tns7_OrderLimitsBeanIn">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns7:OrderLimitsBeanIn"/>
+    </sequence>
+   </complexType>
+   <element name="createContratAndProductIn" type="tns4:CreateContratAndProductIn"/>
+   <complexType name="ArrayOf_tns3_CreateContractOut">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:CreateContractOut"/>
+    </sequence>
+   </complexType>
+   <element name="createContratAndProductReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:CreateContractOut"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="arg13" type="tns1:Customer"/>
+   <element name="createCustomerReturn" type="xsd:long"/>
+   <element name="arg14" type="tns1:Customer"/>
+   <element name="modifyCustomerReturn" type="xsd:boolean"/>
+   <element name="arg15" type="tns1:Customer"/>
+   <element name="createContractReturn">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" minOccurs="0" name="item" type="tns3:CreateContractOut"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://common.cms.alcatel.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="Payment">
+    <sequence>
+     <element name="cachkDate" nillable="true" type="xsd:dateTime"/>
+     <element name="cachkamtPay" nillable="true" type="tns1:Money"/>
+     <element name="cachknum" nillable="true" type="xsd:string"/>
+     <element name="carecDate" nillable="true" type="xsd:dateTime"/>
+     <element name="csId" nillable="true" type="xsd:long"/>
+     <element name="glAccount" nillable="true" type="xsd:string"/>
+     <element name="ohxact" nillable="true" type="xsd:long"/>
+     <element name="paymentCurrencyId" nillable="true" type="xsd:long"/>
+     <element name="paymentMode" nillable="true" type="xsd:string"/>
+     <element name="remark" nillable="true" type="xsd:string"/>
+     <element name="transxCode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://common.ws.cms.alcatel.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="AddServiceListOut">
+    <sequence>
+     <element name="co_id" nillable="true" type="xsd:long"/>
+     <element name="listServices" nillable="true" type="impl:ArrayOf_xsd_long"/>
+    </sequence>
+   </complexType>
+   <complexType name="CreateTicklerOut">
+    <sequence>
+     <element name="tickerIds" nillable="true" type="impl:ArrayOf_xsd_long"/>
+    </sequence>
+   </complexType>
+   <complexType name="DelServiceListOut">
+    <sequence>
+     <element name="co_id" nillable="true" type="xsd:long"/>
+     <element name="listServices" nillable="true" type="impl:ArrayOf_xsd_long"/>
+    </sequence>
+   </complexType>
+   <complexType name="ServicesMap">
+    <sequence>
+     <element name="action" nillable="true" type="xsd:string"/>
+     <element name="services" nillable="true" type="impl:ArrayOf_tns1_Service"/>
+    </sequence>
+   </complexType>
+   <complexType name="ChangeContractProductOut">
+    <sequence>
+     <element name="cmsContractMap" nillable="true" type="impl:ArrayOf_tns3_ServicesMap"/>
+     <element name="co_id" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+   <complexType name="CreateContractOut">
+    <sequence>
+     <element name="co_id" nillable="true" type="xsd:long"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans.ws.lhs.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="BaseSOIBean">
+    <sequence/>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://contract_product_write.v2.beans.ws.lhs.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="OrderLimitsBeanIn">
+    <complexContent>
+     <extension base="tns6:BaseSOIBean">
+      <sequence>
+       <element name="maxDirNums" nillable="true" type="xsd:long"/>
+       <element name="maxPorts" nillable="true" type="xsd:long"/>
+       <element name="plcode" nillable="true" type="xsd:long"/>
+       <element name="plcodePub" nillable="true" type="xsd:string"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://v2.beans.ws.lhs.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <import namespace="http://cmsbasic.beans.ws.gfi.com"/>
+   <complexType name="ContractProductWriteBeanIn">
+    <complexContent>
+     <extension base="tns6:BaseSOIBean">
+      <sequence>
+       <element name="allowFuCarryOver" nillable="true" type="xsd:boolean"/>
+       <element name="btxPassword" nillable="true" type="xsd:string"/>
+       <element name="btxUser" nillable="true" type="xsd:string"/>
+       <element name="carrier" nillable="true" type="xsd:long"/>
+       <element name="carrierPub" nillable="true" type="xsd:string"/>
+       <element name="coId" nillable="true" type="xsd:long"/>
+       <element name="coIdPub" nillable="true" type="xsd:string"/>
+       <element name="commNo" nillable="true" type="xsd:string"/>
+       <element name="filename" nillable="true" type="xsd:string"/>
+       <element name="foreignPlcode" nillable="true" type="xsd:long"/>
+       <element name="foreignPlcodePub" nillable="true" type="xsd:string"/>
+       <element name="orderLimits" nillable="true" type="impl:ArrayOf_tns7_OrderLimitsBeanIn"/>
+       <element name="posCommType" nillable="true" type="xsd:long"/>
+      </sequence>
+     </extension>
+    </complexContent>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://cmsbasic.beans.ws.gfi.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://v2.beans.ws.lhs.com"/>
+   <import namespace="http://common.ws.cms.alcatel.com"/>
+   <import namespace="http://common.cms.alcatel.com"/>
+   <import namespace="http://manager.ws.gfi.com"/>
+   <import namespace="http://beans.ws.lhs.com"/>
+   <import namespace="http://common.ccl.alcatel.com"/>
+   <import namespace="http://contract_product_write.v2.beans.ws.lhs.com"/>
+   <complexType name="CreateContratAndProductIn">
+    <sequence>
+     <element name="contractProductWrite" nillable="true" type="tns5:ContractProductWriteBeanIn"/>
+     <element name="customer" nillable="true" type="tns1:Customer"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="createContratAndProductRequest">
+
+      <wsdl:part element="intf:createContratAndProductIn" name="createContratAndProductIn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="familyMoveRequest">
+
+      <wsdl:part element="intf:arg0" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createOCCRequest">
+
+      <wsdl:part element="intf:arg2" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createContractResponse">
+
+      <wsdl:part element="intf:createContractReturn" name="createContractReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createLargeAccountResponse">
+
+      <wsdl:part element="intf:createLargeAccountReturn" name="createLargeAccountReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="delServiceListResponse">
+
+      <wsdl:part element="intf:delServiceListReturn" name="delServiceListReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createContractRequest">
+
+      <wsdl:part element="intf:arg15" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addServiceListResponse">
+
+      <wsdl:part element="intf:addServiceListReturn" name="addServiceListReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyContractResponse">
+
+      <wsdl:part element="intf:modifyContractReturn" name="modifyContractReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="convertFromLAToFlatRequest">
+
+      <wsdl:part element="intf:arg9" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setItemizeOnBillResponse">
+
+      <wsdl:part element="intf:setItemizeOnBillReturn" name="setItemizeOnBillReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTicklerRequest">
+
+      <wsdl:part element="intf:arg6" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPaymentResponse">
+
+      <wsdl:part element="intf:createPaymentReturn" name="createPaymentReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyServiceParametersRequest">
+
+      <wsdl:part element="intf:arg11" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createPaymentRequest">
+
+      <wsdl:part element="intf:arg1" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeContractStatusRequest">
+
+      <wsdl:part element="intf:arg12" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeContractProductRequest">
+
+      <wsdl:part element="intf:arg8" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="convertFromLAToFlatResponse">
+
+      <wsdl:part element="intf:convertFromLAToFlatReturn" name="convertFromLAToFlatReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createLargeAccountRequest">
+
+      <wsdl:part element="intf:arg10" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyCustomerRequest">
+
+      <wsdl:part element="intf:arg14" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeContractProductResponse">
+
+      <wsdl:part element="intf:changeContractProductReturn" name="changeContractProductReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createTicklerResponse">
+
+      <wsdl:part element="intf:createTicklerReturn" name="createTicklerReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyCustomerResponse">
+
+      <wsdl:part element="intf:modifyCustomerReturn" name="modifyCustomerReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="setItemizeOnBillRequest">
+
+      <wsdl:part element="intf:arg4" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="addServiceListRequest">
+
+      <wsdl:part element="intf:arg5" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createContratAndProductResponse">
+
+      <wsdl:part element="intf:createContratAndProductReturn" name="createContratAndProductReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="changeContractStatusResponse">
+
+      <wsdl:part element="intf:changeContractStatusReturn" name="changeContractStatusReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="delServiceListRequest">
+
+      <wsdl:part element="intf:arg7" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createCustomerRequest">
+
+      <wsdl:part element="intf:arg13" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="familyMoveResponse">
+
+      <wsdl:part element="intf:familyMoveReturn" name="familyMoveReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createOCCResponse">
+
+      <wsdl:part element="intf:createOCCReturn" name="createOCCReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyServiceParametersResponse">
+
+      <wsdl:part element="intf:modifyServiceParametersReturn" name="modifyServiceParametersReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="createCustomerResponse">
+
+      <wsdl:part element="intf:createCustomerReturn" name="createCustomerReturn"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifyContractRequest">
+
+      <wsdl:part element="intf:arg3" name="arg0"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CmsManager">
+
+      <wsdl:operation name="familyMove" parameterOrder="arg0">
+
+         <wsdl:input message="intf:familyMoveRequest" name="familyMoveRequest"/>
+
+         <wsdl:output message="intf:familyMoveResponse" name="familyMoveResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPayment" parameterOrder="arg0">
+
+         <wsdl:input message="intf:createPaymentRequest" name="createPaymentRequest"/>
+
+         <wsdl:output message="intf:createPaymentResponse" name="createPaymentResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createOCC" parameterOrder="arg0">
+
+         <wsdl:input message="intf:createOCCRequest" name="createOCCRequest"/>
+
+         <wsdl:output message="intf:createOCCResponse" name="createOCCResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyContract" parameterOrder="arg0">
+
+         <wsdl:input message="intf:modifyContractRequest" name="modifyContractRequest"/>
+
+         <wsdl:output message="intf:modifyContractResponse" name="modifyContractResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setItemizeOnBill" parameterOrder="arg0">
+
+         <wsdl:input message="intf:setItemizeOnBillRequest" name="setItemizeOnBillRequest"/>
+
+         <wsdl:output message="intf:setItemizeOnBillResponse" name="setItemizeOnBillResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addServiceList" parameterOrder="arg0">
+
+         <wsdl:input message="intf:addServiceListRequest" name="addServiceListRequest"/>
+
+         <wsdl:output message="intf:addServiceListResponse" name="addServiceListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createTickler" parameterOrder="arg0">
+
+         <wsdl:input message="intf:createTicklerRequest" name="createTicklerRequest"/>
+
+         <wsdl:output message="intf:createTicklerResponse" name="createTicklerResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delServiceList" parameterOrder="arg0">
+
+         <wsdl:input message="intf:delServiceListRequest" name="delServiceListRequest"/>
+
+         <wsdl:output message="intf:delServiceListResponse" name="delServiceListResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeContractProduct" parameterOrder="arg0">
+
+         <wsdl:input message="intf:changeContractProductRequest" name="changeContractProductRequest"/>
+
+         <wsdl:output message="intf:changeContractProductResponse" name="changeContractProductResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="convertFromLAToFlat" parameterOrder="arg0">
+
+         <wsdl:input message="intf:convertFromLAToFlatRequest" name="convertFromLAToFlatRequest"/>
+
+         <wsdl:output message="intf:convertFromLAToFlatResponse" name="convertFromLAToFlatResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createLargeAccount" parameterOrder="arg0">
+
+         <wsdl:input message="intf:createLargeAccountRequest" name="createLargeAccountRequest"/>
+
+         <wsdl:output message="intf:createLargeAccountResponse" name="createLargeAccountResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyServiceParameters" parameterOrder="arg0">
+
+         <wsdl:input message="intf:modifyServiceParametersRequest" name="modifyServiceParametersRequest"/>
+
+         <wsdl:output message="intf:modifyServiceParametersResponse" name="modifyServiceParametersResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeContractStatus" parameterOrder="arg0">
+
+         <wsdl:input message="intf:changeContractStatusRequest" name="changeContractStatusRequest"/>
+
+         <wsdl:output message="intf:changeContractStatusResponse" name="changeContractStatusResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createContratAndProduct" parameterOrder="createContratAndProductIn">
+
+         <wsdl:input message="intf:createContratAndProductRequest" name="createContratAndProductRequest"/>
+
+         <wsdl:output message="intf:createContratAndProductResponse" name="createContratAndProductResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createCustomer" parameterOrder="arg0">
+
+         <wsdl:input message="intf:createCustomerRequest" name="createCustomerRequest"/>
+
+         <wsdl:output message="intf:createCustomerResponse" name="createCustomerResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyCustomer" parameterOrder="arg0">
+
+         <wsdl:input message="intf:modifyCustomerRequest" name="modifyCustomerRequest"/>
+
+         <wsdl:output message="intf:modifyCustomerResponse" name="modifyCustomerResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createContract" parameterOrder="arg0">
+
+         <wsdl:input message="intf:createContractRequest" name="createContractRequest"/>
+
+         <wsdl:output message="intf:createContractResponse" name="createContractResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CmsManagerSoapBinding" type="intf:CmsManager">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="familyMove">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="familyMoveRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="familyMoveResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createPayment">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createPaymentRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createPaymentResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createOCC">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createOCCRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createOCCResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyContract">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyContractRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyContractResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="setItemizeOnBill">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="setItemizeOnBillRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="setItemizeOnBillResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="addServiceList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addServiceListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addServiceListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createTickler">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createTicklerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createTicklerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delServiceList">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="delServiceListRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="delServiceListResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeContractProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changeContractProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changeContractProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="convertFromLAToFlat">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="convertFromLAToFlatRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="convertFromLAToFlatResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createLargeAccount">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createLargeAccountRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createLargeAccountResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyServiceParameters">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyServiceParametersRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyServiceParametersResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="changeContractStatus">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="changeContractStatusRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="changeContractStatusResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createContratAndProduct">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createContratAndProductRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createContratAndProductResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifyCustomer">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifyCustomerRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifyCustomerResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="createContract">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="createContractRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="createContractResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CmsManagerService">
+
+      <wsdl:port binding="intf:CmsManagerSoapBinding" name="CmsManager">
+
+         <wsdlsoap:address location="http://localhost:8080/bscsWS/services/CmsManager"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,548 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CmsManagerService WSDL service -->
+
+  <service name="CmsManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="CmsManagerService"/>
+      <parameter name="schemaQualified" value="http://cmsbasic.beans.ws.gfi.com,http://contract_product_write.v2.beans.ws.lhs.com,http://common.ccl.alcatel.com,http://beans.ws.lhs.com,http://manager.ws.gfi.com,http://common.cms.alcatel.com,http://common.ws.cms.alcatel.com,http://v2.beans.ws.lhs.com"/>
+      <parameter name="wsdlServicePort" value="CmsManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.CmsManager"/>
+      <parameter name="wsdlPortType" value="CmsManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="familyMove" qname="familyMove" returnQName="retNS:familyMoveReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg0" xmlns:pns="http://manager.ws.gfi.com" type="tns:CustomerModification" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="createPayment" qname="createPayment" returnQName="retNS:createPaymentReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg1" xmlns:pns="http://manager.ws.gfi.com" type="tns:Payment" xmlns:tns="http://common.cms.alcatel.com"/>
+      </operation>
+      <operation name="createOCC" qname="createOCC" returnQName="retNS:createOCCReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg2" xmlns:pns="http://manager.ws.gfi.com" type="tns:OCC" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="modifyContract" qname="modifyContract" returnQName="retNS:modifyContractReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg3" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="setItemizeOnBill" qname="setItemizeOnBill" returnQName="retNS:setItemizeOnBillReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg4" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="addServiceList" qname="addServiceList" returnQName="retNS:addServiceListReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:>addServiceListReturn" xmlns:rtns="http://manager.ws.gfi.com" returnItemQName="tns:item" xmlns:tns="http://manager.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:arg5" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="createTickler" qname="createTickler" returnQName="retNS:createTicklerReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:CreateTicklerOut" xmlns:rtns="http://common.ws.cms.alcatel.com" soapAction="" >
+        <parameter qname="pns:arg6" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="delServiceList" qname="delServiceList" returnQName="retNS:delServiceListReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:>delServiceListReturn" xmlns:rtns="http://manager.ws.gfi.com" returnItemQName="tns:item" xmlns:tns="http://manager.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:arg7" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="changeContractProduct" qname="changeContractProduct" returnQName="retNS:changeContractProductReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:>changeContractProductReturn" xmlns:rtns="http://manager.ws.gfi.com" returnItemQName="tns:item" xmlns:tns="http://manager.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:arg8" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="convertFromLAToFlat" qname="convertFromLAToFlat" returnQName="retNS:convertFromLAToFlatReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg9" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="createLargeAccount" qname="createLargeAccount" returnQName="retNS:createLargeAccountReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:long" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg10" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="modifyServiceParameters" qname="modifyServiceParameters" returnQName="retNS:modifyServiceParametersReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg11" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="changeContractStatus" qname="changeContractStatus" returnQName="retNS:changeContractStatusReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg12" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="createContratAndProduct" qname="createContratAndProduct" returnQName="retNS:createContratAndProductReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:>createContratAndProductReturn" xmlns:rtns="http://manager.ws.gfi.com" returnItemQName="tns:item" xmlns:tns="http://manager.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:createContratAndProductIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:CreateContratAndProductIn" xmlns:tns="http://cmsbasic.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="createCustomer" qname="createCustomer" returnQName="retNS:createCustomerReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:long" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg13" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="modifyCustomer" qname="modifyCustomer" returnQName="retNS:modifyCustomerReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:boolean" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:arg14" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <operation name="createContract" qname="createContract" returnQName="retNS:createContractReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:>createContractReturn" xmlns:rtns="http://manager.ws.gfi.com" returnItemQName="tns:item" xmlns:tns="http://manager.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:arg15" xmlns:pns="http://manager.ws.gfi.com" type="tns:Customer" xmlns:tns="http://common.ccl.alcatel.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="setItemizeOnBill addServiceList createCustomer createPayment createTickler familyMove changeContractProduct modifyCustomer delServiceList modifyServiceParameters changeContractStatus modifyContract createContratAndProduct createOCC createLargeAccount createContract convertFromLAToFlat"/>
+
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:FeeType"
+        type="java:com.alcatel.ccl.common.FeeType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:>createContractReturn"
+        type="java:com.alcatel.cms.ws.common.CreateContractOut[]"
+        innerType="cmp-ns:CreateContractOut" xmlns:cmp-ns="http://common.ws.cms.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:CustomerReasonStatus"
+        type="java:com.alcatel.ccl.common.CustomerReasonStatus"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:ActionCode"
+        type="java:com.alcatel.ccl.common.ActionCode"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:ContractStatus"
+        type="java:com.alcatel.ccl.common.ContractStatus"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ws.cms.alcatel.com"
+        qname="ns:CreateTicklerOut"
+        type="java:com.alcatel.cms.ws.common.CreateTicklerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ws.cms.alcatel.com"
+        qname="ns:ChangeContractProductOut"
+        type="java:com.alcatel.cms.ws.common.ChangeContractProductOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:TaxExemptionType"
+        type="java:com.alcatel.ccl.common.TaxExemptionType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:BillingAccount"
+        type="java:com.alcatel.ccl.common.BillingAccount"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_Service"
+        type="java:com.alcatel.ccl.common.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns7_OrderLimitsBeanIn"
+        type="java:com.lhs.ws.beans.v2.contract_product_write.OrderLimitsBeanIn[]"
+        innerType="cmp-ns:OrderLimitsBeanIn" xmlns:cmp-ns="http://contract_product_write.v2.beans.ws.lhs.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Money"
+        type="java:com.alcatel.ccl.common.Money"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:>addServiceListReturn"
+        type="java:com.alcatel.cms.ws.common.AddServiceListOut[]"
+        innerType="cmp-ns:AddServiceListOut" xmlns:cmp-ns="http://common.ws.cms.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ws.cms.alcatel.com"
+        qname="ns:AddServiceListOut"
+        type="java:com.alcatel.cms.ws.common.AddServiceListOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns3_ServicesMap"
+        type="java:com.alcatel.cms.ws.common.ServicesMap[]"
+        innerType="cmp-ns:ServicesMap" xmlns:cmp-ns="http://common.ws.cms.alcatel.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:>delServiceListReturn"
+        type="java:com.alcatel.cms.ws.common.DelServiceListOut[]"
+        innerType="cmp-ns:DelServiceListOut" xmlns:cmp-ns="http://common.ws.cms.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:PaymentArrangement"
+        type="java:com.alcatel.ccl.common.PaymentArrangement"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.lhs.com"
+        qname="ns:BaseSOIBean"
+        type="java:com.lhs.ws.beans.BaseSOIBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Tickler"
+        type="java:com.alcatel.ccl.common.Tickler"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_Tickler"
+        type="java:com.alcatel.ccl.common.Tickler[]"
+        innerType="cmp-ns:Tickler" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:>changeContractProductReturn"
+        type="java:com.alcatel.cms.ws.common.ChangeContractProductOut[]"
+        innerType="cmp-ns:ChangeContractProductOut" xmlns:cmp-ns="http://common.ws.cms.alcatel.com"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_AddressRole"
+        type="java:com.alcatel.ccl.common.AddressRole[]"
+        innerType="cmp-ns:AddressRole" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:CallDetailType"
+        type="java:com.alcatel.ccl.common.CallDetailType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:RetentionMode"
+        type="java:com.alcatel.ccl.common.RetentionMode"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_BillingAccount"
+        type="java:com.alcatel.ccl.common.BillingAccount[]"
+        innerType="cmp-ns:BillingAccount" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:OCC"
+        type="java:com.alcatel.ccl.common.OCC"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Service"
+        type="java:com.alcatel.ccl.common.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:TaxExemption"
+        type="java:com.alcatel.ccl.common.TaxExemption"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:CustomerStatus"
+        type="java:com.alcatel.ccl.common.CustomerStatus"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ws.cms.alcatel.com"
+        qname="ns:ServicesMap"
+        type="java:com.alcatel.cms.ws.common.ServicesMap"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:ItemizeAction"
+        type="java:com.alcatel.ccl.common.ItemizeAction"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ws.cms.alcatel.com"
+        qname="ns:DelServiceListOut"
+        type="java:com.alcatel.cms.ws.common.DelServiceListOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:>createContratAndProductReturn"
+        type="java:com.alcatel.cms.ws.common.CreateContractOut[]"
+        innerType="cmp-ns:CreateContractOut" xmlns:cmp-ns="http://common.ws.cms.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ws.cms.alcatel.com"
+        qname="ns:CreateContractOut"
+        type="java:com.alcatel.cms.ws.common.CreateContractOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Parameter"
+        type="java:com.alcatel.ccl.common.Parameter"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:CallDetail"
+        type="java:com.alcatel.ccl.common.CallDetail"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_AdditionalInfo"
+        type="java:com.alcatel.ccl.common.AdditionalInfo[]"
+        innerType="cmp-ns:AdditionalInfo" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cmsbasic.beans.ws.gfi.com"
+        qname="ns:CreateContratAndProductIn"
+        type="java:com.gfi.ws.beans.cmsbasic.CreateContratAndProductIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Address"
+        type="java:com.alcatel.ccl.common.Address"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Customer"
+        type="java:com.alcatel.ccl.common.Customer"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:CustomerModification"
+        type="java:com.alcatel.ccl.common.CustomerModification"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Gender"
+        type="java:com.alcatel.ccl.common.Gender"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:FeeClass"
+        type="java:com.alcatel.ccl.common.FeeClass"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:ContractIdentifierType"
+        type="java:com.alcatel.ccl.common.ContractIdentifierType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://contract_product_write.v2.beans.ws.lhs.com"
+        qname="ns:OrderLimitsBeanIn"
+        type="java:com.lhs.ws.beans.v2.contract_product_write.OrderLimitsBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Itemize"
+        type="java:com.alcatel.ccl.common.Itemize"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_xsd_long"
+        type="java:long[]"
+        innerType="cmp-ns:long" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Device"
+        type="java:com.alcatel.ccl.common.Device"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:AdditionalInfo"
+        type="java:com.alcatel.ccl.common.AdditionalInfo"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_Parameter"
+        type="java:com.alcatel.ccl.common.Parameter[]"
+        innerType="cmp-ns:Parameter" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.cms.alcatel.com"
+        qname="ns:Payment"
+        type="java:com.alcatel.cms.common.Payment"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_TaxExemption"
+        type="java:com.alcatel.ccl.common.TaxExemption[]"
+        innerType="cmp-ns:TaxExemption" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://v2.beans.ws.lhs.com"
+        qname="ns:ContractProductWriteBeanIn"
+        type="java:com.lhs.ws.beans.v2.ContractProductWriteBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:ContractReasonStatus"
+        type="java:com.alcatel.ccl.common.ContractReasonStatus"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:Contract"
+        type="java:com.alcatel.ccl.common.Contract"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:AddressCustomerType"
+        type="java:com.alcatel.ccl.common.AddressCustomerType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_Contract"
+        type="java:com.alcatel.ccl.common.Contract[]"
+        innerType="cmp-ns:Contract" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:CustomerAddress"
+        type="java:com.alcatel.ccl.common.CustomerAddress"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:ContractType"
+        type="java:com.alcatel.ccl.common.ContractType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://common.ccl.alcatel.com"
+        qname="ns:AddressRole"
+        type="java:com.alcatel.ccl.common.AddressRole"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns1_CustomerAddress"
+        type="java:com.alcatel.ccl.common.CustomerAddress[]"
+        innerType="cmp-ns:CustomerAddress" xmlns:cmp-ns="http://common.ccl.alcatel.com"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

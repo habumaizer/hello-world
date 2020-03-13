@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<!-- Assurez vous de toujours utiliser l'en-tête XML ci dessus! -->
+
+
+<!-- Global settings for iBatis sql map engine -->
+<sqlMapConfig>
+
+	<properties resource="conf/com/alcatel/mbn/ws/dao/datasource.properties" />
+	
+	
+	<settings
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+	/>
+	<!-- 
+	<resultObjectFactory type="sdsd"></resultObjectFactory>
+	
+	<typeAlias alias="order" type="testdomain.Order"/>
+	
+	<typeHandler javaType="boolean" callback="com.alcatel.commons.ibatis.type_handler.BooleanTypeHandlerCallback"/>
+	-->
+	
+	<!-- Configure un datasource utilisé par SQL Map, basé sur l'implémentation SimpleDataSource.
+	Notez l'utilisation des propriétés contenues dans le fichier de propriétés ci-dessus -->
+	<transactionManager type="JDBC" >
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}"/>
+			<property name="JDBC.ConnectionURL" value="${url}"/>
+			<property name="JDBC.Username" value="${username}"/>
+			<property name="JDBC.Password" value="${password}"/>
+		</dataSource>
+	</transactionManager>
+
+	<!-- Declaration and location of the SQL map files. -->
+	<sqlMap resource="conf/com/alcatel/mbn/ws/dao/kpsa/KpsaDao.xml"/>
+</sqlMapConfig>

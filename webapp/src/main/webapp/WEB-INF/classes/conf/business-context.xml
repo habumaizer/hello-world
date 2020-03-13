@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+<!-- 
+   ********************************************************************************
+    *                                   FACADES
+    ********************************************************************************
+   -->
+	
+	<bean  id="contractDomainFacade"  name="contractDomainFacadeName" class="com.gfi.ws.facade.contractdomain.ContractDomainFacadeImpl" scope="singleton">
+		<constructor-arg index="0" type="com.gfi.ws.dao.contractdomain.ContractDomainDao" ref="contractDomainDao" />
+		<constructor-arg index="1" type="com.gfi.ws.dao.requestdomain.RequestDomainDao" ref="requestDomainDao" />
+		 <constructor-arg index="2" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao" ref="customerDomainDao" />
+		 <constructor-arg index="3" type="com.gfi.ws.dao.generaldomain.GeneralDomainDao" ref="generalDomainDao" />
+		<constructor-arg index="4" type="com.gfi.ws.dao.numberportabilitydomain.NumberPortabilityDomainDao" ref="numberPortabilityDao" />
+		<constructor-arg index="5" type="com.gfi.ws.dao.kpsa.KpsaDao" ref="kpsaDao" />
+		<constructor-arg index="6" type="com.gfi.ws.dao.cmsinterface.CmsInterface" ref="cmsInterfaceDao" />
+		<constructor-arg index="7" type="com.gfi.ws.dao.resourcedomain.ResourceDomainDao" ref="resourceDomainDao" />
+		<constructor-arg index="8" type="com.gfi.ws.facade.generaldomain.GeneralDomainFacade" ref="generalDomainFacade" />
+	
+    </bean> 
+ 
+ 	<bean  id="customerDomainFacade"  name="customerDomainFacadeName" class="com.gfi.ws.facade.customerdomain.CustomerDomainFacadeImpl" scope="singleton">
+		<constructor-arg index="0" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao" ref="customerDomainDao" />
+		<constructor-arg index="1" type="com.gfi.ws.dao.paymentdomain.PaymentDomainDao" ref="paymentDomainDao" />
+		<constructor-arg index="2" type="com.gfi.ws.dao.contractdomain.ContractDomainDao" ref="contractDomainDao" />
+    </bean>
+    
+ 	<bean id="cmsBasicDomainFacade" name="cmsBasicDomainFacadeName" class="com.gfi.ws.facade.cmsbasic.CmsBasicDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.dao.cmsbasicdomain.CmsBasicDomainDao" ref="cmsBasicDomainDao" />
+	  </bean>
+	  
+	  
+	  <bean id="eBillDomainFacade" name="eBillDomainFacadeName" class="com.gfi.ws.facade.ebilldomain.EBillDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.dao.ebilldomain.EBillDomainDao" ref="eBillDomainDao" />
+		<constructor-arg index="1" type="com.gfi.ws.facade.customerdomain.CustomerDomainFacade" ref="customerDomainFacade" />
+	  </bean>
+ 
+ 	<bean id="cmsDomainFacade" name="cmsDomainFacadeName" class="com.gfi.ws.facade.cmsdomain.CmsDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.facade.customerdomain.CustomerDomainFacade" ref="customerDomainFacade" />
+		<constructor-arg index="1" type="com.gfi.ws.facade.contractdomain.ContractDomainFacade" ref="contractDomainFacade" />
+		<constructor-arg index="2" type="com.gfi.ws.facade.generaldomain.GeneralDomainFacade" ref="generalDomainFacade" />
+		<constructor-arg index="3" type="com.gfi.ws.facade.paymentdomain.PaymentDomainFacade" ref="paymentDomainFacade" />
+		<constructor-arg index="4" type="com.gfi.ws.dao.cmsinterface.CmsInterface" ref="cmsInterfaceDao" />
+		
+		
+	  </bean>
+	  
+	  
+ 	<bean id="ocaDomainFacade" name="ocaDomainFacadeName" class="com.gfi.ws.facade.ocadomain.OcaDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.dao.ocadomain.OcaDomainDao" ref="ocaDomainDao" />
+		<constructor-arg index="1" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao" ref="customerDomainDao" />
+	  </bean>
+	  
+	  <bean id="microCellDomainFacade" name="microCellDomainFacadeName" class="com.gfi.ws.facade.microcelldomain.MicrocellDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.dao.microcelldomain.MicroCellDomainDao" ref="microCellDomainDao" />
+	  </bean>
+	  
+	   <bean id="resourceDomainFacade" name="resourceDomainFacadeName" class="com.gfi.ws.facade.resourcedomain.ResourceDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.dao.resourcedomain.ResourceDomainDao" ref="resourceDomainDao" />
+	  </bean>
+	  
+	  <bean id="generalDomainFacade" name="generalDomainFacadeName" class="com.gfi.ws.facade.generaldomain.GeneralDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.dao.generaldomain.GeneralDomainDao" ref="generalDomainDao" />
+		<constructor-arg index="1" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao" ref="customerDomainDao" />
+		<constructor-arg index="2" type="com.gfi.ws.dao.contractdomain.ContractDomainDao" ref="contractDomainDao" />
+	  </bean>
+	  
+	  
+	  <bean id="paymentDomainFacade" name="paymentDomainFacadeName" class="com.gfi.ws.facade.paymentdomain.PaymentDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.facade.customerdomain.CustomerDomainFacade" ref="customerDomainFacade" />
+		<constructor-arg index="1" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao"       ref="customerDomainDao" />
+		<constructor-arg index="2" type="com.gfi.ws.dao.contractdomain.ContractDomainDao"       ref="contractDomainDao" />
+		<constructor-arg index="3" type="com.gfi.ws.dao.paymentdomain.PaymentDomainDao"         ref="paymentDomainDao" />
+	  </bean>
+	  
+	  <bean id="cacsDomainFacade" name="cacsDomainFacadeName" class="com.gfi.ws.facade.cacsdomain.CacsDomainFacadeImpl" >
+		<constructor-arg index="0" type="com.gfi.ws.facade.generaldomain.GeneralDomainFacade" ref="generalDomainFacade" />
+		<constructor-arg index="1" type="com.gfi.ws.facade.contractdomain.ContractDomainFacade" ref="contractDomainFacade" />
+		<constructor-arg index="2" type="com.gfi.ws.dao.contractdomain.ContractDomainDao"       ref="contractDomainDao" />
+		<constructor-arg index="3" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao"       ref="customerDomainDao" />
+		<constructor-arg index="4" type="com.gfi.ws.dao.cacsdomain.CacsDomainDao"               ref="cacsDomainDao" />
+	  </bean>
+	  
+	  <bean id="CARDomainFacade" name="carDomainFacadeName" class="com.gfi.ws.facade.cardomain.CARDomainFacadeImpl" >
+		   <constructor-arg index="0" type="com.gfi.ws.facade.customerdomain.CustomerDomainFacade" ref="customerDomainFacade" />
+		   <constructor-arg index="1" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao"       ref="customerDomainDao" />
+		   <constructor-arg index="2" type="com.gfi.ws.dao.contractdomain.ContractDomainDao"       ref="contractDomainDao" />
+		   <constructor-arg index="3" type="com.gfi.ws.facade.generaldomain.GeneralDomainFacade" ref="generalDomainFacade" />
+	  </bean>
+	  
+	   <bean id="etopUpFacade" name="etopupFacadeName" class="com.gfi.ws.facade.etopup.EtopUpFacadeImpl" >
+		   <constructor-arg index="0" type="com.gfi.ws.dao.etopup.EtopUpDao"              ref="etopupDao" />
+		   <constructor-arg index="1" type="com.gfi.ws.dao.customerdomain.CustomerDomainDao"       ref="customerDomainDao" />
+		   <constructor-arg index="2" type="com.gfi.ws.dao.contractdomain.ContractDomainDao"       ref="contractDomainDao" />
+	  </bean>
+	  
+	  <bean id="kpsaFacade" name="kpsaFacadeName" class="com.gfi.ws.facade.kpsa.KpsaFacadeImpl" >
+	 	<constructor-arg index="0" type="com.gfi.ws.dao.kpsa.KpsaDao"  ref="kpsaDao" />
+	  </bean>
+	  
+	  <bean id="reimportNumberDomainFacade" name="reimportNumberDomainFacadeName" class="com.gfi.ws.facade.numberportabilitydomain.NumberPortabilityDomainFacadeImpl" >
+		   <constructor-arg index="0" type="com.gfi.ws.dao.numberportabilitydomain.NumberPortabilityDomainDao" ref="numberPortabilityDomainDao" />
+		   <constructor-arg index="1" type="com.gfi.ws.dao.contractdomain.ContractDomainDao"       ref="contractDomainDao" />
+	  </bean>
+	  
+    <!--
+    ********************************************************************************
+    *                                    DAOS
+    ********************************************************************************
+    -->
+	
+	<bean id="cmsInterfaceDao" name="cmsInterfaceDaoName" class="com.gfi.ws.dao.cmsinterface.CmsInterface" >
+		<constructor-arg index="0" type="java.util.Properties" ref="cclConfiguration" />
+	  </bean>
+	  
+	<!-- <bean id="configurationCms" name="configurationCmsName" class="com.gfi.ws.dao.bscs.Configuration" >
+			<constructor-arg index="0" type="com.gfi.ws.conf.Config" ref="configDao" />
+	</bean> -->  
+	
+	<!-- <bean id="configurationCms" name="configurationCmsName" class="com.gfi.ws.dao.bscs.Configuration" >
+			<constructor-arg index="0" type="org.springframework.beans.factory.config.PropertiesFactoryBean" ref="cclConfiguration" />
+	</bean> -->
+	
+	<bean id="cclConfiguration" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="localOverride" value="true" />
+		<property name="properties">
+		<bean class="org.springframework.jndi.JndiObjectFactoryBean">
+		<description>
+		The declaration of the CMS client connection pool configuration.
+		A JndiObjectFactoryBean will extract it from a JNDI context.
+		The resourceRef property specifies if the JNDI name is declared
+		under the standard J2EE context: java:comp/env/
+		</description>
+		<property name="expectedType" value="java.util.Properties" />
+		<property name="jndiName" value="ccl/configuration" />
+		<property name="resourceRef" value="true" />
+		</bean>
+		</property>
+		
+	</bean>
+	
+<!--	<bean id="cmsClientLocator" factory-bean="cmsFactory" factory-method="createCMSClientLocator" destroy-method="close">-->
+<!--		<description>-->
+<!--		</description>-->
+<!--		<constructor-arg ref="cclConfiguration" />-->
+<!--	</bean>-->
+<!---->
+<!--	<bean id="cmsTxManager" class="com.alcatel.commons.springframework.ccl.transaction.CclTransactionManager">-->
+<!--		<constructor-arg ref="cmsClientLocator" />-->
+<!--	</bean>-->
+<!---->
+<!--	<bean id="cmsClient" class="com.alcatel.commons.springframework.ccl.transaction.CMSClientOperationsTransactionAware">-->
+<!--		<constructor-arg ref="cmsClientLocator" />-->
+<!--	</bean>-->
+
+	
+	  <bean id="contractDomainDao" name="contractDomainDaoName" class="com.gfi.ws.dao.contractdomain.ContractDomainDaoSoiImpl">
+		</bean>
+
+	<bean id="cmsBasicDomainDao" name="cmsBasicDomainDaoName" class="com.gfi.ws.dao.cmsbasicdomain.CmsBasicDomainDaoImpl">
+	</bean>
+	
+	
+	
+	<bean id="requestDomainDao" name="requestDomainDaoName" class="com.gfi.ws.dao.requestdomain.RequestDomainDaoSoiImpl">
+	</bean>
+	
+	<bean id="paymentDomainDao" name="paymentDomainDaoName" class="com.gfi.ws.dao.paymentdomain.PaymentDomainDaoSoiImpl">
+	</bean>
+	
+	<bean id="customerDomainDao" name="customerDomainDaoName" class="com.gfi.ws.dao.customerdomain.CustomerDomainDaoSoiImpl">
+	</bean>
+	
+	<!-- <bean id="generalDomainDao" name="generalDomainDaoName" class="com.gfi.ws.dao.generaldomain.GeneralDomainDaoSoiImpl">
+	</bean>  -->
+	
+	 <bean id="generalDomainDao" name="generalDomainDaoName" class="com.gfi.ws.dao.generaldomain.GeneralDomainDaoSoiImpl">
+	</bean>  
+	
+	<bean id="numberPortabilityDao" name="numberPortabilityDaoName" class="com.gfi.ws.dao.numberportabilitydomain.NumberPortabilityDomainDaoSoiImpl">
+	</bean>
+	
+	<bean id="kpsaDao" name="kpsaDaoName" class="com.gfi.ws.dao.kpsa.KpsaDaoImpl">
+	</bean>
+	
+	<bean id="ocaDomainDao" name="ocaDomainDaoName" class="com.gfi.ws.dao.ocadomain.OcaDomainDaoImpl">
+	</bean>
+	
+	<bean id="microCellDomainDao" name="microCellDomainDaoName" class="com.gfi.ws.dao.microcelldomain.MicroCellDomainDaoImpl">
+	</bean>
+    
+    <bean id="resourceDomainDao" name="resourceDomainDaoName" class="com.gfi.ws.dao.resourcedomain.ResourceDomainDaoImpl">
+	</bean>
+	
+     <bean id="eBillDomainDao" name="eBillDomainDaoName" class="com.gfi.ws.dao.ebilldomain.EBillDomainDaoSoiImpl">
+	</bean>
+	
+	 <bean id="cacsDomainDao" name="cacsDomainDaoName" class="com.gfi.ws.dao.cacsdomain.CacsDomainDaoImpl">
+	</bean>
+	
+	 <bean id="etopupDao" name="etopupDaoName" class="com.gfi.ws.dao.etopup.EtopUpDaoSoiImpl">
+	</bean>
+    
+     <bean id="numberPortabilityDomainDao" name="numberPortabilityDomainDaoName" class="com.gfi.ws.dao.numberportabilitydomain.NumberPortabilityDomainDaoSoiImpl">
+	</bean>
+   
+   
+    
+	<!-- 
+    ************************************************************************************************
+    *                                         CACHE DAOS
+    ************************************************************************************************
+    -->
+
+
+</beans>
+ 

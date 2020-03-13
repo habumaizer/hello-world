@@ -1,0 +1,266 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CustomerDomainManagerService WSDL service -->
+
+  <service name="CustomerDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="CustomerDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://createCustomer.customerdomain.beans.ws.orange.com,http://autorelease.customerdomain.beans.ws.orange.com,http://beans.ws.orange.com,http://convertlaflat.customerdomain.beans.ws.orange.com,http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com,http://commons.beans.ws.orange.com,http://modifyCustomer.customerdomain.beans.ws.orange.com,http://getcashtransaction.customerdomain.beans.ws.orange.com,http://manager.ws.orange.com,http://retrieveCustomer.customerdomain.beans.ws.orange.com,http://getfinancialDocuments.customerdomain.beans.ws.orange.com,http://beans.ws.lhs.com,http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="CustomerDomainManager"/>
+      <parameter name="className" value="com.orange.ws.manager.CustomerDomainManager"/>
+      <parameter name="wsdlPortType" value="CustomerDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getCashTransaction" qname="getCashTransaction" returnQName="retNS:getCashTransactionReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetCashTransactionOut" xmlns:rtns="http://getcashtransaction.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getCashTransactionIn" xmlns:pns="http://manager.ws.orange.com" type="tns:GetCashTransactionIn" xmlns:tns="http://getcashtransaction.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="retrieveCustomerPGW" qname="retrieveCustomerPGW" returnQName="retNS:retrieveCustomerPGWReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RetrieveCustomerPGWOut" xmlns:rtns="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:retrieveCustomerPGWIn" xmlns:pns="http://manager.ws.orange.com" type="tns:RetrieveCustomerPGWIn" xmlns:tns="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="getFinancialDocuments" qname="getFinancialDocuments" returnQName="retNS:getFinancialDocumentsReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:GetFinancialDocumentsOut" xmlns:rtns="http://getfinancialDocuments.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:getFinancialDocumentsIn" xmlns:pns="http://manager.ws.orange.com" type="tns:GetFinancialDocumentsIn" xmlns:tns="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="convertLAFlat" qname="convertLAFlat" returnQName="retNS:convertLAFlatReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ConvertLAFlatOut" xmlns:rtns="http://convertlaflat.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:convertLAFlatIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ConvertLAFlatIn" xmlns:tns="http://convertlaflat.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="createCustomer" qname="createCustomer" returnQName="retNS:createCustomerReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CreateCustomerOut" xmlns:rtns="http://createCustomer.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:createCustomerIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CreateCustomerIn" xmlns:tns="http://createCustomer.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="retrieveCustomer" qname="retrieveCustomer" returnQName="retNS:retrieveCustomerReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RetrieveCustomerOut" xmlns:rtns="http://retrieveCustomer.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:retrieveCustomerIn" xmlns:pns="http://manager.ws.orange.com" type="tns:RetrieveCustomerIn" xmlns:tns="http://retrieveCustomer.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="searchCustomer" qname="searchCustomer" returnQName="retNS:searchCustomerReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:SearchCustomerOut" xmlns:rtns="http://searchCustomer.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:searchCustomerIn" xmlns:pns="http://manager.ws.orange.com" type="tns:SearchCustomerIn" xmlns:tns="http://searchCustomer.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="modifyCustomer" qname="modifyCustomer" soapAction="" >
+        <parameter qname="pns:modifyCustomerIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyCustomerIn" xmlns:tns="http://modifyCustomer.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <operation name="autoRelease" qname="autoRelease" returnQName="retNS:autoReleaseReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:AutoReleaseOut" xmlns:rtns="http://autorelease.customerdomain.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:autoReleaseIn" xmlns:pns="http://manager.ws.orange.com" type="tns:AutoReleaseIn" xmlns:tns="http://autorelease.customerdomain.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="modifyCustomer retrieveCustomer getCashTransaction getFinancialDocuments createCustomer retrieveCustomerPGW searchCustomer convertLAFlat autoRelease"/>
+
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns6_Document"
+        type="java:com.orange.ws.beans.customerdomain.getfinancialDocuments.Document[]"
+        innerType="cmp-ns:Document" xmlns:cmp-ns="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getcashtransaction.customerdomain.beans.ws.orange.com"
+        qname="ns:GetCashTransactionIn"
+        type="java:com.orange.ws.beans.customerdomain.getcashtransaction.GetCashTransactionIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:CreateCustomerIn"
+        type="java:com.orange.ws.beans.customerdomain.createCustomer.CreateCustomerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"
+        qname="ns:GetFinancialDocumentsIn"
+        type="java:com.orange.ws.beans.customerdomain.getfinancialDocuments.GetFinancialDocumentsIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://autorelease.customerdomain.beans.ws.orange.com"
+        qname="ns:AutoReleaseOut"
+        type="java:com.orange.ws.beans.customerdomain.autorelease.AutoReleaseOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:RetrieveCustomerIn"
+        type="java:com.orange.ws.beans.customerdomain.retrieveCustomer.RetrieveCustomerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://autorelease.customerdomain.beans.ws.orange.com"
+        qname="ns:AutoReleaseIn"
+        type="java:com.orange.ws.beans.customerdomain.autorelease.AutoReleaseIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"
+        qname="ns:RetrieveCustomerPGWIn"
+        type="java:com.orange.ws.beans.customerdomain.retrieveCustomerPGW.RetrieveCustomerPGWIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://createCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:CreateCustomerOut"
+        type="java:com.orange.ws.beans.customerdomain.createCustomer.CreateCustomerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:SearchCustomerIn"
+        type="java:com.orange.ws.beans.customerdomain.searchCustomer.SearchCustomerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.lhs.com"
+        qname="ns:BaseSOIBean"
+        type="java:com.lhs.ws.beans.BaseSOIBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getcashtransaction.customerdomain.beans.ws.orange.com"
+        qname="ns:Document"
+        type="java:com.orange.ws.beans.customerdomain.getcashtransaction.Document"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifyCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:ModifyCustomerIn"
+        type="java:com.orange.ws.beans.customerdomain.modifyCustomer.ModifyCustomerIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getcashtransaction.customerdomain.beans.ws.orange.com"
+        qname="ns:GetCashTransactionOut"
+        type="java:com.orange.ws.beans.customerdomain.getcashtransaction.GetCashTransactionOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://convertlaflat.customerdomain.beans.ws.orange.com"
+        qname="ns:ConvertLAFlatOut"
+        type="java:com.orange.ws.beans.customerdomain.convertlaflat.ConvertLAFlatOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns1_Document"
+        type="java:com.orange.ws.beans.customerdomain.getcashtransaction.Document[]"
+        innerType="cmp-ns:Document" xmlns:cmp-ns="http://getcashtransaction.customerdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.lhs.com"
+        qname="ns:DateTimeBean"
+        type="java:com.lhs.ws.beans.DateTimeBean"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:SearchCustomerOut"
+        type="java:com.orange.ws.beans.customerdomain.searchCustomer.SearchCustomerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:CustomerIdType"
+        type="java:com.orange.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:RetrieveCustomerOut"
+        type="java:com.orange.ws.beans.customerdomain.retrieveCustomer.RetrieveCustomerOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://retrieveCustomerPGW.customerdomain.beans.ws.orange.com"
+        qname="ns:RetrieveCustomerPGWOut"
+        type="java:com.orange.ws.beans.customerdomain.retrieveCustomerPGW.RetrieveCustomerPGWOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"
+        qname="ns:Document"
+        type="java:com.orange.ws.beans.customerdomain.getfinancialDocuments.Document"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://convertlaflat.customerdomain.beans.ws.orange.com"
+        qname="ns:ConvertLAFlatIn"
+        type="java:com.orange.ws.beans.customerdomain.convertlaflat.ConvertLAFlatIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.orange.com"
+        qname="ns:ArrayOf_tns10_Customer"
+        type="java:com.orange.ws.beans.customerdomain.searchCustomer.Customer[]"
+        innerType="cmp-ns:Customer" xmlns:cmp-ns="http://searchCustomer.customerdomain.beans.ws.orange.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://searchCustomer.customerdomain.beans.ws.orange.com"
+        qname="ns:Customer"
+        type="java:com.orange.ws.beans.customerdomain.searchCustomer.Customer"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getfinancialDocuments.customerdomain.beans.ws.orange.com"
+        qname="ns:GetFinancialDocumentsOut"
+        type="java:com.orange.ws.beans.customerdomain.getfinancialDocuments.GetFinancialDocumentsOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

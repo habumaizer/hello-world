@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="ContractDao">
+
+	<cacheModel id="isCofuServiceCache" type="LRU" readOnly="true" serialize="false">
+		<flushInterval hours="1"/>
+		<property name="size" value="200" />
+	</cacheModel>
+	
+	<typeAlias alias="map" type="java.util.Map"/>
+	
+	<typeAlias alias="SwitchInfoDb" type="com.gfi.ws.beans.contractdomain.getSwitchInfo.SwitchInfoDb"/>
+	
+	<typeAlias alias="INProfileDb" type="com.gfi.ws.beans.contractdomain.getINProfile.INProfileDb"/>
+	
+	<typeAlias alias="TmCodeAndSpCode" type="com.gfi.ws.beans.contractdomain.getINProfile.TmCodeAndSpCode"/>
+	
+	<typeAlias alias="CheckChangeProductWithCriteria" type="com.gfi.ws.beans.contractdomain.changeproduct.CheckChangeProductWithCriteria"/>
+
+	<typeAlias alias="findRequestIdForProvServIn" type="com.gfi.ws.beans.contractdomain.provisionService.FindRequestIdForProvServIn"/>
+	
+	<typeAlias alias="getAllServiceInfoIn" type="com.gfi.ws.beans.contractdomain.setitemize.GetAllServiceInfoIn"/>
+
+	<typeAlias alias="GetAllServiceInfoOut" type="com.gfi.ws.beans.contractdomain.setitemize.GetAllServiceInfoOut"/>
+		
+	<typeAlias alias="getFCDescIn" type="com.gfi.ws.beans.contractdomain.isfirstclass.GetFCDescIn"/>
+
+	<typeAlias alias="getFCDescOut" type="com.gfi.ws.beans.contractdomain.isfirstclass.GetFCDescOut"/>
+	
+	<typeAlias alias="snCodeList" type="com.gfi.ws.beans.contractdomain.changeserviceparameter.SnCodeList"/>
+
+	<typeAlias alias="serviceDescResult" type="com.gfi.ws.beans.contractdomain.changeserviceparameter.ServiceDescResult"/>
+
+	<typeAlias alias="paramIDList" type="com.gfi.ws.beans.contractdomain.changeserviceparameter.ParamIDList"/>
+
+	<typeAlias alias="parameterDescResult" type="com.gfi.ws.beans.contractdomain.changeserviceparameter.ParamDescResult"/>
+
+	<resultMap id="switchInfoDb" class="SwitchInfoDb">
+		<result property="SWITCH_ID" column="SWITCH_ID"/>
+		<result property="des" column="DES"/>
+	</resultMap>
+	
+	<resultMap id="iNProfileDb" class="INProfileDb">
+		<result property="PROFILE_ID" column="PROFILE_ID"/>
+		<result property="PROFILE_NAME" column="PROFILE_NAME"/>
+	</resultMap>
+
+	<resultMap id="getAllServiceInfoOut" class="GetAllServiceInfoOut">
+		<result property="tmCode" column="TMCODE"/>
+		<result property="vsCode" column="VSCODE"/>
+		<result property="spCode" column="SPCODE"/>
+	</resultMap>
+
+	
+	<select id="getSwithInfoDb"  parameterClass="java.lang.Long" resultMap="switchInfoDb">
+		select distinct SWITCH_ID,DES from CONTR_DEVICES cd, MPDHLTAB hl where cd.hlcode = hl.hlcode and co_id = #co_id#
+	</select>
+		
+	<select id="getINProfileDb" parameterClass="map" resultMap="iNProfileDb">
+		select PROFILE_ID,PROFILE_NAME from ALCATEL.IN_PROFILE ip where ip.TMCODE = #TMCODE#  and ip.SPCODE = #SPCODE#
+	</select>
+	
+	<select id="getCategoryIdDb" parameterClass="java.lang.String" resultClass="java.lang.String">
+		select CATEGORY_ID from ALCATEL.CATEGORY_ID where TMCODE = #TMCODE#
+	</select>
+	
+	<select id="getTmCodeAndSpCode" parameterClass="java.lang.String" resultClass="TmCodeAndSpCode">
+		SELECT CO.TMCODE, SP.SPCODE
+		FROM CONTRACT_ALL CO, CURR_CONTR_SERVICES_CAP CAP , DIRECTORY_NUMBER DN, PR_SERV_SPCODE_HIST SP
+		WHERE DN.DN_ID=CAP.DN_ID 
+		AND CAP.CO_ID=CO.CO_ID 
+		AND SP.CO_ID=CO.CO_ID 
+		AND SP.SNCODE=1 
+		AND SP.HISTNO=(SELECT MAX(HISTNO) 
+						FROM PR_SERV_SPCODE_HIST SP1
+						WHERE SP1.CO_ID=SP.CO_ID 
+						AND SP1.SNCODE=SP.SNCODE)
+		AND DN.DN_NUM=#MSISDN#
+		AND CAP.CS_ACTIV_DATE=(SELECT MAX (CS_ACTIV_DATE) 
+								FROM CURR_CONTR_SERVICES_CAP CAP2
+								WHERE CAP2.DN_ID=DN.DN_ID)
+	</select>
+
+	<select id="getImsi" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select port_num from PORT P, CONTR_DEVICES C where P.PORT_ID=C.PORT_ID and C.CO_ID=#co_id#
+	</select>
+	
+	<select id="getDnId" parameterClass="java.lang.String" resultClass="com.gfi.ws.beans.contractdomain.createGSMContract.DirectoryNumber">
+		select DN_ID,PLCODE,HLCODE,DN_NUM from DIRECTORY_NUMBER where dn_num = #msisdn#
+	</select>
+	
+	<!-- action_id in (6001,6003,6004) 6001 = msisdn, 6003 = sim change , 6004 == hlr change -->
+	<select id="getRequestIdPendingforChangeSimOrMsisdn" parameterClass="java.lang.Long" resultClass="Long">
+		select REQUEST
+		from MDSRRTAB
+		where CO_ID=#value# and (ACTION_ID=6001 or ACTION_ID=6003)
+	</select>
+		
+		<!-- action_id in (6001,6003,6004) 6001 = msisdn, 6003 = sim change , 6004 == hlr change -->
+	<select id="getDirNumNpCode" parameterClass="java.lang.Long" resultClass="Long">
+		select dirnum_npcode from mpulknxv where sncode = (select sncode from contr_services_cap cap,
+ 		directory_number dn where dn.dn_id = cap.dn_id and dn.dn_num = #msisdn#)
+ 	</select>
+	
+	<select id="getDNFromMSISDN" parameterClass="java.lang.String" resultClass="java.lang.String">
+		select dn_id from directory_number where dn_num = #msisdn#
+	</select>
+	
+	<select id="getSM_ID" parameterClass="java.lang.String" resultClass="java.lang.Long">
+		select SM_ID from STORAGE_MEDIUM where SM_SERIALNUM=#SM_SERIALNUM#
+	</select>
+	
+	<select id="getHLCode" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		select hlcode 
+			from port 
+			where sm_id = 
+				(select sm_id from storage_medium where sm_serialnum = #STMEDNO#)
+	</select>
+	
+	<select id="getHMCode" parameterClass="java.lang.Integer" resultClass="java.lang.Integer">
+		select HMCODE from mpdhmtab where HLCODE = #HLCODE# and SHDES like '%MNP'
+	</select>
+	
+	<select id="getCoIdByDnId" parameterClass="java.lang.Long" resultClass="java.lang.Long">
+		select co_id from contr_services_cap cap where dn_id = #dnId# and 
+		cs_deactiv_date = (select max(cs_deactiv_date) from contr_services_cap cap2 
+		where cap2.dn_id = cap.dn_id)
+	</select>
+	
+	<!-- <select id="checkChangeProductWith" parameterClass="CheckChangeProductWithCriteria" resultClass="java.lang.Long">
+		select count(1) from ALCATEL.PEC_MIGRATION pec
+		 	where 
+		 		<isNotEmpty property="OLD_RPCODE">
+					OLD_TM=#OLD_RPCODE#
+				</isNotEmpty>
+		 		<isNotEmpty property="NEW_RPCODE" prepend="and">
+					NEW_TM=#NEW_RPCODE#
+				</isNotEmpty>
+				<isNotEmpty property="OLD_SPCODE" prepend="and">
+					OLD_SP=#OLD_SPCODE#
+				</isNotEmpty>
+		 	    <isNotEmpty property="NEW_SPCODE" prepend="and">
+					NEW_SP=#NEW_SPCODE# 
+				</isNotEmpty>
+	</select> -->
+	
+	<select id="checkChangeProductWith" parameterClass="CheckChangeProductWithCriteria" resultClass="java.lang.Long">
+	WITH
+	PEC_MIGRATION AS
+	  ( select 50 as OLD_TM,40 as NEW_TM, 41 as OLD_SP, 41 as NEW_SP from dual
+	  union 
+	    select 320 as OLD_TM,321 as NEW_TM, 16 as OLD_SP, 16 as NEW_SP from dual
+	  union 
+	    select 321 as OLD_TM,320 as NEW_TM, 16 as OLD_SP, 16 as NEW_SP from dual
+	  union 
+	    select 40 as OLD_TM,50 as NEW_TM, 41 as OLD_SP, 41 as NEW_SP from dual
+	  union 
+	    select 40 as OLD_TM,87 as NEW_TM, 41 as OLD_SP, 7 as NEW_SP from dual
+	  union 
+	    select 87 as OLD_TM,40 as NEW_TM, 7 as OLD_SP, 41 as NEW_SP from dual
+	  union 
+	    select 50 as OLD_TM,87 as NEW_TM, 41 as OLD_SP, 7 as NEW_SP from dual
+	  union 
+	    select 87 as OLD_TM,50 as NEW_TM, 7 as OLD_SP, 41 as NEW_SP from dual
+	  )
+	    select count(1) from PEC_MIGRATION pec
+	    where 
+		 		<isNotEmpty property="OLD_RPCODE">
+					OLD_TM=#OLD_RPCODE#
+				</isNotEmpty>
+		 		<isNotEmpty property="NEW_RPCODE" prepend="and">
+					NEW_TM=#NEW_RPCODE#
+				</isNotEmpty>
+				<isNotEmpty property="OLD_SPCODE" prepend="and">
+					OLD_SP=#OLD_SPCODE#
+				</isNotEmpty>
+		 	    <isNotEmpty property="NEW_SPCODE" prepend="and">
+					NEW_SP=#NEW_SPCODE# 
+				</isNotEmpty>
+	</select>
+
+
+	<!-- <select id="getMainServicePackage" parameterClass=" xxxx " resultMap="java.lang.Long">
+	select spcode 
+				from profile_service ps ,
+		 			pr_serv_spcode_hist sp
+			where 	
+				sp.co_id = #co_Id# and
+				ps.co_id = sp.co_id and
+				ps.sncode = sp.sncode and
+				ps.spcode_histno = sp.histno and
+				ps.sncode =#mainsncode#
+
+	</select> -->
+
+	<select id="doesUserExist" parameterClass="java.lang.String" resultClass="java.lang.Long">
+		SELECT COUNT(*) 
+		FROM USERS
+		WHERE USERNAME = #followupuser#
+	</select>
+	
+	<select id="getFirstSP_CODE" parameterClass="getAllServiceInfoIn" resultClass="java.lang.Long">
+		SELECT SPCODE FROM MPULKTMB mpu
+		WHERE SNCODE = #snCode#
+		AND TMCODE = #ratePlan#
+		AND VSCODE = (SELECT MAX(VSCODE) FROM RATEPLAN_VERSION rv WHERE mpu.TMCODE = rv.TMCODE) ORDER BY 1
+	</select>	
+
+	<select id="getAllServiceInfo" parameterClass="getAllServiceInfoIn" resultClass="getAllServiceInfoOut">
+		SELECT TMCODE, VSCODE, SPCODE
+		FROM MPULKTMB TMB
+		WHERE SNCODE = #snCode#
+		AND TMCODE = #ratePlan#
+		AND VSCODE = (	SELECT MAX(VSCODE)
+						FROM RATEPLAN_VERSION RV
+						WHERE RV.TMCODE = TMB.TMCODE)
+		AND ROWNUM = 1
+	</select>	
+		
+	<select id="findRequestIdForProvServ" parameterClass="findRequestIdForProvServIn" resultClass="java.lang.Long">
+		SELECT MAX(REQUEST)
+		FROM MDSRRTAB MDS
+		WHERE CO_ID=#co_id#
+		AND ACTION_ID IN (8,9)
+		AND EXISTS (
+			SELECT 1 FROM PR_SERV_STATUS_HIST PSSH
+			WHERE MDS.REQUEST=PSSH.REQUEST_ID
+			AND MDS.CO_ID = PSSH.CO_ID
+			AND PSSH.SNCODE=#sn_code#)
+	</select>		
+		
+	<!--  <select id="getFCDesc" parameterClass="getFCDescIn" resultClass="getFCDescOut">
+		SELECT  SHORT_DESCRIPTION, LONG_DESCRIPTION
+		FROM TICKLER_RECORDS TR, CONTRACT_ALL CO
+		WHERE CO.CO_ID = #CO_ID#
+		AND CO.CUSTOMER_ID = TR.CUSTOMER_ID
+		AND TR.SHORT_DESCRIPTION IN <iterate open="(" close=")" conjunction="," property="LISTSD"> #LISTSD[]#</iterate>
+		AND TR.CREATED_DATE = (SELECT MAX (CREATED_DATE) 
+		                       FROM TICKLER_RECORDS 
+		                       WHERE SHORT_DESCRIPTION IN <iterate open="(" close=")" conjunction="," property="LISTSD_ALL"> #LISTSD_ALL[]#</iterate>
+		                       AND CUSTOMER_ID = TR.CUSTOMER_ID)
+	</select> -->		
+	
+	<select id="getFCDesc" parameterClass="getFCDescIn" resultClass="getFCDescOut">
+		SELECT  SHORT_DESCRIPTION, LONG_DESCRIPTION
+		FROM TICKLER_RECORDS TR, CONTRACT_ALL CO
+		WHERE CO.CO_ID = #CO_ID#
+		AND CO.CUSTOMER_ID = TR.CUSTOMER_ID
+		AND TR.SHORT_DESCRIPTION IN <iterate open="(" close=")" conjunction="," property="LISTSD_ALL"> #LISTSD_ALL[]#</iterate>
+		ORDER BY TR.CREATED_DATE DESC
+	</select>		
+	
+	<select id="getListServiceDesc" resultClass="serviceDescResult" parameterClass="snCodeList" >
+		SELECT SNCODE,DES
+		FROM MPUSNTAB
+		WHERE SNCODE IN <iterate open="(" close=")" conjunction="," property="LIST_SN"> #LIST_SN[]#</iterate>
+	</select>
+	
+	<select id="getParameterDesc" resultClass="parameterDescResult" parameterClass="paramIDList" >
+		SELECT PARAMETER_ID,PRM_DES
+		FROM MKT_PARAMETER
+		WHERE PARAMETER_ID IN <iterate open="(" close=")" conjunction="," property="LIST_PARAM"> #LIST_PARAM[]#</iterate>
+		AND SCCODE=1
+	</select>
+	
+	<select id="getRPDesc" resultClass="java.lang.String" parameterClass="java.lang.Long" >
+		SELECT DES
+		FROM RATEPLAN
+		WHERE TMCODE=#rpCode#
+	</select>
+
+	<select id="getReasonDesc" resultClass="java.lang.String" parameterClass="java.lang.Long" >
+		SELECT RS_DESC
+		FROM REASONSTATUS_ALL
+		WHERE RS_ID=#reasonID#
+	</select>
+	
+	<select id="getDNTypeDesc" resultClass="java.lang.String" parameterClass="java.lang.String" >
+		SELECT DES
+		FROM RADDNTAB
+		WHERE DNCODE = (SELECT DN_TYPE
+						FROM DIRECTORY_NUMBER
+						WHERE DN_NUM=#msisdn#)
+	</select>
+
+		<select id="isOverrideParameter" resultClass="java.lang.String" parameterClass="map" >
+			select mkt_parameter.OVERRIDE_IND
+			 from mpulknxc,mkt_parameter
+			where   mkt_parameter.sccode=mpulknxc.sccode and
+			           mpulknxc.sncode=#SNCODE# and
+			           parameter_id = #PARAMETER_ID#
+           
+		</select>
+		
+		<select id="isCofuService" resultClass="java.lang.Long" cacheModel="isCofuServiceCache">
+		SELECT s.sncode
+		FROM 	mpulknxv k ,
+  				mpusntab s
+		WHERE k.srv_subtype='C'
+		AND s.sncode=k.sncode
+		</select>
+	
+</sqlMap>

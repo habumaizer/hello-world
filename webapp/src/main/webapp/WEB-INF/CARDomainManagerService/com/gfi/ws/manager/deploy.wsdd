@@ -1,0 +1,69 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from CARDomainManagerService WSDL service -->
+
+  <service name="CARDomainManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="CARDomainManagerService"/>
+      <parameter name="schemaQualified" value="http://commons.beans.ws.gfi.com,http://cardomain.beans.ws.gfi.com,http://manager.ws.gfi.com,http://beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="CARDomainManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.CARDomainManager"/>
+      <parameter name="wsdlPortType" value="CARDomainManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="addOCC_CAR" qname="addOCC_CAR" returnQName="retNS:addOCC_CARReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:AddOCC_CAROut" xmlns:rtns="http://cardomain.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:addOCC_CARIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:AddOCC_CARIn" xmlns:tns="http://cardomain.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="addOCC_CAR"/>
+
+      <typeMapping
+        xmlns:ns="http://cardomain.beans.ws.gfi.com"
+        qname="ns:AddOCC_CARIn"
+        type="java:com.gfi.ws.beans.cardomain.AddOCC_CARIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:ContractIdType"
+        type="java:com.gfi.ws.beans.commons.ContractIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cardomain.beans.ws.gfi.com"
+        qname="ns:AddOCC_CAROut"
+        type="java:com.gfi.ws.beans.cardomain.AddOCC_CAROut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:CustomerIdType"
+        type="java:com.gfi.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

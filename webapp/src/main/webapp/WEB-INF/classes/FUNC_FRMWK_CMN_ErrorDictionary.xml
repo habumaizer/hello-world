@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE bundle PUBLIC "bundle.dtd" "bundle.dtd">
+
+<bundle version="1.0">
+    <header author="Dmitri Geller"
+            creationdate="11-06-2003"/>
+    <body>
+                     
+		<setting key="id001" value="Precondition failed: {0} isn't set in {1}" state="new" />
+
+<!-- SOITool -->
+
+		<setting key="id0002" value="Can't find file {0}. Details: {1}" state="new" />
+		<setting key="id0003" value="Error when reading file {0}. Details: {1}" state="new" />
+		<setting key="id0004" value="Mandatory command-line argument missing: {0}" state="new" />
+		<setting key="id0005" value="Wrong mode: {0}. Allowed modes: {1}" state="new" />
+		<setting key="id0006" value="Error when creating instance of class {0}. Details: {1}" state="new" />				
+		<setting key="id0007" value="Service object {0} can't be found. Check 'so' atribute of COMMAND or TX_COMMIT tag" state="new" />
+
+<!--XML -->
+		<!--IOException, SAXException-->
+        <setting key="id0008" value="General XML error. File: {0}. Details: {1}" state="new" />
+		<setting key="id0009" value="Error reading/writing tag {0} with attribute {1} in the XML file. Details: {2}" state="new" />
+		<setting key="id0011" value="Unknown action: {0}. Only 'B', 'C', 'R', 'V' allowed" state="new" />
+        <!--SAXParseException-->
+		<setting key="id0012" value="XML parse error. File: {0}, Line: {1}, Message: {2}" state="new" />
+		<!--UnsupportedEncodingException-->
+        <setting key="id0013" value="Unsupported encoding {0} in output XML file. Details: {1}" state="new" />
+
+		<setting key="id0050" value="Error when creating instance of class {0}. \nDetails: {1}" state="new" />
+	
+<!-- Exceptions in common part of CORBA transport layer -->		
+		
+		<!--Naming service/CORBA  -->
+		<setting key="id100" value="The naming service could not be found. Check your environment, especially settings in /resource/orb.properties  Detailed error message: {0}. " state="new" />
+		<setting key="id101" value="Can not find naming service using 'resolve_initial_references'" state="new" />
+		<setting key="id102" value="Can not resolve_initial_references() for name {0}. Details: {1}" state="new" />
+		<setting key="id103" value="When searching name {0} in the naming service corba exception happens: {1}" state="new" />
+		<setting key="id104" value="CORBA error when finding public naming context. Details: {0}" state="new" />
+		<setting key="id105" value="CORBA error when finding private naming context. Details: {0}" state="new" />
+		<setting key="id106" value="CORBA error when creating the naming context. Details: {0}" state="new" />
+		<setting key="id0107" value="Can not obtain RootPOA. Details: {0}" state="new" />
+		<setting key="id0108" value="Can not register a CORBA object named {0} in the naming service under name: {1}. Details: {2}" state="new" />
+		<setting key="id0109" value="Specified reference doesn't point to valid ServiceRootI. Details: {0}" state="new" />
+		<setting key="id0110" value="Naming context {0} isn't found" state="new" />
+		<setting key="id0111" value="Server {0} isn't found in {1}" state="new" />
+		<setting key="id0112" value="CORBA error when activating a servant. Details: {0}" state="new" />
+		<setting key="id0113" value="CORBA error when deactivating a servant. Details: {0}" state="new" />
+		<setting key="id0114" value="Invalid context name {0} submitted to naming service. Details: {1}" state="new" />
+		<setting key="id0115" value="Can not access a CORBA object in the naming service under name: {0}. Details: {1}" state="new" />
+		<setting key="id0116" value="Can not unregister a CORBA object from the naming service under name: {0}. Details: {1}" state="new" />
+		<setting key="id0120" value="CORBA system exception {0} when {1}" state="new" />
+
+		<!-- Exceptions in SOI/SVLObject processing -->
+		<!-- InvalidParameterTypeException -->
+		<setting key="id0201" value="Incorrect access to an attribute stored in SVLobject. Access method: {0} Attribut {1}" state="new" />
+		<!--ParameterListException -->
+		<setting key="id0202" value="Error processing metainformation. ParameterList could not be retrieved from a remote SOI implementation. SOIName {0} SOIVersion {1}, Details {2}" state="new" />
+		<!--ParameterListException -->
+		<setting key="id0203" value="Error processing metainformation. Can't find metainformation for: Command {0}, SOIName {1}, SOIVersion {2}" state="new" />
+		<!--ParameterListException -->
+		<setting key="id0204" value="ParameterList cannot be transformed into a  sequence NvElementI. Parameter {0} Details {1}" state="new" />
+		<!--InvalidParameterTypeException -->
+		<setting key="id0205" value="Error when extracting value from Any. Unknown typecode: {0}. Any: {1}" state="new" />
+		<!--ParameterListException -->
+		<setting key="id0206" value="A sequence of NvElementI can not be transformed in ParameterList. Parameter {0} Unknown typecode: {1}" state="new" />
+		<!--ParameterListException -->
+		<setting key="id0207" value="A sequence of NvElementI can not be transformed in ParameterList. Parameter {0} is not a sublist" state="new" />
+		<!--ComponentException -->
+		<setting key="id0208" value="A ServiceAccessor for SOI {0} version {1} should be created first!" state="new" />
+		<!--SystemException -->
+		<setting key="id0209" value="An instance of the ParameterListLoader should be register before calling AccessorFactory.getServiceAccessor. See ServiceLayerIntrospector.setParameterListLoader" state="new" />
+		
+		<!-- SignatureMismatchException -->
+		<setting key="id0210" value="Value of parameter {0} doesn't match to the method {1}" state="new" />
+		<setting key="id0211" value="Parameter {0} should have a list type" state="new" />
+		<setting key="id0212" value="Parameter {0} has unknown type {1} (The type isn't defined in SVLType)" state="new" />
+		<setting key="id0213" value="Parameter name {0} is not defined in the ParameterList" state="new" />
+		<!-- Validation results of SVLObject/NvList -->
+		<setting key="id0214" value="Arguments of the command {0} are wrong. Details: {1}" state="new" />
+		<setting key="id0215" value="Results of the command {0} are wrong. Details: {1}" state="new" />
+		
+		<!-- Wrappers for CORBA exceptions -->
+		<setting key="id0220" value="Unknown command: {0}" state="new" />
+		<setting key="id0221" value="Server for the component/SOI. Name: {0} Version: {1} not available. Check that a server is running and registered in the naming service that supports this SOI." state="new" />
+		<setting key="id0222" value="{0}" state="new" />
+		<!--SystemException, former ServiceLayerExceptionI -->
+		<setting key="id0223" value="Unexpected exception on the server side. Server message: {0}" state="new" />
+		
+		<!-- OrbManager -->
+		<setting key="id0240" value="OrbManager not initialized." state="new" />
+		<setting key="id0241" value="Could not start thread for ORB listener." state="new" />
+
+<!-- Exceptions in client side of CORBA transport layer -->
+
+		<!-- AccessorRoot -->
+		<setting key="id0301" value="No ServiceFactoryI available. Details: {0}" state="new" />
+		<setting key="id0302" value="Could not install client callback. Details: {0}" state="new" />
+
+<!-- 0400-0499 reserved -->		
+
+<!-- Non-SOI Java-related exeptions: 0500-0599 -->		
+
+		<setting key="id0501" value="ObjectID already in persistent state. Primary key values may not be set anymore! ObjectID: {0}" state="new" />			
+		<setting key="id0502" value="Cannnot deserialaize. ObjectID: byte array is not a serialized object. Details: {0}" state="new" />
+		<setting key="id0503" value="Cannnot serialize. Details: {0}" state="new" />		
+		<setting key="id0510" value="Java property {0} is not set" state="new" />		
+		<setting key="id0511" value="Can't write log files because directory {0} doesn't exist" state="new" />
+
+<!-- 0600-0650 platform specific -->		
+		<setting key="id0600" value="Date conversion from date before January, 1st 1970 not possible on WIN32" state="new" />
+
+    </body>
+</bundle>
+

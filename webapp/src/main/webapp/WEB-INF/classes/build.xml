@@ -1,0 +1,311 @@
+<?xml version="1.0"?>
+
+ <project name="bscsWS"  basedir=".">
+
+        <property environment="env"/>
+
+        <property name="resource"               	value="${basedir}/resource"/>
+        
+ 	
+        <property name="src.dir"                	value="${basedir}/src"/>
+        <property name="dest.dir"               	value="${basedir}/main/webapp/WEB-INF"/>
+ 	
+        <property name="wsdl.dir"               	value="${dest.dir}/wsdl"/>
+        <property name="bin.dir"                	value="${dest.dir}/classes" />
+        <property name="lib.dir"                	value="${dest.dir}/lib" />
+        <property name="wsdd.dir"               	value="${dest.dir}/deploy" />
+        <property name="tmp.resource"           	value="${src.dir}/resource"/>
+ 	
+ 	
+ 		<property name="wsdd.deploy.dir.generate" value="com/alcatel/mbn/ws/manager"/>
+ 	
+ 		<property name="wsdd.deploy.dir.generate.CmsManagerService"     		value="${dest.dir}/CmsManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.CacsDomainManagerService"		value="${dest.dir}/CacsDomainManagerService/${wsdd.deploy.dir.generate}" />
+		<property name="wsdd.deploy.dir.generate.KpsaManagerService"			value="${dest.dir}/KpsaManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.ContractDomainManagerService"	value="${dest.dir}/ContractDomainManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.GeneralDomainService"         	value="${dest.dir}/GeneralDomainManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.CustomerDomainService"        	value="${dest.dir}/CustomerDomainManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.MicrocellDomainService"        value="${dest.dir}/MicrocellDomainManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.NumberPortabilityDomainService" value="${dest.dir}/NumberPortabilityDomainService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.ResourcesDomainService"        value="${dest.dir}/ResourcesManagerService/${wsdd.deploy.dir.generate}" />
+ 		<property name="wsdd.deploy.dir.generate.PaymentDomainService"          value="${dest.dir}/PaymentManagerService/${wsdd.deploy.dir.generate}/" />
+ 		<property name="wsdd.deploy.dir.generate.EBillManagerService"           value="${dest.dir}/EBillManagerService/${wsdd.deploy.dir.generate}" />
+		<property name="wsdd.deploy.dir.generate.ETopUpManagerService"          value="${dest.dir}/ETopUpManagerService/${wsdd.deploy.dir.generate}" />
+		<property name="wsdd.deploy.dir.generate.CARDomainManagerService"          value="${dest.dir}/CARDomainManagerService/${wsdd.deploy.dir.generate}" />
+ 
+ 	 	<property name="wsdd.deploy.dir.dest"       value="${wsdd.dir}" />			
+ 	
+ 		<property name="version" value="2"/>
+ 	
+ 		<property name="project.dir" location="." />
+ 		<property name="project.src.java" location="src/java" />
+ 		<property name="project.src.conf" location="src/conf" />
+ 		<property name="project.web" location="WebContent" />
+ 		<property name="project.dest" location="build/classes" />
+ 		<property name="project.doc" location="doc" />
+ 		<property name="project.lib" location="${project.web}/WEB-INF/lib" />
+ 		<property name="project.dist" location="dist" />
+ 		<property name="javadoc.dest" location="${project.doc}/javadoc" />
+
+ 		<property name="project.package.root" value="com.alcatel" />
+
+ 		<!-- External properties for custom project management -->
+ 		<property file="${project.dir}/build.local.properties" />
+ 		<property file="${project.dir}/build.properties" />
+ 	
+
+	<target name="zip_source">
+		<zip destfile="ws_dev_src_alcatel.zip" 
+			basedir="${basedir}/src"
+			excludes="**/CVS/*">
+		</zip>
+	</target>
+ 	<!--<target name="put_deploy_folder_CmsManager">
+ 	 	 		<move tofile="${wsdd.deploy.dir.dest}/deployCmsManager.wsdd" file="${wsdd.deploy.dir.generate.CmsManagerService}/deploy.wsdd"/>
+ 	 	 		<move tofile="${wsdd.deploy.dir.dest}/undeployCmsManager.wsdd" file="${wsdd.deploy.dir.generate.CmsManagerService}/undeploy.wsdd"/>
+ 				<delete dir="${dest.dir}/CmsManagerService"/>
+ 	 	 </target>-->
+ 	<!--<target name="put_deploy_folder_CacsDomainManager">
+ 	 		<move tofile="${wsdd.deploy.dir.dest}/deployCacsDomainManager.wsdd" file="${wsdd.deploy.dir.generate.CacsDomainManagerService}/deploy.wsdd"/>
+ 	 		<move tofile="${wsdd.deploy.dir.dest}/undeployCacsDomainManager.wsdd" file="${wsdd.deploy.dir.generate.CacsDomainManagerService}/undeploy.wsdd"/>
+ 			<delete dir="${dest.dir}/CacsDomainManagerService"/>
+ 	 </target>-->
+ 	<!--<target name="put_deploy_folder_kabiraManager">
+ 		<move tofile="${wsdd.deploy.dir.dest}/deployKabiraManager.wsdd" file="${wsdd.deploy.dir.generate.KpsaManagerService}/deploy.wsdd"/>
+ 		<move tofile="${wsdd.deploy.dir.dest}/undeployKabiraManager.wsdd" file="${wsdd.deploy.dir.generate.KpsaManagerService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/KabiraManagerService"/>
+ 	</target>-->
+ 	<target name="put_deploy_folder_ContractDomainManager">
+ 		<move tofile="${wsdd.deploy.dir.dest}/deployContractDomainManager.wsdd" file="${wsdd.deploy.dir.generate.ContractDomainManagerService}/deploy.wsdd"/>
+ 		<move tofile="${wsdd.deploy.dir.dest}/undeployContratDomainManager.wsdd" file="${wsdd.deploy.dir.generate.ContractDomainManagerService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/ContractDomainManagerService"/>
+ 	</target>
+ 	<target name="put_deploy_folder_GeneralDomainManager">
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/deployGeneralDomainManager.wsdd" file="${wsdd.deploy.dir.generate.GeneralDomainService}/deploy.wsdd"/>
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/undeployGeneralDomainManager.wsdd" file="${wsdd.deploy.dir.generate.GeneralDomainService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/GeneralDomainManagerService"/>
+ 	 </target>
+ 	
+ 	<target name="put_deploy_folder_CustomerDomainManager">
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/deployCustomerDomainManager.wsdd" file="${wsdd.deploy.dir.generate.CustomerDomainService}/deploy.wsdd"/>
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/undeployCustomerDomainManager.wsdd" file="${wsdd.deploy.dir.generate.CustomerDomainService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/CustomerDomainManagerService"/>
+ 	 </target>
+ 	
+ 	<!--<target name="put_deploy_folder_MicrocellDomainManager">
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/deployMicrocellDomainManager.wsdd" file="${wsdd.deploy.dir.generate.MicrocellDomainService}/deploy.wsdd"/>
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/undeployMicrocellDomainManager.wsdd" file="${wsdd.deploy.dir.generate.MicrocellDomainService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/MicrocellDomainManagerService"/>
+ 	 </target>-->
+ 	
+ 	<!--<target name="put_deploy_folder_ResourcesManager">
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/deployResourcesDomainManager.wsdd" file="${wsdd.deploy.dir.generate.ResourcesDomainService}/deploy.wsdd"/>
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/undeployResourcesDomainManager.wsdd" file="${wsdd.deploy.dir.generate.ResourcesDomainService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/ResourcesManagerService"/>
+ 	</target> -->
+ 	
+ 	<!--<target name="put_deploy_folder_PaymentManager">
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/deployPaymentManager.wsdd" file="${wsdd.deploy.dir.generate.PaymentDomainService}/deploy.wsdd"/>
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/undeployPaymentManager.wsdd" file="${wsdd.deploy.dir.generate.PaymentDomainService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/PaymentManagerService"/>
+ 	</target> -->
+ 	
+ 	<!-- <target name="put_deploy_folder_EBillManager">
+ 	  	<move tofile="${wsdd.deploy.dir.dest}/deployEBillManager.wsdd" file="${wsdd.deploy.dir.generate.EBillManagerService}/deploy.wsdd"/>
+ 	  	<move tofile="${wsdd.deploy.dir.dest}/undeployEBillManager.wsdd" file="${wsdd.deploy.dir.generate.EBillManagerService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/EBillManagerService"/>
+ 	 </target> -->
+ 		
+ 	<!-- <target name="put_deploy_folder_ETopUpManager">
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/deployETopUpManager.wsdd" file="${wsdd.deploy.dir.generate.ETopUpManagerService}/deploy.wsdd"/>
+ 	 	<move tofile="${wsdd.deploy.dir.dest}/undeployETopUpManager.wsdd" file="${wsdd.deploy.dir.generate.ETopUpManagerService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/ETopUpManagerService"/>
+ 	</target> -->
+ 	
+ 	<!--<target name="put_deploy_folder_NumberPortabilityDomainManager">
+ 	 	 <move tofile="${wsdd.deploy.dir.dest}/deployNumberPortabilityDomain.wsdd" file="${wsdd.deploy.dir.generate.NumberPortabilityDomainService}/deploy.wsdd"/>
+ 	 	 <move tofile="${wsdd.deploy.dir.dest}/undeployNumberPortabilityDomain.wsdd" file="${wsdd.deploy.dir.generate.NumberPortabilityDomainService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/NumberPortabilityDomainService"/> 		                         
+ 	</target> -->
+ 	
+	<!--<target name="put_deploy_folder_CARDomainManager">
+ 		<move tofile="${wsdd.deploy.dir.dest}/deployCARDomainManager.wsdd" file="${wsdd.deploy.dir.generate.CARDomainManagerService}/deploy.wsdd"/>
+ 		<move tofile="${wsdd.deploy.dir.dest}/undeployCARDomainManager.wsdd" file="${wsdd.deploy.dir.generate.CARDomainManagerService}/undeploy.wsdd"/>
+ 		<delete dir="${dest.dir}/CARDomainManagerService"/>
+ 	</target> -->
+ 	 	 
+ 	 
+ 	
+ 	<!-- =================================================================== -->
+ 		<!-- Build classpath                                                     -->
+ 		<!-- =================================================================== -->
+ 		<path id="classpath">
+ 			<fileset dir="${project.lib}">
+ 				<include name="**/*.jar" />
+ 			</fileset>
+ 			<fileset dir="${env.CATALINA_HOME}/common">
+ 				<include name="**/*.jar" />
+ 			</fileset>
+ 		</path>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Print help message                                                  -->
+ 		<!-- =================================================================== -->
+ 		<target name="help" description="Print help message">
+
+ 		<echo>
+ 		${ant.project.name} (${application.title} v ${application.version})
+ 		To work properly, this configuration file needs the CATALINA_HOME environment
+ 		variable to be set.
+ 		In your environment, CATALINA_HOME is set to "${env.CATALINA_HOME}"
+ 	    </echo>
+
+ 		</target>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Create missing directories before building the project              -->
+ 		<!-- =================================================================== -->
+ 		<target name="prepare-build" depends="help">
+ 			<mkdir dir="${project.dest}" />
+ 			<mkdir dir="${project.dist}" />
+ 			<!-- Copy configuration files 
+ 			<copy todir="${project.dest}" includeemptydirs="false" failonerror="false">
+ 				<fileset dir="${project.src.conf}" />
+ 			</copy> -->
+ 		</target>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Compile java files                                                  -->
+ 		<!-- =================================================================== -->
+ 		<target name="build-java" depends="prepare-build">
+ 			<javac srcdir="${project.src.java}" 
+ 				destdir="${project.dest}" 
+ 				debug="${build.debug}" 
+ 				deprecation="${build.deprecation}" 
+ 				optimize="${build.optimize}" 
+ 				target="${build.target}" 
+ 				source="${build.source}">
+ 				<classpath refid="classpath" />
+ 			</javac>
+ 		</target>
+ 		
+ 		<!-- =================================================================== -->
+ 		<!-- Incremental compilation                                             -->
+ 		<!-- =================================================================== -->
+ 		<target name="build" depends="build-java" description="Incremental compilation" />
+
+ 		<!-- =================================================================== -->
+ 		<!-- Recompile all classes                                               -->
+ 		<!-- =================================================================== -->
+ 		<target name="rebuild" depends="clean, build" description="Recompile all classes" />
+
+ 		<!-- =================================================================== -->
+ 		<!-- Clean the build directory                                           -->
+ 		<!-- =================================================================== -->
+ 		<target name="clean" description="Clean the classes directory">
+ 			<delete dir="${project.dest}" quiet="true" includeEmptyDirs="true" />
+ 			<delete dir="${project.dist}" quiet="true" includeEmptyDirs="true" />
+ 		</target>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Create Javadoc                                                      -->
+ 		<!-- =================================================================== -->
+ 		<target name="javadoc" description="Create Javadoc">
+
+ 			<delete dir="${javadoc.dest}" quiet="true" includeEmptyDirs="true" />
+
+ 			<mkdir dir="${javadoc.dest}" />
+
+ 			<javadoc sourcepath="${project.src.java}" 
+ 				destdir="${javadoc.dest}" 
+ 				access="protected" 
+ 				Windowtitle="${application.title}">
+ 				<doctitle>
+ 					${application.title} v ${application.version}
+ 				</doctitle>
+ 				<bottom>
+ 					<![CDATA[<i>Copyright &#169; 2007 Alcatel-Lucent. All Rights Reserved.</i>]]>
+ 				</bottom>
+ 				<package name="${project.package.root}.*" />
+ 				<link href="${javadoc.j2se.url}" offline="${javadoc.offline}" packagelistLoc="${javadoc.j2se.local}" />
+ 				<link href="${javadoc.j2ee.url}" offline="${javadoc.offline}" packagelistLoc="${javadoc.j2ee.local}" />
+ 				<link href="${javadoc.struts.url}" offline="${javadoc.offline}" packagelistLoc="${javadoc.struts.local}" />
+ 				<link href="${javadoc.spring.url}" offline="${javadoc.offline}" packagelistLoc="${javadoc.spring.local}" />
+ 				<link href="${javadoc.ibatis.url}" offline="${javadoc.offline}" packagelistLoc="${javadoc.ibatis.local}" />
+ 				<classpath>
+ 					<path refid="classpath" />
+ 				</classpath>
+ 				<group title="${application.title}" packages="${project.package.root}" />
+ 			</javadoc>
+
+ 		</target>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Create the jar file                                                 -->
+ 		<!-- =================================================================== -->
+ 		<target name="jar" depends="build" description="Create jar file">
+ 			<tstamp>
+ 			     <format property="TODAY" pattern="yyyy-MM-dd HH:mm:ss" />
+ 			</tstamp>
+ 			<jar destfile="${project.dist}/${ant.project.name}.jar" basedir="${project.dest}">
+ 				<manifest>
+ 					<attribute name="Built-By" value="${user.name}"/>
+ 					<attribute name="Specification-Title" value="${application.title}"/>
+ 					<attribute name="Specification-Version" value="${application.version}"/>
+ 					<attribute name="Specification-Vendor" value="${application.vendor}"/>
+ 					<attribute name="Built-Date" value="${TODAY}"/>
+ 				</manifest>
+ 			</jar>
+ 		</target>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Create the war file                                                 -->
+ 		<!-- =================================================================== -->
+ 		<target name="war" depends="jar" description="Create the war file">
+ 			<delete file="${project.dist}/${ant.project.name}.war" quiet="true" failonerror="false" />
+ 			<war warfile="${project.dist}/${ant.project.name}.war" webxml="${project.web}/WEB-INF/web.xml">
+ 				<fileset dir="${project.web}">
+ 					<exclude name="WEB-INF/web.xml"/>
+ 				</fileset>
+ 				<lib dir="${project.dist}">
+ 					<include name="${ant.project.name}.jar"/>
+ 				</lib>
+ 			</war>
+ 		</target>
+
+ 		<!-- =================================================================== -->
+ 		<!-- Create the distribution file                                        -->
+ 		<!-- =================================================================== -->
+ 		<target name="dist" depends="rebuild, war" description="Create the distribution file">
+ 		</target>
+ 	
+ 	<!-- =================================================================== -->
+ 	<!-- Create the distribution file                                        -->
+ 	<!-- =================================================================== -->
+ 	 <target name="install" >
+ 	       <copy todir="${project.web}/WEB-INF/deploy" overwrite="true" failonerror="false">
+ 	          <fileset dir="${project.src.java}/com/alcatel/mbn/ws/services/v${version}/wsdd" >
+ 	              <include name="*.xml"/>
+ 	              <include name="*.wsdd"/>
+ 	              <exclude name="build.xml"/>
+ 	          </fileset>
+ 	       </copy>
+ 	  </target>
+
+ 	<!-- =================================================================== -->
+ 	<!-- Create the distribution file                                        -->
+ 	<!-- =================================================================== -->
+ 	 	 <target name="ALUSOIFacade" >
+ 			<replace dir="D:\\test\\" 
+ 				     value="com.alcatel.mbn.ws.dao.cms.SOIFacade.getInstance">
+ 				 <include name="**\*.java"/>
+			     <replacetoken>SOIFacade.getInstance</replacetoken>
+ 				 </replace>
+ 				 
+ 				
+ 				<!--<replace file="D:\\CustomerMailItemReadServiceSoapBindingImpl.java" token="SOIFacade.getInstance" value="com.alcatel.mbn.ws.dao.cms.SOIFacade.getInstance"/>-->
+ 				
+ 			
+		</target>
+
+</project>

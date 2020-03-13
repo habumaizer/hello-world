@@ -1,0 +1,83 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from EBillManagerService WSDL service -->
+
+  <service name="EBillManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="EBillManagerService"/>
+      <parameter name="schemaQualified" value="http://commons.beans.ws.gfi.com,http://hasebill.ebill.beans.ws.gfi.com,http://addebill.ebill.beans.ws.gfi.com,http://manager.ws.gfi.com,http://beans.ws.gfi.com,http://removeebill.ebill.beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="EBillManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.EBillManager"/>
+      <parameter name="wsdlPortType" value="EBillManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="removeEBill" qname="removeEBill" soapAction="" >
+        <parameter qname="pns:removeEBillIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:RemoveEBillIn" xmlns:tns="http://removeebill.ebill.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="hasEBill" qname="hasEBill" returnQName="retNS:hasEBillReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:HasEBillOut" xmlns:rtns="http://hasebill.ebill.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:hasEBillIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:HasEBillIn" xmlns:tns="http://hasebill.ebill.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="addEBill" qname="addEBill" soapAction="" >
+        <parameter qname="pns:addEBillIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:AddEBillIn" xmlns:tns="http://addebill.ebill.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="removeEBill addEBill hasEBill"/>
+
+      <typeMapping
+        xmlns:ns="http://removeebill.ebill.beans.ws.gfi.com"
+        qname="ns:RemoveEBillIn"
+        type="java:com.gfi.ws.beans.ebill.removeebill.RemoveEBillIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://hasebill.ebill.beans.ws.gfi.com"
+        qname="ns:HasEBillIn"
+        type="java:com.gfi.ws.beans.ebill.hasebill.HasEBillIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addebill.ebill.beans.ws.gfi.com"
+        qname="ns:AddEBillIn"
+        type="java:com.gfi.ws.beans.ebill.addebill.AddEBillIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.gfi.com"
+        qname="ns:CustomerIdType"
+        type="java:com.gfi.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://hasebill.ebill.beans.ws.gfi.com"
+        qname="ns:HasEBillOut"
+        type="java:com.gfi.ws.beans.ebill.hasebill.HasEBillOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

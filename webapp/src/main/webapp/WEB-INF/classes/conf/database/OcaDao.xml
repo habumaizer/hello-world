@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="OcaDao">
+
+	<typeAlias alias="FormatCclinesCriteria" type="com.gfi.ws.beans.ocadomain.createaddress.FormatCclinesCriteria"/>
+	<typeAlias alias="CCLines" type="com.gfi.ws.beans.ocadomain.getcclines.CCLines"/>
+	
+	<resultMap id="formatCclinesCriteria" class="FormatCclinesCriteria">
+		<result property="ccline1" column="CCLINE1"/>
+		<result property="ccline2" column="CCLINE2"/>
+		<result property="ccline3" column="CCLINE3"/>
+		<result property="ccline4" column="CCLINE4"/>
+		<result property="ccline5" column="CCLINE5"/>
+		<result property="ccline6" column="CCLINE6"/>
+	</resultMap>
+	
+	<resultMap id="CCLines" class="CCLines">
+		<result property="ccLine1" column="CCLINE1"/>
+		<result property="ccLine2" column="CCLINE2"/>
+		<result property="ccLine3" column="CCLINE3"/>
+		<result property="ccLine4" column="CCLINE4"/>
+		<result property="ccLine5" column="CCLINE5"/>
+		<result property="ccLine6" column="CCLINE6"/>
+	</resultMap>
+	
+	<insert id="updateCclines" parameterClass="formatCclinesCriteria">
+	<selectKey resultClass="java.lang.Long" type="pre" keyProperty="seqNo" > 
+     SELECT max(CCSEQ)+1 
+        FROM CCONTACT_ALL
+           WHERE CUSTOMER_ID=#csId#
+    </selectKey> 
+		INSERT into CCONTACT_ALL 
+		(CUSTOMER_ID,CCLINE1,CCLINE2,CCLINE3,CCLINE4,CCLINE5,CCLINE6,CCSEQ) values (#csId#,
+		#ccline1#,
+		#ccline2#,
+		#ccline3#,
+		#ccline4#,
+		#ccline5#,
+		#ccline6#,
+		seqNo )
+	</insert>
+	
+	
+	<select id="getCClinesOfBilling" parameterClass="java.lang.Long" resultClass="CCLines">
+		SELECT CCLINE1 as ccLine1,
+			   CCLINE2 as ccLine2,
+			   CCLINE3 as ccLine3,
+			   CCLINE4 as ccLine4,
+			   CCLINE5 as ccLine5,
+			   CCLINE6 as ccLine6
+	  FROM CCONTACT_ALL
+	  WHERE CUSTOMER_ID=#csId# AND CCBILL ='X'
+		
+	</select>
+		
+</sqlMap>

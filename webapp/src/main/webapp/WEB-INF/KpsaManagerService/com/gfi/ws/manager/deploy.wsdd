@@ -1,0 +1,140 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from KpsaManagerService WSDL service -->
+
+  <service name="KpsaManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.gfi.com"/>
+      <parameter name="wsdlServiceElement" value="KpsaManagerService"/>
+      <parameter name="schemaQualified" value="http://spchange.kpsa.beans.ws.gfi.com,http://getpuk.kpsa.beans.ws.gfi.com,http://rpchange.kpsa.beans.ws.gfi.com,http://deactreason.kpsa.beans.ws.gfi.com,http://manager.ws.gfi.com,http://beans.ws.gfi.com"/>
+      <parameter name="wsdlServicePort" value="KpsaManager"/>
+      <parameter name="className" value="com.gfi.ws.manager.KpsaManager"/>
+      <parameter name="wsdlPortType" value="KpsaManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getPuk" qname="getPuk" returnQName="retNS:getPukReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:GetPukOut" xmlns:rtns="http://getpuk.kpsa.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:getPukIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:GetPukIn" xmlns:tns="http://getpuk.kpsa.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="getDeactReason" qname="getDeactReason" returnQName="retNS:getDeactReasonReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:DeactReasonOut" xmlns:rtns="http://deactreason.kpsa.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:deactReasonIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:DeactReasonIn" xmlns:tns="http://deactreason.kpsa.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="spChange" qname="spChange" returnQName="retNS:spChangeReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:SpChangeOut" xmlns:rtns="http://spchange.kpsa.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:spChangeIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:SpChangeIn" xmlns:tns="http://spchange.kpsa.beans.ws.gfi.com"/>
+      </operation>
+      <operation name="rpChange" qname="rpChange" returnQName="retNS:rpChangeReturn" xmlns:retNS="http://manager.ws.gfi.com" returnType="rtns:RpChangeOut" xmlns:rtns="http://rpchange.kpsa.beans.ws.gfi.com" soapAction="" >
+        <parameter qname="pns:rpChangeIn" xmlns:pns="http://manager.ws.gfi.com" type="tns:RpChangeIn" xmlns:tns="http://rpchange.kpsa.beans.ws.gfi.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="spChange rpChange getPuk getDeactReason"/>
+
+      <typeMapping
+        xmlns:ns="http://getpuk.kpsa.beans.ws.gfi.com"
+        qname="ns:GetPukOut"
+        type="java:com.gfi.ws.beans.kpsa.getpuk.GetPukOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://deactreason.kpsa.beans.ws.gfi.com"
+        qname="ns:DeactReasonIn"
+        type="java:com.gfi.ws.beans.kpsa.deactreason.DeactReasonIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://rpchange.kpsa.beans.ws.gfi.com"
+        qname="ns:RpChangeOut"
+        type="java:com.gfi.ws.beans.kpsa.rpchange.RpChangeOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://spchange.kpsa.beans.ws.gfi.com"
+        qname="ns:SpChangeIn"
+        type="java:com.gfi.ws.beans.kpsa.spchange.SpChangeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://spchange.kpsa.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.kpsa.spchange.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://deactreason.kpsa.beans.ws.gfi.com"
+        qname="ns:DeactReasonOut"
+        type="java:com.gfi.ws.beans.kpsa.deactreason.DeactReasonOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns5_Service"
+        type="java:com.gfi.ws.beans.kpsa.rpchange.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://rpchange.kpsa.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.gfi.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.gfi.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://spchange.kpsa.beans.ws.gfi.com"
+        qname="ns:SpChangeOut"
+        type="java:com.gfi.ws.beans.kpsa.spchange.SpChangeOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://rpchange.kpsa.beans.ws.gfi.com"
+        qname="ns:RpChangeIn"
+        type="java:com.gfi.ws.beans.kpsa.rpchange.RpChangeIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://getpuk.kpsa.beans.ws.gfi.com"
+        qname="ns:GetPukIn"
+        type="java:com.gfi.ws.beans.kpsa.getpuk.GetPukIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://manager.ws.gfi.com"
+        qname="ns:ArrayOf_tns4_Service"
+        type="java:com.gfi.ws.beans.kpsa.spchange.Service[]"
+        innerType="cmp-ns:Service" xmlns:cmp-ns="http://spchange.kpsa.beans.ws.gfi.com"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://rpchange.kpsa.beans.ws.gfi.com"
+        qname="ns:Service"
+        type="java:com.gfi.ws.beans.kpsa.rpchange.Service"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

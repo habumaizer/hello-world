@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="CacsDao">
+	
+	 <parameterMap id="getLaContractParams" class="com.gfi.ws.beans.cacsdomain.crmscorpoaction.LaContract">
+		
+		<parameter property="placustcode" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+		<parameter property="pexclstatus" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+
+		<parameter property="poutput" jdbcType="CLOB" javaType="java.lang.String" mode="OUT"/> 
+	</parameterMap>
+	
+	<procedure id="getLaContract" parameterMap="getLaContractParams">
+		{call ALCATEL.GET_LA_CONTRACT(?,?,?)}
+	</procedure>
+	
+		
+</sqlMap>

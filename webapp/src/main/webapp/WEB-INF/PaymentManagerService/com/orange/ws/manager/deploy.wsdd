@@ -1,0 +1,232 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from PaymentManagerService WSDL service -->
+
+  <service name="PaymentManager" provider="java:RPC" style="document" use="literal"><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow><requestFlow><handler type="auth" /></requestFlow>
+      <parameter name="wsdlTargetNamespace" value="http://manager.ws.orange.com"/>
+      <parameter name="wsdlServiceElement" value="PaymentManagerService"/>
+      <parameter name="schemaQualified" value="http://cancelprimorenewal.payment.beans.ws.orange.com,http://modifypayment.payment.beans.ws.orange.com,http://addpayment.payment.beans.ws.orange.com,http://primorenewal.payment.beans.ws.orange.com,http://beans.ws.orange.com,http://canceldeposit.payment.beans.ws.orange.com,http://adddeposit.payment.beans.ws.orange.com,http://cancelpayment.payment.beans.ws.orange.com,http://commons.beans.ws.orange.com,http://manager.ws.orange.com,http://refunddeposit.payment.beans.ws.orange.com,http://cancelrefunddeposit.payment.beans.ws.orange.com,http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      <parameter name="wsdlServicePort" value="PaymentManager"/>
+      <parameter name="className" value="com.orange.ws.manager.PaymentManager"/>
+      <parameter name="wsdlPortType" value="PaymentManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="cancelRefundDeposit" qname="cancelRefundDeposit" returnQName="retNS:cancelRefundDepositReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CancelRefundDepositOut" xmlns:rtns="http://cancelrefunddeposit.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:cancelRefundDepositIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CancelRefundDepositIn" xmlns:tns="http://cancelrefunddeposit.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="cancelPrimoRenewal" qname="cancelPrimoRenewal" returnQName="retNS:cancelPrimoRenewalReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CancelPrimoRenewalOut" xmlns:rtns="http://cancelprimorenewal.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:cancelPrimoRenewalIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CancelPrimoRenewalIn" xmlns:tns="http://cancelprimorenewal.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="addPayment" qname="addPayment" returnQName="retNS:addPaymentReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:AddPaymentOut" xmlns:rtns="http://addpayment.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:addPaymentIn" xmlns:pns="http://manager.ws.orange.com" type="tns:AddPaymentIn" xmlns:tns="http://addpayment.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="modifyPayment" qname="modifyPayment" returnQName="retNS:modifyPaymentReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:ModifyPaymentOut" xmlns:rtns="http://modifypayment.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:modifyPaymentIn" xmlns:pns="http://manager.ws.orange.com" type="tns:ModifyPaymentIn" xmlns:tns="http://modifypayment.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="cancelPayment" qname="cancelPayment" returnQName="retNS:cancelPaymentReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CancelPaymentOut" xmlns:rtns="http://cancelpayment.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:cancelPaymentIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CancelPaymentIn" xmlns:tns="http://cancelpayment.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="addDeposit" qname="addDeposit" returnQName="retNS:addDepositReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:AddDepositOut" xmlns:rtns="http://adddeposit.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:addDepositIn" xmlns:pns="http://manager.ws.orange.com" type="tns:AddDepositIn" xmlns:tns="http://adddeposit.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="cancelDeposit" qname="cancelDeposit" returnQName="retNS:cancelDepositReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:CancelDepositOut" xmlns:rtns="http://canceldeposit.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:cancelDepositIn" xmlns:pns="http://manager.ws.orange.com" type="tns:CancelDepositIn" xmlns:tns="http://canceldeposit.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="refundDeposit" qname="refundDeposit" returnQName="retNS:refundDepositReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:RefundDepositOut" xmlns:rtns="http://refunddeposit.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:refundDepositIn" xmlns:pns="http://manager.ws.orange.com" type="tns:RefundDepositIn" xmlns:tns="http://refunddeposit.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="autoReleaseCheck" qname="autoReleaseCheck" returnQName="retNS:autoReleaseCheckReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:AutoReleaseCheckOut" xmlns:rtns="http://autoreleasecheck.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:autoReleaseCheckIn" xmlns:pns="http://manager.ws.orange.com" type="tns:AutoReleaseCheckIn" xmlns:tns="http://autoreleasecheck.payment.beans.ws.orange.com"/>
+      </operation>
+      <operation name="primoRenewal" qname="primoRenewal" returnQName="retNS:primoRenewalReturn" xmlns:retNS="http://manager.ws.orange.com" returnType="rtns:PrimoRenewalOut" xmlns:rtns="http://primorenewal.payment.beans.ws.orange.com" soapAction="" >
+        <parameter qname="pns:primoRenewalIn" xmlns:pns="http://manager.ws.orange.com" type="tns:PrimoRenewalIn" xmlns:tns="http://primorenewal.payment.beans.ws.orange.com"/>
+      </operation>
+      <parameter name="allowedMethods" value="modifyPayment cancelRefundDeposit cancelDeposit autoReleaseCheck primoRenewal cancelPrimoRenewal cancelPayment addDeposit addPayment refundDeposit"/>
+
+      <typeMapping
+        xmlns:ns="http://canceldeposit.payment.beans.ws.orange.com"
+        qname="ns:CancelDepositOut"
+        type="java:com.orange.ws.beans.payment.canceldeposit.CancelDepositOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addpayment.payment.beans.ws.orange.com"
+        qname="ns:AddPaymentIn"
+        type="java:com.orange.ws.beans.payment.addpayment.AddPaymentIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans.ws.orange.com"
+        qname="ns:BasicBeanIn"
+        type="java:com.orange.ws.beans.BasicBeanIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://refunddeposit.payment.beans.ws.orange.com"
+        qname="ns:RefundDepositIn"
+        type="java:com.orange.ws.beans.payment.refunddeposit.RefundDepositIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://primorenewal.payment.beans.ws.orange.com"
+        qname="ns:PrimoRenewalOut"
+        type="java:com.orange.ws.beans.payment.primorenewal.PrimoRenewalOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelrefunddeposit.payment.beans.ws.orange.com"
+        qname="ns:CancelRefundDepositIn"
+        type="java:com.orange.ws.beans.payment.cancelrefunddeposit.CancelRefundDepositIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://canceldeposit.payment.beans.ws.orange.com"
+        qname="ns:CancelDepositIn"
+        type="java:com.orange.ws.beans.payment.canceldeposit.CancelDepositIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://addpayment.payment.beans.ws.orange.com"
+        qname="ns:AddPaymentOut"
+        type="java:com.orange.ws.beans.payment.addpayment.AddPaymentOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelrefunddeposit.payment.beans.ws.orange.com"
+        qname="ns:CancelRefundDepositOut"
+        type="java:com.orange.ws.beans.payment.cancelrefunddeposit.CancelRefundDepositOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelprimorenewal.payment.beans.ws.orange.com"
+        qname="ns:CancelPrimoRenewalOut"
+        type="java:com.orange.ws.beans.payment.cancelprimorenewal.CancelPrimoRenewalOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelpayment.payment.beans.ws.orange.com"
+        qname="ns:CancelPaymentOut"
+        type="java:com.orange.ws.beans.payment.cancelpayment.CancelPaymentOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://adddeposit.payment.beans.ws.orange.com"
+        qname="ns:AddDepositOut"
+        type="java:com.orange.ws.beans.payment.adddeposit.AddDepositOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelprimorenewal.payment.beans.ws.orange.com"
+        qname="ns:CancelPrimoRenewalIn"
+        type="java:com.orange.ws.beans.payment.cancelprimorenewal.CancelPrimoRenewalIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifypayment.payment.beans.ws.orange.com"
+        qname="ns:ModifyPaymentIn"
+        type="java:com.orange.ws.beans.payment.modifypayment.ModifyPaymentIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://autoreleasecheck.payment.beans.ws.orange.com"
+        qname="ns:AutoReleaseCheckOut"
+        type="java:com.orange.ws.beans.payment.autoreleasecheck.AutoReleaseCheckOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://adddeposit.payment.beans.ws.orange.com"
+        qname="ns:AddDepositIn"
+        type="java:com.orange.ws.beans.payment.adddeposit.AddDepositIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://cancelpayment.payment.beans.ws.orange.com"
+        qname="ns:CancelPaymentIn"
+        type="java:com.orange.ws.beans.payment.cancelpayment.CancelPaymentIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://primorenewal.payment.beans.ws.orange.com"
+        qname="ns:PrimoRenewalIn"
+        type="java:com.orange.ws.beans.payment.primorenewal.PrimoRenewalIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://commons.beans.ws.orange.com"
+        qname="ns:CustomerIdType"
+        type="java:com.orange.ws.beans.commons.CustomerIdType"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://modifypayment.payment.beans.ws.orange.com"
+        qname="ns:ModifyPaymentOut"
+        type="java:com.orange.ws.beans.payment.modifypayment.ModifyPaymentOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://refunddeposit.payment.beans.ws.orange.com"
+        qname="ns:RefundDepositOut"
+        type="java:com.orange.ws.beans.payment.refunddeposit.RefundDepositOut"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://autoreleasecheck.payment.beans.ws.orange.com"
+        qname="ns:AutoReleaseCheckIn"
+        type="java:com.orange.ws.beans.payment.autoreleasecheck.AutoReleaseCheckIn"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

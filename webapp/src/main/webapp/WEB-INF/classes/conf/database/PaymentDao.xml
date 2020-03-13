@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="PaymentDao">
+
+	<select id="getGlCode" parameterClass="java.lang.String" resultClass="String">
+		SELECT ULDTFF2
+		FROM USERLBL
+		WHERE ULTAG LIKE 'BANK%' AND ULCFF1=#channelcode#
+	</select>
+		
+	<select id="checkAddPaymentSN" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT COUNT(*)
+		FROM CASHRECEIPTS_ALL
+		WHERE CATYPE=1
+		AND CAREASONCODE=17
+		AND CACHKNUM=#paymentSN#
+	</select>
+
+	<select id="checkAddDepositSN" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT COUNT(*)
+		FROM CASHRECEIPTS_ALL
+		WHERE CATYPE=10
+		AND CAREASONCODE=3
+		AND CACHKNUM=#paymentSN#
+	</select>
+
+	<select id="checkPaymentAvailability" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT COUNT(*)
+		FROM CASHRECEIPTS_ALL
+		WHERE CATYPE=1
+		AND CAREASONCODE=17
+		AND CACHKNUM=#paymentSN#
+		AND CACURAMT_GL!=0
+	</select>
+
+	<select id="checkCancelPrimoAvailability" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT CACURAMT_GL
+		FROM CASHRECEIPTS_ALL
+		WHERE CATYPE=10
+		AND CAREASONCODE=3
+		AND CACHKNUM=#paymentSN#
+	</select>
+
+	<select id="checkCancelDepositAvailability" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT COUNT(*)
+		FROM CASHRECEIPTS_ALL
+		WHERE CATYPE=10
+		AND CAREASONCODE=3
+		AND CACHKNUM=#paymentSN#
+		AND CACURAMT_GL!=0
+	</select>
+
+	<select id="checkRefundDepositAvailability" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT OHXACT
+		FROM ORDERHDR_ALL
+		WHERE OHSTATUS='DP' 
+		AND OHREFNUM=#paymentSN#
+		AND OHOPNAMT_GL!=0
+	</select>
+
+	<select id="checkSpCode" resultClass="String">
+		SELECT ULCFF1||','||ULCFF2||','||ULCFF3||','||ULNFF1
+		FROM USERLBL
+		WHERE ULTAG='PRIMO_RENEWAL'
+	</select>
+
+	<resultMap id="primoResult" class="com.gfi.ws.beans.payment.primorenewal.PrimoConfigOut">
+		<result property="spCode" jdbcType="VARCHAR" column="SPCODE"/>
+	    <result property="duration" column="DURATION"/>
+	    <result property="amount" column="AMOUNT"/>
+	    <result property="glCode" column="GLCODE"/>
+	    <result property="bonus" column="BONUS"/>
+	</resultMap>
+
+	<statement id="selectPrimoConfiguration" resultMap="primoResult">
+		SELECT ULCFF1 AS SPCODE,  ULCFF2 AS DURATION, ULCFF3 AS AMOUNT, ULNFF1 AS GLCODE, ULNFF2 AS BONUS
+		FROM USERLBL
+		WHERE ULTAG LIKE 'PRIMO_RENEWAL%'
+	</statement>
+
+	<select id="checkCancelRefundDepositAvailability" parameterClass="java.lang.String" resultClass="Integer">
+		SELECT COUNT(*)
+		FROM CASHRECEIPTS_ALL
+		WHERE CATYPE=12
+		AND CAREASONCODE=35
+		AND CACHKNUM=#paymentSN#
+		AND CACURAMT_GL!=0
+	</select>
+
+	<parameterMap id="checkCustParams" class="gfi.ws.beans.payment.autoreleasecheck.CheckCustInOut">
+		<parameter property="CS_ID" jdbcType="LONG" javaType="java.lang.Long" mode="IN"/>
+		<parameter property="AMOUNT" jdbcType="FLOAT" javaType="Float" mode="IN"/>
+		<parameter property="STATUS" jdbcType="INTEGER" javaType="Integer" mode="OUT"/>
+		<parameter property="CONTRACTS" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+		<parameter property="REASON" jdbcType="VARCHAR" javaType="java.lang.String" mode="OUT"/>
+	</parameterMap>
+	
+	<procedure id="checkCust"  parameterMap="checkCustParams">
+		{call ALCATEL.Release_cust.Check_Cust(?,?,?,?,?)}
+	</procedure>
+	
+	<select id="getCaxact" parameterClass="java.lang.String" resultClass="java.lang.Long">
+	   select caxact from cashreceipts_all where catype in (1,3) and cachknum = #RT_CACHKNUM# 
+	</select>
+	
+
+</sqlMap>
+
+
+
+
